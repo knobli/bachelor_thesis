@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Project     : Bachelorarbeit
+% Title       : Machbarkeitsanalyse für eine ressourcenorientierte Schnittstelle zur Verarbeitung grundlegender Probleme der Informatik
+% File        : uebersicht.tex Rev. 01
+% Date        : 01.03.2015
+% Author      : Raffael Santschi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Projektübersicht}\label{chap.projektuebersicht}
+Die Übersicht dient dem Zweck einen generellen Überblick über das Dokument zu verschaffen. Sie beinhaltet die Ausganglage, das Ziel dieser Arbeit, die Aufgabenstellung, die erwarteten Resultate und die Nicht-Ziele. Zusätzlich wird der Aufbau dieses Dokumentes erklärt.
+
+\section{Ausgangslage}\label{ausganglage}
+Bei einigen Problemen der Informatik kann deterministisch die exakte Lösung nicht in Polynomialzeit berechnet werden. Um in sinnvoller Zeit eine brauchbare Lösung zu erhalten, müssen diese Probleme im Allgemeinen mit Hilfe von Approximierungsalgorithmen angegangen werden. Zu dieser Kategorie gehören zum Beispiel das Problem des Handlungsreisenden oder das Rucksack Problem. Praktische Anwendung finden solche Probleme beispielsweise in der Logistik, bei der Routenplanung und beim Verladen von Fracht.
+
+Die bekannten Approximierungsalgorithmen haben verschiedene Ausprägungen und auch unterschiedliche Eingabeparameter. Es gibt keine Schnittstelle für die Benutzung von diesen Algorithmen, welche keine detaillierte Kenntnis der darunterliegenden Probleme und Algorithmen erfordert. Eine Schnittstelle mit dieser Eigenschaft kann die Handhabung solcher Probleme enorm erleichtern.
+
+\section{Ziele der Arbeit}\label{ziele}
+In der Arbeit soll ein Konzept für eine Schnittstelle zur Lösung verschiedener grundlegender Probleme der Informatik erarbeitet werden. Diese Schnittstelle soll basierend auf den Erkenntnissen einer Analyse über die Gemeinsamkeiten dieser Approximierungsalgorithmen aufgebaut werden. Dadurch soll es einem Benutzer ermöglicht werden seine jeweiligen Probleme, beispielsweise die effizienten Verpackung von Gegenständen, ohne ein Verständnis der darunterliegenden Probleme der Informatik anzugehen.
+
+Bei der Erarbeitung der Schnittstelle stehen eine geeignete Persistenz-Lösung und sowie Datenstrukturen für Ein- und Ausgabe im Vordergrund.
+
+\section{Aufgabenstellung}\label{aufgabenstellung}
+Folgende Punkte werden in der Semesterarbeit behandelt:
+\begin{enumerate}
+\item Recherche von real auftretenden Problemen, welche ausschliesslich durch den Einsatz von Algorithmen mit hoher Laufzeitkomplexität gelöst werden können. Einarbeiten und Analyse in die ausgewählten Algorithmen.
+\item Ist-Analyse der verwendeten Datenstrukturen für die Algorithmen.
+\item Anforderungsanalyse einer Schnittstelle für die ausgewählten Algorithmen.
+\item Erarbeiten eines Konzeptes für die Implementierung der Schnittstelle sowie einer zugehörigen Persistenz-Schicht.
+\item Implementierung eines Prototypen für die Schnittstelle und der Persistenz-Schicht.
+\item Automatisiertes Testen der Schnittstelle.
+\end{enumerate}
+
+\section{Erwartete Resultate}\label{erwartete_resultate}
+Folgende Punkte werden als Resultate der Semesterarbeit erwartet:
+\begin{enumerate}
+\item Übersicht der Probleme mit den dazugehörigen Algorithmen und Beschreibung der Algorithmen mit ihren Kerneigenschaften.
+      \begin{itemize}
+        \item Ausführungen zum Einfluss der Parameter der jeweiligen Probleme auf die Komplexität.
+      \end{itemize}
+\item Übersicht über die verwendeten Datenstrukturen als Input / Output der Probleme.
+\item Anforderungskatalog an die Schnittstelle.
+\item Konzept einer generellen Schnittstelle zur Lösung der komplexen Probleme und Datendiagramm des Datenspeichers.
+\item Prototypische Implementation der Schnittstelle und des Datenspeichers.
+\item Automatische Tests mit dem dazugehörigen Testprotokoll.
+\end{enumerate}
+
+\section{Nicht-Ziele}\label{nicht_ziele}
+Folgende Punkte wurden mit dem Auftraggeber als Nicht-Ziele definiert und sind somit nicht Teil dieses Projekts:
+\begin{itemize}
+\item Der Sicherheitsaspekt einer Schnittstelle wird in diesem Projekt nicht behandelt.
+\item Es werden keine Algorithmen implementiert.
+\end{itemize}
+\todo{Erweitern Nicht-Ziele}
+
+\section{Dokumentstruktur}\label{document_structure}
+\todo{Überfliegen und anpassen}
+Dieses Dokument spiegelt die geleistete Arbeit wieder und ist in einzelne Kapitel unterteilt.
+\begin{itemize}
+\item Projektplanung: Schritte für die Erstellung des Projektplanes und der Risikoanalyse
+\item Einleitung: Beischreibung der wichtigsten verwendeten Begriffe und Theorien, welche für das Verstehen der Arbeit notwendig sind
+\item Analyse und Auswahl der Probleme: Erläuterung der Problemauswahl und Beschreibung der einzelnen Probleme
+\item Anforderungsdokument: System- und Kontextabgrenzung, \glossarmark{Stakeholder}, getroffene Annahmen und der Anforderungskatalog mit Use Cases und Anforderungen
+\item Architektur: Übersicht über das ganze System, Nutzwertanalyse der verschiedenen Lösungsvarianten und die Architekturbeschreibung der Schnittstelle
+\item Umsetzung: Beschreibung der Entwicklungsumgebung, Umsetzung von App und Backend
+\item Tests: Erläuterung der Test-Methoden und das Abnahme Protokoll
+\end{itemize}
+
+Im Anhang sind das Glossar, in welchem die blau markierten Begriffe im Dokument erklärt werden, und alle Verzeichnisse zu finden. Falls es zu einem Begriff eine gängige Abkürzung gibt, wird diese beim ersten Auftauchen des Wortes in Klammern geschrieben und danach verwendet, im Glossar finden sich dann beide Einträge. Die grün markierten Begriffe sind in der \nameref{chap.einleitung} erklärt.

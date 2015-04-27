@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Project     : Bachelorarbeit
+% Title       : Machbarkeitsanalyse für eine ressourcenorientierte Schnittstelle zur Verarbeitung grundlegender Probleme der Informatik
+% File        : doc.tex Rev. 01
+% Date        : 01.03.2015
+% Author      : Raffael Santschi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{header}
+
+
+\begin{document}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{alphadin}
+\bibliographystyle{plain}
+
+
+\title{Bachelorarbeit}
+\author{Raffael Santschi}
+
+
+\include{content/titlepage}
+\setcounter{page}{1}
+%\include{content/Kontakt}
+%\include{content/abstract}
+
+\includepdf{images/Erklaerung_BA.pdf} % Entsprechendes auskommentieren
+% \newpage
+
+%Inhaltsverzeichnis
+\tableofcontents
+\newpage
+
+
+
+%\textbf{}
+%\setcounter{page}{1}
+%\pagenumbering{arabic}
+
+%\include{content/howtoLaTeX} % Für das Schlussdokument auskommentieren
+
+\include{content/uebersicht}
+\include{content/projektplanung}
+\include{content/einleitung}
+\include{content/probleme}
+\include{content/anforderungsdokument}
+%\include{content/architektur} 
+%\include{content/umsetzung}
+%\include{content/tests}
+%\include{content/fazit}
+
+\pagenumbering{Roman}
+
+\appendix
+\chapter{Anhang}\label{chap.anhang}
+%\section{Abnahmeprotokoll}\label{anhang_abnahmeprotokoll}
+%\includepdf{images/word/Abnahmeprotokoll.pdf}
+
+\clearpage
+ \input{content/glossar}
+
+\clearpage
+ \bibliography{bibtex/literatur}
+ \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+\clearpage
+ \listoffigures
+ \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+
+\clearpage
+ \listoftables
+ \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+
+
+\end{document}
