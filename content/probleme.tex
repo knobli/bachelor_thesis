@@ -8,10 +8,11 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Analyse und Auswahl der Probleme}\label{chap.problemauswahl}
+\chapter{Analyse und Auswahl der Probleme \resultAssignment{[R1]}}\label{chap.problemauswahl}
 In diesem Kapitel werden verschiedene Probleme und das dazugehörige Auswahlverfahren erläutert, welche für die Erstellung der Schnittstelle betrachtet wurden.
 
 \section{Auswahl der Probleme}\label{cat_theo_inf}
+\todo{ausführlicher beschreiben}
 Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Verfahren ausgefunden werden, mit dem verschiedene Typen dieser Probleme für die Schnittstelle evaluiert werden konnten. In \cite{garey1979computers} werden verschiedene NP-vollständige und NP-schwere Probleme vorgestellt. Diese werden in Kategorien unterteilt (siehe Aufzählung unten), welche in dieser Arbeit ebenfalls benutzt werden.
 
 \begin{itemize}
@@ -67,12 +68,15 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
   \label{fig:graph_faerbung_correct}
 }
 \label{fig:graph_faerbung}
-\caption{Kanten Färbung eines Graphen mit 10 Knoten}
+\caption{Kanten Färbung eines Graphen mit 10 Knoten (Eigene Darstellung)}
 \end{figure}
 
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
 	Eingabedaten: Knoten mit ihren Verbindungen zu anderen Knoten\\
 	Ausgabedaten: Knoten mit ihrer Färbung und $k$ (Anzahl benötigter Farben)
+
+	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
+	\todo{Schreiben}
 
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{seminar_algo_graph}, \cite{krumke2012graphentheoretische} und \cite{seminar_rob_graphen})
@@ -96,7 +100,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 \subsection{Netzwerk Design}\label{network_design}
 
 	\subsubsection{Problem des Handlungsreisenden}\label{tsp}
-	Das Problem des Handlungsreisenden ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Hamiltonkreisproblemes bewiesen. \todo{evtl. Umbennenung Rundreiseproblem}
+	Das Problem des Handlungsreisenden ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Hamiltonkreisproblemes bewiesen.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Traveling Salesman Problem\\
@@ -115,6 +119,9 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
 	Eingabedaten: Startpunkt und Wegpunkte, welche passiert werden müssen\\
 	Ausgabedaten: Reihenfolge der Wegpunkte für eine optimale Route
+
+	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
+	\todo{Schreiben}
 
 	\paragraph{Bekannte Algorithmen}\cite{tsp_algorithmen} \cite{tsp_semesterarbeit}
 	\begin{itemize}
@@ -137,13 +144,16 @@ Die grün eingezeichneten Verbindungen sind Hilfslinien, um den Graph in einen \
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{images/visio/chinese_postman.png}
-\caption{Beispiel für ein Briefträgerproblem}
+\caption{Beispiel für ein Briefträgerproblem  (Eigene Darstellung)}
 \label{fig:chinese_postman_example}
 \end{figure}
 
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
 	Eingabedaten: Startpunkt und Knoten mit ihren Verbindungen zu anderen Knoten\\
 	Ausgabedaten: Reihenfolge der Knoten für eine minimale Strecke
+
+	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
+	\todo{Schreiben}
 
 	\paragraph{Bekannte Algorithmen}\mbox{}\\
 	Briefträgeralgorithmus (Chinese postman algorithm)
@@ -264,6 +274,9 @@ In der \autoref{table:timetable_1} sieht man eine mögliche Lösung zu dieser Pr
 	Eingabedaten: Fächer, Lehrer, Klassen und Klassenzimmer mit verschiedenen Einschränkungen und Zusatzinformationen\\
 	Ausgabedaten: Einteilung der Fächer mit den dazugehörigen Klassen, Lehrern und Zimmer auf verschiedene Tage und Uhrzeiten, welche keine Konflikte enthält
 
+	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
+	\todo{Schreiben}
+
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{framework_timetabling})
 	\begin{itemize}
@@ -315,6 +328,9 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
 	Eingabedaten: Gewichtsschranke und Elemente mit Gewicht und Nutzwert\\
 	Ausgabedaten: Zusammenstellung von den Elementen mit höchstem Nutzwert
+
+	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
+	\todo{Schreiben}
 
 	\paragraph{Bekannte Algorithmen}
 	\begin{itemize}
@@ -412,6 +428,89 @@ Die hier aufgeführten Probleme sind nur zur Vollständigkeit aufgelistet und be
    \caption{Wahrheitstabelle zur 3-SAT Formel}\label{table:3sat_results}
 \end{table}
 
+\newpage
+\subsection{Übersicht Eingabe- und Ausgabedaten \resultAssignment{[R2]}}\label{overview_input_output}
+Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen unterschiedliche Komplexität auf. Um einen besseren Überblick zu erhalten, wurden sie in der \autoref{table:input_output} zusammengefasst.
+\begin{table}[ht]
+\centering
+  \begin{tabular}{ p{3.5cm} | p{6cm} | p{6cm} }
+	\hline
+	\rowcolor{gray}
+	\textbf{Problem}				& \textbf{Eingabedaten}								& \textbf{Ausgabedaten}\\ \hline
+	Färbung (Graphtheorie)			& \begin{enumerate}
+								\item Knoten mit ihren Verbindungen zu anderen Knoten
+							   \end{enumerate}				
+							&  \begin{enumerate}
+								\item Knoten mit ihrer Färbung
+								\item $k$ (Anzahl benötigter Farben)
+							   \end{enumerate}	\\ \hline
+	Problem des Handlungsreisenden		& \begin{enumerate}
+								\item Startpunkt
+								\item Wegpunkte, welche passiert werden müssen
+							   \end{enumerate}				
+							&  \begin{enumerate}
+								\item Wegpunkte in der Reihenfolge der optimalen Route
+								\item Länge der Strecke
+							   \end{enumerate}	\\ \hline
+	Briefträgerproblem	 			& \begin{enumerate}
+								\item Startpunkt
+								\item Knoten mit ihren Verbindungen zu anderen Knoten
+							   \end{enumerate}				
+							&  \begin{enumerate}
+								\item Knoten in der Reihenfolge der minimalen Strecke
+								\item Länge der Strecke
+							   \end{enumerate}	\\ \hline
+	Stundenplan Design				& \begin{enumerate}
+								\item Fächer
+								\item Lehrer
+								\item Klassen
+								\item Klassenzimmer
+								\item Stundenplan Rahmenbedingungen
+							   \end{enumerate}				
+							&  \begin{enumerate}
+								\item  Einteilung der Fächer mit den dazugehörigen Klassen, Lehrern und Zimmer auf verschiedene Tage und Uhrzeiten, welche keine Konflikte enthält
+							   \end{enumerate}	\\ \hline
+	Rucksack Problem				& \begin{enumerate}
+								\item Gewichtsschranke
+								\item Elemente mit Gewicht und Nutzwert
+							   \end{enumerate}				
+							&  \begin{enumerate}
+								\item Zusammenstellung von den Elementen mit höchstem Nutzwert
+								\item Nutzwert
+							   \end{enumerate}	\\ \hline
+  \end{tabular}
+   \caption{Eingabe- und Ausgabedaten der ausgewählten Probleme}\label{table:input_output}
+\end{table}
 
+\newpage
+\subsection{Beispiel für den Einfluss der Parameter auf die Komplexität \resultAssignment{[R1a]}}\label{example_complexity_knapsack}
+Bei den Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt, um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des Rucksack Problemes gemacht.
 
+\subsubsection{Ausgangslage}
+Das Rucksackproblem hat zwei Eingabeparameter, zum einen die Gewichtsschranke und zum anderen die Elemente. Im Beispiel wurden verschiedene Anzahl Elemente verwendet und dies mit unterschiedlichen Gewichtsschranken kombiniert. Zum Vergleich wurde die Zeit gestoppt, welche der Brute Force Algorithmus benötigt, um die optimale Lösung herauszufinden.
 
+\subsubsection{Resultat}
+Die Berechnungzeit ist ungenau und bei jedem Versuch unterschiedlich, jedoch bestätigt das Resultat die Theorie, dass die Komplexität durch die Anzahl an Elemente beeinflusst wird. Die verschiedenen Berechnungszeiten wurden in der \autoref{table:example_complexity_knapsack} festgehalten. Mit einer höheren Gewichtsschranke bleibt die Berechnungszeit in etwa gleich, bei einer Erhöung der Anzahl Elemente nimmt die Komplexität jedoch sehr schnell zu.
+
+\begin{table}[ht]
+\centering
+  \begin{tabular}{ l | r | r | r | r | r }
+	\hline
+	\rowcolor{gray}
+	\backslashbox{Gewichtsschranke:}{Anzahl an Elemente:}	& \textbf{10}	& \textbf{15} 	& \textbf{18}	& \textbf{20}	& \textbf{22}\\ \hline
+	\textbf{10}							& 4ms			& 23ms		& 129ms		& 1079ms		& 7267ms 	\\ \hline
+	\textbf{100}							& 1ms			& 16ms		& 149ms		& 1761ms		& 6054ms	\\ \hline
+	\textbf{1000}						& 1ms			& 7ms			& 595ms		& 1038ms		& 6331ms	\\ \hline
+	\textbf{10000}						& 1ms			& 7ms			& 48ms		& 583ms		& 7174ms	\\ \hline
+  \end{tabular}
+   \caption{Berechnungszeiten zu verschiedenen Eingabeparametern für das Rucksack Problem}\label{table:example_complexity_knapsack}
+\end{table}
+
+In \autoref{fig:example_complexity_knapsack} kann man die exponentielle Steigerung der Berechnungsdauer mit zu nehmenden Elementen sehr schön sehen.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.65]{images/excel/knapsack_complexity_example.png}
+\caption{Berechnungszeiten für das Rucksack Problem mit verschiedenen Eingabeparametern im Vergleich (Eigene Darstellung)}
+\label{fig:example_complexity_knapsack}
+\end{figure}

@@ -8,7 +8,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Anforderungsdokument}\label{chap.anforderungsdokument}
+\chapter{Anforderungsdokument \resultAssignment{[R3]}}\label{chap.anforderungsdokument}
 
 Das Anforderungsdokument legt die Basis für die Implementation. Es ist für den Verlauf des Projekts wichtig, dass zu Beginn Gedanken über die Anforderungen gemacht werden. Bei der Erstellung des Anforderungsdokuments werden verschiedene Betrachungsweisen aufgezeigt und die Herausforderung in verschiedenen Detaistufen angeschaut.
 
@@ -43,7 +43,7 @@ Die Systemumgebung (siehe Abbildung \ref{fig:systemumgebung}) definiert die Ausg
 \FloatBarrier
 \subsection{Annahmen}\label{annahmen}
 Zwischen dem Endnutzer und dem zu erstellenden System existiert noch ein Sicherheitslayer, welcher nicht Teil dieser Arbeit ist, als Vereinfachung wird vom Nutzer gesprochen.
-----TODO----
+\todo{ausführen}
 
 \newpage
 \subsection{Stakeholder}\label{stakeholder}
@@ -311,12 +311,12 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F1}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Schnittstelle für reale Optimierungsprobleme\\ \hline
+	\textbf{Name} 			&	Bereitstellung der Schnittstellen für Optimierungsprobleme\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System muss dem Nutzer die Möglichkeit bieten die Lösung verschiedener Optimierungsprobleme zu beauftragen\\ \hline
 	\textbf{Begründung} 		&	Die Schnittstellen ist die Anlaufstelle des Nutzers. Er beauftrag durch sie, das System eine Berechnung zu starten.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer erhält mit der Schnittstelle eine Liste der bereitgestellten Berechnungsfunktionen
+					\item Der Nutzer kann eine Schnittstelle für eine bereitgestellten Berechnungsfunktionen ansprechen
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline
@@ -332,12 +332,12 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F2}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Rückgabe einer ID\\ \hline
+	\textbf{Name} 			&	Rückgabe einer ID bei Beauftragung\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System dem Ersteller eine ID zurück geben.\\ \hline
 	\textbf{Begründung} 		&	Die ID hilft dem Nutzer den Status der Berechnung abzuholen und wird auch am Schluss für das Resultat benötigt.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer erhält eine ID.
+					\item Der Nutzer erhält nach dem Starten einer Berechnung eine ID.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	\nameref{table:req_1}\\ \hline
@@ -353,7 +353,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F3}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Speichern der Eingabeparametern\\ \hline
+	\textbf{Name} 			&	Speicherung der Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System fähig sein die Eingabeparameter abzuspeichern.\\ \hline
 	\textbf{Begründung} 		&	Die Berechnung wird von einem anderen System ausgeführt, damit dieses auf die Parameter zu greifen kann, müssen sie persistiert werden.\\ \hline
@@ -375,7 +375,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F4}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Starten der Berechnung\\ \hline
+	\textbf{Name} 			&	Start der Berechnung\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_2}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System fähig sein die Berechnung beim Verarbeitungssystem zu starten.\\ \hline
 	\textbf{Begründung} 		&	Der Nutzer kennt das Verarbeitungssystem nicht, das System muss dem Verarbeitungssystem den Start Befehl geben.\\ \hline
@@ -419,7 +419,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F6}\\ \hline
 	\textbf{Priorität} 		&	Should\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Status abfragen\\ \hline
+	\textbf{Name} 			&	Abfrage des Status\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System dem Nutzer die Möglichkeit bieten den Status der Berechnung abzufragen.\\ \hline
 	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist.\\ \hline
@@ -440,7 +440,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F7}\\ \hline
 	\textbf{Priorität} 		&	Nice to have\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Über Status informiert werden\\ \hline
+	\textbf{Name} 			&	Registrierung eines WebHooks für Statusänderungen\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben und dazu ein WebHook eingetragen wurde, muss das System den Nutzer über eine Änderung des Status über den Webhook informieren.\\ \hline
 	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu verhindern, kann man WebHooks verwenden.\\ \hline
@@ -461,7 +461,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F8}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Speichern des  Resultats\\ \hline
+	\textbf{Name} 			&	Speicherung des Resultats\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_5}\\ \hline
 	\textbf{Beschreibung} 	&	Nach der Berechnung muss das System dem Verarbeitungssystem die Möglichkeit bieten das Resultat abspeichern zu können.\\ \hline
 	\textbf{Begründung} 		&	Das Resultat muss, bis der Nutzer es abholt, zwischengespeichert werden.\\ \hline
@@ -530,7 +530,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-NF2}\\ \hline
 	\textbf{Priorität} 		&	Should\\ \hline
 	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
-	\textbf{Name} 			&	Generische Eingabeparameter\\ \hline
+	\textbf{Name} 			&	Annahme von generischen Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System sollte in der Lage sein unterschiedliche Ausprägungen von Eingabeparametern entgegenzunehmen.\\ \hline
 	\textbf{Begründung} 		&	Da es bei den Probleme unterschiedliche Ausprägungen gibt, ist auf eine generische Deserialisierung der Eingabeparametern hinzuarbeiten.\\ \hline
@@ -551,7 +551,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-NF3}\\ \hline
 	\textbf{Priorität} 		&	Should\\ \hline
 	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
-	\textbf{Name} 			&	Generische Eingabeparameter Verwaltung\\ \hline
+	\textbf{Name} 			&	Speicherung von generischen Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System sollte Eingabeparameter einheitlich abspeichern.\\ \hline
 	\textbf{Begründung} 		&	Da es viele unterschiedliche Probleme gibt, ist eine generische Persistierung anzustreben.\\ \hline
@@ -564,4 +564,27 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
    \caption{Qualitätsanforderung RF-NF3}\label{table:req_nf_3}
 \end{table}
 
-
+\newpage
+\subsection{Zusammenfassung der Anforderungen}\label{toc_anfoderungen}
+Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde mit den Stakeholdern zusammen festgelegt und in \autoref{table:req_priorities} zur besseren Übersicht zusammengetragen.
+\begin{table}[ht]
+\centering
+  \begin{tabular}{ l | l | l }
+	\hline
+	\rowcolor{gray}
+	\textbf{Bezeichner}	& \textbf{Name}	&	\textbf{Priorität}\\ \hline
+	RE-F1 			&  Bereitstellung der Schnittstellen für Optimierungsprobleme	& Must\\ \hline
+	RE-F2 			&  Rückgabe einer ID bei Beauftragung	& Must\\ \hline
+	RE-F3 			&  Speicherung der Eingabeparameter	& Must\\ \hline
+	RE-F4 			&  Start der Berechnung	& Must\\ \hline
+	RE-F5 			&  Abfrage der Eingabeparameter	& Must\\ \hline
+	RE-F6 			&  Abfrage des Status	& Should\\ \hline
+	RE-F7 			&  Registrierung eines WebHooks für Statusänderungen	& Nice to have\\ \hline
+	RE-F8 			&  Speicherung des Resultats	& Must\\ \hline
+	RE-F9 			&  Abfrage des Resultats	& Must\\ \hline
+	RE-NF1 			&  Prozess agnostische Schnittstelle & Should\\ \hline
+	RE-NF2 			&  Annahme von generischen Eingabeparameter & Should\\ \hline
+	RE-NF3 			&  Speicherung von generischen Eingabeparameter & Should\\ \hline
+  \end{tabular}
+   \caption{Priorität der Anforderungen}\label{table:req_priorities}
+\end{table}
