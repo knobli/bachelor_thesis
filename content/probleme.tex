@@ -12,8 +12,11 @@
 In diesem Kapitel werden verschiedene Probleme und das dazugehörige Auswahlverfahren erläutert, welche für die Erstellung der Schnittstelle betrachtet wurden.
 
 \section{Auswahl der Probleme}\label{cat_theo_inf}
-\todo{ausführlicher beschreiben}
-Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Verfahren ausgefunden werden, mit dem verschiedene Typen dieser Probleme für die Schnittstelle evaluiert werden konnten. In \cite{garey1979computers} werden verschiedene NP-vollständige und NP-schwere Probleme vorgestellt. Diese werden in Kategorien unterteilt (siehe Aufzählung unten), welche in dieser Arbeit ebenfalls benutzt werden.
+Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Verfahren herausgefunden werden, mit dem verschiedene Typen dieser Probleme für die 
+Schnittstelle evaluiert werden konnten. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. 'Computers and Intractability' \cite{garey1979computers} 
+von Micheal Garey und David S. Johnson  ist in der Informatik ein viel zitiertes Buch und war im Jahr 2006 laut einer Studie von CiteSeer das meist zitierteste Buch der Informatik 
+\cite{citeseer_algo_buch}. In diesem Buch werden verschiedene NP-vollständige und NP-schwere Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) 
+werden auch benutzt, um die zu analysierenden Problem auszuwählen.
 
 \begin{itemize}
 	\item Graphentheorie
@@ -31,7 +34,11 @@ Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musst
 	\item Offene Probleme
 \end{itemize}
 
-Im Rahmen dieser Arbeit konnten nicht alle Probleme angeschaut werden, deshalb wurde geschaut, ob es Probleme gibt, welche in der Realität auftreten und nicht nur rein wissenschaftliche Probleme sind. Aus diesen Problemen wurden dann fünf ausgewählt, bei der Auswahl wurde auch geschaut, dass die Probleme zum grossen Teil aus unterschiedlichen Kategorien kommen, jedoch wurden auch zwei aus der gleichen Kategorie ausgewählt. Die ausgewählten Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine hohe Diversität von Problemen sichergestellt werden, was bei der Erstellung der Anforderungen und Architetkur hilfreich war.
+Im Rahmen dieser Arbeit konnten nicht alle Probleme angeschaut werden, deshalb wurde geschaut, ob es Probleme gibt, welche in der Realität auftreten und nicht nur rein wissenschaftliche 
+Probleme sind. Aus diesen Problemen wurden dann fünf ausgewählt, bei der Auswahl wurde auch geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen, jedoch wurden auch 
+zwei aus der gleichen Kategorie ausgewählt, um zu analysieren wie sich diese zwei im Gegensatz zu den anderen verhalten. Die ausgewählten Probleme werden im folgenden Abschnitt 
+genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine hohe Diversität von Problemen sichergestellt werden, 
+was bei der Erstellung der Anforderungen und Architetkur hilfreich war.
 
 \subsection{Hierarchie der Reduktion}\label{hierarchy_reduction}
 Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In \autoref{fig:hierarchy_reduction} ist die Hierarchie bis zu den ausgewählten Problemen aufgezeigt.
@@ -39,7 +46,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 \begin{figure}[h]
 \centering 
 \includegraphics[scale=0.8]{images/visio/problem_hierarchy.png}
-\caption{Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit}
+\caption[Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit]{Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit (Eigene Darstellung, Daten entnommen aus: \cite{garey1979computers})}
 \label{fig:hierarchy_reduction}
 \end{figure}
 
@@ -68,7 +75,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
   \label{fig:graph_faerbung_correct}
 }
 \label{fig:graph_faerbung}
-\caption{Kanten Färbung eines Graphen mit 10 Knoten (Eigene Darstellung)}
+\caption[Kanten Färbung eines Graphen mit 10 Knoten]{Kanten Färbung eines Graphen mit 10 Knoten \selfmade{}}
 \end{figure}
 
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
@@ -76,7 +83,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 	Ausgabedaten: Knoten mit ihrer Färbung und $k$ (Anzahl benötigter Farben)
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	\todo{Schreiben}
+	Bei der Knotenfärbung steigert sich die Komplexität mit Anzahl Kanten, die Knoten sind nur relevant, da sie neue Kanten aufspannen. Das die Komplexität nur von der Anzahl Kanten abhängt, zeigt auch die Formel zur Berechnung des Maximum von $k$: $k \le \frac{1}{2} + \sqrt{2m + \frac{1}{4}}$ (wobei m für die Anzahl Kanten steht) (siehe \cite{seminar_rainer_graph}). Um so grösser $k$ um so häufiger tretten Kollisionen auf und um so mehr Varianten müssen ausprobiert werden.
 
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{seminar_algo_graph}, \cite{krumke2012graphentheoretische} und \cite{seminar_rob_graphen})
@@ -112,7 +119,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{images/visio/tsp.png}
-\caption{Problem des Handlungsreisenden mit 4 Wegpunkten}
+\caption[Problem des Handlungsreisenden mit 4 Wegpunkten]{Problem des Handlungsreisenden mit 4 Wegpunkten \selfmade{}}
 \label{fig:tsp_example}
 \end{figure}
 
@@ -121,7 +128,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 	Ausgabedaten: Reihenfolge der Wegpunkte für eine optimale Route
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	\todo{Schreiben}
+	Die Komplexität beim Problem des Handlungsreisenden wird durch die Anzahl Wegpunkte bestimmt.
 
 	\paragraph{Bekannte Algorithmen}\cite{tsp_algorithmen} \cite{tsp_semesterarbeit}
 	\begin{itemize}
@@ -144,7 +151,7 @@ Die grün eingezeichneten Verbindungen sind Hilfslinien, um den Graph in einen \
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{images/visio/chinese_postman.png}
-\caption{Beispiel für ein Briefträgerproblem  (Eigene Darstellung)}
+\caption[Beispiel für ein Briefträgerproblem]{Beispiel für ein Briefträgerproblem \selfmade{}}
 \label{fig:chinese_postman_example}
 \end{figure}
 
@@ -153,7 +160,7 @@ Die grün eingezeichneten Verbindungen sind Hilfslinien, um den Graph in einen \
 	Ausgabedaten: Reihenfolge der Knoten für eine minimale Strecke
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	\todo{Schreiben}
+	Wie bei der Knotenfärbung spielt hier die Anzal Kanten die Hauptrolle bei der Komplexität, die Anzahl Knoten und ob eine Graph bereits \glossarmark{eulersch} ist, spielen eine geringere Rolle.
 
 	\paragraph{Bekannte Algorithmen}\mbox{}\\
 	Briefträgeralgorithmus (Chinese postman algorithm)
@@ -219,7 +226,7 @@ Gesucht ist ein Stundenplan, bei welchem es keine Kollisionen für Lehrer, Klass
   \begin{tabular}{ l }
 	\hline
 	\rowcolor{gray}
-	\textbf{Fachname}\\ \hline
+	\textbf{Zimmername}\\ \hline
 	Zimmer 101\\ \hline
 	Zimmer 103\\ \hline
 	Zimmer 201\\ \hline
@@ -275,7 +282,7 @@ In der \autoref{table:timetable_1} sieht man eine mögliche Lösung zu dieser Pr
 	Ausgabedaten: Einteilung der Fächer mit den dazugehörigen Klassen, Lehrern und Zimmer auf verschiedene Tage und Uhrzeiten, welche keine Konflikte enthält
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	\todo{Schreiben}
+	Beim Stundenplanproblem sind es nicht etwa alle 4 Liste, welche einen hohen Einfluss auf die Komplexität haben, es sind nur die Anzahl Stunden, welche verplant werden müssen. Die Anzahl Möglichkeiten berechnet sich in, abgesehen von allfälligen Einschränkungen, so: $(Anzahl Räume * Anzahl Zeitfenster * Anzahl Lehrer)^{Anzahl Veranstaltungen}$ (vergleiche \cite{scheduling_komplex}).
 
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{framework_timetabling})
@@ -330,7 +337,7 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 	Ausgabedaten: Zusammenstellung von den Elementen mit höchstem Nutzwert
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	\todo{Schreiben}
+	Die Komplexität des Rucksack Problem hängt von der Anzahl Objekten ab, die Gewichtsschranke trägt nicht zur Komplexität bei.
 
 	\paragraph{Bekannte Algorithmen}
 	\begin{itemize}
@@ -360,7 +367,7 @@ Die hier aufgeführten Probleme sind nur zur Vollständigkeit aufgelistet und be
 
 	\paragraph{Beispiel} Gegeben sei eine aussagenlogische Formel \ref{eq:aussagenlogik}.\\
 	Gesucht ist die Antwort auf die Erfüllbarkeit dieser Formel.\\
-	In der Tabelle \ref{table:sat_results} kann man sehen, dass die Formel erfüllbar ist, nämlich für die Kombinationen 3, 4 und 8.
+	Die \autoref{table:sat_results} zeigt, dass die Formel für die Kombinationen 3, 4 und 8 erfüllbar ist.
 
 	\begin{equation}
    		(A \vee B) \wedge C
@@ -395,7 +402,7 @@ Die hier aufgeführten Probleme sind nur zur Vollständigkeit aufgelistet und be
 
 	\paragraph{Beispiel} Gegeben sei eine 3-SAT Formel \ref{eq:aussagenlogik_3sat}.\\
 	Gesucht ist die Antwort auf die Erfüllbarkeit dieser Formel.\\
-	In der Tabelle \ref{table:3sat_results} kann man sehen, dass die Formel erfüllbar ist, lediglich für die Kombinationen 5, 11, 13 und 15 ist sie nicht korrekt.
+	Die \autoref{table:3sat_results} beweisst, dass die Formel erfüllbar ist, lediglich für die Kombinationen 5, 11, 13 und 15 ist sie nicht korrekt.
 
 	\begin{equation}
    		(A \wedge B \wedge C) \vee (B \wedge \neg C \wedge D)
@@ -503,7 +510,8 @@ Die Berechnungzeit ist ungenau und bei jedem Versuch unterschiedlich, jedoch bes
 	\textbf{1000}						& 1ms			& 7ms			& 595ms		& 1038ms		& 6331ms	\\ \hline
 	\textbf{10000}						& 1ms			& 7ms			& 48ms		& 583ms		& 7174ms	\\ \hline
   \end{tabular}
-   \caption{Berechnungszeiten zu verschiedenen Eingabeparametern für das Rucksack Problem}\label{table:example_complexity_knapsack}
+   \caption[Berechnungszeiten zu verschiedenen Eingabeparametern für das Rucksack Problem]{Berechnungszeiten zu verschiedenen Eingabeparametern für das Rucksack Problem \selfmade{}}
+   \label{table:example_complexity_knapsack}
 \end{table}
 
 In \autoref{fig:example_complexity_knapsack} kann man die exponentielle Steigerung der Berechnungsdauer mit zu nehmenden Elementen sehr schön sehen.
@@ -511,6 +519,6 @@ In \autoref{fig:example_complexity_knapsack} kann man die exponentielle Steigeru
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.65]{images/excel/knapsack_complexity_example.png}
-\caption{Berechnungszeiten für das Rucksack Problem mit verschiedenen Eingabeparametern im Vergleich (Eigene Darstellung)}
+\caption[Berechnungszeiten für das Rucksack Problem mit verschiedenen Eingabeparametern im Vergleich]{Berechnungszeiten für das Rucksack Problem mit verschiedenen Eingabeparametern im Vergleich \selfmade{}}
 \label{fig:example_complexity_knapsack}
 \end{figure}

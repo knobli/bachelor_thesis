@@ -54,9 +54,7 @@
 \pagenumbering{Roman}
 
 \appendix
-\chapter{Anhang}\label{chap.anhang}
-%\section{Abnahmeprotokoll}\label{anhang_abnahmeprotokoll}
-%\includepdf{images/word/Abnahmeprotokoll.pdf}
+\include{content/anhang}
 
 \clearpage
  \input{content/glossar}
@@ -68,6 +66,10 @@
 \clearpage
  \listoffigures
  \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+
+\clearpage
+ \lstlistoflistings
+ \addcontentsline{toc}{chapter}{Listingsverzeichnis}
 
 \clearpage
  \listoftables
