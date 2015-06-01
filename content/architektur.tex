@@ -26,8 +26,8 @@ Um die Daten zu speichern, wird eine Datenbank benötigt. Das ermöglicht einen 
 Das Konzept sollte simpel und flexibel sein, damit das System möglichst schnell erweitert werden kann. Beim Betrachten der Probleme und der Abläufe wurde bemerkt, dass die Vorgänge 
 Ähnlichkeiten aufweisen. Die Daten werden angenommen und für einen bestimmten Algorithmus aufbereitet. Das Verarbeitungssystem schickt das Resultat zurück und dieses wird dann 
 wieder umgewandelt, so dass es für den Nutzer brauchbar ist. Es finden zwei Umwandlungen staht. Die Umwandlungen an sich sind von Problem zu Problem verschieden, jedoch gibt es 
-auch dort gewiese Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des System gezeigt. Die \glossarmark{Domänensprache} des Nutzers wird mit Hilfe der Controller, Entities und 
-den Translators auf die \glossarmark{Domänensprache} der Algorithmen abgebildet.
+auch dort gewiese Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des System gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe der Controller, Entities und 
+den Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
 
 \begin{figure}[h]
 \centering
@@ -38,7 +38,7 @@ den Translators auf die \glossarmark{Domänensprache} der Algorithmen abgebildet
  
 \FloatBarrier
 \subsection{REST API}
-Für die Schnittstelle wird ein \glossarmark{REST} \glossarmark{API} erstellt, welches die nötigen Funktionen bietet. Das \glossarmark{API} funktioniert nach dem De-facto-Standard 
+Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem De-facto-Standard 
 (siehe \cite{wiki_restful}). Falls Fehler auftretten werden die \glossarmark{HTTP-Statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
@@ -132,8 +132,7 @@ Dreieck (siehe \autoref{fig:cap}) bilden und das ein verteiltes System nur jewei
 \end{itemize}
 
 \subsection{Relationales Datenbanksystem}\label{rdbms}
-Die Vorteile einer \glossarmark{relationalen Datenbanksystems (RDBMS)} sind die Transaktionen und das dazugehörige \glossarmark{Atomicity, Consistency, Isolation, Durability (ACID)} Prinzip 
-(vergleiche \cite{limited2010introduction}). 
+Die Vorteile einer \gls{rdbms} sind die Transaktionen und das dazugehörige \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
 \begin{itemize}
 	\item \textbf{Atomicity}: Eine Reihe von Befehlen wird entweder ganz oder gar nicht ausgeführt.
 	\item \textbf{Consistency}: Der Datenzustand ist nach jeder Veränderung wieder konsistent, wenn dies auch vorher der Fall war.
@@ -156,7 +155,7 @@ Tabelle 'Person', welche eine Verbindung zur Tabelle 'Address' hat.
                FK_Address  INTEGER(11));
 \end{lstlisting}
 
-Die Abfrage der Strasse bei einer relationaler Datenbank mittels \glossarmark{Structured Query Language (SQL)} ist in \autoref{lst:select_street_rdbms} dargestellt.
+Die Abfrage der Strasse bei einer relationaler Datenbank mittels \gls{sql} ist in \autoref{lst:select_street_rdbms} dargestellt.
 
 \begin{lstlisting}[language=SQL, caption=Abfrage in relationalem Datenbanksystem, label=lst:select_street_rdbms]  
     SELECT ADDRESS.Street
@@ -166,7 +165,7 @@ Die Abfrage der Strasse bei einer relationaler Datenbank mittels \glossarmark{St
 \end{lstlisting}
 
 \subsection{Objektrelationales Datenbanksystem}\label{ordbms}
-\glossarmark{Objektrelationale Datenbanksystem (ORDBMS)} wurden entwickelt um das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
+\gls{ordbms} wurden entwickelt um das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
 Die folgenden Beschreibung der Eigenschaften sind aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
 komplexe Datentypen unterstützt, so können zusätzliche Typen definiert werden und diese können dann bei einer Tabellendefinition verwendet werden.  
 In \autoref{lst:type_definition_ordbms} ist eine Typendefinition von 'AddressType' zu sehen, welche wiederum in \autoref{lst:use_type_definition_ordbms} 
@@ -208,12 +207,12 @@ Weiter bieten die Systeme die Möglichkeiten Methoden auf Typen und Tabellen und
 liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Objekten durchführen.
 
 \subsection{Objekorientiertes Datenbanksystem}\label{object_db}
-Das Ziel einer \glossarmark{objektorientierten Datenbanksystems (OODBMS)} ist eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen.
-Die Informationen über \glossarmark{OODBMS} sind aus \cite{limited2010introduction} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
-ist die Persistierung, bei \glossarmark{OODBMS} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
+Das Ziel einer \gls{oodbms} ist eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen.
+Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
+ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
 Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekte gleichzeitig umgehen. 
 Dies kann bei einem geplanten Umstrutkurierung sehr hilfreich sein, wenn die neue Version erst für Tests verwendet wird und die bestehenden Objekte erst nach dem 
-Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt wie das Objekt 'Person' in \glossarmark{Object Definition Language (ODL)} definiert wird.
+Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt wie das Objekt 'Person' in \gls{odl} definiert wird.
 
 \begin{lstlisting}[language=C++, caption=Objektdefinition in objektorientierem Datenbanksystem, label=lst:table_definition_oodbms]  
     class PERSON
@@ -228,7 +227,7 @@ Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt wie 
 \end{lstlisting}
 
 Für die Abfrage der Strasse einer Person wird ein Statment wie in \autoref{lst:select_street_oodbms} verwendet. Diese Abfragesprache nennt
-sich Object Query Language (OQL). Die Attribute der Objekte und Structs können mit einem Punkt separiert verkettet werden.
+sich \gls{oql}. Die Attribute der Objekte und Structs können mit einem Punkt separiert verkettet werden.
 
 \begin{lstlisting}[language=SQL, caption=Abfrage in objektorientierem Datenbanksystem, label=lst:select_street_oodbms]  
     SELECT p.Address.Street
@@ -236,14 +235,14 @@ sich Object Query Language (OQL). Die Attribute der Objekte und Structs können 
     WHERE p.Name = 'Thomas';
 \end{lstlisting}
 
-Die objektorientierten Datenbanksystemen bietet die aus den \glossarmark{RDBMS} bekannten Abfragefunktionen (Avg, Max, Min, Distinct). 
+Die objektorientierten Datenbanksystemen bietet die aus den \gls{rdbms} bekannten Abfragefunktionen (Avg, Max, Min, Distinct). 
 Zuätzlich können bei diesen Systemen Vererbungshierarchien und Methoden in Objekten definiert werden. Sie werden bei Applikationen verwendet,
 welche oft und lange mit komplexen Objekten arbeiten.
 
 \subsection{NoSQL Datenbanksystem}\label{no_sql_db}
-NoSQL Datenbanksystem folgen nicht dem \glossarmark{ACID} Prinzip, sie sind entwickelt worden um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
+NoSQL Datenbanksystem folgen nicht dem \gls{acid} Prinzip, sie sind entwickelt worden um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
 Facebook, Yahoo und Twitter zu genügen. Die Systeme sind nicht relational aufgebaut und verwenden oft nicht SQL als Abfragesprache (siehe \cite{vaish2013getting}). 
-Die meisten NoSQL Datenbanksystem setzen auf das \glossarmark{Basically Available, Soft State, Eventual consistency (BASE)}-Prinzip von Eric Brewer.
+Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Brewer.
 
 \begin{myQuote}{Gaurav Vaish \cite{vaish2013getting}}
 "`\textbf{Basic availability}: Each request is guaranteed a response—successful or failed execution.\\
@@ -259,10 +258,10 @@ NoSQL ist eine Übergruppe von unterschiedlichen Datenbanktypen. In diesem Absch
  Typen sind aus \cite{vaish2013getting} entnommen.
 
 \paragraph{Document}
-Bei dokumentorientierten Datenbanken werden \glossarmark{seministrukturierte Daten} abgespeichert, diese verwenden meistens die Dateiformate \glossarmark{JavaScript Object Notation (JSON)}, 
-\glossarmark{Extensible Markup Language (XML)} oder \glossarmark{YAML Ain’t Markup Language (YAML)}. Die meisten Datenbanksysteme dieser Art haben kein definiertes Schema für Einträge oder 
+Bei dokumentorientierten Datenbanken werden \gls{semi_structured_data} abgespeichert, diese verwenden meistens die Dateiformate \gls{json}, 
+\gls{xml} oder \gls{yaml}. Die meisten Datenbanksysteme dieser Art haben kein definiertes Schema für Einträge oder 
 nur ein teilweise definiertes Schema. Es ist somit möglich ganz unterschiedliche Elemente in eine Tabelle bzw. Collection, so werden Tabellen in dieser Welt genannt, zu speichern. Diese Erklärung 
-erinnert an \glossarmark{Binary Large Object (BLOB)} in relationalen Datenbanken, jedoch können hier Indexes auf bestimmte Attribute gesetzt und innerhalb der Elemente effizient gesucht 
+erinnert an \gls{blob} in relationalen Datenbanken, jedoch können hier Indexes auf bestimmte Attribute gesetzt und innerhalb der Elemente effizient gesucht 
 werden.
 
 In \autoref{lst:person_mongodb} wird ein Personen Element gezeigt, welches in der Collection 'Persons' gespeichert ist. Dieses Beispiel ist basierend auf einer MongoDB Instanz, die Definition 
@@ -310,7 +309,9 @@ wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in 
     100000,120000,200000
 \end{lstlisting}
 
-Die Definitions- und Abfragesprache ist gleich wie bei relationalen Datenbanken, deshalb wird hier auf Beispiele verzichtet. Der Vorteil einer spaltenorientierten Datenbank liegt in der Performance bei \glossarmark{Aggregationsfunktionen} und zusätzlich bei Veränderungen für alle Werte einer Spalte. Dafür ist das 
+Die Definitions- und Abfragesprache ist gleich wie bei relationalen Datenbanken, deshalb wird hier auf Beispiele verzichtet. Der Vorteil 
+einer spaltenorientierten Datenbank liegt in der Performance bei \glossarmark{Aggregationsfunktionen} und zusätzlich bei 
+Veränderungen für alle Werte einer Spalte. Dafür ist das 
 Einfügen einer neu Zeile oder das Auslesen einer ganze Zeile aufwendiger als bei dem zeilenorientierten Ansatz.
 
 \paragraph{Graph}

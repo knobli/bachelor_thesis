@@ -22,240 +22,139 @@
 % you want to include more information here such as the definition.
 \defglsdisplayfirst[\glsdefaulttype]{\textit{#1}}
 
-\newdualentry{ipc}    % label
-  {IPC}               % abbreviation
-  {Inter Process Communication}  % long form
-  {Möglichkeiten der Interaktion zwischen Betriebssystemprozessen. Beispielsweise mithilfe von Sockets, Pipes oder Message Queues.}
-\newdualentry{pid}    % label
-  {PID}               % abbreviation
-  {Process ID}  % long form
-  {Eindeutige Kennung eines Prozesses innerhalb des gleichen Linux Namespace.}
-\newdualentry{vm}    % label
-  {VM}
-  {Virtuelle Maschine}
-  {Virtualisiertes Betriebssystem, welches durch eine Abstraktionsschicht von physischer Hardware getrennt ist. Vgl.~\ref{sub:VMs}.}
-\newdualentry{mmu}    % label
-  {MMU}
-  {Memory Management Unit}
-  {Chip innerhalb eines Computers, der die Übersetzung virtueller \gls{ram} Adressen in physische Adressen innerhalb der Hardware vornimmt.}
-\newdualentry{vmm}    % label
-  {VMM}
-  {Virtual Machine Monitor}
-  {Abstraktionsebene zwischen Hardware und (mehreren) Gast-Betriebssystemen, die mit der Bereitstellung der virtuellen Umgebung betraut ist.}
-\newdualentry{ebs}    % label
-  {EBS}
-  {Einschreibe- und Bewertungssystem}
-  {Online System zur Verwaltung von Vorlesungen, Noten und Projekten des Studienganges Informatik an der ZHAW Zürich (ehem. HSZ-T).}
-\newdualentry{saas}    % label
-  {SaaS}
-  {Software as a Service}
-  {Service Model für Clouds, bei dem der Anwenderin vollständige Software-Lösungen zur Verfügung gestellt werden. Beispiele stellen hier Gmail für eMail oder Office360 für Textbearbeitung dar.}
-\newdualentry{paas}    % label
-  {PaaS}
-  {Platform as a Service}
-  {Service Model für Clouds, bei dem der Anwenderin Umfelder zum Ausführen ihrer Applikationen zur Verfügung gestellt werden. Beispiele stellen hier Heroku als Umfeld für Ruby on Rails Applikationen oder OpenShift für diverse weitere Sprachen und Frameworks dar.}
-\newdualentry{iaas}    % label
-  {IaaS}
-  {Infrastructure as a Service}
-  {Service Model für Clouds, bei dem der Anwenderin grundlegende Ressourcen wie \gls{cpu}, \gls{ram} und Speicherplatz zur Verfügung gestellt werden. Beispiele sind hier \gls{aws} oder \gls{azure}.}
-\newdualentry{gcp}    % label
-  {GCP}
-  {Google Cloud Platform}
-  {Cloud Computing Angebot der Google Inc..}
-\newdualentry{aws}    % label
-  {AWS}               % abbreviation
-  {Amazon Web Services}
-  {Cloud Computing Angebot der Amazon.com Inc..}
-\newdualentry{ec2}    % label
-  {EC2}               % abbreviation
-  {Elastic Compute Cloud}
-  {\gls{aws} Angebot für auf Rechenkapazität optimierte Virtuelle Maschinen.}
-\newdualentry{nist}    % label
-  {NIST}               % abbreviation
-  {National Institute of Standards and Technology}
-  {Amerikanische Bundesbehörde, die unter Anderem eine zentrale Anlaufstelle für Standards in der IT darstellt.}
+\newdualentry{sql}    % label
+  {SQL}               % abbreviation
+  {Structured Query Language}  % long form
+  {Abfrage- und Definitionssprache von Datenbanken.}
+\newdualentry{blob}    % label
+  {BLOB}               % abbreviation
+  {Binary Large Object}  % long form
+  {Datentyp von Datenbanken für grosse, nicht weiter strukturierte, binäre Objekte (z.B. Bilder oder PDF-Dateien).}
+\newdualentry{rdbms}    % label
+  {RDBMS}               % abbreviation
+  {relationales Datenbankmanagementsystem}  % long form
+  {Das Grundkonzept dieser Datenbank ist die Relation.}
+\newdualentry{ordbms}    % label
+  {ORDBMS}               % abbreviation
+  {objektrelationales Datenbankmanagementsystem}  % long form
+  {Erweitert das Konzept der \gls{rdbms} mit Funktionen des objektorientirten Stiles.}
+\newdualentry{oodbms}    % label
+  {OODBMS}               % abbreviation
+  {objektorientiertes Datenbanksystem}  % long form
+  {Das Konzept dieser Datenbanken zielt eine eine bessere und nähere Zusammenarbeit mit objektorientierten Programmiersprachen}
 \newdualentry{api}    % label
   {API}               % abbreviation
   {Application Programming Interface}
-  {Nicht-graphische Schnittstelle zu einer Applikation, über die Zugriff auf die Funktionalitäten angeboten wird.}
-\newdualentry{cpu}    % label
-  {CPU}               % abbreviation
-  {Central processing unit}  % long form
-  {Der (Haupt-)Prozessor eines Computers ist für die effektive Berechnung von Programmen, beispielsweise den Implementationen von Algorithmen, zuständig.}
-\newdualentry{gpu}    % label
-  {GPU}               % abbreviation
-  {Graphics processing unit}  % long form
-  {Ein Grafikprozessor stellt eine spezielle Unterart an Prozessoren dar, die auf die Berechnung der Ausgabe am Bildschirm spezialisiert sind, dar. Da in der Entwicklung solcher Grafikprozessoren besonderer Wert auf hohe Parallelisierung von Berechnungen gelegt wurde, besitzen GPUs nach heutigem Stand bei solchen Berechnungen Vorteile gegenüber herkömmlichen \gls{cpu}s.}
-\newdualentry{ram}    % label
-  {RAM}               % abbreviation
-  {Hauptspeicher}  % long form
-  {Im random access memory werden (Zwischen-)Ergebnisse von Berechnungen abgelegt. Es handelt sich hierbei um einen flüchtigen Speicher, dessen Inhalt bei Verlust der Energieversorgung verloren geht.}
-\newdualentry{cgroups}    % label
-  {cgroups}               % abbreviation
-  {control groups}  % long form
-  {Mit Kernel Verion 2.6.24 24 (Januar 2008) \cite{kernel264} eingeführtes Feature, welches ein Ressourcenmanagement für Prozesse, beispielsweise die Beschränkung der Menge an \gls{ram} ermöglicht.}
-\newdualentry{ssh}    % label
-  {SSH}               % abbreviation
-  {Secure Shell}  % long form
-  {Netzwerkprotokoll auf dem Application layer zum Aufbau einer verschlüsselten Verbindung zwischen zwei Rechnern. Gemeinhein auch die Bezeichnung für das Programm OpenSSH, mit dem ein remote  Zugriff auf Rechner möglich ist.}
-\newdualentry{http}    % label
-  {HTTP}               % abbreviation
-  {Hypertext Transfer Protocol}  % long form
-  {Netzwerkprotokoll auf dem Application layer zur zustandslosen Übertragung von Daten. Weitverbreitet für den Zugriff auf Websites, kann es jedoch beispielsweise auch zum Angebot von \gls{rest}-Services genutzt werden. Mit der Erweiterung HTTPS ist HTTP über eine mit TLS gesicherte Verbindung über gemeint.}
-\newdualentry{bitkom}    % label
-  {BITKOM}               % abbreviation
-  {Bundesverband Informationswirtschaft, Telekommunikation und neue Medien}
-  {Brachen- und Lobbyverband der deutschen Informations und Tekekommunikationsbranche.}
-\newdualentry{iana}    % label
-  {IANA}               % abbreviation
-  {Internet Assigned Numbers Authority}
-  {Abteilung der Internet Corporation for Assigned Names and Numbers, die unter Anderem mit der Zuweisung reservierter Ports betraut ist.}
-\newdualentry{url}    % label
-  {URL}               % abbreviation
-  {Uniform resource locator}
-  {Identifikator einer spezifischen Ressource, die im Allgemeinen über das Netzwerk erreichbar ist. In der URL ist weiterhin ein Hinweis auf die Art der Kommunikation enthalten, so definiert die URL https://schrimpf.ch, dass ein Server mit dem Domain Namen "`schrimpf.ch"' über \gls{http} angesprochen werden soll.}
+  {Application Programming Interace ist eine Schnittstelle, über welche anderen Applikationen Leistungen beziehen können.}
 \newdualentry{rest}    % label
   {REST}               % abbreviation
   {Representational State Transfer}
-  {Programmierparadigma für die Implementation von Webservices. Es bestehen verschiedene Vorgaben, wie Zustandslosigkeit zwischen Anfragen, Idempotenz oder auch Sicherheit einzelner Anfragen. Endpunkte innerhalb der Kommunikation wer als Ressourcen bezeichnet, sie können beispielsweise als \gls{url} über \gls{http} angesprochen werden.}
-\newdualentry{ssd}    % label
-  {SSD}               % abbreviation
-  {Solid-state drive}
-  {Persistenter Datenspeicher, der im Gegensatz zu klassichen Festplatten ohne mechanische Teile auskommt und wesentlich höhere Datentransferraten erreicht.}
-\newdualentry{poc}    % label
-  {PoC}               % abbreviation
-  {Proof of Concept}
-  {Test der grundsätzlichen Machbarkeit eines Konzeptes oder einer Anwendung.}
-\newdualentry{gce}    % label
-  {GCE}
-  {Google Compute Engine}
-  {\gls{iaas} Angebot von \gls{gcp}.}
-\newdualentry{rtt}    % label
-  {RTT}
-  {Round Trip Time}
-  {Zeit, die ein Datenpaket benötigt, um den Weg zu einem Ziel und zurück zum Ausgangspunkt zurückzulegen.}
-\newdualentry{mips}    % label
-  {MIPS}
-  {million instructions per second}
-  {Masseinheit für die Leistung von Prozessoren. Hierfür wird die Menge an Maschineninstruktionen pro Sekunde, die die \gls{cpu} verarbeiten kann, gemessen.}
-\newdualentry{icmp}    % label
-  {ICMP}
-  {Internet Control Message Protocol}
-  {Auf IP basierendes Protokoll zur Kommunikation von Netzwerkgeräten zum Austausch von Informationen und Fehlermeldungen.}
-\newdualentry{flops}    % label
-  {FLOPS}
-  {floating point operations per second}
-  {Masseinheit für die Leistung von Prozessoren. Hierbei wird die Anzahl an Gleieitkommazahl Operationen, die die \gls{cpu} verarbeiten kann, gemessen.}
-\newdualentry{tcp}    % label
-  {TCP}
-  {Transmission Control Protocol}
-  {Verbindungsorientiertes Transport layer Protokoll zur zuverlässigen Übertragung von Datenpaketen in einem Netzwerk.}
-\newdualentry{ip}    % label
-  {IP}
-  {Internet Protocol}
-  {Zustandsloses Network layer Protokoll zur Übertragung von Datenpaketen in einem Netzwerk.}
+  {Programmierparadigma für die Implementation von Webservices. Es bietet eine Kommunikationsschnittstelle für Webanwendung und 
+wird vorallem für Syste-System-Kommunikation verwendet. REST ist Zustandslos und liefert somit bei einem Aufruf einer URL genau 
+jedes Mal den selben Inhalt zurück.}
 \newdualentry{json}    % label
   {JSON}               % abbreviation
   {JavaScript Object Notation}  % long form
-  {Menschenlesbare Notation zum Austausch strukturierter Daten.}
+  {Format zum Austausch von strukturierterten Daten, bekannt für seine gute Lesbarkeit und wenig Overhead.}
 \newdualentry{xml}    % label
   {XML}               % abbreviation
   {Extensible Markup Language}  % long form
   {Markup Sprache zum Austausch strukturierter Daten.}
-\newdualentry{bash}    % label
-  {Bash}               % abbreviation
-  {Bourne-again shell}  % long form
-  {Kommandozeilensprache zur Interaktion von Nutzer und unixoidem Betriebssystem. Durch die Verwendung in Scripts können mithilfe von Bash viele iterative Arbeitsabläufe automatisiert werden.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Dependency Injection
-% Python
-% Kernel
-\newglossaryentry{postgres}{%
-  name={PostgreSQL},
-  description={SQL basierendes objektrelationales Datenbanksystem.}
-}
-\newglossaryentry{yo}{%
-  name={Yeoman},
-  description={Aus dem Umfeld von Google stammendes Opensource-Generator-Framework für die Erstellung von Webapplikationen.}
-}
+\newdualentry{ide}    % label
+  {IDE}               % abbreviation
+  {Integrated Development Environment}  % long form
+  {Eine integrierte Entwicklerumgebung (englisch Integrated Development Environment) beinhalten einen Texteditor, 
+Compiler (falls benötigt), Debugger, Formatierungsfunktionen und zum Teil die Möglichkeit zur Erstellung von grafischen 
+Benutzeroberflächen.}
+\newdualentry{orm}    % label
+  {ORM}               % abbreviation
+  {Object-relational mapping}  % long form
+  {Objektrelationale Abbildung (englisch object-relational mapping) ist eine Technik der Softwareentwicklung, mit der ein in einer 
+objektorientierten Programmiersprache geschriebenes Anwendungsprogramm seine Objekte in einer relationalen Datenbank ablegen 
+kann. Dem Programm erscheint die Datenbank dann als objektorientierte Datenbank, was die Programmierung erleichtert. 
+\cite{wiki_orm}}
+\newdualentry{oql}    % label
+  {OQL}               % abbreviation
+  {Object Query Language}  % long form
+  {Object Query Language ist stark an SQL angelehnt, wobei nicht mit den Spalten der Tabelle sondern mit den Attributen des Objekts 
+Abfragen erstellt werden.}
+\newdualentry{odl}    % label
+  {ODL}               % abbreviation
+  {Object Definition Language}  % long form
+  {Definitionssprache, welche Ähnlichkeiten mit der Definition von Objekten in objektorientierten Programmiersprachen hat.}
+\newdualentry{acid}    % label
+  {ACID}               % abbreviation
+  {Atomicity, Consistency, Isolation, Durability}  % long form
+  {Häufig erwünschte Eigenschaften von Datenbanken, welche bei relationalen Datenbanken durch Transaktionen realisiert werden.}
+\newdualentry{base}    % label
+  {BASE}               % abbreviation
+  {Basically Available, Soft state, Eventual consistency}  % long form
+  {Eine etwas entschärfte Variante von \gls{acid}, bei welcher es mehr um die Verfügbarkeit und die Schnelligkeit geht, was mit einer 
+weichen Konsistenz erreicht wird.}
+
 \newglossaryentry{spring}{%
   name={Spring},
   description={Weitverbreitetes Java-Framework zur Erstellung von Enterprise-Applikationen.}
 }
-\newglossaryentry{angular}{%
-  name={AngularJS},
-  description={2009 von Google veröffentlichtes Opensource-Framework zur Erstellung von Websites mithilfe von intensivem JavaScript Einsatz.}
-}
-\newglossaryentry{jhipster}{%
-  name={jHipster},
-  description={Auf dem \gls{yo} Generator-Framework basierendes Opensource-Werkzeug zur Generation von Webapplikationen. Als Backend-Komponente wird hierbei \gls{java} mit dem \gls{spring}-Framework und als Frontend-Komponente \gls{angular} verwendet.}
-}
-\newglossaryentry{openstack}{%
-  name={OpenStack},
-  description={Opensource Projekt für den Betrieb einer Cloud-Infrastruktur.}
-}
-\newglossaryentry{java}{%
-  name={Java},
-  description={1995 entwickelte objektorientierte Programmiersprache. Java erfreut sich grosser Popularität und besitzt zahlreiche Frameworks zur Vereinfachung der Entwicklung.}
-}
-\newglossaryentry{jclouds}{%
-  name={jclouds},
-  description={Von der Apache Software Foundation unterstütztes Opensource-Framework zur Abstraktion der Interaktion von \gls{java}-Programmen und Cloud-Providern..}
-}
-\newglossaryentry{cli}{%
-  name={cloud-init},
-  description={Programm mit dem verschiedene grundlegende Einstellungen eines Linux-Systems, beispielsweise hostname oder locale, beim start einer \gls{vm} über eine Textdatei vorgenommen werden können.}
-}
 \newglossaryentry{slack}{%
   name={Slack},
-  description={Chatprogramm zur Team-Kommunikation mit Clients für die gängigsten Betriebssysteme und umfassenden Webservice \gls{api}.}
+  description={Chat Applikation mit vielen Integrationen und facettenreichen Webservices.}
 }
-\newglossaryentry{iperf}{%
-  name={iperf},
-  description={Tool zum Test von \gls{tcp} und UDP Verbindungen. Über einen konfigurierbaren Zeitraum werden beispielsweise jeweils die maximal mögliche Menge an Daten übertragen, um die Bandbreite der Verbindung zu testen.}
-}
-\newglossaryentry{sysbench}{%
-  name={sysbench},
-  description={Programm zur Messung verschiedener Systemeigenschaften, die für den Betrieb eines Datenbankservers relevant sind bzw. sein können. Durch sysbench können beispielsweise die Perfomance von \gls{cpu}, \gls{ram}, POSIX Threads oder der Festplatte gemessen werden.}
-}
-\newglossaryentry{ruby}{%
-  name={Ruby},
-  description={1995 erschienene höhere objektorientierte Programmiersprache mit dynamischer Typisierung.}
-}
-\newglossaryentry{switch}{%
-  name={SWITCH},
-  description={1987 gegründete Stiftung die als Technologiedienstleister der Schweizer Hochschulen die Bereitstellung von Dienstleistungen wie Cloud Speicher oder \glspl{vm}, Netzwerken und Ähnlichem übernimmt.}
-}
-\newglossaryentry{gentoo}{%
-  name={Gentoo},
-  description={Eine nach dem schnellsten Schwimmer unter den Pinguinen, dem Eselspinguin (englisch gentoo penguin), benannte Linux \gls{distro}, deren besonderes Ziel es ist, der Benutzerin möglichst viele Möglichkeiten zur Kontrolle über ihr System, beispielsweise bei der Installation von Software, zu gewähren.}
-}
-\newglossaryentry{deployment}{%
-  name={Deployment},
-  description={Verteilung einer Applikation und ggf. ihrer Abhängigkeiten in einem gegebenen Umfeld.}
-}
-\newglossaryentry{azure}{%
-  name={Azure},
-  description={Cloud Computing Angebot der Microsoft Corporation.}
-}
-\newglossaryentry{yml}{%
+\newglossaryentry{yaml}{%
   name={YAML},
-  description={Markup Language, mit der eine Daten Serialisierung in möglichst menschenlesbarer Form ohne den grossen Overhead vergleichbarer Sprachen wie XML vorgenommen werden soll. Der Name ist ein recursives Akronym für "`YAML Ain't Markup Language"' \cite{yml2} (früher "`Yet Another Markup Language"' \cite{yml1}).}
+  description={Markup Language mit wenig Overhead und in einer menschenlesbarer Form. Der Name ist ein recursives Akronym für "`YAML Ain't Markup Language"' (früher "`Yet Another Markup Language"').}
 }
 \newglossaryentry{git}{%
   name={git},
   description={Tool zur verteilten Versionsverwaltung. Ehemals für die Verwaltung des Linux Kernels entwickelt, besitzt es heute grosse Popularität in der gesammten Softwareentwicklung und ein ausgeprägtes Ökosystem.}
 }
-\newglossaryentry{rsa}{%
-  name={RSA},
-  description={Von Ronald L. Rivest, Adi Shamir und Leonard Adleman entwickeltes asymetrisches (public/private-key) Kryptosystem.}
+\newglossaryentry{basisfaktor}{%
+  name={Basisfaktor},
+  description={Basisfaktoren (unterbewusste Anforderungen) muss das System in jedem Fall vollständig erfüllen, sonst stellt sich beim 
+\gls{stakeholder} massive Unzufriedenheit ein. \cite{req_eng_book}}
 }
-\newglossaryentry{systemd}{%
-  name={systemd},
-  description={Tool, welches ehemals für die Steuerung des Linux Initialisierungsprozesses entwickelt wurde, jedoch im Laufe der Zeit immer weitere Funktionalitäten bot und somit Gegenstand einer intensiven Diskussion in der Linux Community wurde. Mit systemd ist es möglich Programme als sogenannte Services im Hintergrund auszuführen und zu überwachen.}
+\newglossaryentry{entity}{%
+  name={Entity},
+  description={Entity (auch Entität) ist ein eindeutig zu bestimmendes Daten-Objekt.}
 }
-\newglossaryentry{distro}{%
-  name={Distribution},
-  plural={Distributionen},
-  description={Im Kontext der Arbeit bezogen auf verschiedene Distributionen des Linux Betriebssystemes. Zusammenstellung von Softwarepaketen zu einem vollständigen Betriebssystem. Häufige Unterschiede sind der verwendete Package Manager, das Init system und ähnliche redundante Implementationen der gleichen grundlegenden Funktionalitäten.}
+\newglossaryentry{sonar}{%
+  name={Sonar},
+  description={Sonar ist ein statisches Code-Analyse Tool.}
+}
+\newglossaryentry{stakeholder}{%
+  name={Stakeholder},
+  description={Stakeholder sind für den Requirement Engineer wichtige Quellen zur Identifikation möglicher Anforderungen des 
+Systems.\cite{req_eng_book} Ein Stakeholder ist eine Person, die in irgendeiner Weise vom Projekt betroffen ist, jedoch nicht 
+notwendigerweise direkt Einfluss auf den Projektverlauf haben muss.}
+}
+\newglossaryentry{poll_principle}{%
+  name={Poll-Prinzip},
+  description={Beim Poll-Prinzip fragt der Nutzer nach, ob eine Aktion beendet ist. Bei lange Berechnungen kann dies zu sehr vielen 
+unnötigen Requests führen, bei diesem Anwendungsfall wäre das \gls{push_principle} sinnvoller.}
+}
+\newglossaryentry{push_principle}{%
+  name={Push-Prinzip},
+  description={Beim Push-Prinzip wird der Nutzer vom System aktiv benachrichtigt, wenn eine Aktion beendet ist.}
+}
+\newglossaryentry{webhook}{%
+  name={WebHook},
+  description={Ein nicht standardisiertes Verfahren, um ständiges \glslink{poll_principle}{Polling} zu umgehen. Dabei wird nach einem gewissen Event ein 
+POST-Request an die angegebene URL geschickt.}
+}
+\newglossaryentry{eulerkreis}{%
+  name={Eulerkreis},
+  description={Ein ungerichteter Graph, bei welchen kein Knoten eine ungerade Anzahl anliegender Kanten hat.}
+}
+\newglossaryentry{aussagenlogik}{%
+  name={Aussagenlogik},
+  description={Ein Teilgebiet der Logik, in welchem es um Aussagen und deren Verknüpfung geht. Für eine Aussage der Aussagenlogik 
+kann genau bestimmt werden, ob sie wahr oder falsch ist.}
+}
+\newglossaryentry{semi_structured_data}{%
+  name={semistrukturierte Daten},
+  description={Daten, welche keiner allgemeine Struktur unterliegen. \gls{xml} ist eine sehr verbreitete Notation dafür.}
+}
+\newglossaryentry{domainlanguage}{%
+  name={Domänensprache},
+  description={Sprache für Begriffe in einer spezifische Umgebung bzw. einer gewissen Nutzergruppe.}
 }
