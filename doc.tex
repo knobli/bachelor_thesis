@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{header}
-
+\input{glossary}
 
 \begin{document}
 %\bibliographystyle{plainnat}
@@ -58,6 +58,8 @@
 
 \clearpage
  \input{content/glossar}
+\printglossary[type=\acronymtype] % prints just the list of acronyms
+\printglossary
 
 \clearpage
  \bibliography{bibtex/literatur}

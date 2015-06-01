@@ -10,15 +10,18 @@
 
 \chapter{Anforderungsdokument \resultAssignment{[R3]}}\label{chap.anforderungsdokument}
 
-Das Anforderungsdokument legt die Basis für die Implementation. Es ist für den Verlauf des Projekts wichtig, dass zu Beginn Gedanken über die Anforderungen gemacht werden. Bei der Erstellung des Anforderungsdokuments werden verschiedene Betrachungsweisen aufgezeigt und die Herausforderung in verschiedenen Detaistufen angeschaut.
+Das Anforderungsdokument legt die Basis für die Implementation. Es ist für den Verlauf des Projekts wichtig, dass zu Beginn Gedanken über die Anforderungen gemacht werden. Bei der 
+Erstellung des Anforderungsdokuments werden verschiedene Betrachungsweisen aufgezeigt und die Herausforderung in verschiedenen Detailstufen angeschaut.
 
 
 \section{Übersicht}\label{anf_uebersicht}
 
-In diesem Abschnitt  wird die System- und Kontextabgrenzung dargelegt, die Systemumgebung beschrieben, die getroffenen Annahmen festgehalten und die verschiedenen Stakeholder mit ihren Erwartungen aufgelistet.
+In diesem Abschnitt  wird die System- und Kontextabgrenzung dargelegt, die Systemumgebung beschrieben, die getroffenen Annahmen festgehalten und die verschiedenen Stakeholder mit 
+ihren Erwartungen aufgelistet.
 
 \subsection{System- und Kontextabgrenzung}\label{systemabgrenzung}
-Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten Systems relevant sind und nicht im Rahmen der Entwicklung dieses System gestaltet werden können.\cite{req_eng_book} 
+Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten Systems relevant sind und nicht im Rahmen der Entwicklung dieses System gestaltet werden können.
+\cite{req_eng_book} 
 
 \begin{figure}[h]
 \centering
@@ -27,11 +30,14 @@ Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten
 \label{fig:systemkontext}
 \end{figure}
 
-Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System eine relevanten Schnittstellen zu den Nutzern und Verarbeitungssystem hat. Das System muss Daten für das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Desweiteren wird das System von den Nutzern, Optimierungsproblemen und den dazgehörigen Algorithmen beeinflusst.
+Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System eine relevanten Schnittstellen zu den Nutzern und Verarbeitungssystem hat. Das System muss Daten für 
+das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Desweiteren wird das System von den Nutzern, Optimierungsproblemen und den dazgehörigen Algorithmen 
+beeinflusst.
 
 \FloatBarrier
 \subsection{Systemumgebung}\label{systemumgebung}
-Die Systemumgebung (siehe Abbildung \ref{fig:systemumgebung}) definiert die Ausgangslage für das Projekt. Am Anfang des Projekts war bekannt, dass Nutzer und ein Verarbeitungssystem Services des zu erstellenden System beziehen wollen. Die genaue Ausprägung dieser Services werden in diesem Kapitel behandelt.
+Die Systemumgebung (siehe Abbildung \ref{fig:systemumgebung}) definiert die Ausgangslage für das Projekt. Am Anfang des Projekts war bekannt, dass Nutzer und ein Verarbeitungssystem 
+Services des zu erstellenden System beziehen wollen. Die genaue Ausprägung dieser Services werden in diesem Kapitel behandelt.
 
 \begin{figure}[h]
 \centering
@@ -42,12 +48,18 @@ Die Systemumgebung (siehe Abbildung \ref{fig:systemumgebung}) definiert die Ausg
 
 \FloatBarrier
 \subsection{Annahmen}\label{annahmen}
-Zwischen dem Endnutzer und dem zu erstellenden System existiert noch ein Sicherheitslayer, welcher nicht Teil dieser Arbeit ist, als Vereinfachung wird vom Nutzer gesprochen.
-\todo{ausführen}
+Zwischen dem Endnutzer und dem zu erstellenden System existiert noch ein Sicherheitslayer, welcher nicht Teil dieser Arbeit ist. Später wird diese Projekt allenfalls mit diesem Sicherheitslayer 
+erweitert oder eine übergeordnete Schnittstellen erstellt, welche diese dann anspricht. 
+
+Je nach Algorithmus Implementation, ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
+heraus. Deshalb wurden die Ein- und Ausgabe Schemas der Algorithmen aus den Literaturrecherchen abgeleitet.
 
 \newpage
 \subsection{Stakeholder}\label{stakeholder}
-Die \glossarmark{Stakeholder} Analyse dient dem erfassen aller Nutzergruppen, die auf ein Projekt Einfluss haben. Zudem ermöglicht sie die Erfassung aller Gruppen, die potentiell Anforderungen an das Projekt stellen. In der der Tabelle \ref{table:stakeholder} wurden die \glossarmark{Stakeholder} für dieses Projekt zusammengetragen und ihre Erwartungen, ihre Einstellung und ihr Einfluss gegenüber diesem Projekt festgehalten. Da dieses Projekt eine Machbarkeitsanalyse ist befindet sich nur der Auftraggeber und ein potenzieller Kunde in der Auflistung.
+Die \glossarmark{Stakeholder} Analyse dient dem erfassen aller Nutzergruppen, die auf ein Projekt Einfluss haben. Zudem ermöglicht sie die Erfassung aller Gruppen, die potentiell 
+Anforderungen an das Projekt stellen. In der der Tabelle \ref{table:stakeholder} wurden die \glossarmark{Stakeholder} für dieses Projekt zusammengetragen und ihre Erwartungen, ihre 
+Einstellung und ihr Einfluss gegenüber diesem Projekt festgehalten. Da dieses Projekt eine Machbarkeitsanalyse ist befindet sich nur der Auftraggeber und ein potenzieller Kunde in der 
+Auflistung.
 
 \begin{table}[ht]
 \centering
@@ -58,10 +70,12 @@ Die \glossarmark{Stakeholder} Analyse dient dem erfassen aller Nutzergruppen, di
 	\rowcolor{gray}
 								&				&	-Positiv \mbox{-Neutral} \mbox{-Negativ} 	&	-Hoch \mbox{-Mittel} \mbox{-Niedrig} \\ \hline
 	\textbf{Phil Hofmann} (Vorsteher der Geschäftsführung der 200ok GmbH)						
-								&	Phil ist der Auftraggeber in diesem Projekt. Er erwartet von der Machbarkeitsanalyse Informationen für ein mögliches Projekt zur Umsetzung der Idee.
+								&	Phil ist der Auftraggeber in diesem Projekt. Er erwartet von der Machbarkeitsanalyse Informationen für ein mögliches Projekt zur 
+									Umsetzung der Gesamtidee.
 												& 	Positiv		&	Hoch		\\ \hline
 	\textbf{Potenzieller Kunde}
-								&	Der potenzielle Kunde wünscht sich eine einfache Abwicklung für seine Probleme, er möchte sich nicht mit Algorithmen und Theoretischer Informatik rumschlagen.
+								&	Der potenzielle Kunde wünscht sich eine einfache Abwicklung für seine Probleme, er möchte sich nicht mit Algorithmen und 
+									Theoretischer Informatik rumschlagen.
 												& 	Positiv		&	Hoch		\\ \hline
   \end{tabular}
    \caption{Liste der Stakeholder}\label{table:stakeholder}
@@ -96,7 +110,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Ergebnis}		&	Beschreibung der Ausgaben, die während der Ausführung des Use Case erzeugt werden\\ \hline
 	\textbf{Hauptszenario}	&	Beschreibung des Hauptszenarios eines Use Case\\ \hline
 	\textbf{Alternativszenarien}	&	Beschreibung von Alternativszenarien des Use Case oder lediglich Angabe der auslösenden Ereignisse. 
-					Hier gelden oftmals andere Nachbedingungen.\\ \hline
+					Hier gelten oftmals andere Nachbedingungen.\\ \hline
   \end{tabular}
    \caption{Vorlage für Use Case Spezifikation}\label{table:use_case_template}
 \end{table}
@@ -109,10 +123,11 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Bezeichner}	&	\textbf{UC-1}\\ \hline
 	\textbf{Name}		&	Lösung beauftragen\\ \hline
 	\textbf{Beschreibung}	&	Ein Nutzer möchte eine Lösung eines Problem mit spezifischen Parametern beauftragen.\\ \hline
-	\textbf{Auslösendes Ereignis} &	Nutzer möchte ein Problem lössen\\ \hline
+	\textbf{Auslösendes Ereignis} &	Nutzer möchte ein Problem lösen\\ \hline
 	\textbf{Akteure}		&	Nutzer\\ \hline
-	\textbf{Vorbedingung}	&	Das System bietet zur Lösung dieses Problem einen Aufruf\\ \hline
-	\textbf{Nachbedingung}	&	Das System hat die nötigen Informationen für die Lösung des Problems und der Nutzer erhält eine ID mit welcher er den Status bzw. das Resultat abholen 						kann\\ \hline
+	\textbf{Vorbedingung}	&	Das System bietet zur Lösung dieses Problems einen Aufruf\\ \hline
+	\textbf{Nachbedingung}	&	Das System hat die nötigen Informationen für die Lösung des Problems und der Nutzer erhält eine ID mit welcher er den Status bzw. das Resultat 
+						abholen kann\\ \hline
 	\textbf{Ergebnis}		&	Erfassung der Informationen für die Lösung des Problems\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
 					\item Der Nutzer ruft die Funktion für das zulösende Problem mit den Parametern auf
@@ -135,8 +150,8 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\rowcolor{gray}
 	\textbf{Bezeichner}	&	\textbf{UC-2}\\ \hline
 	\textbf{Name}			&	Berechnung starten\\ \hline
-	\textbf{Beschreibung}	&	Das System startet die Berechnung bim Verarbeitungssystem.\\ \hline
-	\textbf{Auslösendes Ereignis} &	Nutzer möchte ein Problem lössen\\ \hline
+	\textbf{Beschreibung}	&	Das System startet die Berechnung beim Verarbeitungssystem.\\ \hline
+	\textbf{Auslösendes Ereignis} &	Nutzer möchte ein Problem lösen\\ \hline
 	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
 	\textbf{Vorbedingung}	&	Die Informationen für die Lösung des Problems sind erfasst.\\ \hline
 	\textbf{Nachbedingung}	&	Das Verarbeitungssystem beginnt mit der Berechnung.\\ \hline
@@ -161,9 +176,9 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\rowcolor{gray}
 	\textbf{Bezeichner}	&	\textbf{UC-3}\\ \hline
 	\textbf{Name}			&	Eingabe Parameter abholen\\ \hline
-	\textbf{Beschreibung}	&	Das Verareitungssystem benötigt für die Lösung des Problemes die Eingabeparameter\\ \hline
-	\textbf{Auslösendes Ereignis}&	Das Verareitungssystem möchte die Eingabeparameter\\ \hline
-	\textbf{Akteure}		&	Verareitungssystem\\ \hline
+	\textbf{Beschreibung}	&	Das Verarbeitungssystem benötigt für die Lösung des Problemes die Eingabeparameter\\ \hline
+	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem möchte die Eingabeparameter\\ \hline
+	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
 	\textbf{Vorbedingung}	&	Das Verarbeitungssystem wurden angestossen das Problem zu lösen\\ \hline
 	\textbf{Nachbedingung}	&	Das Verarbeitungssystem hat die Eingabeparameter erhalten\\ \hline
 	\textbf{Ergebnis}		&	Erhalt von Eingabeparametern\\ \hline
@@ -220,7 +235,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Beschreibung}	&	Da die Aufrufe asynchron sind, muss das Ergebnis nach der Berechnung zwischengespeichert werden.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem möchte das Resultat speichern\\ \hline
 	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
-	\textbf{Vorbedingung}	&	Das Verarbeitungssystem ist mit der Berechnung fertig\\ \hline
+	\textbf{Vorbedingung}	&	Das Verarbeitungssystem hat ein Resultat berechnet\\ \hline
 	\textbf{Nachbedingung}	&	Das Resultat ist gespeichert\\ \hline
 	\textbf{Ergebnis}		&	Speicherung des Resultats\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
@@ -270,7 +285,8 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 \newpage
 \FloatBarrier
 \subsection{Anforderungen}\label{anforderungen}
-Alle Anforderungen wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:req_template}) erfasst. Diese Vorlage basiert auf Angaben von \cite{req_eng_book} und wurde mit eigenen Attributen erweitert.
+Alle Anforderungen wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:req_template}) erfasst. Diese Vorlage basiert auf Angaben von \cite{req_eng_book} und wurde mit 
+eigenen Attributen erweitert.
 
 \begin{table}[ht]
 \centering
@@ -291,7 +307,8 @@ Alle Anforderungen wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table
 \end{table}
 
 
-Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (siehe Abbildung \ref{fig:satzschablone}) aus \cite{req_eng_book} erstellt. Dies hat den Vorteil, dass die Anforderungen normiert und exakt da herkommen. Die Abstufungen muss, sollte und wird werden verwendet um die Wichtigkeit der Anforderungen auszudrücken.
+Die Beschreibung der Anforderungen wurden zusätzlich mit der Satzschablone in \autoref{fig:satzschablone}) aus \cite{req_eng_book} erstellt. Dies hat den Vorteil, dass die 
+Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \textit{sollte} und \textit{wird} werden verwendet um die Wichtigkeit der Anforderungen auszudrücken.
 \begin{figure}[h]
 \includegraphics{images/anforderungen/satzschablone.png}
 \caption[Satzschablone]{Satzschablone (Grafik entnommen aus \cite{req_eng_book})}
@@ -314,9 +331,9 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Name} 			&	Bereitstellung der Schnittstellen für Optimierungsprobleme\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System muss dem Nutzer die Möglichkeit bieten die Lösung verschiedener Optimierungsprobleme zu beauftragen\\ \hline
-	\textbf{Begründung} 		&	Die Schnittstellen ist die Anlaufstelle des Nutzers. Er beauftrag durch sie, das System eine Berechnung zu starten.\\ \hline
+	\textbf{Begründung} 		&	Die Schnittstellen ist die Anlaufstelle des Nutzers. Er beauftragt durch sie, das System eine Berechnung zu starten.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer kann eine Schnittstelle für eine bereitgestellten Berechnungsfunktionen ansprechen
+					\item Der Nutzer kann eine Schnittstelle für eine bereitgestellten Berechnungsfunktionen ansprechen.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline
@@ -332,17 +349,18 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F2}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Rückgabe einer ID bei Beauftragung\\ \hline
+	\textbf{Name} 			&	Speicherung der Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
-	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System dem Ersteller eine ID zurück geben.\\ \hline
-	\textbf{Begründung} 		&	Die ID hilft dem Nutzer den Status der Berechnung abzuholen und wird auch am Schluss für das Resultat benötigt.\\ \hline
+	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System fähig sein die Eingabeparameter abzuspeichern.\\ \hline
+	\textbf{Begründung} 		&	Die Berechnung wird von einem anderen System ausgeführt, damit dieses auf die Parameter zu greifen kann, müssen sie persistiert werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer erhält nach dem Starten einer Berechnung eine ID.
+					\item Die Parameter sind persistiert.
+					\item Es gibt eine Fehlermeldung, falls bei der Speicherung etwas fehlschlägt oder die Eingabeparameter nicht gültig sind.
 					\end{enumerate}
 					\\ \hline
-	\textbf{Abhängigkeiten} 	&	\nameref{table:req_1}\\ \hline
+	\textbf{Abhängigkeiten} 	&	\\ \hline
   \end{tabular}
-   \caption{Anforderung RF-F2}\label{table:req_2}
+   \caption{Anforderung RF-F2}\label{table:req_3}
 \end{table}
 
 \begin{table}[ht]
@@ -353,18 +371,17 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Bezeichner}&	\textbf{RE-F3}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
-	\textbf{Name} 			&	Speicherung der Eingabeparameter\\ \hline
+	\textbf{Name} 			&	Rückgabe einer ID bei Beauftragung\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
-	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System fähig sein die Eingabeparameter abzuspeichern.\\ \hline
-	\textbf{Begründung} 		&	Die Berechnung wird von einem anderen System ausgeführt, damit dieses auf die Parameter zu greifen kann, müssen sie persistiert werden.\\ \hline
+	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben wurde, muss das System dem Ersteller eine ID zurückliefern.\\ \hline
+	\textbf{Begründung} 		&	Die ID hilft dem Nutzer den Status der Berechnung abzuholen und wird auch am Schluss für das Resultat benötigt.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Die Parameter sind persistiert.
-					\item Es gibt eine Fehlermeldung, falls bei der Speicherung etwas fehlschlägt.
+					\item Der Nutzer erhält nach dem Starten einer Berechnung eine ID.
 					\end{enumerate}
 					\\ \hline
-	\textbf{Abhängigkeiten} 	&	\nameref{table:req_2}\\ \hline
+	\textbf{Abhängigkeiten} 	&	\nameref{table:req_3}\\ \hline
   \end{tabular}
-   \caption{Anforderung RF-F3}\label{table:req_3}
+   \caption{Anforderung RF-F3}\label{table:req_2}
 \end{table}
 
 \begin{table}[ht]
@@ -380,7 +397,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System fähig sein die Berechnung beim Verarbeitungssystem zu starten.\\ \hline
 	\textbf{Begründung} 		&	Der Nutzer kennt das Verarbeitungssystem nicht, das System muss dem Verarbeitungssystem den Start Befehl geben.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Befehl für den Start wird versendet.
+					\item Der Befehl für den Start wird versendet und die ID dabei übergeben.
 					\item Die Fehlermeldung bei einem Fehlversuch wird gespeichert.
 					\end{enumerate}
 					\\ \hline
@@ -421,7 +438,7 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
 	\textbf{Name} 			&	Abfrage des Status\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
-	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, muss das System dem Nutzer die Möglichkeit bieten den Status der Berechnung abzufragen.\\ \hline
+	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben wurde, sollte das System dem Nutzer die Möglichkeit bieten den Status der Berechnung abzufragen.\\ \hline
 	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Der Nutzer erhält einen Status seiner Berechnung.
@@ -442,8 +459,10 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Anforderungstyp}	&	Funktional Anforderung\\ \hline
 	\textbf{Name} 			&	Registrierung eines WebHooks für Statusänderungen\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
-	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben und dazu ein WebHook eingetragen wurde, muss das System den Nutzer über eine Änderung des Status über den Webhook informieren.\\ \hline
-	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu verhindern, kann man WebHooks verwenden.\\ \hline
+	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag geben und dazu ein WebHook eingetragen wurde, sollte das System den Nutzer über eine Änderung des Status über 
+						den Webhook informieren.\\ \hline
+	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu verhindern, können 
+							WebHooks verwenden werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Der Nutzer wird über die Änderunge des Status auf dem eingetragen WebHook informiert.
 					\end{enumerate}
@@ -512,7 +531,8 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 	\textbf{Name} 			&	Prozess agnostische Schnittstelle\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System sollte fähig sein die Lösung eines Problems so bereit zu stellen, dass kein Wissen über den Verarbeitungsprozess dahinter benötigt wird.\\ \hline
-	\textbf{Begründung} 		&	Der Verarbeitungsprozess kann sehr spezifisch und von Problem zu Problem unterschiedlich sein, der Nutzer sollte eine möglichst einfache Schnittstelle dazu haben.\\ \hline
+	\textbf{Begründung} 		&	Der Verarbeitungsprozess kann sehr spezifisch und von Problem zu Problem unterschiedlich sein, der Nutzer sollte eine möglichst einfache 
+							Schnittstelle dazu haben.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Das Interface kann, ohne dass das Verarbeitungssystem bekannt ist, verwendet werden.
 					\end{enumerate}
@@ -566,7 +586,8 @@ Die Beschreibung der Anforderungen wurden zusätzlich mit einer Satzschablone (s
 
 \newpage
 \subsection{Zusammenfassung der Anforderungen}\label{toc_anfoderungen}
-Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde mit den Stakeholdern zusammen festgelegt und in \autoref{table:req_priorities} zur besseren Übersicht zusammengetragen.
+Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde mit den Stakeholdern zusammen festgelegt und in 
+\autoref{table:req_priorities} zur besseren Übersicht zusammengetragen.
 \begin{table}[ht]
 \centering
   \begin{tabular}{ l | l | l }
@@ -574,8 +595,8 @@ Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforde
 	\rowcolor{gray}
 	\textbf{Bezeichner}	& \textbf{Name}	&	\textbf{Priorität}\\ \hline
 	RE-F1 			&  Bereitstellung der Schnittstellen für Optimierungsprobleme	& Must\\ \hline
-	RE-F2 			&  Rückgabe einer ID bei Beauftragung	& Must\\ \hline
-	RE-F3 			&  Speicherung der Eingabeparameter	& Must\\ \hline
+	RE-F2 			&  Speicherung der Eingabeparameter	& Must\\ \hline
+	RE-F3 			&  Rückgabe einer ID bei Beauftragung	& Must\\ \hline
 	RE-F4 			&  Start der Berechnung	& Must\\ \hline
 	RE-F5 			&  Abfrage der Eingabeparameter	& Must\\ \hline
 	RE-F6 			&  Abfrage des Status	& Should\\ \hline

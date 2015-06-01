@@ -14,6 +14,25 @@
 \newpage
 \thispagestyle{empty}
 \chapter*{Abstract}\label{abstract}
+Ziel dieser Arbeit war es zu analysieren, ob eine generische Schnittstelle für grundlegende Problem der Informatik möglich ist. Die Schnittstelle sollte keinerlei Kenntnisse 
+der Theoretischen Informatik oder der jeweiligen Probleme vorraussetzen. Dazu wurden fünf NP-vollständige Probleme aus 'Computers and Intractability: A Guide to the Theory of 
+NP-Completeness' von Micheal Garey und David S. Johnson ausgewählt. \todo{Probleme aufzählen?} Die Probleme wurden auf ihre Ein- und Ausgabeparamter analysiert und die dazugehörigen 
+Algorithmen wurden betrachtet. Im späteren Verlauf der Arbeit wurde noch ein sechstes Problem dazugenommen, welches sehr ähnlich zu einem bereits ausgewählten Problem war. Dies 
+um zu schauen, wie sich die beiden Probleme bei der Implementierung im Gegensatz zu den anderen Problemen verhalten.\\
 
+Beim Erstellen des Konzept wurden die Gemeinsamkeiten des Berechnungsablaufs betrachtet. Um mehr Freiheiten zu haben und Benutzerfreundlicher sein zu können, wurde die Nutzer- und 
+Algorithmus-Welt voneinander entkoppelt. Dies bot die Möglichkeit jeweils eine andere Domänensprache zu verwenden. Zwischen den beiden Welten kamen pre- und post-Aktionen zum Einsatz, 
+welche die Datenaufbereitung für den Algorithmus bzw. den Nutzer durchführten.\\
 
-\chapter*{Vorwort}\label{vorwort}
+Vor der Umsetzung wurde eine Nutzwertanalyse zur Auswahl des richtigen Datenbanksystems durchgeführt. Nach der Vorselektierung standen noch die relationalen und dokumentorientierten 
+Datenbanken zur Auswahl. Beim Vergleich gewann das dokumentorientierte datenbanksystem vorallem wegen seiner Flexibilität, welche eine schnelle und unkomplizierte Erweiterung bzw. Anpassung 
+ermöglicht.\\
+
+Als Prototyp wurde ein REST API implementiert, welches die Funktionalität bietet Berechnung von den sechs verschiedenen Problemen zu erstellen. Hinter einem dieser Problem wurde ein 
+Algorithmus angebunden und somit konnte der ganze Prozess durchgespielt werden. Bei den anderen Problemen wurde anhand der Recherche Ein- und Ausgabeschema der Algorithmen definiert. 
+Zusätzlich wurde zu jedem Problem ein Validator geschrieben, welcher überprüft ob ein Resultat gültig ist oder nicht.\\
+
+Das Konzept für die Schnittstelle konnte für alle sechs Probleme angewandt und der Ablauf generisch gehalten werden. Die Machbarkeitsstudie ist als erfolgreich zu betrachten. Das 
+Auswahlverfahren der Probleme hat sich bewährt, die Probleme zeigten unterschiedliche Ausprägungen. Einigen Problemen könnten mit dem gleichen generische Algorithmus gelöst werden. Zwei 
+andere Probleme, welche beide aus dem gleichen Bereich stammen, benötigen sehr unterschiedliche Herangehensweisen. Die Schnittstelle bietet genug Flexibilität um ganz unterschiedliche 
+Probleme zu behandeln und verschiedene Algorithm anzusteuern.

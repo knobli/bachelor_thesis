@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Project     : Bachelorarbeit
+% Title       : Machbarkeitsanalyse für eine ressourcenorientierte Schnittstelle zur Verarbeitung grundlegender Probleme der Informatik
+% File        : header.tex Rev. 01
+% Date        : 01.03.2015
+% Author      : Raffael Santschi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xparse}
+\usepackage[nopostdot,nonumberlist,acronym]{glossaries}
+\DeclareDocumentCommand{\newdualentry}{O{} O{} m m m m }{%
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},#1
+  }
+  \newacronym[#2]{#3}{#4}{\gls{gls-#3}}
+}
+\makeglossaries
+%\renewcommand*{\glstextformat}[1]{\textsf{#1}}
+% Customize the format of the first use.  See the manual for details if
+% you want to include more information here such as the definition.
+\defglsdisplayfirst[\glsdefaulttype]{\textit{#1}}
+
+\newdualentry{ipc}    % label
+  {IPC}               % abbreviation
+  {Inter Process Communication}  % long form
+  {Möglichkeiten der Interaktion zwischen Betriebssystemprozessen. Beispielsweise mithilfe von Sockets, Pipes oder Message Queues.}
+\newdualentry{pid}    % label
+  {PID}               % abbreviation
+  {Process ID}  % long form
+  {Eindeutige Kennung eines Prozesses innerhalb des gleichen Linux Namespace.}
+\newdualentry{vm}    % label
+  {VM}
+  {Virtuelle Maschine}
+  {Virtualisiertes Betriebssystem, welches durch eine Abstraktionsschicht von physischer Hardware getrennt ist. Vgl.~\ref{sub:VMs}.}
+\newdualentry{mmu}    % label
+  {MMU}
+  {Memory Management Unit}
+  {Chip innerhalb eines Computers, der die Übersetzung virtueller \gls{ram} Adressen in physische Adressen innerhalb der Hardware vornimmt.}
+\newdualentry{vmm}    % label
+  {VMM}
+  {Virtual Machine Monitor}
+  {Abstraktionsebene zwischen Hardware und (mehreren) Gast-Betriebssystemen, die mit der Bereitstellung der virtuellen Umgebung betraut ist.}
+\newdualentry{ebs}    % label
+  {EBS}
+  {Einschreibe- und Bewertungssystem}
+  {Online System zur Verwaltung von Vorlesungen, Noten und Projekten des Studienganges Informatik an der ZHAW Zürich (ehem. HSZ-T).}
+\newdualentry{saas}    % label
+  {SaaS}
+  {Software as a Service}
+  {Service Model für Clouds, bei dem der Anwenderin vollständige Software-Lösungen zur Verfügung gestellt werden. Beispiele stellen hier Gmail für eMail oder Office360 für Textbearbeitung dar.}
+\newdualentry{paas}    % label
+  {PaaS}
+  {Platform as a Service}
+  {Service Model für Clouds, bei dem der Anwenderin Umfelder zum Ausführen ihrer Applikationen zur Verfügung gestellt werden. Beispiele stellen hier Heroku als Umfeld für Ruby on Rails Applikationen oder OpenShift für diverse weitere Sprachen und Frameworks dar.}
+\newdualentry{iaas}    % label
+  {IaaS}
+  {Infrastructure as a Service}
+  {Service Model für Clouds, bei dem der Anwenderin grundlegende Ressourcen wie \gls{cpu}, \gls{ram} und Speicherplatz zur Verfügung gestellt werden. Beispiele sind hier \gls{aws} oder \gls{azure}.}
+\newdualentry{gcp}    % label
+  {GCP}
+  {Google Cloud Platform}
+  {Cloud Computing Angebot der Google Inc..}
+\newdualentry{aws}    % label
+  {AWS}               % abbreviation
+  {Amazon Web Services}
+  {Cloud Computing Angebot der Amazon.com Inc..}
+\newdualentry{ec2}    % label
+  {EC2}               % abbreviation
+  {Elastic Compute Cloud}
+  {\gls{aws} Angebot für auf Rechenkapazität optimierte Virtuelle Maschinen.}
+\newdualentry{nist}    % label
+  {NIST}               % abbreviation
+  {National Institute of Standards and Technology}
+  {Amerikanische Bundesbehörde, die unter Anderem eine zentrale Anlaufstelle für Standards in der IT darstellt.}
+\newdualentry{api}    % label
+  {API}               % abbreviation
+  {Application Programming Interface}
+  {Nicht-graphische Schnittstelle zu einer Applikation, über die Zugriff auf die Funktionalitäten angeboten wird.}
+\newdualentry{cpu}    % label
+  {CPU}               % abbreviation
+  {Central processing unit}  % long form
+  {Der (Haupt-)Prozessor eines Computers ist für die effektive Berechnung von Programmen, beispielsweise den Implementationen von Algorithmen, zuständig.}
+\newdualentry{gpu}    % label
+  {GPU}               % abbreviation
+  {Graphics processing unit}  % long form
+  {Ein Grafikprozessor stellt eine spezielle Unterart an Prozessoren dar, die auf die Berechnung der Ausgabe am Bildschirm spezialisiert sind, dar. Da in der Entwicklung solcher Grafikprozessoren besonderer Wert auf hohe Parallelisierung von Berechnungen gelegt wurde, besitzen GPUs nach heutigem Stand bei solchen Berechnungen Vorteile gegenüber herkömmlichen \gls{cpu}s.}
+\newdualentry{ram}    % label
+  {RAM}               % abbreviation
+  {Hauptspeicher}  % long form
+  {Im random access memory werden (Zwischen-)Ergebnisse von Berechnungen abgelegt. Es handelt sich hierbei um einen flüchtigen Speicher, dessen Inhalt bei Verlust der Energieversorgung verloren geht.}
+\newdualentry{cgroups}    % label
+  {cgroups}               % abbreviation
+  {control groups}  % long form
+  {Mit Kernel Verion 2.6.24 24 (Januar 2008) \cite{kernel264} eingeführtes Feature, welches ein Ressourcenmanagement für Prozesse, beispielsweise die Beschränkung der Menge an \gls{ram} ermöglicht.}
+\newdualentry{ssh}    % label
+  {SSH}               % abbreviation
+  {Secure Shell}  % long form
+  {Netzwerkprotokoll auf dem Application layer zum Aufbau einer verschlüsselten Verbindung zwischen zwei Rechnern. Gemeinhein auch die Bezeichnung für das Programm OpenSSH, mit dem ein remote  Zugriff auf Rechner möglich ist.}
+\newdualentry{http}    % label
+  {HTTP}               % abbreviation
+  {Hypertext Transfer Protocol}  % long form
+  {Netzwerkprotokoll auf dem Application layer zur zustandslosen Übertragung von Daten. Weitverbreitet für den Zugriff auf Websites, kann es jedoch beispielsweise auch zum Angebot von \gls{rest}-Services genutzt werden. Mit der Erweiterung HTTPS ist HTTP über eine mit TLS gesicherte Verbindung über gemeint.}
+\newdualentry{bitkom}    % label
+  {BITKOM}               % abbreviation
+  {Bundesverband Informationswirtschaft, Telekommunikation und neue Medien}
+  {Brachen- und Lobbyverband der deutschen Informations und Tekekommunikationsbranche.}
+\newdualentry{iana}    % label
+  {IANA}               % abbreviation
+  {Internet Assigned Numbers Authority}
+  {Abteilung der Internet Corporation for Assigned Names and Numbers, die unter Anderem mit der Zuweisung reservierter Ports betraut ist.}
+\newdualentry{url}    % label
+  {URL}               % abbreviation
+  {Uniform resource locator}
+  {Identifikator einer spezifischen Ressource, die im Allgemeinen über das Netzwerk erreichbar ist. In der URL ist weiterhin ein Hinweis auf die Art der Kommunikation enthalten, so definiert die URL https://schrimpf.ch, dass ein Server mit dem Domain Namen "`schrimpf.ch"' über \gls{http} angesprochen werden soll.}
+\newdualentry{rest}    % label
+  {REST}               % abbreviation
+  {Representational State Transfer}
+  {Programmierparadigma für die Implementation von Webservices. Es bestehen verschiedene Vorgaben, wie Zustandslosigkeit zwischen Anfragen, Idempotenz oder auch Sicherheit einzelner Anfragen. Endpunkte innerhalb der Kommunikation wer als Ressourcen bezeichnet, sie können beispielsweise als \gls{url} über \gls{http} angesprochen werden.}
+\newdualentry{ssd}    % label
+  {SSD}               % abbreviation
+  {Solid-state drive}
+  {Persistenter Datenspeicher, der im Gegensatz zu klassichen Festplatten ohne mechanische Teile auskommt und wesentlich höhere Datentransferraten erreicht.}
+\newdualentry{poc}    % label
+  {PoC}               % abbreviation
+  {Proof of Concept}
+  {Test der grundsätzlichen Machbarkeit eines Konzeptes oder einer Anwendung.}
+\newdualentry{gce}    % label
+  {GCE}
+  {Google Compute Engine}
+  {\gls{iaas} Angebot von \gls{gcp}.}
+\newdualentry{rtt}    % label
+  {RTT}
+  {Round Trip Time}
+  {Zeit, die ein Datenpaket benötigt, um den Weg zu einem Ziel und zurück zum Ausgangspunkt zurückzulegen.}
+\newdualentry{mips}    % label
+  {MIPS}
+  {million instructions per second}
+  {Masseinheit für die Leistung von Prozessoren. Hierfür wird die Menge an Maschineninstruktionen pro Sekunde, die die \gls{cpu} verarbeiten kann, gemessen.}
+\newdualentry{icmp}    % label
+  {ICMP}
+  {Internet Control Message Protocol}
+  {Auf IP basierendes Protokoll zur Kommunikation von Netzwerkgeräten zum Austausch von Informationen und Fehlermeldungen.}
+\newdualentry{flops}    % label
+  {FLOPS}
+  {floating point operations per second}
+  {Masseinheit für die Leistung von Prozessoren. Hierbei wird die Anzahl an Gleieitkommazahl Operationen, die die \gls{cpu} verarbeiten kann, gemessen.}
+\newdualentry{tcp}    % label
+  {TCP}
+  {Transmission Control Protocol}
+  {Verbindungsorientiertes Transport layer Protokoll zur zuverlässigen Übertragung von Datenpaketen in einem Netzwerk.}
+\newdualentry{ip}    % label
+  {IP}
+  {Internet Protocol}
+  {Zustandsloses Network layer Protokoll zur Übertragung von Datenpaketen in einem Netzwerk.}
+\newdualentry{json}    % label
+  {JSON}               % abbreviation
+  {JavaScript Object Notation}  % long form
+  {Menschenlesbare Notation zum Austausch strukturierter Daten.}
+\newdualentry{xml}    % label
+  {XML}               % abbreviation
+  {Extensible Markup Language}  % long form
+  {Markup Sprache zum Austausch strukturierter Daten.}
+\newdualentry{bash}    % label
+  {Bash}               % abbreviation
+  {Bourne-again shell}  % long form
+  {Kommandozeilensprache zur Interaktion von Nutzer und unixoidem Betriebssystem. Durch die Verwendung in Scripts können mithilfe von Bash viele iterative Arbeitsabläufe automatisiert werden.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dependency Injection
+% Python
+% Kernel
+\newglossaryentry{postgres}{%
+  name={PostgreSQL},
+  description={SQL basierendes objektrelationales Datenbanksystem.}
+}
+\newglossaryentry{yo}{%
+  name={Yeoman},
+  description={Aus dem Umfeld von Google stammendes Opensource-Generator-Framework für die Erstellung von Webapplikationen.}
+}
+\newglossaryentry{spring}{%
+  name={Spring},
+  description={Weitverbreitetes Java-Framework zur Erstellung von Enterprise-Applikationen.}
+}
+\newglossaryentry{angular}{%
+  name={AngularJS},
+  description={2009 von Google veröffentlichtes Opensource-Framework zur Erstellung von Websites mithilfe von intensivem JavaScript Einsatz.}
+}
+\newglossaryentry{jhipster}{%
+  name={jHipster},
+  description={Auf dem \gls{yo} Generator-Framework basierendes Opensource-Werkzeug zur Generation von Webapplikationen. Als Backend-Komponente wird hierbei \gls{java} mit dem \gls{spring}-Framework und als Frontend-Komponente \gls{angular} verwendet.}
+}
+\newglossaryentry{openstack}{%
+  name={OpenStack},
+  description={Opensource Projekt für den Betrieb einer Cloud-Infrastruktur.}
+}
+\newglossaryentry{java}{%
+  name={Java},
+  description={1995 entwickelte objektorientierte Programmiersprache. Java erfreut sich grosser Popularität und besitzt zahlreiche Frameworks zur Vereinfachung der Entwicklung.}
+}
+\newglossaryentry{jclouds}{%
+  name={jclouds},
+  description={Von der Apache Software Foundation unterstütztes Opensource-Framework zur Abstraktion der Interaktion von \gls{java}-Programmen und Cloud-Providern..}
+}
+\newglossaryentry{cli}{%
+  name={cloud-init},
+  description={Programm mit dem verschiedene grundlegende Einstellungen eines Linux-Systems, beispielsweise hostname oder locale, beim start einer \gls{vm} über eine Textdatei vorgenommen werden können.}
+}
+\newglossaryentry{slack}{%
+  name={Slack},
+  description={Chatprogramm zur Team-Kommunikation mit Clients für die gängigsten Betriebssysteme und umfassenden Webservice \gls{api}.}
+}
+\newglossaryentry{iperf}{%
+  name={iperf},
+  description={Tool zum Test von \gls{tcp} und UDP Verbindungen. Über einen konfigurierbaren Zeitraum werden beispielsweise jeweils die maximal mögliche Menge an Daten übertragen, um die Bandbreite der Verbindung zu testen.}
+}
+\newglossaryentry{sysbench}{%
+  name={sysbench},
+  description={Programm zur Messung verschiedener Systemeigenschaften, die für den Betrieb eines Datenbankservers relevant sind bzw. sein können. Durch sysbench können beispielsweise die Perfomance von \gls{cpu}, \gls{ram}, POSIX Threads oder der Festplatte gemessen werden.}
+}
+\newglossaryentry{ruby}{%
+  name={Ruby},
+  description={1995 erschienene höhere objektorientierte Programmiersprache mit dynamischer Typisierung.}
+}
+\newglossaryentry{switch}{%
+  name={SWITCH},
+  description={1987 gegründete Stiftung die als Technologiedienstleister der Schweizer Hochschulen die Bereitstellung von Dienstleistungen wie Cloud Speicher oder \glspl{vm}, Netzwerken und Ähnlichem übernimmt.}
+}
+\newglossaryentry{gentoo}{%
+  name={Gentoo},
+  description={Eine nach dem schnellsten Schwimmer unter den Pinguinen, dem Eselspinguin (englisch gentoo penguin), benannte Linux \gls{distro}, deren besonderes Ziel es ist, der Benutzerin möglichst viele Möglichkeiten zur Kontrolle über ihr System, beispielsweise bei der Installation von Software, zu gewähren.}
+}
+\newglossaryentry{deployment}{%
+  name={Deployment},
+  description={Verteilung einer Applikation und ggf. ihrer Abhängigkeiten in einem gegebenen Umfeld.}
+}
+\newglossaryentry{azure}{%
+  name={Azure},
+  description={Cloud Computing Angebot der Microsoft Corporation.}
+}
+\newglossaryentry{yml}{%
+  name={YAML},
+  description={Markup Language, mit der eine Daten Serialisierung in möglichst menschenlesbarer Form ohne den grossen Overhead vergleichbarer Sprachen wie XML vorgenommen werden soll. Der Name ist ein recursives Akronym für "`YAML Ain't Markup Language"' \cite{yml2} (früher "`Yet Another Markup Language"' \cite{yml1}).}
+}
+\newglossaryentry{git}{%
+  name={git},
+  description={Tool zur verteilten Versionsverwaltung. Ehemals für die Verwaltung des Linux Kernels entwickelt, besitzt es heute grosse Popularität in der gesammten Softwareentwicklung und ein ausgeprägtes Ökosystem.}
+}
+\newglossaryentry{rsa}{%
+  name={RSA},
+  description={Von Ronald L. Rivest, Adi Shamir und Leonard Adleman entwickeltes asymetrisches (public/private-key) Kryptosystem.}
+}
+\newglossaryentry{systemd}{%
+  name={systemd},
+  description={Tool, welches ehemals für die Steuerung des Linux Initialisierungsprozesses entwickelt wurde, jedoch im Laufe der Zeit immer weitere Funktionalitäten bot und somit Gegenstand einer intensiven Diskussion in der Linux Community wurde. Mit systemd ist es möglich Programme als sogenannte Services im Hintergrund auszuführen und zu überwachen.}
+}
+\newglossaryentry{distro}{%
+  name={Distribution},
+  plural={Distributionen},
+  description={Im Kontext der Arbeit bezogen auf verschiedene Distributionen des Linux Betriebssystemes. Zusammenstellung von Softwarepaketen zu einem vollständigen Betriebssystem. Häufige Unterschiede sind der verwendete Package Manager, das Init system und ähnliche redundante Implementationen der gleichen grundlegenden Funktionalitäten.}
+}

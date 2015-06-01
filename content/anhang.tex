@@ -22,8 +22,7 @@ Die Risikoermittlung wird zur Bestimmung und Folgenabschätzung möglicher Risik
 	\hline
 	\rowcolor{gray}
 	\textbf{Risiko}					&	\textbf{Mögliche Folgen}	\\ \hline
-	Implementationsschwierigkeiten (fast keine Erfahrung in der Theoretischen Informatik)
-								&	\begin{itemize}
+	Implementationsschwierigkeiten			&	\begin{itemize}
 										\item Zeitplan nicht einhaltbar
 										\item Einige Anforderungen müssen zurückgestellt werden
 										\item Projektarbeit kann nicht durchgeführt werden
@@ -99,7 +98,7 @@ Es wurden Massnahmen für die gefundenen Risiken gesucht und festgehalten. Die M
 
 \begin{table}[ht]
 \centering
-  \begin{tabular}{  l | p{4cm} | p{4cm} }
+  \begin{tabular}{  l | p{4.5cm} | p{4.5cm} }
 	\hline
 	\rowcolor{darkgray}
 	\textbf{Risiko}					&	\multicolumn{2}{|c|}{\textbf{Massnahmen}} \\ \hline
@@ -145,9 +144,12 @@ Es wurden Massnahmen für die gefundenen Risiken gesucht und festgehalten. Die M
    \caption{Risikoanalyse - Massnahmen}
 \end{table}
 
+\clearpage
+\newpage
+
 \section{Schnittstellen Dokumentation}\label{api_doc}
 
-Die Beispiele sind im JSON Format, es ist jedoch auch sehr einfach möglich die Schnittstelle für XML, YAML oder andere Formate zu erweitern
+Die Beispiele sind im \glossarmark{JSON} Format, es ist jedoch auch sehr einfach möglich die Schnittstelle für \glossarmark{XML}, \glossarmark{YAML} oder andere Formate zu erweitern
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -159,7 +161,7 @@ Die Beispiele sind im JSON Format, es ist jedoch auch sehr einfach möglich die 
 
 \subsection{Rucksack}
 
-\paragraph{POST /optimalPack} - Erstellung einer neuen Rucksack Berechnung\mbox{}\\
+\paragraph{POST /optimalPackComputations} - Erstellung einer neuen Rucksack Berechnung\mbox{}\\
 Erstellt eine neue Berechnung des Rucksack Problems und speichert sie in die Datenbank.\\
 \textbf{Status Codes:}\\
 200 - OK: Berechnung wurde erstellt, zusätzlich erhält der Nutzer noch die ID der Berechnung.\\
@@ -181,7 +183,7 @@ Erstellt eine neue Berechnung des Rucksack Problems und speichert sie in die Dat
 }
 \end{lstlisting}
 
-\paragraph{GET /algorithm/knapsack/{ID}} - Abrufen der Eingabedaten einer Rucksack Berechnung\mbox{}\\
+\paragraph{GET /algorithm/knapsackComputations/\{ID\}} - Abrufen der Eingabedaten einer Rucksack Berechnung\mbox{}\\
 Ruft die Eingabedaten einer bestimmten Berechnung des Rucksack Problems ab. Die Daten werden in der Schnittstelle zuerst für den Algorithmus umgewandelt.\\
 \textbf{Status Codes:}\\
 200 - OK: Die Eingabedaten wurden gefunden und zurückgeben.\\
@@ -201,7 +203,7 @@ Ruft die Eingabedaten einer bestimmten Berechnung des Rucksack Problems ab. Die 
 }
 \end{lstlisting}
 
-\paragraph{POST /algorithm/knapsackSolution} - Speichern einer Lösung für eine Rucksack Berechnung\mbox{}\\
+\paragraph{POST /algorithm/knapsackComputations/\{ID\}/solutions} - Speichern einer Lösung für eine Rucksack Berechnung\mbox{}\\
 Speichert eine mögliche Lösung für eine Berechnung des Rucksack Problems. Die Lösung wird zuerst für den Nutzer umgewandelt und danach noch validiert.\\
 \textbf{Status Codes:}\\
 200 - OK: Lösung wurde gespeichert.\\
@@ -209,18 +211,17 @@ Speichert eine mögliche Lösung für eine Berechnung des Rucksack Problems. Die
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Resultates für das Rucksack Problem aus Algorithmus-Sicht, label=lst:solution_knapsack_algo]  
 {
-  "computationId": "<Berechnung ID>",
   "solutionType": "<Resultat Typ (PARTIAL | FINAL)>",
   "fitness": <Profit des Resultates>,
   "items": [<Liste der Boolean-Werte>]
 }
 \end{lstlisting}
 
-\paragraph{GET /optimalPackSolution/?computationId={ID}} - Abrufen des Resultats einer Rucksack Berechnung\mbox{}\\
-Ruft das Endresultat einer bestimmten Berechnung des Rucksack Problems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
+\paragraph{GET /optimalPackComputations/\{ID\}} - Abrufen des Status einer Rucksack Berechnung\mbox{}\\
+Ruft den Status und die Endresultate einer bestimmten Berechnung des Rucksack Problems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
 \textbf{Status Codes:}\\
 200 - OK: Das Endresultat wurden gefunden und zurückgeben.\\
-404 - Not Found: Kein Endresultat gefunden.\\
+404 - Not Found: Keine Berechnung gefunden.\\
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Endresultates für das Rucksack Problem, label=lst:solution_knapsack]  
 {
@@ -248,7 +249,7 @@ Ruft das Endresultat einer bestimmten Berechnung des Rucksack Problems ab, die D
 
 \subsection{Knotenfärbung}
 
-\paragraph{POST /avoidCollisions} - Erstellung einer neue Knotenfärbungsberechnung\mbox{}\\
+\paragraph{POST /avoidCollisionComputations} - Erstellung einer neue Knotenfärbungsberechnung\mbox{}\\
 Erstellt eine neue Berechnung des Knotenfärbungsproblems und speichert sie in die Datenbank.\\
 \textbf{Status Codes:}\\
 200 - OK: Berechnung wurde erstellt, zusätzlich erhält der Nutzer noch die ID der Berechnung.\\
@@ -268,7 +269,7 @@ Erstellt eine neue Berechnung des Knotenfärbungsproblems und speichert sie in d
 }
 \end{lstlisting}
 
-\paragraph{GET /algorithm/graphColorings/{ID}} - Abrufen der Eingabedaten einer Knotenfärbungsberechnung\mbox{}\\
+\paragraph{GET /algorithm/graphColoringComputations/\{ID\}} - Abrufen der Eingabedaten einer Knotenfärbungsberechnung\mbox{}\\
 Ruft die Eingabedaten einer bestimmten Berechnung des Knotenfärbungsproblems ab. Die Daten werden in der Schnittstelle zuerst für den Algorithmus umgewandelt.\\
 \textbf{Status Codes:}\\
 200 - OK: Die Eingabedaten wurden gefunden und zurückgeben.\\
@@ -286,7 +287,7 @@ Ruft die Eingabedaten einer bestimmten Berechnung des Knotenfärbungsproblems ab
 }
 \end{lstlisting}
 
-\paragraph{POST /algorithm/graphColoringSolutions} - Speichern einer Lösung für eine Knotenfärbungsberechnung\mbox{}\\
+\paragraph{POST /algorithm/graphColoringComputations/\{ID\}/solutions} - Speichern einer Lösung für eine Knotenfärbungsberechnung\mbox{}\\
 Speichert eine mögliche Lösung für eine Berechnung des Knotenfärbungsproblems. Die Lösung wird zuerst für den Nutzer umgewandelt und danach noch validiert.\\
 \textbf{Status Codes:}\\
 200 - OK: Lösung wurde gespeichert.\\
@@ -294,7 +295,6 @@ Speichert eine mögliche Lösung für eine Berechnung des Knotenfärbungsproblem
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Resultates für das Knotenfärbungsproblems aus Algorithmus-Sicht, label=lst:solution_graphcoloring_algo]  
 {
-  "computationId": "<Berechnung ID>",
   "solutionType": "<Resultat Typ (PARTIAL | FINAL)>",
   "differentValues": <Anzahl verschiedene Werte>,
   "items": [
@@ -306,11 +306,11 @@ Speichert eine mögliche Lösung für eine Berechnung des Knotenfärbungsproblem
 }
 \end{lstlisting}
 
-\paragraph{GET /optimalPackSolution/?computationId={ID}} - Abrufen des Resultats einer Rucksack Berechnung\mbox{}\\
-Ruft das Endresultat einer bestimmten Berechnung des Knotenfärbungsproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
+\paragraph{GET /optimalPackComputations/\{ID\}} - Abrufen des Status einer Rucksack Berechnung\mbox{}\\
+Ruft den Status und die Endresultate einer bestimmten Berechnung des Knotenfärbungsproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
 \textbf{Status Codes:}\\
 200 - OK: Das Endresultat wurden gefunden und zurückgeben.\\
-404 - Not Found: Kein Endresultat gefunden.\\
+404 - Not Found: Keine Berechnung gefunden.\\
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Endresultates für das Knotenfärbungsproblems, label=lst:solution_graphcoloring]  
 {
@@ -335,7 +335,7 @@ Ruft das Endresultat einer bestimmten Berechnung des Knotenfärbungsproblems ab,
 
 \subsection{Problem des Handlungsreisenden}
 
-\paragraph{POST /shortestRoutes} - Erstellung einer neue Routenberechnung\mbox{}\\
+\paragraph{POST /shortestRouteComputations} - Erstellung einer neue Routenberechnung\mbox{}\\
 Erstellt eine neue Berechnung des Problem des Handlungsreisenden und speichert sie in die Datenbank.\\
 \textbf{Status Codes:}\\
 200 - OK: Berechnung wurde erstellt, zusätzlich erhält der Nutzer noch die ID der Berechnung.\\
@@ -363,7 +363,7 @@ Erstellt eine neue Berechnung des Problem des Handlungsreisenden und speichert s
 }
 \end{lstlisting}
 
-\paragraph{GET /algorithm/tsp/{ID}} - Abrufen der Eingabedaten einer Routenberechnung\mbox{}\\
+\paragraph{GET /algorithm/tspComputations/\{ID\}} - Abrufen der Eingabedaten einer Routenberechnung\mbox{}\\
 Ruft die Eingabedaten einer bestimmten Berechnung des Problem des Handlungsreisenden ab. Die Daten werden in der Schnittstelle zuerst für den Algorithmus umgewandelt.\\
 \textbf{Status Codes:}\\
 200 - OK: Die Eingabedaten wurden gefunden und zurückgeben.\\
@@ -391,7 +391,7 @@ Ruft die Eingabedaten einer bestimmten Berechnung des Problem des Handlungsreise
 }
 \end{lstlisting}
 
-\paragraph{POST /algorithm/tspSolutions} - Speichern einer Lösung für eine Routenberechnung\mbox{}\\
+\paragraph{POST /algorithm/tspComputations/\{ID\}/solutions} - Speichern einer Lösung für eine Routenberechnung\mbox{}\\
 Speichert eine mögliche Lösung für eine Berechnung des Problem des Handlungsreisenden. Die Lösung wird zuerst für den Nutzer umgewandelt und danach noch validiert.\\
 \textbf{Status Codes:}\\
 200 - OK: Lösung wurde gespeichert.\\
@@ -399,7 +399,6 @@ Speichert eine mögliche Lösung für eine Berechnung des Problem des Handlungsr
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Resultates für das Problem des Handlungsreisenden aus Algorithmus-Sicht, label=lst:solution_tsp_algo]  
 {
-  "computationId": "<Berechnung ID>",
   "solutionType": "<Resultat Typ (PARTIAL | FINAL)>",
   "totalLength": <Totale Laenge>,
   "waypoints": [
@@ -410,11 +409,11 @@ Speichert eine mögliche Lösung für eine Berechnung des Problem des Handlungsr
 }
 \end{lstlisting}
 
-\paragraph{GET /shortestRouteSolutions/?computationId={ID}} - Abrufen des Resultats einer Routenberechnung\mbox{}\\
-Ruft das Endresultat einer bestimmten Berechnung des Problem des Handlungsreisenden ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
+\paragraph{GET /shortestRouteComputations/\{ID\}} - Abrufen des Status einer Routenberechnung\mbox{}\\
+Ruft den Status und die Endresultate einer bestimmten Berechnung des Problem des Handlungsreisenden ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
 \textbf{Status Codes:}\\
 200 - OK: Das Endresultat wurden gefunden und zurückgeben.\\
-404 - Not Found: Kein Endresultat gefunden.\\
+404 - Not Found: Keine Berechnung gefunden.\\
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Endresultates für das Problem des Handlungsreisenden, label=lst:solution_tsp]  
 {
@@ -443,7 +442,7 @@ Ruft das Endresultat einer bestimmten Berechnung des Problem des Handlungsreisen
 
 \subsection{Briefträgerproblem}
 
-\paragraph{POST /coverAllConnections} - Erstellung einer neue Routenberechnung\mbox{}\\
+\paragraph{POST /coverAllConnectionComputations} - Erstellung einer neue Routenberechnung\mbox{}\\
 Erstellt eine neue Berechnung des Briefträgerproblem und speichert sie in die Datenbank.\\
 \textbf{Status Codes:}\\
 200 - OK: Berechnung wurde erstellt, zusätzlich erhält der Nutzer noch die ID der Berechnung.\\
@@ -477,7 +476,7 @@ Erstellt eine neue Berechnung des Briefträgerproblem und speichert sie in die D
 }
 \end{lstlisting}
 
-\paragraph{GET /algorithm/postmans/{ID}} - Abrufen der Eingabedaten einer Routenberechnung\mbox{}\\
+\paragraph{GET /algorithm/postmanComputations/\{ID\}} - Abrufen der Eingabedaten einer Routenberechnung\mbox{}\\
 Ruft die Eingabedaten einer bestimmten Berechnung des Briefträgerproblem ab. Die Daten werden in der Schnittstelle zuerst für den Algorithmus umgewandelt.\\
 \textbf{Status Codes:}\\
 200 - OK: Die Eingabedaten wurden gefunden und zurückgeben.\\
@@ -511,7 +510,7 @@ Ruft die Eingabedaten einer bestimmten Berechnung des Briefträgerproblem ab. Di
 }
 \end{lstlisting}
 
-\paragraph{POST /algorithm/postmanSolutions} - Speichern einer Lösung für eine Routenberechnung\mbox{}\\
+\paragraph{POST /algorithm/postmanComputations/\{ID\}/solutions} - Speichern einer Lösung für eine Routenberechnung\mbox{}\\
 Speichert eine mögliche Lösung für eine Berechnung des Briefträgerproblems. Die Lösung wird zuerst für den Nutzer umgewandelt und danach noch validiert.\\
 \textbf{Status Codes:}\\
 200 - OK: Lösung wurde gespeichert.\\
@@ -519,7 +518,6 @@ Speichert eine mögliche Lösung für eine Berechnung des Briefträgerproblems. 
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Resultates für das Briefträgerproblem aus Algorithmus-Sicht, label=lst:solution_postman_algo]  
 {
-  "computationId": "<Berechnung ID>",
   "solutionType": "<Resultat Typ (PARTIAL | FINAL)>",
   "items": [
     {
@@ -529,11 +527,11 @@ Speichert eine mögliche Lösung für eine Berechnung des Briefträgerproblems. 
 }
 \end{lstlisting}
 
-\paragraph{GET /coverAllConnectionSolutions/?computationId={ID}} - Abrufen des Resultats einer Routenberechnung\mbox{}\\
-Ruft das Endresultat einer bestimmten Berechnung des Briefträgerproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
+\paragraph{GET /coverAllConnectionComputations/\{ID\}} - Abrufen des Status einer Routenberechnung\mbox{}\\
+Ruft den Status und die Endresultate einer bestimmten Berechnung des Briefträgerproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
 \textbf{Status Codes:}\\
 200 - OK: Das Endresultat wurden gefunden und zurückgeben.\\
-404 - Not Found: Kein Endresultat gefunden.\\
+404 - Not Found: Keine Berechnung gefunden.\\
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Endresultates für das Briefträgerproblem, label=lst:solution_postman]  
 {
@@ -551,15 +549,14 @@ Ruft das Endresultat einer bestimmten Berechnung des Briefträgerproblems ab, di
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%		Stundenplan Design
+%		Stundenplan Erstellung
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Stundenplan Design}
-Eine Ausprägung des Planungsproblem ist das Erstellen eines Stundenplans.
+\subsection{Stundenplan Erstellung}
 
-\paragraph{POST /timetableSchedules} - Erstellung einer neue Stundenplan Berechnung\mbox{}\\
+\paragraph{POST /timetableComputations} - Erstellung einer neue Stundenplan Berechnung\mbox{}\\
 Erstellt eine neue Berechnung des Stundenplanproblems und speichert sie in die Datenbank.\\
 \textbf{Status Codes:}\\
 200 - OK: Berechnung wurde erstellt, zusätzlich erhält der Nutzer noch die ID der Berechnung.\\
@@ -653,7 +650,7 @@ Erstellt eine neue Berechnung des Stundenplanproblems und speichert sie in die D
 }
 \end{lstlisting}
 
-\paragraph{GET /algorithm/timetableSchedules/{ID}} - Abrufen der Eingabedaten einer Stundenplan Berechnung\mbox{}\\
+\paragraph{GET /algorithm/timetableComputations/\{ID\}} - Abrufen der Eingabedaten einer Stundenplan Berechnung\mbox{}\\
 Ruft die Eingabedaten einer bestimmten Berechnung des Stundenplanproblems ab. Die Daten werden in der Schnittstelle zuerst für den Algorithmus umgewandelt.\\
 \textbf{Status Codes:}\\
 200 - OK: Die Eingabedaten wurden gefunden und zurückgeben.\\
@@ -739,7 +736,7 @@ Ruft die Eingabedaten einer bestimmten Berechnung des Stundenplanproblems ab. Di
 }
 \end{lstlisting}
 
-\paragraph{POST /algorithm/timetableScheduleSolutions} - Speichern einer Lösung für eine Stundenplan Berechnung\mbox{}\\
+\paragraph{POST /algorithm/timetableComputations/\{ID\}/solutions} - Speichern einer Lösung für eine Stundenplan Berechnung\mbox{}\\
 Speichert eine mögliche Lösung für eine Berechnung des Stundenplanproblems. Die Lösung wird zuerst für den Nutzer umgewandelt und danach noch validiert.\\
 \textbf{Status Codes:}\\
 200 - OK: Lösung wurde gespeichert.\\
@@ -747,7 +744,6 @@ Speichert eine mögliche Lösung für eine Berechnung des Stundenplanproblems. D
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Resultates für das Stundenplanproblem aus Algorithmus-Sicht, label=lst:solution_timetableScheduling_algo]  
 {
-  "computationId": "<Berechnung ID>",
   "solutionType": "<Resultat Typ (PARTIAL | FINAL)>",
   "timeSlices": [
     {
@@ -771,11 +767,11 @@ Speichert eine mögliche Lösung für eine Berechnung des Stundenplanproblems. D
 }
 \end{lstlisting}
 
-\paragraph{GET /timetableScheduleSolutions/?computationId={ID}} - Abrufen des Resultats einer Stundenplan Berechnung\mbox{}\\
-Ruft das Endresultat einer bestimmten Berechnung des Stundenplanproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
+\paragraph{GET /timetableScheduleComputations/\{ID\}} - Abrufen des Status einer Stundenplan Berechnung\mbox{}\\
+Ruft den Status und die Endresultate einer bestimmten Berechnung des Stundenplanproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
 \textbf{Status Codes:}\\
 200 - OK: Das Endresultat wurden gefunden und zurückgeben.\\
-404 - Not Found: Kein Endresultat gefunden.\\
+404 - Not Found: Keine Berechnung gefunden.\\
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Endresultates für das Stundenplanproblem, label=lst:solution_timetableScheduling]  
 {
@@ -824,14 +820,14 @@ Ruft das Endresultat einer bestimmten Berechnung des Stundenplanproblems ab, die
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%		Spielplan Design
+%		Spielplan Erstellung
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Spielplan Design}
+\subsection{Spielplan Erstellung}
 
-\paragraph{POST /matchSchedules} - Erstellung einer neue Spielplan Berechnung\mbox{}\\
+\paragraph{POST /matchScheduleComputations} - Erstellung einer neue Spielplan Berechnung\mbox{}\\
 Erstellt eine neue Berechnung des Spielplanproblems und speichert sie in die Datenbank.\\
 \textbf{Status Codes:}\\
 200 - OK: Berechnung wurde erstellt, zusätzlich erhält der Nutzer noch die ID der Berechnung.\\
@@ -890,7 +886,7 @@ Erstellt eine neue Berechnung des Spielplanproblems und speichert sie in die Dat
 }
 \end{lstlisting}
 
-\paragraph{GET /algorithm/matchSchedules/{ID}} - Abrufen der Eingabedaten einer Spielplan Berechnung\mbox{}\\
+\paragraph{GET /algorithm/matchScheduleComputations/\{ID\}} - Abrufen der Eingabedaten einer Spielplan Berechnung\mbox{}\\
 Ruft die Eingabedaten einer bestimmten Berechnung des Spielplanproblems ab. Die Daten werden in der Schnittstelle zuerst für den Algorithmus umgewandelt.\\
 \textbf{Status Codes:}\\
 200 - OK: Die Eingabedaten wurden gefunden und zurückgeben.\\
@@ -944,7 +940,7 @@ Ruft die Eingabedaten einer bestimmten Berechnung des Spielplanproblems ab. Die 
 }
 \end{lstlisting}
 
-\paragraph{POST /algorithm/matchScheduleSolutions} - Speichern einer Lösung für eine Spielplan Berechnung\mbox{}\\
+\paragraph{POST /algorithm/matchScheduleComputations/\{ID\}/solutions} - Speichern einer Lösung für eine Spielplan Berechnung\mbox{}\\
 Speichert eine mögliche Lösung für eine Berechnung des Spielplanproblems. Die Lösung wird zuerst für den Nutzer umgewandelt und danach noch validiert.\\
 \textbf{Status Codes:}\\
 200 - OK: Lösung wurde gespeichert.\\
@@ -952,7 +948,6 @@ Speichert eine mögliche Lösung für eine Berechnung des Spielplanproblems. Die
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Resultates für das Spielplanproblem aus Algorithmus-Sicht, label=lst:solution_matchScheduling_algo]  
 {
-  "computationId": "<Berechnung ID>",
   "solutionType": "<Resultat Typ (PARTIAL | FINAL)>",
   "timeSlices": [
     {
@@ -978,11 +973,11 @@ Speichert eine mögliche Lösung für eine Berechnung des Spielplanproblems. Die
 }
 \end{lstlisting}
 
-\paragraph{GET /matchScheduleSolutions/?computationId={ID}} - Abrufen des Resultats einer Spielplan Berechnung\mbox{}\\
-Ruft das Endresultat einer bestimmten Berechnung des Spielplanproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
+\paragraph{GET /matchScheduleComputations/\{ID\}} - Abrufen des Status einer Spielplan Berechnung\mbox{}\\
+Ruft den Status und die Endresultate einer bestimmten Berechnung des Spielplanproblems ab, die Daten werden direkt aus der Datenbank genommen, da sie dort in Nutzer-Sicht abgespeichert sind.\\
 \textbf{Status Codes:}\\
 200 - OK: Das Endresultat wurden gefunden und zurückgeben.\\
-404 - Not Found: Kein Endresultat gefunden.\\
+404 - Not Found: Keine Berechnung gefunden.\\
 
 \begin{lstlisting}[language=JSON, caption=Beispiel eines Endresultates für das Spielplanproblem, label=lst:solution_matchScheduling]  
 {
