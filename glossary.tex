@@ -22,6 +22,14 @@
 % you want to include more information here such as the definition.
 \defglsdisplayfirst[\glsdefaulttype]{\textit{#1}}
 
+\newdualentry{mvvm}    % label
+  {MVVM}               % abbreviation
+  {Model View ViewModel}  % long form
+  {Ein Konzept, welches Ähnlichkeiten mit dem \gls{mvc} Konzept hat, jedoch ein Two-way Binding ermöglicht.}
+\newdualentry{mvc}    % label
+  {MVC}               % abbreviation
+  {Model View Controller}  % long form
+  {Ein Konzept, welches zum Ziel hat eine hohe Wiederverwendbarkeit bzw. einfachen Austausch von einzelnen Komponent zu ermöglich.}  
 \newdualentry{sql}    % label
   {SQL}               % abbreviation
   {Structured Query Language}  % long form
@@ -56,6 +64,10 @@ jedes Mal den selben Inhalt zurück.}
   {JSON}               % abbreviation
   {JavaScript Object Notation}  % long form
   {Format zum Austausch von strukturierterten Daten, bekannt für seine gute Lesbarkeit und wenig Overhead.}
+ \newdualentry{ajax}    % label
+  {AJAX}               % abbreviation
+  {Asynchronous JavaScript and XML}  % long form
+  {Ermöglicht das asynchrone Ausführen von HTTP-Requests auf einer Webseite.}
 \newdualentry{xml}    % label
   {XML}               % abbreviation
   {Extensible Markup Language}  % long form
@@ -157,4 +169,8 @@ kann genau bestimmt werden, ob sie wahr oder falsch ist.}
 \newglossaryentry{domainlanguage}{%
   name={Domänensprache},
   description={Sprache für Begriffe in einer spezifische Umgebung bzw. einer gewissen Nutzergruppe.}
+}
+\newglossaryentry{mockup}{%
+  name={Mockup},
+  description={Der aus dem Englischen stammende Begriff Mock-up oder Mockup (auch Maquette) bezeichnet im Deutschen beispielsweise eine Attrappe. Er wird heute aber meist für ein maßstäblich gefertigtes Modell bzw. eine Nachbildung zu Präsentationszwecken benutzt, demgegenüber ist der Prototyp ein funktionsfähiges Modell.\cite{wiki_mockup}}
 }

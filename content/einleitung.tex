@@ -9,25 +9,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Theoretische Grundlagen}\label{chap.einleitung}
-Die Einleitung dient dazu, wichtige Informationen zum Verständnis der Arbeit zu erläutern. Es werden die Komplexitätsklassen der Theoretischen Informatik und die verschiedenen 
+Die Einleitung dient dazu, wichtige Informationen zum Verständnis der Arbeit zu erläutern. Es werden die Komplexitätsklassen der theoretischen Informatik und die verschiedenen 
 Algorithmentypen erklärt.
 
-\section{Komplexitätsklassen der Theoretischen Informatik}\label{cat_theo_inf}
-In der Theoretischen Informatik wird zwischen verschiedenen Komplexitätsklassen unterschieden. In diesem Kapitel werden nur auf die Komplexitätsklassen NP, P, NP-schwer und 
+\section{Komplexitätsklassen der theoretischen Informatik}\label{cat_theo_inf}
+In der theoretischen Informatik wird zwischen verschiedenen Komplexitätsklassen unterschieden. In diesem Kapitel werden nur auf die Komplexitätsklassen NP, P, NP-schwer und 
 NP-vollständig eingegangen, weitere Klassen wie zum Beispiel Random Polynomial (RP) oder Zero-Error, Probabilistic, Polynomial (ZPP) werden nicht erläutert, da sie nicht zum Verständnis der 
 Arbeit notwendig sind. Die nachfolgenden Erklärungen sind aus \cite{hopcroft2011einfuehrung} und \cite{slides_p_np} abgeleitet.
 
 \subsection{NP}\label{np}
-Falls die Korrektheit einer Lösung zu einem Problem in \glossarmark{Polynomialzeit} überprüft werden kann, also ein \glossarmark{Polynomialzeit-Verifizierer} vorhanden ist, liegt das Problem in 
-NP.  In \glossarmark{Polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$, wobei n die Eingabelänge und k eine Konstante ist, dargestellt werden 
-kann.
+Falls die Korrektheit einer Lösung zu einem Problem in \glossarmark{Polynomialzeit} überprüft werden kann, liegt das Problem in NP. Die Prozedur, welche für das die Überprüfung benötigt wird, 
+wird \glossarmark{Polynomialzeit-Verifizierer} genannt.  In \glossarmark{Polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$, wobei n die Eingabelänge 
+und k eine Konstante ist, dargestellt werden kann.
 
 \subsection{P}\label{p_complet}
 Probleme, welche in \glossarmark{Polynomialzeit} mit Hilfe einer \glossarmark{deterministischen Turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
 
 \subsection{NP-schwer}\label{np_hard}
-Probleme, welche nicht in \glossarmark{Polynomialzeit} lösbar sind, das heisst eine Laufzeitkomplexität höher als polynomial haben, zum Beispiel $k^n$ (exponentiell) oder $n!$ (faktoriell), 
-gehören zu den NP-schweren Problemen. Um zu beweisen, dass das Problem NP-schwer ist, wird versucht ein anderes bekanntes NP-schweres Problem auf dieses Problem zu reduzieren. Mit 
+Probleme, welche nicht in \glossarmark{Polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial haben, zum Beispiel 
+$k^n$ (exponentiell) oder $n!$ (faktoriell). Um zu beweisen, dass das Problem NP-schwer ist, wird versucht ein anderes bekanntes NP-schweres Problem auf dieses Problem zu reduzieren. Mit 
 diesem Beweis wird gezeigt, dass das Problem mindestens so schwer wie das andere Problem ist.
 
 \subsection{NP-vollständig}\label{np_complet}
@@ -45,7 +45,7 @@ Vinay Deolalikar im Jahr 2010 unternommen \cite{p_neq_np_paper}. In diesem Versu
 Beweis weiter offen.
 
 \begin{figure}[h]
-\includegraphics[scale=0.7]{images/einleitung/p_np_np-complete_np-hard.png}
+\includegraphics[scale=0.65]{images/einleitung/p_np_np-complete_np-hard.png}
 \caption[Übersicht der Komplexitätsklassen ($P!=NP$ und $P=NP$)]{Übersicht der Komplexitätsklassen ($P \neq NP$ und $P=NP$) (Grafik entnommen aus \cite{pic_p_np})}
 \label{fig:complexity_overview}
 \end{figure}
@@ -54,10 +54,12 @@ Beweis weiter offen.
 
 \subsection{Backtracking Algorithmen}\label{backtracking_algos}
 Beim Backtracking geht es darum, sich einer Lösung eines Problems schrittweise zu nähern. Bei jedem neuen Schritt wird geprüft, ob es noch eine gültige Lösung darstellt. Falls dies nicht der 
-Fall ist, wird der letzte Schritt rückgängig gemacht und es wird ein anderer Weg eingeschlagen. In \cite{backtracking} wird dieses Verfahren an Hand des Damenproblems aufgezeigt.
+Fall ist, wird der letzte Schritt rückgängig gemacht und es wird ein anderer Weg eingeschlagen. In \cite{backtracking} wird dieses Verfahren anhand des Damenproblems aufgezeigt.
 
 \subsection{Greedy Algorithmen}\label{greedy_algos}
-Greedy Algorithmen liefern oft eine schnelle Lösung, welche aber meist nicht optimal ist. Die Algorithmen entscheiden bei jedem Schritt, was die aktuell beste Möglichkeit ist. Da sie nicht alle Möglichkeiten betrachten, finden sie oft nur ein lokales Minimum bzw. Maximum. In \autoref{fig:greedy_algo} ist in grün der Weg des Greedy Algorithmus zu sehen. Der Algorithmus entscheidet sich für die 12 auf der zweiten Ebene, da diese in dem Moment als beste Lösung gilt. Mit dem violetten Pfad könnte jedoch einen viel höheren Wert erzielen werden.
+Greedy Algorithmen liefern oft eine schnelle Lösung, welche aber meist nicht optimal ist. Die Algorithmen entscheiden bei jedem Schritt, was die aktuell beste Möglichkeit ist. Da sie nicht alle 
+Möglichkeiten betrachten, finden sie oft nur ein lokales Minimum bzw. Maximum. In \autoref{fig:greedy_algo} ist in grün der Weg des Greedy Algorithmus zu sehen. Der Algorithmus entscheidet 
+sich für die 12 auf der zweiten Ebene, da diese in dem Moment als beste Lösung gilt. Mit dem violetten Pfad könnte jedoch einen viel höheren Wert erzielen werden.
 
 \begin{figure}[h]
 \centering 
@@ -69,7 +71,8 @@ Greedy Algorithmen liefern oft eine schnelle Lösung, welche aber meist nicht op
 \FloatBarrier
 
 \subsection{Evolutionäre Algorithmen}\label{ea_algos}
-Evolutionäre Algorithmen nähern sich einer optimalen Lösung an. Sie basieren auf Kombinationen (Generationen) von Objekten und einer Fitnessfunktion zur Bewertung der einzelnen Generationen. Ein Ablauf eines Evolutionären Algorithmus sieht meist wie folgt aus:
+Evolutionäre Algorithmen nähern sich einer optimalen Lösung an. Sie basieren auf Kombinationen (Generationen) von Objekten und einer Fitnessfunktion zur Bewertung der einzelnen Generationen. 
+Ein Ablauf eines Evolutionären Algorithmus sieht meist wie folgt aus:
 \begin{enumerate}
 	\item Initialisierung: Die erste Generation wird meist zufällig erzeugt
 	\item Iteration durch folgende Schritte bis die Lösung den gewünschten Wert erreicht hat:

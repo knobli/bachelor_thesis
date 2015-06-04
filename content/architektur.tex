@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Konzept der Schnittstelle \resultAssignment{[R4]}}\label{chap.architektur}
-In diesem Kapitel wird auf die Strukur und das Konzept der Schnittstelle eingegangen. Dieses Konzept legt die Grundlage für die Umsetzung und entscheidet somit auch, ob die 
+In diesem Kapitel wird auf die Strukur und das Konzept der Schnittstelle eingegangen. Dieses Konzept legt die Grundlage für die Umsetzung und entscheidet somit, ob die 
 Aufgabe gelöst werden kann.
 
 \section{Übersicht}\label{architektur_uebersicht}
@@ -39,38 +39,38 @@ den Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
 \FloatBarrier
 \subsection{REST API}
 Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem De-facto-Standard 
-(siehe \cite{wiki_restful}). Falls Fehler auftretten werden die \glossarmark{HTTP-Statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
+(siehe \cite{wiki_restful}). Falls Fehler auftreten, werden die \glossarmark{HTTP-Statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
 Die Business Logik besteht aus Translator, Service, Entity und Validator von den jeweiligen Problemen. 
 \paragraph{Translator}
-Es gibt jeweils ein ComputationTranslator für die Umwandlung hin zum Algorithmus und einen SolutionTranslator für die Umwandlung vom Algorithmus zurück in das System. In den Translators steckt 
-die ganze Logik. Hier fliesst ein, wie der Algorithmus die Daten für die Verarbeitung benötigt und wie das Resultat zurück kommt. Es wäre zum Beispiel möglich die Daten in Kombinationen 
-für einen evolutionären Algorithmus umzuwandeln, so würde allenfalls ein generischer Algorithmus für alle Probleme ausreichen. Ebenfalls möglich wäre eine Umwandlung des 
+Es gibt jeweils ein `ComputationTranslator' für die Umwandlung vom Nutzer hin zum Algorithmus und einen `SolutionTranslator' für die Umwandlung vom Algorithmus zurück in das System. In den 
+Translators steckt die ganze Logik. Hier fliesst ein, wie der Algorithmus die Daten für die Verarbeitung benötigt und wie das Resultat zurück kommt. Es wäre zum Beispiel möglich, die Daten in 
+Kombinationen für einen evolutionären Algorithmus umzuwandeln, so würde allenfalls ein generischer Algorithmus für alle Probleme ausreichen. Ebenfalls möglich wäre eine Umwandlung des 
 Stundenplanproblems auf ein Knotenfärbungsproblem und somit könnte der gleiche Algorithmus angesprochen werden (vergleiche \cite{timetabling_abdullah}). Die Möglichkeiten mit dem 
 Konzept der Translators ist sehr vielfälltig. Zusätzlich kann im Translator das Resultat mit zusätzlichen Informationen, zum Beispiel Statistiken, angereichert werden.
 \paragraph{Service}
 Der Service kann sehr generisch gehalten werden und benötigt keine problemspezifisches Methoden. 
 \paragraph{Entity}
-Die Entitäten sind von Problem zu Problem unterschiedlich, es muss analysiert werden, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus 
+Die Entitäten sind von Problem zu Problem unterschiedlich. Es muss analysiert werden, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus 
 gebraucht werden. 
 \paragraph{Validator}
 Der Validator entscheidet, ob eine Lösung gültig ist oder nicht. Wie bereits im \autoref{cat_theo_inf} erklärt, kann jedes NP-vollständige Problem in polynomialer Zeit validiert werden.
 
 \subsection{Persistance API}
 Die Abstraktion der Datenbank wird mittels eines Persistance APIs, welches mit der Datenbank interagiert, realisiert. Dieses API ist für das Laden und Speichern der Daten 
-verantwortlich und bietet die Möglichkeit spezifische Abfragen auszuführen.
+verantwortlich und bietet die Möglichkeit, spezifische Abfragen auszuführen.
 
 \subsection{Datenbank}
-Jedes Problem hat seine eigene Ausprägung von Computation und Solution, welche abgespeichert werden müssen. Die Datenbank sollte wenn möglich eine ähnliche Flexibilität wie 
-das Programm selber aufweisen. Die Vorgänge benötigen keine Transaktionen und sind zum grossen Teil nur Einfüge-Operationen, nur selten wird ein Eintrag geändert. Die Daten werden 
+Jedes Problem hat seine eigene Ausprägung von Computation und Solution, welche abgespeichert werden müssen. Die Datenbank sollte, wenn möglich, eine ähnliche Flexibilität, wie 
+das Programm selber, aufweisen. Die Vorgänge benötigen keine Transaktionen und sind zum grossen Teil nur Einfüge-Operationen, nur selten wird ein Eintrag geändert. Die Daten werden 
 immer in der Nutzer-Sicht gespeichert.
 
 \begin{landscape}
 \subsection{Ablauf}
 \thispagestyle{empty}
-In \autoref{fig:workflow} wird der Ablauf des ganzen Vorganges und die Interaktion mit dem Nutzer und dem Verarbeitungssystem nochmals verdeutlicht. Die Translators, welche in dem 
-Prototyp verwendet werden, sind nur eine Möglichkeit, welche diese Konzept bietet. Generell baut dieses Konzept auf eine pre- und post-Aktion vor bzw. nach dem Starten des Algorithmus 
+In \autoref{fig:workflow} wird der Ablauf des ganzen Vorganges und die Interaktion mit dem Nutzer und dem Verarbeitungssystem verdeutlicht. Die Translators, welche in dem 
+Prototyp verwendet werden, sind nur eine Möglichkeit, welche dieses Konzept bietet. Generell baut dieses Konzept auf eine pre- und post-Aktion vor bzw. nach dem Starten des Algorithmus 
 auf.
 
 \begin{figure}[h]
@@ -83,13 +83,13 @@ auf.
 \end{landscape}
 
 Die \autoref{fig:sequenz_diagramm_start} zeigt das Sequenzdiagramm für den Start eines beliebigen Problems, alle Komponenten mit '\{Problem\}' sind spezifische Problem-Komponenten, 
-die anderen sind generisch. Bei Speichern einer Berechnung wird der Status 'CREATED' gesetzt. Nach dem Speichern wird über eine Solver-Komponente asynchron das Verarbeitungssystem 
-gestartet und der Status auf 'STARTED' gesetzt. Das Verarbeitungssystem holt sich nun die benötigten Informationen. Der Controller lädt das Problem vom Service, dieser wiederum lädt es vom 
+die anderen sind generische. Bei Speichern einer Berechnung wird der Status 'CREATED' gesetzt. Nach dem Speichern wird über die `Solver'-Komponente asynchron das Verarbeitungssystem 
+gestartet und der Status auf 'STARTED' gesetzt. Das Verarbeitungssystem holt sich die benötigten Informationen. Der Controller lädt das Problem vom Service, dieser wiederum lädt es vom 
 Repository und wandelt es für den Algorithmus um.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.8]{images/visio/sequenz_diagramm_start.png}
+\includegraphics[scale=0.74]{images/visio/sequenz_diagramm_start.png}
 \caption[Start eines beliebigen Problemes]{Start eines beliebigen Problemes \selfmade{}}
 \label{fig:sequenz_diagramm_start}
 \end{figure}
@@ -98,23 +98,23 @@ Repository und wandelt es für den Algorithmus um.
 
 Die \autoref{fig:sequenz_diagramm_result} zeigt das Sequenzdiagramm für das Abspeichern eines Resultates einer beliebigen Berechnung. Bei einem Speicheraufruf wird zuerst das Problem 
 geladen, danach wird die Lösung vom Algorithmus mit Hilfe der Eingabeparameter transferiert und vom Validator validiert. Nun wird anhand des Resultattypes der Status der Berechnung 
-abgeändert. Das Resultat wird dann mit dem Ergebnis der Validierung in die Datenbank gespeichert. Wenn der Nutzer den Status einer Berechunung abruft, fragt der Controller über den 
-Service den Status ab. Der Service lädt dazu das Problem, fragt die vorhandenen Resultate ab, fügt diese zu einem Status zusammen und schickt den Status an den Controller zurück.
+abgeändert. Das Resultat wird mit dem Ergebnis der Validierung in die Datenbank gespeichert. Wenn der Nutzer den Status einer Berechunung abruft, fragt der Controller über den 
+Service den Status ab. Der Service lädt das Problem, fragt die vorhandenen Resultate ab, fügt diese zu einem Status zusammen und schickt den Status an den Controller zurück.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.8]{images/visio/sequenz_diagramm_result.png}
+\includegraphics[scale=0.72]{images/visio/sequenz_diagramm_result.png}
 \caption[Abspeichern des Resultates eines beliebigen Problemes]{Abspeichern des Resultates eines beliebigen Problemes \selfmade{}}
 \label{fig:sequenz_diagramm_result}
 \end{figure}
 
 \section{Datenbank Varianten}\label{db_varianten}
-Es gibt verschiedene Datenbanktypen und jede hat seine Vor- und Nachteile. In diesem Abschnitt werden vier verschiedenen Typen miteinander verglichen und die beste für diesen 
+Es gibt verschiedene Datenbanktypen und jede hat seine Vor- und Nachteile. In diesem Abschnitt werden vier verschiedenen Typen miteinander verglichen und der beste für diesen 
 Anwendungszweck ausgewählt. Um die Eigenheiten der Datenbanken hervorzuheben, wird bei jeder Art das gleiche Beispiel mit der spezifischen Definitions- und Abfragesprache gemacht.
 
 \subsection{CAP-Theorem}\label{cap_theorem}
-Das CAP-Theorem ist 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem zeigt, dass die Werte Konsistenz (C), Verfügbarkeit (A) und Partitionstoleranz (P) ein 
-Dreieck (siehe \autoref{fig:cap}) bilden und das ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
+Das CAP-Theorem ist im Jahr 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem zeigt, dass die Werte Konsistenz (C), Verfügbarkeit (A) und Partitionstoleranz (P) ein 
+Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
 
 \begin{figure}[h]
 \centering
@@ -165,7 +165,7 @@ Die Abfrage der Strasse bei einer relationaler Datenbank mittels \gls{sql} ist i
 \end{lstlisting}
 
 \subsection{Objektrelationales Datenbanksystem}\label{ordbms}
-\gls{ordbms} wurden entwickelt um das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
+\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt um, das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
 Die folgenden Beschreibung der Eigenschaften sind aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
 komplexe Datentypen unterstützt, so können zusätzliche Typen definiert werden und diese können dann bei einer Tabellendefinition verwendet werden.  
 In \autoref{lst:type_definition_ordbms} ist eine Typendefinition von 'AddressType' zu sehen, welche wiederum in \autoref{lst:use_type_definition_ordbms} 
@@ -203,7 +203,7 @@ bis zu fünf E-Mail-Adressen gezeigt.
                Mail     VARCHAR(40) ARRAY[5]);
 \end{lstlisting}
 
-Weiter bieten die Systeme die Möglichkeiten Methoden auf Typen und Tabellen und Vererbungshierarchien zu definieren. Der Anwendungsbereich 
+Weiter bieten die Systeme die Möglichkeiten, Methoden auf Typen und Tabellen und Vererbungshierarchien zu definieren. Der Anwendungsbereich 
 liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Objekten durchführen.
 
 \subsection{Objekorientiertes Datenbanksystem}\label{object_db}
@@ -212,7 +212,7 @@ Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} ent
 ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
 Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekte gleichzeitig umgehen. 
 Dies kann bei einem geplanten Umstrutkurierung sehr hilfreich sein, wenn die neue Version erst für Tests verwendet wird und die bestehenden Objekte erst nach dem 
-Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt wie das Objekt 'Person' in \gls{odl} definiert wird.
+Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt, wie das Objekt 'Person' in \gls{odl} definiert wird.
 
 \begin{lstlisting}[language=C++, caption=Objektdefinition in objektorientierem Datenbanksystem, label=lst:table_definition_oodbms]  
     class PERSON
@@ -240,8 +240,8 @@ Zuätzlich können bei diesen Systemen Vererbungshierarchien und Methoden in Obj
 welche oft und lange mit komplexen Objekten arbeiten.
 
 \subsection{NoSQL Datenbanksystem}\label{no_sql_db}
-NoSQL Datenbanksystem folgen nicht dem \gls{acid} Prinzip, sie sind entwickelt worden um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
-Facebook, Yahoo und Twitter zu genügen. Die Systeme sind nicht relational aufgebaut und verwenden oft nicht SQL als Abfragesprache (siehe \cite{vaish2013getting}). 
+NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip, sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
+Facebook, Yahoo und Twitter zu genügen. Die Systeme sind nicht relational aufgebaut und verwenden oft eine andere Abfragesprache als \gls{sql} (siehe \cite{vaish2013getting}). 
 Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Brewer.
 
 \begin{myQuote}{Gaurav Vaish \cite{vaish2013getting}}
@@ -250,7 +250,7 @@ Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Bre
 \textbf{Eventual consistency}: The database may be momentarily inconsistent but will be consistent eventually."'
 \end{myQuote}
 
-Nahe zu alle NoSQL Datenbanksysteme sind schemalos, dass heisst die Tabellen müsse nicht im Vorherein definiert werden. Die Abfragen gestalten sich einfach, JOIN Befehle entfallen 
+Nahe zu alle NoSQL Datenbanksysteme sind schemalos, dass heisst, die Tabellen müsse nicht im Vorherein definiert werden. Die Abfragen gestalten sich einfach, JOIN Befehle entfallen 
 komplett. Durch den lockeren Aufbau kann eine höhere Performance erzielt werden, die Unterschiede bei der Geschwindigkeit werden bereits bei kleineren Datenmengen bemerkbar.
 
 \subsubsection{NoSQL Datenbanktypen}\label{no_sql_db_subgroups}
@@ -310,14 +310,13 @@ wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in 
 \end{lstlisting}
 
 Die Definitions- und Abfragesprache ist gleich wie bei relationalen Datenbanken, deshalb wird hier auf Beispiele verzichtet. Der Vorteil 
-einer spaltenorientierten Datenbank liegt in der Performance bei \glossarmark{Aggregationsfunktionen} und zusätzlich bei 
-Veränderungen für alle Werte einer Spalte. Dafür ist das 
-Einfügen einer neu Zeile oder das Auslesen einer ganze Zeile aufwendiger als bei dem zeilenorientierten Ansatz.
+einer spaltenorientierten Datenbank liegt in der Performance bei \glossarmark{Aggregationsfunktionen}. Weiter führt dieser Datenbanktyp Veränderungen, 
+welche alle Werte einer Spalte betreffen, effizient durch. Dafür ist das Einfügen einer neu Zeile oder das Auslesen einer ganze Zeile aufwendiger als bei dem zeilenorientierten Ansatz.
 
 \paragraph{Graph}
 In Graphdatenbanken sind die abgespeicherten Objekte die Knoten und die Beziehung der Objekte bilden die Kanten. Die Kanten können zusätzlich mit Eigenschaften versehen werden. Dieser 
-Datenbanktyp kann für komplexe Netzwerke verwendet werden. Der Vorteil liegt bei der Handhabung der Beziehungen, das Herausfinden der kürzesten Route zwischen zwei Elementen über 
-ihre definierten Beziehungen ist zum Beispiel mit diesem Konzept keine komplizierte Aufgabe.
+Datenbanktyp kann für komplexe Netzwerke verwendet werden. Der Vorteil liegt bei der Handhabung der Beziehungen. Das Herausfinden der kürzesten Route zwischen zwei Elementen über 
+ihre definierten Beziehungen stellt für diesen Datenbanktyp keine Herausforderung dar.
 
 Die Daten werden je nach Implementation auch in Dokumenten abgespeichert, somit entfällt auch hier eine Definition des Schemas. In \autoref{lst:select_neo4j} ist das Beispiel 
 für das Abfragen der Strasse einer Person in Neo4j zu sehen.
@@ -336,7 +335,7 @@ zwar oft eine Rolle, doch das würde eher in den Bereich des Algorithmus fallen,
 Datenbank und die dokumentorientierten Datenbanken für die Nutzwertanalyse übrig.
 
 Da es innerhalb der ausgewählten Datenbanksystemen sehr viele verschiedene Implementationen gibt, wurden von jedem Typ eine ausgewählt. Bei den relationalen Datenbanken fiel die 
-Entscheidung auf MySQL, da diese Implementation kostelos ist und bereits Erfahrung vorhanden waren. Da MongoDB sehr verbreitet und eine gute Integration in die Java Frameworks hat, 
+Entscheidung auf MySQL, da diese Implementation kostenlos ist und bereits Erfahrung vorhanden war. Da MongoDB sehr verbreitet und eine gute Integration in die Java Frameworks hat, 
 wurde diese Implementation unter den dokumentorientierten Datenbanken ausgewählt.
 
 \newpage
@@ -437,7 +436,7 @@ Resultatklassen gezeigt.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{images/computations_diagramm.png}
+\includegraphics[scale=0.49]{images/computations_diagramm.png}
 \caption[Klassendiagramm der verschiedenen Problemklassen]{Klassendiagramm der verschiedenen Problemklassen \selfmade{}}
 \label{fig:problems_diagramm}
 \end{figure}

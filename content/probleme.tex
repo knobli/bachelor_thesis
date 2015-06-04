@@ -9,14 +9,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Analyse und Auswahl der Probleme \resultAssignment{[R1]}}\label{chap.problemauswahl}
-In diesem Kapitel werden die verschiedene Probleme,welche für die Erstellung der Schnittstelle betrachtet wurden, und das dazugehörige Auswahlverfahren erläutert.
+In diesem Kapitel werden die verschiedene Probleme, welche für die Erstellung der Schnittstelle betrachtet wurden, und das dazugehörige Auswahlverfahren erläutert.
 
 \section{Auswahl der Probleme}\label{cat_theo_inf}
-Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Verfahren herausgefunden werden, mit dem verschiedene Typen dieser Probleme für die 
-Schnittstelle evaluiert werden konnten. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. Das Buch 'Computers and Intractability: A Guide to 
-the Theory of NP-Completeness' \cite{garey1979computers} von Micheal Garey und David S. Johnson ist in der Informatik immer wieder viel zitiert und war im Jahr 2006 laut einer Studie von 
-CiteSeer das meist zitierteste Buch der Informatik \cite{citeseer_algo_buch}. In diesem Buch werden verschiedene NP-vollständige und NP-schwere Probleme vorgestellt und in Kategorien 
-unterteilt. Diese Kategorien (siehe Auflistung unten) werden auch benutzt, um die zu analysierenden Problem auszuwählen.
+Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Auswahlverfahren herausgefunden werden. Mit diesem Verfahren sollten möglichst unterschiedliche 
+Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. Das Buch 
+'Computers and Intractability: A Guide to the Theory of NP-Completeness' \cite{garey1979computers} von Micheal Garey und David S. Johnson ist in der Informatik immer wieder viel zitiert und 
+war im Jahr 2006 laut einer Studie von CiteSeer das meist zitierteste Buch der Informatik \cite{citeseer_algo_buch}. In diesem Buch werden verschiedene NP-vollständige und NP-schwere 
+Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) werden auch benutzt, um die zu analysierenden Problem auszuwählen.
 
 \begin{itemize}
 	\item Graphentheorie
@@ -35,7 +35,7 @@ unterteilt. Diese Kategorien (siehe Auflistung unten) werden auch benutzt, um di
 \end{itemize}
 
 Im Rahmen dieser Arbeit konnten nicht alle Probleme betrachtet werden, deshalb wurde geschaut, ob es Probleme gibt, welche in der Realität auftreten und nicht nur rein wissenschaftliche 
-Probleme sind. Aus diesen Problemen wurden dann fünf ausgewählt, bei der Auswahl wurde darauf geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen. Es wurden jedoch 
+Probleme sind. Aus diesen Problemen wurden fünf ausgewählt, bei der Auswahl wurde darauf geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen. Es wurden jedoch 
 auch zwei aus der gleichen Kategorie ausgewählt, um zu analysieren wie sich diese zwei im Gegensatz zu den anderen verhalten. 
 
 Die ausgewählten Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine 
@@ -47,7 +47,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 
 \begin{figure}[h]
 \centering 
-\includegraphics[scale=0.8]{images/visio/problem_hierarchy.png}
+\includegraphics[scale=0.75]{images/visio/problem_hierarchy.png}
 \caption[Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit]{Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit (Eigene Darstellung, Daten entnommen aus: 
 \cite{garey1979computers})}
 \label{fig:hierarchy_reduction}
@@ -67,7 +67,7 @@ Einschränkungen (siehe \cite{garey1979computers}).
 
 	\paragraph{Beispiel}
 	Gegeben sei ein Graph mit 10 Knoten mit einer vorgegebenen Konfiguration (siehe \autoref{fig:graph_faerbung}).\\
-	Gesucht ist die Färbung der Knoten, damit keine zwei benachbarten Knoten die gleiche Farbe haben, bzw. die minimale Anzahl Farben ($k$), welche verwendet werden müssen, damit 
+	Gesucht ist die Färbung der Knoten, damit keine zwei benachbarten Knoten die gleiche Farbe haben. Weiter die minimale Anzahl Farben ($k$), welche verwendet werden müssen, damit 
 	die Bedingung erfüllt ist. Der Graph \ref{fig:graph_faerbung_incorrect} zeigt eine ungültige Lösung mit zwei Farben. Durch einen Algorithmus kann ermittelt werden, dass dieser Graph 
 	mindestens drei Fraben, wie in \ref{fig:graph_faerbung_correct} dargestellt, benötigt, um die Bedingung zu erfüllen. Somit ist $k=3$.
 \begin{figure}[ht]
@@ -90,9 +90,9 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	Ausgabedaten: Knoten mit ihrer Färbung und $k$ (Anzahl benötigter Farben)
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	Bei der Knotenfärbung steigert sich die Komplexität mit Anzahl Kanten, die Knoten sind nur relevant, da sie neue Kanten aufspannen. Das die Komplexität nur von der Anzahl Kanten 
+	Bei der Knotenfärbung steigert sich die Komplexität mit Anzahl Kanten, die Knoten sind nur relevant, da sie neue Kanten aufspannen. Dass die Komplexität nur von der Anzahl Kanten 
 	abhängt, zeigt auch die Formel zur Berechnung des Maximum von $k$: $k \le \frac{1}{2} + \sqrt{2m + \frac{1}{4}}$ (wobei m für die Anzahl Kanten steht) 
-	(siehe \cite{seminar_rainer_graph}). Um so grösser $k$ um so häufiger tretten Kollisionen auf und um so mehr Varianten müssen ausprobiert werden.
+	(siehe \cite{seminar_rainer_graph}). Je grösser $k$ desto häufiger treten Kollisionen auf und um so mehr Varianten müssen ausprobiert werden.
 
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{seminar_algo_graph}, \cite{krumke2012graphentheoretische} und \cite{seminar_rob_graphen})
@@ -109,8 +109,8 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	\begin{itemize}
 		\item Stundenplan: Anhand der eingegebenen Daten wird ein Konfliktmatrix erstellt und diese dann in ein Färbungsproblem umgewandelt. Die Anzahl benötigten Farben sind dann 
 			die Anzahl der verschiedenen Perioden, welche es benötigt, um eine Stundenplan ohne Konflikte zu erstellen. \cite{ieee_exam_table_graph_coloring} \cite{time_table_graph_coloring} \cite{timetabling_abdullah}
-		\item Frequenzverteilung (Mobilfunk): Im Mobilfunkt hat jede Antenne einen Frequenzbereich, im Graph werden die Antennen miteinander verbunden, bei denen sich die 
-			Reichweite überschneidet. Den Farben können durch Frequenzen ersetzt werden und das Resultat ist eine Konfliktfreie Mobilnetzabdeckung. \cite{seminar_rob_graphen}
+		\item Frequenzverteilung (Mobilfunk): Im Mobilfunkt hat jede Antenne einen Frequenzbereich. Im Graph werden die Antennen miteinander verbunden, bei denen sich die 
+			Reichweite überschneidet. Die Farben können durch Frequenzen ersetzt werden. Das Lösung stellt eine konfliktfreie Mobilnetzabdeckung dar. \cite{seminar_rob_graphen}
 		\item Färben von Landkarten: Die Länder sind die Knoten, die Kanten die Verbindung zu den Nachbarländern und die erreichnete Farbe ist die Einfärbung auf der Landkarte. 
 			\cite{seminar_rob_graphen}
 	\end{itemize}
@@ -123,9 +123,9 @@ Einschränkungen (siehe \cite{garey1979computers}).
 
 	\paragraph{Beschreibung}
 	Englischer Name: Traveling Salesman Problem\\
-	Beim Problem des Handlungsreisenden geht es darum mit einer optimalen Route von einem Ausgangspunkt verschiedene Wegpunkte abzufahren und wieder zum Ausgangspunkt zurück 
-	zu kehren. Es gibt verschiedene Ausprägungen des Problems, es kann zum Beispiel bestimmt werden, dass die Verbindung zwischen zwei Punkten hin und zurück gleich lang sind, was die 
-	Komplexität halbiert. Bei zehn Wegpunkten und ungleichen Hin- und Zurückwege sind das bereits über dreieinhalb Millionen Möglichkeiten.
+	Beim Problem des Handlungsreisenden geht es darum, mit einer optimalen Route von einem Ausgangspunkt verschiedene Wegpunkte abzufahren und wieder zum Ausgangspunkt zurück 
+	zu kehren. Bei zehn Wegpunkten und ungleichen Hin- und Zurückwege sind das über dreieinhalb Millionen Möglichkeiten. Bei der symmetrischen Variante sind die Verbindung 
+	zwischen zwei Punkten gleich lang, was die Komplexität halbiert. 
 
 	\paragraph{Beispiel} Gegeben seien vier Wegpunkte (A, B, C, D), der Startpunkt sei A.\\
 	Gesucht ist die optimale Route, welche alle Wegpunkte beinhaltet und wieder bei A endet.\\
@@ -133,7 +133,7 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	dass schon bei 4 Wegpunkten 6 Möglichkeiten vorhanden sind.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{images/visio/tsp.png}
+\includegraphics[scale=0.55]{images/visio/tsp.png}
 \caption[Problem des Handlungsreisenden mit 4 Wegpunkten]{Problem des Handlungsreisenden mit 4 Wegpunkten \selfmade{}}
 \label{fig:tsp_example}
 \end{figure}
@@ -143,8 +143,10 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	Ausgabedaten: Reihenfolge der Wegpunkte für eine optimale Route
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	Die Komplexität beim Problem des Handlungsreisenden wird durch die Anzahl Wegpunkte bestimmt. Mit der Erhöhung der Anzahl Wegpunkte nimmt die Komplexität mit $O(n!)$ zu.
-
+	Die Komplexität beim Problem des Handlungsreisenden wird durch die Anzahl Wegpunkte bestimmt. Für einen asymmetrische Problem ist die Formel zur Berechnung der Möglichkeit $(n-1)!$ 
+	für ein symmetrisches Problem $\frac{(n-1)!}{2}$.
+	
+	 \newpage
 	\paragraph{Bekannte Algorithmen}\cite{tsp_algorithmen} \cite{tsp_semesterarbeit}
 	\begin{itemize}
 		\item Nearest-Neighbor
@@ -157,10 +159,10 @@ Einschränkungen (siehe \cite{garey1979computers}).
 
 	\paragraph{Beschreibung}
 	Englischer Name: Chinese postman problem\\
-	Das Briefträgerproblem ist ähnlich wie das Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, die 
+	Das Briefträgerproblem ist vergleichbar mit dem Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, die 
 	Kanten sind Strassen. Die minimale Länge kann mit Hilfe des \glossarmark{Eulerischenkreises} relativ einfach berechnet werden. Falls der Graph die Kriterien des 
-	\glossarmark{Eulerischenkreises} nicht erfüllt, werden alle Knoten mit ungeraden Anzahl von Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden werden. 
-	Die minimal Läng ist dann alle Strecke und die Hilfsstrecken zusammen gezählt.
+	\glossarmark{Eulerischenkreises} nicht erfüllt, werden alle Knoten mit ungeraden Anzahl von Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden. 
+	Die minimal Läng ist die Summe aus allen Strecken und den Hilfsstrecken.
 	\cite{pearson2004decision}
 
 	\paragraph{Beispiel} Gegeben sei der Graph mit den Punkten A bis H und den blau eingezeichneten Verbindungen.\\
@@ -179,8 +181,8 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B.
 	Ausgabedaten: Reihenfolge der Knoten für eine minimale Strecke
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	Wie bei der Knotenfärbung spielt hier die Anzal Kanten die Hauptrolle bei der Komplexität. Wie viele Knoten ein Graph hat und ob dieser bereits \glossarmark{eulersch} ist, spielen eine 
-	geringere Rolle.
+	Wie bei der Knotenfärbung spielt die Anzal Kanten die Hauptrolle bei der Komplexität. Wie viele Knoten ein Graph hat und ob dieser bereits \glossarmark{eulersch} ist, hat einen 
+	geringeren Einfluss.
 
 	\paragraph{Bekannte Algorithmen}\mbox{}\\
 	Briefträgeralgorithmus (Chinese postman algorithm)
@@ -192,11 +194,11 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Timetable design\\
-	Die Erstellung von Stundenplänen ist ein sehr komplexes Problem, basierend auf Fächer, Lehrer, Klassen und Klassenzimmern wird versucht eine optimale Verteilung der Stunden zu 
+	Die Erstellung von Stundenplänen ist ein sehr komplexes Problem, basierend auf Fächer, Lehrer, Klassen und Klassenzimmern wird versucht, eine optimale Verteilung der Stunden zu 
 	erreichen. Die wichtigste Bedingung ist, dass eine Ressource, sei das ein Lehrer, eine Klasse oder ein Schulzimmer, zu einem Zeitpunkt nur höchstens ein Mal verplant ist. 
 	Zusätzlich gibt es dann noch beliebig weitere Kriterien, wie zum Beispiel das eine Klasse nie mehr als 9 Lektionen pro Tag haben soll oder ein Lehrer nie mehr als 
-	5 Lektionen am Stück unterrichten sollte. Bei der Erstellung von Stundenplänen wird oft von hard constraints und soft constraints gesprochen. Ein hard constraint ist im Gegensatz zu 
-	eine soft constraint unabdingbar, das heisst, es ist nicht möglich, dass ein Lehrer zwei verschiedene Fächer gleichzeitig unterrichtet, jedoch könnte er mehr als 5 Lektionen hintereinander 
+	5 Lektionen nacheinander unterrichten sollte. Bei der Erstellung von Stundenplänen wird oft von hard constraints und soft constraints gesprochen. Ein hard constraint ist im Gegensatz zu 
+	einem soft constraint unabdingbar. Es ist nicht möglich, dass ein Lehrer zwei verschiedene Fächer gleichzeitig unterrichtet, jedoch könnte er mehr als 5 Lektionen hintereinander 
 	unterrichten. \cite{Abramson92aparallel} \cite{Abramson91constructingschool} \cite{framework_timetabling} \cite{time_table_constraint_opti_ea}
 
 	\paragraph{Beispiel} Gegeben seien die Fächer, Lehrer, Klassen und Klassenzimmer aus den Tabellen \ref{table:eg_subject}, \ref{table:eg_teacher}, \ref{table:eg_schoolclasses} und \ref{table:eg_schoolroom}.\\
@@ -311,7 +313,7 @@ sind in diesem Beispiel noch sehr überschaubar, doch es gibt schon bereits enor
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
 	Beim Stundenplanproblem sind es nicht alle vier Listen, welche die Komplexität des Problemes ausmachen. Der grösste Einfluss haben die Anzahl Stunden, welche verplant werden 
-	müssen. Die Anzahl Möglichkeiten berechnet sich etwas vereinfacht so: $(Anzahl Räume * Anzahl Zeitfenster * Anzahl Lehrer)^{Anzahl Veranstaltungen}$ 
+	müssen. Die Anzahl Möglichkeiten berechnet sich wie folgt: $(Anzahl Räume * Anzahl Zeitfenster * Anzahl Lehrer)^{Anzahl Veranstaltungen}$ 
 	(vergleiche \cite{scheduling_komplex}).
 
 	\paragraph{Bekannte Algorithmen}
@@ -337,8 +339,8 @@ sind in diesem Beispiel noch sehr überschaubar, doch es gibt schon bereits enor
 
 	\paragraph{Beschreibung}
 	Englischer Name: Knapsack\\
-	Beim Rucksack Problem geht es um einen Container, symbolisch der Rucksack, mit einer Gewichtsschranke, desweiteren gibt es noch Objekte, welche in den Container gepackt werden 
-	können. Diese Objekte besitzen ein Gewicht und einen Profit. Das Ziel ist es den grösst möglichen Profit zu erlangen, ohne die Gewichtsschranke zu überschreiten. 
+	Beim Rucksack Problem geht es um einen Container, symbolisch der Rucksack, mit einer Gewichtsschranke. Desweiteren gibt es Objekte, welche in den Container gepackt werden 
+	können. Diese Objekte besitzen ein Gewicht und einen Profit. Das Ziel ist es, den grösst möglichen Profit zu erlangen, ohne die Gewichtsschranke zu überschreiten. 
 	\cite{knapsack_desc_web}
 
 	\paragraph{Beispiel} Gegeben sei ein Rakete mit der Gewichtsschranke 645kg und die Objekte in Tabelle \ref{table:knapsack_objects}.\\
@@ -380,7 +382,7 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 	\paragraph{Bekannte reale Probleme}	
 	Es gibt diverse reale Probleme, welche mit der dem Rucksack Problem gelöst werden können \cite{kellerer2004knapsack}, hier sind nur einige davon aufgelistet:
 	\begin{itemize}
-		\item Ausschneiden von verschiedenen Stücken aus einem grossen Stück Metal oder Holz: Optimale Nutzung der Fläche(n), damit am Schluss genug Einzelstücke für das Herstellen 
+		\item Ausschneiden von verschiedenen Stücken aus einer Metall- oder Holzplatte: Optimale Nutzung der Fläche(n), damit am Schluss genug Einzelstücke für das Herstellen 
 			des Endprodukt vorhanden sind.
 		\item Kreditvergabe: Optimale Ausnutzung des Kreditbudget mit der Vergabe von Krediten an Kunden, welche eine Kredit über eine gewisse Höhe haben möchte und eine 
 			bestimmte Risikoeinstufung haben.
@@ -389,7 +391,7 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 
 \newpage
 \subsection{Logik}\label{logic}
-Die in diesem Abschnitt aufgeführten Probleme sind nur zur Vollständigkeit aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet. Sie sind die 
+Die in diesem Abschnitt aufgeführten Probleme sind zur Vollständigkeit aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet. Sie sind die 
 Grundpfeiler der NP-Vollständigkeit, durch sie konnten für zahlreiche Probleme die NP-Vollständigkeit bewiesen werden.
 
 	\subsubsection{Erfüllbarkeitsproblems der \glossarmark{Aussagenlogik} (SAT)}\label{sat}
@@ -397,7 +399,7 @@ Grundpfeiler der NP-Vollständigkeit, durch sie konnten für zahlreiche Probleme
 
 	\paragraph{Beschreibung}
 	Englischer Name: Satisfiability (SAT)\\
-	Beim Erfüllbarkeitsproblem der \glossarmark{Aussagenlogik} geht es darum zu überprüfen, ob eine beliebige aussagenlogische Formel erfüllbar ist.	
+	Beim Erfüllbarkeitsproblem der \glossarmark{Aussagenlogik} ist zu überprüfen, ob eine beliebige \glossarmark{aussagenlogische} Formel erfüllbar ist.	
 
 	\paragraph{Beispiel} Gegeben sei eine aussagenlogische Formel \ref{eq:aussagenlogik}.\\
 	Gesucht ist die Antwort auf die Erfüllbarkeit dieser Formel.\\
@@ -475,7 +477,7 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 \autoref{table:input_output} zusammengefasst.
 \begin{table}[ht]
 \centering
-  \begin{tabular}{ p{3.5cm} | p{6cm} | p{6cm} }
+  \begin{tabular}{ p{3cm} | p{5.4cm} | p{5.4cm} }
 	\hline
 	\rowcolor{gray}
 	\textbf{Problem}				& \textbf{Eingabedaten}								& \textbf{Ausgabedaten}\\ \hline
@@ -528,7 +530,7 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 \newpage
 \subsection{Beispiel für den Einfluss der Parameter auf die Komplexität \resultAssignment{[R1a]}}\label{example_complexity_knapsack}
 Bei den vorgestellten Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt, um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des Rucksack 
-Problemes gemacht.
+Problemes erstellt.
 
 \subsubsection{Ausgangslage}
 Das Rucksackproblem hat zwei Eingabeparameter, zum einen die Gewichtsschranke und zum anderen die Elemente. Im Beispiel wurden verschiedene Anzahl Elemente verwendet und dies mit 
@@ -559,7 +561,7 @@ In \autoref{fig:example_complexity_knapsack} wird die exponentielle Steigerung d
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{images/excel/knapsack_complexity_example.png}
+\includegraphics[scale=0.45]{images/excel/knapsack_complexity_example.png}
 \caption[Berechnungszeiten für das Rucksack Problem mit verschiedenen Eingabeparametern im Vergleich]{Berechnungszeiten für das Rucksack Problem mit verschiedenen Eingabeparametern 
 im Vergleich \selfmade{}}
 \label{fig:example_complexity_knapsack}
