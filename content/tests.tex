@@ -14,21 +14,21 @@ In diesem Kapitel wird auf das Testverfahren und die Tests für dieses Projekts 
 \section{Einführung}
 In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Leitlinie zum Testen verwendet:
 \begin{enumerate}
-\item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Testabdeckung mit Hilfe von Sonar ermittelt und anhand der Anforderungen überprüft.
+\item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Testabdeckung mit Hilfe von \gls{sonar} ermittelt und anhand der Anforderungen überprüft.
 \item \textbf{Vollständiges Testen ist nicht möglich}: Es wurde solange getestet bis alle Akzeptanzkriterien abgedeckt waren und die Testabdeckung gut genug war.
 \item \textbf{Mit dem Testen frühzeitig beginnen}: Die Unit Tests für neuen Funktionen wurden möglichst zeitnah oder zur gleichen Zeit geschrieben.
 \item \textbf{Häufung von Fehlern}: Wenn Fehler auftraten, dann wurde diese Komponente nach der Behebung nochmals intensiv getestet und zusätzliche Tests erfasst.
 \item \textbf{Zunehmende Testresistenz (Pesticide paradox)}: Jede Änderungen am Code hatte auch eine Anpassung oder Erweitung der Tests zur Folge.
 \item \textbf{Testen ist abhängig vom Umfeld}: Der Prototyp ist nicht sicherheitskritisch, jedoch wurde Wert auf eine hohe Testabdeckung gelegt. Es wurden zusätzlich immer wieder 
 	End-zu-End Tests mit den verschiedenen Problemen durchgeführt.
-\item \textbf{Trugschluss: Keine Fehler bedeutet ein brauchbares System}: Die Schnittstelle wurde dem \glossarmark{Stakeholder}, bevor das Projekt zu Ende war, demonstriert und erklärt. So 
+\item \textbf{Trugschluss: Keine Fehler bedeutet ein brauchbares System}: Die Schnittstelle wurde dem \gls{stakeholder}, bevor das Projekt zu Ende war, demonstriert und erklärt. So 
 	konnten allfällige Missverständnis frühzeitig erkannt werden. Die hohe Testabdeckung trägt ebenfalls zur Aufdeckung von unbemerkten Fehler bei.
 \end{enumerate}
 
 \section{Testing}
 Komponententests und Integrationstests, bekannt aus \cite{test_soft_book}, wurden bei der Schnittstelle mit JUnit und Mockito durchgeführt. Bei den Integrationstests wurde eine 
 Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Die Testabdeckung und statische Code Analayse wurde 
-mit \glossarmark{Sonar} überprüft. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis zu testen.
+mit \gls{sonar} überprüft. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis zu testen.
 
 \section{Systemtest}
 Als Abschluss des Projekts wurde ein Systemtest vorgesehen, für welcher ein Testprotokoll erstellt wurde. Das Protokoll zeigt dem Kunden was getestet wurden und das Ergebnis.

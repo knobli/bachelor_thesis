@@ -39,7 +39,7 @@ den Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
 \FloatBarrier
 \subsection{REST API}
 Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem De-facto-Standard 
-(siehe \cite{wiki_restful}). Falls Fehler auftreten, werden die \glossarmark{HTTP-Statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
+(siehe \cite{wiki_restful}). Falls Fehler auftreten, werden die \gls{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
 Die Business Logik besteht aus Translator, Service, Entity und Validator von den jeweiligen Problemen. 
@@ -310,7 +310,7 @@ wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in 
 \end{lstlisting}
 
 Die Definitions- und Abfragesprache ist gleich wie bei relationalen Datenbanken, deshalb wird hier auf Beispiele verzichtet. Der Vorteil 
-einer spaltenorientierten Datenbank liegt in der Performance bei \glossarmark{Aggregationsfunktionen}. Weiter führt dieser Datenbanktyp Veränderungen, 
+einer spaltenorientierten Datenbank liegt in der Performance bei \glspl{aggregationsfunktion}. Weiter führt dieser Datenbanktyp Veränderungen, 
 welche alle Werte einer Spalte betreffen, effizient durch. Dafür ist das Einfügen einer neu Zeile oder das Auslesen einer ganze Zeile aufwendiger als bei dem zeilenorientierten Ansatz.
 
 \paragraph{Graph}
@@ -344,7 +344,7 @@ wurde diese Implementation unter den dokumentorientierten Datenbanken ausgewähl
 \subsection{Bewertungskriterien}\label{architektur_bewertungspunkte}
 
 In der Nutzwertanalyse werden folgende Punkte betrachtet und nach dem angegebenen Schema bewertet und dann gewichtet. 
-Die Kriterien sind grösstenteils aus den \glossarmark{CAP-Theorem} abgeleitet.
+Die Kriterien sind grösstenteils aus den \gls{cap_theorem} abgeleitet.
 
 \paragraph{Aufwand}
 \begin{itemize}

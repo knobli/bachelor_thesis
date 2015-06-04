@@ -13,13 +13,13 @@ In diesem Kapitel wird kurz auf die Erkenntnisse aus dem ersten Durchstich einge
 durchgeführt wurde. Zu guter Letzt wird noch die Entwicklungsumgebung für dieses Projekt aufgezeigt.
 
 \section{Erster Durchstich}\label{entwicklungsumgebung}
-Zum Start der Umsetzung wurde ein erster \glossarmark{vertikaler Durchstich} anhand des Rucksack Problems gemacht, um zu sehen, ob sich das Konzept bewährt. Während der 
+Zum Start der Umsetzung wurde ein erster \gls{vertikaler_durchstich} anhand des Rucksack Problems gemacht, um zu sehen, ob sich das Konzept bewährt. Während der 
 Implementation wurden bereits überlegt, wie die Logik möglichst generisch gehalten werden kann.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.74]{images/visio/prototype_knapsack.png}
-\caption[Vertikaler Durchstich mit dem Rucksack Problem]{Vertikaler Durchstich mit dem Rucksack Problem \selfmade{}}
+\caption[\Gls{vertikaler_durchstich} mit dem Rucksack Problem]{Vertikaler Durchstich mit dem Rucksack Problem \selfmade{}}
 \label{fig:prototyp_knapsack}
 \end{figure}
 
@@ -37,7 +37,7 @@ Controller kann die Logik in einer abstrakten Klasse definiert werden und somit 
 dass sich das Konzept bewährt und die weiteren Probleme dementsprechend gelöst werden können.
 
 \subsection{Anpassung des Konzepts nach dem ersten Durchstich}\label{doings_prototyp}
-Das Konzept wurde nach dem ersten Durchstich dahingegen abgeändert, dass die Schnittstellen auf der Nutzer-Seite umbennant wurden und die Algorithmus-Seite einen anderen Namespace 
+Das Konzept wurde nach dem ersten \glslink{vertikaler_durchstich}{Durchstich} dahingegen abgeändert, dass die Schnittstellen auf der Nutzer-Seite umbennant wurden und die Algorithmus-Seite einen anderen Namespace 
 erhielt. Weiter verschwand die seperate Schnittstelle für das Abfrage des Resultats durch die Kombination mit der Status-Abfrage.
 
 \section{Implementierung der Schnittstelle}\label{impl_interface}
@@ -64,7 +64,7 @@ Begründung der Beendigung zu finden. Die Begründung kann zum Beispiel ein aufg
 \end{lstlisting}
 
 \subsection{WebHook Möglichkeit}
-Die Berechnung können je nach Komplexität sehr lange dauern. Der Nutzer müsste immer wieder den Status abfragen, um zu sehen, ob ein Resultat vorhanden ist. \glossarmark{WebHooks} 
+Die Berechnung können je nach Komplexität sehr lange dauern. Der Nutzer müsste immer wieder den Status abfragen, um zu sehen, ob ein Resultat vorhanden ist. \glspl{webhook} 
 bieten Abhilfe für dieses Problem. Das Verfahren ist nicht standardisiert, ist aber sehr simpel und hilfreich. Beim Start einer Berechnung kann eine URL mitgegeben werden, zu dieser 
 wird bei jeder Statusänderung ein POST-Request abgeschickt. Um diese Schnittstelle möglichst generisch zu halten, wurde eine Möglichkeit geschaffen, eine beliebige Payload für den 
 POST-Request anzugeben. Die Nachricht des Statusänderung kann nach belieben mit dem Platzhalter '\_\_MESSAGE\_\_' irgendwo in die Payload eingebunden werden. Das Attribut 'message' 
@@ -99,7 +99,7 @@ So gibt es zum Beispiel zu diesem Zeitpunkt standardmässig keine Möglichkeit e
 Stackoverflow anstatt einem Fehler, was wiederum die Suche nach dem Fehler erheblich erschwerte. Um diese Probleme zu beheben, musste ein eigener Converter geschrieben und dieser 
 dann bei der MongoDB Konfiguration angegeben werden.
 
-Bei der Business Logik wurde geschaut, dass viel mit \glossarmark{Generics} gelöst werden konnte, vorallem bei den Services konnte viel Code für alle Probleme verwendet werden. Auch 
+Bei der Business Logik wurde geschaut, dass viel mit \gls{generics} gelöst werden konnte, vorallem bei den Services konnte viel Code für alle Probleme verwendet werden. Auch 
 bei den beiden Scheduling Problemen, konnte viel Code-Duplizierung umgangen werden. Zusätzlich wurden häufig verwendete Funktionen, wie das Abbilden auf die Input Objekte, in Helfer 
 Klassen ausgelagert, damit sie nur ein Mal implementiert werden mussten.
 
@@ -392,8 +392,8 @@ Ein Softwareprojekt benötigt immer eine gewisse Entwicklungsumgebung. Bei der E
 mitbringt.
 
 \subsection{IDE - Integrated Development Environment}
-Als \glossarmark{IDE} wurde IntelliJ verwendet, IntelliJ bietet gute Refactoring-Methoden an und ist eine grosse Unterstützung beim Programmieren von Java-Code. Die \glossarmark{IDE} 
-bietet auch die Möglichkeit Klassen-Diagramme zu erstellt und hat ein \glossarmark{VIM}-Plugin. Mit diesem Plugin können \glossarmark{VIM}-Befehle benutzt werden, was die 
+Als \gls{ide} wurde IntelliJ verwendet, IntelliJ bietet gute Refactoring-Methoden an und ist eine grosse Unterstützung beim Programmieren von Java-Code. Die \gls{ide} 
+bietet auch die Möglichkeit Klassen-Diagramme zu erstellt und hat ein \gls{vim}-Plugin. Mit diesem Plugin können \gls{vim}-Befehle benutzt werden, was die 
 Geschwindigkeit beim Programmieren enorm erhöht.
 
 \todo{Ausschnitt aus Intellij, welcher gleich die Struktur des Projekts zeigt}
@@ -412,7 +412,7 @@ und immer ein Backup vorhanden war. Zu Korrekturzwecken wurde die Arbeit ebenfal
 
 \subsection{Testen - Analysieren}
  Über den Chrome App 'Advanced REST client' (siehe Abbildung \ref{fig:advanced_rest_client})  wurde die Schnittstelle manuell getestet. Für die Regression-Tests wurde Junit und Mockito 
-verwendet. Die statische Code Analyse wurde mit \glossarmark{Sonar} \cite{sonar} durchgeführt.
+verwendet. Die statische Code Analyse wurde mit \gls{sonar} \cite{sonar} durchgeführt.
 
 \begin{figure}[h]
 \centering

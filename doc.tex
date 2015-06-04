@@ -57,9 +57,11 @@
 \include{content/anhang}
 
 \clearpage
- \input{content/glossar}
 \printglossary[type=\acronymtype] % prints just the list of acronyms
+ \addcontentsline{toc}{chapter}{Akronyme}
+ 
 \printglossary
+ \addcontentsline{toc}{chapter}{Glossar}
 
 \clearpage
  \bibliography{bibtex/literatur}

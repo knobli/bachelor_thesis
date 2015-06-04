@@ -18,15 +18,15 @@ NP-vollständig eingegangen, weitere Klassen wie zum Beispiel Random Polynomial 
 Arbeit notwendig sind. Die nachfolgenden Erklärungen sind aus \cite{hopcroft2011einfuehrung} und \cite{slides_p_np} abgeleitet.
 
 \subsection{NP}\label{np}
-Falls die Korrektheit einer Lösung zu einem Problem in \glossarmark{Polynomialzeit} überprüft werden kann, liegt das Problem in NP. Die Prozedur, welche für das die Überprüfung benötigt wird, 
-wird \glossarmark{Polynomialzeit-Verifizierer} genannt.  In \glossarmark{Polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$, wobei n die Eingabelänge 
+Falls die Korrektheit einer Lösung zu einem Problem in \gls{polynomialzeit} überprüft werden kann, liegt das Problem in NP. Die Prozedur, welche für das die Überprüfung benötigt wird, 
+wird \gls{polynomialzeit_verifizierer} genannt.  In \gls{polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$, wobei n die Eingabelänge 
 und k eine Konstante ist, dargestellt werden kann.
 
 \subsection{P}\label{p_complet}
-Probleme, welche in \glossarmark{Polynomialzeit} mit Hilfe einer \glossarmark{deterministischen Turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
+Probleme, welche in \gls{polynomialzeit} mit Hilfe einer \gls{deterministisch}{deterministischen} \gls{turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
 
 \subsection{NP-schwer}\label{np_hard}
-Probleme, welche nicht in \glossarmark{Polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial haben, zum Beispiel 
+Probleme, welche nicht in \gls{polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial haben, zum Beispiel 
 $k^n$ (exponentiell) oder $n!$ (faktoriell). Um zu beweisen, dass das Problem NP-schwer ist, wird versucht ein anderes bekanntes NP-schweres Problem auf dieses Problem zu reduzieren. Mit 
 diesem Beweis wird gezeigt, dass das Problem mindestens so schwer wie das andere Problem ist.
 
@@ -34,7 +34,7 @@ diesem Beweis wird gezeigt, dass das Problem mindestens so schwer wie das andere
 Stephen Cook hat mit dem Beweis der NP-Vollständigkeit des SAT-Problems \cite{cook_complexity}, die Grundlage für den Beweise der NP-Vollständigkeit vieler weiteren Probleme 
 gelegt. Damit ein Problem als NP-vollständig gilt, müssen folgende zwei Punkte erfüllt sein:
 \begin{itemize}
-	\item Ein \glossarmark{Polynomialzeit-Verifizierer} für das Problem ist vorhanden.
+	\item Ein \gls{polynomialzeit_verifizierer} für das Problem ist vorhanden.
 	\item Ein anderes bekanntes NP-vollständiges Problem ist auf dieses Problem reduzierbar.
 \end{itemize}
 

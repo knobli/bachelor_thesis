@@ -114,20 +114,33 @@ weichen Konsistenz erreicht wird.}
 }
 \newglossaryentry{yaml}{%
   name={YAML},
-  description={Markup Language mit wenig Overhead und in einer menschenlesbarer Form. Der Name ist ein recursives Akronym für "`YAML Ain't Markup Language"' (früher "`Yet Another Markup Language"').}
+  description={Markup Language mit wenig Overhead und in einer menschenlesbarer Form. Der Name ist ein rekursives Akronym für "`YAML Ain't Markup Language"' (früher "`Yet Another 
+  Markup Language"').}
 }
 \newglossaryentry{git}{%
   name={git},
-  description={Tool zur verteilten Versionsverwaltung. Ehemals für die Verwaltung des Linux Kernels entwickelt, besitzt es heute grosse Popularität in der gesammten Softwareentwicklung und ein ausgeprägtes Ökosystem.}
+  description={Tool zur verteilten Versionsverwaltung. Ehemals für die Verwaltung des Linux Kernels entwickelt, besitzt es heute grosse Popularität in der gesammten Softwareentwicklung und 
+  ein ausgeprägtes Ökosystem.}
 }
 \newglossaryentry{basisfaktor}{%
   name={Basisfaktor},
   description={Basisfaktoren (unterbewusste Anforderungen) muss das System in jedem Fall vollständig erfüllen, sonst stellt sich beim 
-\gls{stakeholder} massive Unzufriedenheit ein. \cite{req_eng_book}}
+\gls{stakeholder} massive Unzufriedenheit ein. \cite{req_eng_book}},
+  plural=Basisfaktoren
+}
+\newglossaryentry{begeisterungsfaktor}{%
+  name={Begeisterungsfaktor},
+  description={Begeisterungsfaktoren (unbewusste Anforderungen) sind Merkmale eines Systems, deren Wert ein \gls{stakeholder} erst erkennt, wenn er sie selbst ausprobieren kann oder sie vom 
+  Requirements Engineer vorgeschlagen werden. \cite{req_eng_book}}
 }
 \newglossaryentry{entity}{%
   name={Entity},
   description={Entity (auch Entität) ist ein eindeutig zu bestimmendes Daten-Objekt.}
+}
+\newglossaryentry{refactoring}{%
+  name={Refactoring},
+  description={Eine Veränderung der internen Struktur der Software, welche sie verständlicher und wartbarer macht, jedoch ohne eine Änderung des ursprünglichen Verhaltens zu bewirken. 
+  \cite{feathers2004working}}
 }
 \newglossaryentry{sonar}{%
   name={Sonar},
@@ -172,5 +185,54 @@ kann genau bestimmt werden, ob sie wahr oder falsch ist.}
 }
 \newglossaryentry{mockup}{%
   name={Mockup},
-  description={Der aus dem Englischen stammende Begriff Mock-up oder Mockup (auch Maquette) bezeichnet im Deutschen beispielsweise eine Attrappe. Er wird heute aber meist für ein maßstäblich gefertigtes Modell bzw. eine Nachbildung zu Präsentationszwecken benutzt, demgegenüber ist der Prototyp ein funktionsfähiges Modell.\cite{wiki_mockup}}
+  description={Der aus dem Englischen stammende Begriff Mock-up oder Mockup (auch Maquette) bezeichnet im Deutschen beispielsweise eine Attrappe. Er wird heute aber meist für 
+  ein maßstäblich gefertigtes Modell bzw. eine Nachbildung zu Präsentationszwecken benutzt, demgegenüber ist der Prototyp ein funktionsfähiges Modell.\cite{wiki_mockup}}
+}
+\newglossaryentry{vertikaler_durchstich}{%
+  name={vertikaler Durchstich},
+  description={Beim vertikaler Durchstich, auch vertikaler Prototyp genannt, ist ein Teil der Applikation durch alle Ebenen hindurch implementiert.}
+}
+\newglossaryentry{polynomialzeit}{%
+  name={Polynomialzeit},
+  description={In Polynomialzeit lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$, wobei $n$ die Eingabelänge und $k$ eine Konstante ist, dargestellt werden 
+  kann.}
+}
+\newglossaryentry{polynomialzeit_verifizierer}{%
+  name={Polynomialzeit-Verifizierer},
+  description={Überprüft einer Lösung zu einem Problem in \gls{polynomialzeit}.}
+}
+\newglossaryentry{turingmaschine}{%
+  name={Turingmaschine},
+  description={Eine abstrakte Rechenmaschine mit der Leistungsfähigkeit sowohl realer Computer als auch anderer mathematischer Definitionen dessen, was berechnet werden kann. 
+  \cite{hopcroft2011einfuehrung}}
+}
+\newglossaryentry{deterministisch}{%
+  name={deterministisch},
+  description={Einen Algorithmus wird deterministisch genannt, wenn zu jedem Zeitpunkt der Folgeschritt eindeutig bestimmt ist. \cite{algo_properties}}
+}
+\newglossaryentry{nichtdeterministische}{%
+  name={nichtdeterministische},
+  description={Einen Algorithmus wird deterministisch genannt, wenn zu einem Zeitpunkt der Folgeschritt durch einen Zufallsmechanismus beeinflusst wird. \cite{algo_properties}}
+}
+\newglossaryentry{http_statuscode}{%
+  name={HTTP-Statuscode},
+  description={Bei einem HTTP-Request teilt der HTTP-Statuscode Informationen über den Erfolg der Anfrage mit. Die erste Zahl ist die Statusklasse, die bekanntesten Codes sind 200 
+  OK oder 404 Not Found. Die Codes sind in \cite{rfc7231} definiert.}
+}
+\newglossaryentry{aggregationsfunktion}{%
+  name={Aggregationsfunktion},
+  description={Liefern ein einzelnes Resultat einer Spalte, zum Beispiel AVG - Mittelwert oder SUM - Summe.},
+  plural=Aggregationsfunktionen
+}
+\newglossaryentry{cap_theorem}{%
+  name={CAP-Theorem},
+  description={Besagt, dass ein verteiltes System unmöglich alle drei Werte, Konsistenz (C), Verfügbarkeit (A) und Partitionstoleranz (P), garantieren kann.}
+}
+\newglossaryentry{generics}{%
+  name={Generics},
+  description={Generische Programmierung in Java wird durch sog. Generics seit Java 1.5 ermöglicht. Der Begriff steht synonym für „parametrisierte Typen. \cite{wiki_generics}}
+}
+\newglossaryentry{vim}{%
+  name={VIM},
+  description={Ein Texteditor, welcher auf vi basiert und sehr viele Möglichkeiten (z. B. Suchen und Ersetzen) und Shortcuts (z. B. mehrere Zeilen kopieren, verschieben oder löschen) besitzt.}
 }

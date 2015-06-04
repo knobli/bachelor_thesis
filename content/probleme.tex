@@ -99,8 +99,8 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	\begin{itemize}
 		\item Spalten-Generierungs-Ansatz
 		\item Sequentielles Färben (Sequential Coloring)
-		\item \intromark{Backtracking Algorithmus}
-		\item \intromark{Greedy Algorithmus}
+		\item Backtracking Algorithmus
+		\item Greedy Algorithmus
 		\item Johnson-Algorithmus
 	\end{itemize}	
 
@@ -160,14 +160,14 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	\paragraph{Beschreibung}
 	Englischer Name: Chinese postman problem\\
 	Das Briefträgerproblem ist vergleichbar mit dem Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, die 
-	Kanten sind Strassen. Die minimale Länge kann mit Hilfe des \glossarmark{Eulerischenkreises} relativ einfach berechnet werden. Falls der Graph die Kriterien des 
-	\glossarmark{Eulerischenkreises} nicht erfüllt, werden alle Knoten mit ungeraden Anzahl von Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden. 
+	Kanten sind Strassen. Die minimale Länge kann mit Hilfe des \glslink{eulerkreis}{Eulerkreises} relativ einfach berechnet werden. Falls der Graph die Kriterien des 
+	\glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungeraden Anzahl von Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden. 
 	Die minimal Läng ist die Summe aus allen Strecken und den Hilfsstrecken.
 	\cite{pearson2004decision}
 
 	\paragraph{Beispiel} Gegeben sei der Graph mit den Punkten A bis H und den blau eingezeichneten Verbindungen.\\
 Gesucht ist eine Route mit dem kürzesten Weg, welche jede Kante mindestens ein Mal abfährt. \cite{pearson2004decision}\\
-Die grün eingezeichneten Verbindungen sind Hilfslinien, um den Graph in einen \glossarmark{Eulerischenkreis} zu verwandeln. Eine mögliche Lösung mit der minimal Länge von 1000 ist die 
+Die grün eingezeichneten Verbindungen sind Hilfslinien, um den Graph in einen \gls{eulerkreis} zu verwandeln. Eine mögliche Lösung mit der minimal Länge von 1000 ist die 
 Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B.
 \begin{figure}[h]
 \centering
@@ -181,7 +181,7 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B.
 	Ausgabedaten: Reihenfolge der Knoten für eine minimale Strecke
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	Wie bei der Knotenfärbung spielt die Anzal Kanten die Hauptrolle bei der Komplexität. Wie viele Knoten ein Graph hat und ob dieser bereits \glossarmark{eulersch} ist, hat einen 
+	Wie bei der Knotenfärbung spielt die Anzal Kanten die Hauptrolle bei der Komplexität. Wie viele Knoten ein Graph hat und ob dieser bereits \glslink{eulerkreis}{eulersch} ist, hat einen 
 	geringeren Einfluss.
 
 	\paragraph{Bekannte Algorithmen}\mbox{}\\
@@ -319,8 +319,8 @@ sind in diesem Beispiel noch sehr überschaubar, doch es gibt schon bereits enor
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{framework_timetabling})
 	\begin{itemize}
-		\item \intromark{Backtracking Algorithmus}
-		\item \intromark{Evolutionäre Algorithmen}
+		\item Backtracking Algorithmus
+		\item Evolutionäre Algorithmen
 		\item Constraint Logic Programming
 	\end{itemize}	
 
@@ -374,8 +374,8 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 
 	\paragraph{Bekannte Algorithmen}
 	\begin{itemize}
-		\item \intromark{Backtracking Algorithmus}
-		\item \intromark{Greedy Algorithmus}
+		\item Backtracking Algorithmus
+		\item Greedy Algorithmus
 		\item Algorithmus von Nemhauser und Ullmann \cite{knapsack_desc_web}
 	\end{itemize}	
 
@@ -394,12 +394,12 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 Die in diesem Abschnitt aufgeführten Probleme sind zur Vollständigkeit aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet. Sie sind die 
 Grundpfeiler der NP-Vollständigkeit, durch sie konnten für zahlreiche Probleme die NP-Vollständigkeit bewiesen werden.
 
-	\subsubsection{Erfüllbarkeitsproblems der \glossarmark{Aussagenlogik} (SAT)}\label{sat}
+	\subsubsection{Erfüllbarkeitsproblems der \gls{aussagenlogik} (SAT)}\label{sat}
 	Das Erfüllbarkeitsproblem der Aussagenlogik ist ein NP-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahre bewiesen \cite{cook_complexity}.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Satisfiability (SAT)\\
-	Beim Erfüllbarkeitsproblem der \glossarmark{Aussagenlogik} ist zu überprüfen, ob eine beliebige \glossarmark{aussagenlogische} Formel erfüllbar ist.	
+	Beim Erfüllbarkeitsproblem der \gls{aussagenlogik} ist zu überprüfen, ob eine beliebige \glslink{aussagenlogik}{aussagenlogische} Formel erfüllbar ist.	
 
 	\paragraph{Beispiel} Gegeben sei eine aussagenlogische Formel \ref{eq:aussagenlogik}.\\
 	Gesucht ist die Antwort auf die Erfüllbarkeit dieser Formel.\\
