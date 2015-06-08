@@ -11,7 +11,7 @@
 \chapter{Anforderungsdokument \resultAssignment{[R3]}}\label{chap.anforderungsdokument}
 
 Das Anforderungsdokument legt die Basis für die Implementation. Es ist für den Verlauf des Projekts wichtig, dass zu Beginn die Anforderungen aufgestellt werden. Bei der 
-Erstellung des Anforderungsdokuments werden verschiedene Betrachungsweisen aufgezeigt und die Herausforderung in verschiedenen Detailstufen angeschaut.
+Erstellung des Anforderungsdokuments werden verschiedene Betrachtungsweisen aufgezeigt und die Herausforderung in verschiedenen Detailstufen angeschaut.
 
 
 \section{Übersicht}\label{anf_uebersicht}
@@ -31,7 +31,7 @@ Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten
 \end{figure}
 
 Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System eine relevanten Schnittstellen zu den Nutzern und Verarbeitungssystem hat. Das System muss Daten für 
-das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Desweiteren wird das System von den Nutzern, Optimierungsproblemen und den dazgehörigen Algorithmen 
+das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Des weiteren wird das System von den Nutzern, Optimierungsproblemen und den dazugehörigen Algorithmen 
 beeinflusst.
 
 \FloatBarrier
@@ -104,7 +104,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Name}		&	Eindeutiger Name\\ \hline
 	\textbf{Beschreibung}	&	Komprimierte Beschreibung\\ \hline
 	\textbf{Auslösendes Ereignis} &	Angabe des Ereignisses, das den Use Case auslöst\\ \hline
-	\textbf{Akteure}		&	Auflistung der Akteuere, die mit dem Use Case in Beziehung stehen\\ \hline
+	\textbf{Akteure}		&	Auflistung der Akteure, die mit dem Use Case in Beziehung stehen\\ \hline
 	\textbf{Vorbedingung}	&	Eine Liste notwendiger Voraussetzungen, die erfüllt sein müssen, bevor die Ausführung des Use Case beginnen kann\\ \hline
 	\textbf{Nachbedingung}	&	Eine Liste von Zuständen, in denen sich das System unmittelbar nach der Ausführung des Hauptszenarios befindet.\\ \hline
 	\textbf{Ergebnis}		&	Beschreibung der Ausgaben, die während der Ausführung des Use Case erzeugt werden\\ \hline
@@ -130,7 +130,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 						abholen kann.\\ \hline
 	\textbf{Ergebnis}		&	Erfassung der Informationen für die Lösung des Problems\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
-					\item Der Nutzer ruft die Funktion für das zulösende Problem mit den Parametern auf.
+					\item Der Nutzer ruft die Funktion für das zu lösende Problem mit den Parametern auf.
 					\item Das System speichert die Parameter für die weitere Verarbeitung.
 					\item Der Nutzer erhält eine ID für das Abrufen des Status bzw. des Resultates.
 					\end{enumerate}
@@ -176,14 +176,14 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\rowcolor{gray}
 	\textbf{Bezeichner}	&	\textbf{UC-3}\\ \hline
 	\textbf{Name}			&	Eingabe Parameter abholen\\ \hline
-	\textbf{Beschreibung}	&	Das Verarbeitungssystem benötigt für die Lösung des Problemes die Eingabeparameter.\\ \hline
+	\textbf{Beschreibung}	&	Das Verarbeitungssystem benötigt für die Lösung des Problems die Eingabeparameter.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem möchte die Eingabeparameter.\\ \hline
 	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
 	\textbf{Vorbedingung}	&	Das Verarbeitungssystem wurden angestossen das Problem zu lösen.\\ \hline
 	\textbf{Nachbedingung}	&	Das Verarbeitungssystem hat die Eingabeparameter erhalten.\\ \hline
 	\textbf{Ergebnis}		&	Erhalt von Eingabeparametern\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
-					\item Das Verarbeitungssystem fordert die Eingabeparamter für das zulösende Problem an.
+					\item Das Verarbeitungssystem fordert die Eingabeparameter für das zu lösende Problem an.
 					\item Das System leitet die Eingabeparameter weiter.
 					\item Das Verarbeitungssystem erhält die Eingabeparameter.
 					\end{enumerate}
@@ -207,7 +207,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Beschreibung}	&	Der Nutzer kann den Status einer Berechnung abfragen, da die Verarbeitung einige Zeit benötigt.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Der Nutzer möchte den Status der Berechnung wissen.\\ \hline
 	\textbf{Akteure}		&	Nutzer\\ \hline
-	\textbf{Vorbedingung}	&	Der Nutzer hat bereits eine Berechnung beauftrag und kennt die ID.\\ \hline
+	\textbf{Vorbedingung}	&	Der Nutzer hat bereits eine Berechnung beauftragt und kennt die ID.\\ \hline
 	\textbf{Nachbedingung}	&	Der Nutzer kennt den Status der Berechnung.\\ \hline
 	\textbf{Ergebnis}		&	Kenntnis des Status\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
@@ -264,7 +264,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Beschreibung}	&	Der Nutzer holt das Resultat an einem bestimmten Zeitpunkt ab.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Der Nutzer möchte das Resultat der Berechnung abholen.\\ \hline
 	\textbf{Akteure}		&	Nutzer\\ \hline
-	\textbf{Vorbedingung}	&	Der Nutzer hat bereits eine Berechnung beauftrag und kennt die ID.\\ \hline
+	\textbf{Vorbedingung}	&	Der Nutzer hat bereits eine Berechnung beauftragt und kennt die ID.\\ \hline
 	\textbf{Nachbedingung}	&	Der Nutzer hat das Resultat erhalten.\\ \hline
 	\textbf{Ergebnis}		&	Erhalt des Resultats\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
@@ -293,7 +293,7 @@ eigenen Attributen erweitert.
   \begin{tabular}{ l | p{8cm} }
 	\hline
 	\rowcolor{gray}
-	\textbf{Bezeichner}&	\textbf{Eindeutiger Identikato}r\\ \hline
+	\textbf{Bezeichner}&	\textbf{Eindeutiger Identifikator}\\ \hline
 	\textbf{Priorität} 		&	Must, Should, Nice to have\\ \hline
 	\textbf{Anforderungstyp}	&	Funktionale Anforderung, Qualitätsanforderung, Randbedingung\\ \hline
 	\textbf{Name} 			&	Eindeutiger, charakterisierender Name\\ \hline
@@ -464,7 +464,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu verhindern, können 
 							WebHooks verwenden werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer wird über die Änderunge des Status auf dem eingetragen WebHook informiert.
+					\item Der Nutzer wird über die Änderung des Status auf dem eingetragen WebHook informiert.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	\nameref{table:req_2}\\ \hline
@@ -508,7 +508,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Begründung} 		&	Der Nutzer möchte das Resultat der Berechnung wissen.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Der Nutzer erhält das Resultat der Berechnung.
-					\item Der Nutzer erhält eine entsprechende Fehlermeldung, wenn beim Bereitstellen des Resultats ein Fehler aufgetretten ist.
+					\item Der Nutzer erhält eine entsprechende Fehlermeldung, wenn beim Bereitstellen des Resultats ein Fehler aufgetreten ist.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	\nameref{table:req_2}\\ \hline
@@ -555,7 +555,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Beschreibung} 	&	Das System sollte in der Lage sein, unterschiedliche Ausprägungen von Eingabeparametern entgegenzunehmen.\\ \hline
 	\textbf{Begründung} 		&	Da es bei den Probleme unterschiedliche Ausprägungen gibt, ist auf eine generische Deserialisierung der Eingabeparametern hinzuarbeiten.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Unterschiedliche Ausprägungen eines Problemes benutzen das gleiche API.
+					\item Unterschiedliche Ausprägungen eines Problems benutzen das gleiche API.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline

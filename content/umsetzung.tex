@@ -38,7 +38,7 @@ dass sich das Konzept bewährt und die weiteren Probleme dementsprechend gelöst
 
 \subsection{Anpassung des Konzepts nach dem ersten Durchstich}\label{doings_prototyp}
 Das Konzept wurde nach dem ersten \glslink{vertikaler_durchstich}{Durchstich} dahingegen abgeändert, dass die Schnittstellen auf der Nutzer-Seite umbennant wurden und die Algorithmus-Seite einen anderen Namespace 
-erhielt. Weiter verschwand die seperate Schnittstelle für das Abfrage des Resultats durch die Kombination mit der Status-Abfrage.
+erhielt. Weiter verschwand die separate Schnittstelle für das Abfrage des Resultats durch die Kombination mit der Status-Abfrage.
 
 \section{Implementierung der Schnittstelle}\label{impl_interface}
 In diesem Abschnitt wird über die Implementation der Schnittstelle im Allgemeinen geschrieben. Wie bereits erwähnt ist der Ablauf bei jedem Problem gleich, dementsprechend verhält sich die 
@@ -46,9 +46,9 @@ Schnittstelle im Allgemeinen gleich.
 
 \subsection{Statusabfrage}
 Damit der Nutzer möglichst wenig Schnittstellen ansprechen muss, erhält er bei einer Statusabfrage zugleich die vorhandenen Resultate. Der Nutzer erhält nur Resultate mit dem Status 'FINAL'. 
-Resultate mit dem Status 'PARTIAL' werden zwar beim Status und der Zeit des zu letzt empfangenen Resultats berücksichtigt, aber nicht herausgegeben. Der Status besitzt neben den 
-Resultaten, die ID und den Namen, weiter werden Start- und Endzeit angeben und zusätzlich noch die Zeit des zu letzt empfangenen Resultats. Falls eine Berechnung beendet ist, ist eine 
-Begründung der Beendigung zu finden. Die Begründung kann zum Beispiel ein aufgetrettener Fehler während des Starts oder Berechnung sein.
+Resultate mit dem Status 'PARTIAL' werden zwar beim Status und der Zeit des zuletzt empfangenen Resultats berücksichtigt, aber nicht herausgegeben. Der Status besitzt neben den 
+Resultaten, die ID und den Namen, weiter werden Start- und Endzeit angeben und zusätzlich noch die Zeit des zuletzt empfangenen Resultats. Falls eine Berechnung beendet ist, ist eine 
+Begründung der Beendigung zu finden. Die Begründung kann zum Beispiel ein aufgetretener Fehler während des Starts oder Berechnung sein.
 
 \begin{lstlisting}[language=JSON, caption=Aufbau einer Antwort auf eine Statusabfrage, label=lst:status_response]  
 {
@@ -58,7 +58,7 @@ Begründung der Beendigung zu finden. Die Begründung kann zum Beispiel ein aufg
   "createDate": <Erstelldatum>,
   "finishDate": <Enddatum>,
   "finishedReason": "<Begruendung der Beendigung>",
-  "lastResultReceived": <Datum des zu letzt empfangenen Resultats>,
+  "lastResultReceived": <Datum des zuletzt empfangenen Resultats>,
   "solutions": <Resultate>
 }
 \end{lstlisting}
@@ -68,7 +68,7 @@ Die Berechnung können je nach Komplexität sehr lange dauern. Der Nutzer müsst
 bieten Abhilfe für dieses Problem. Das Verfahren ist nicht standardisiert, ist aber sehr simpel und hilfreich. Beim Start einer Berechnung kann eine URL mitgegeben werden, zu dieser 
 wird bei jeder Statusänderung ein POST-Request abgeschickt. Um diese Schnittstelle möglichst generisch zu halten, wurde eine Möglichkeit geschaffen, eine beliebige Payload für den 
 POST-Request anzugeben. Die Nachricht des Statusänderung kann nach belieben mit dem Platzhalter '\_\_MESSAGE\_\_' irgendwo in die Payload eingebunden werden. Das Attribut 'message' 
-wird in der Nachricht gesetzt, wenn der Platzhalter nirgends verwendet wird. Eine Konfiguraiton für die Chat Applikation 'Slack' würde wie in \autoref{lst:webhook_configuration} 
+wird in der Nachricht gesetzt, wenn der Platzhalter nirgends verwendet wird. Eine Konfiguration für die Chat Applikation 'Slack' würde wie in \autoref{lst:webhook_configuration} 
 aussehen. Die Nachrichten bei den Statusänderungen sähen dann wie in \autoref{fig:slack_chat} aus.
 
 \begin{lstlisting}[language=JSON, caption=Beispiel einer WebHook Konfiguration für Slack, label=lst:webhook_configuration]
@@ -106,7 +106,7 @@ Klassen ausgelagert, damit sie nur ein Mal implementiert werden mussten.
 \section{Implementierung der Probleme}\label{impl_problems}
 In diesem Unterkapitel wird für jedes Problem kurz erklärt, was beim Prototyp implementiert wurde, um die Möglichkeiten des Konzepts aufzuzeigen. Eine ausführliche Schnittstellen 
 Dokumentation ist in \autoref{api_doc} zu finden. Zusätzlich wurde noch eine elektronische Dokumentation der Schnittstelle mit Hilfe von Swagger UI erstellt, diese stellt die angebotenen 
-Schnittstellen, die Eingabeparemter und Resultat sehr übersichtlich dar.
+Schnittstellen, die Eingabeparameter und Resultat sehr übersichtlich dar.
 
 \begin{figure}[h]
 \centering
@@ -132,7 +132,7 @@ um zu schauen, wie sich die Schnittstelle bei sehr ähnlichen Problemen verhält
 Das Rucksack Problem ist aus Sicht der Schnittstelle ein relativ einfaches Problem. Aus Benutzerfreundlichkeit kann der Nutzer bei den Elementen eine Anzahl definieren und muss sie nicht 
 doppelt angeben. Der Algorithmus hingegen bekommt eine Liste mit allen Elementen, es gibt nur noch einzelne Elemente und der Name wird nicht weiter gegeben, da er vom Algorithmus nicht 
 benötigt wird. Der Algorithmus liefert als Resultat eine Liste von Boolean-Werten zurück, diese müssen zuerst wieder auf die eigentlichen Elemente abgebildet werden. Bei der Validierung wird 
-überprüft, ob die Gewichtsschranke nicht überschritten wurde und ob ein Element nicht zu oft verwendet wurde. Letzeres ist zwar bei dem Test-Algorithmus nicht möglich, könnte jedoch bei 
+überprüft, ob die Gewichtsschranke nicht überschritten wurde und ob ein Element nicht zu oft verwendet wurde. Letzteres ist zwar bei dem Test-Algorithmus nicht möglich, könnte jedoch bei 
 einer anderen Implementation eventuell der Fall sein. Der Benutzer erhält als Resultat eine Liste mit allen Objekten, welche verwendet wurden. Wenn das Objekt mehrmals verwendet wurde, 
 wird die entsprechende Anzahl angegeben.
 
@@ -155,10 +155,10 @@ wird die entsprechende Anzahl angegeben.
 
 \subsection{Knotenfärbung}
 Beim Knotenfärbung geht es darum, Kollisionen zu vermeiden. Dies wurde für den Nutzer möglichst transparent umgesetzt. Der Nutzer kann mögliche Werte (z.B. Farben oder 
-Frequenzen) angeben, welche die Element zugeteilt bekommen sollen. Der Algorithmus erhält eine Liste mit allen Elementen und ihren Nachbaren. Der Name der Elemente und die möglichen 
+Frequenzen) angeben, welche die Element zugeteilt bekommen sollen. Der Algorithmus erhält eine Liste mit allen Elementen und ihren Nachbarn. Der Name der Elemente und die möglichen 
 Werte werden nicht weiter gegeben. Es wird davon ausgegangen, dass der Algorithmus eine Liste von Elementen mit den zugewiesenen Werten zurückgibt. Beim Übersetzten werden, falls 
 vorhanden, die Werte vom Algorithmus mit den möglichen Werten aus der Benutzereingabe ausgetauscht. Bei der Validierung wird überprüft, ob kein Element den gleichen Wert, wie einer 
-seiner Nachbaren hat. Als Resultat erhält der Benutzer eine Liste mit allen Elementen und ihren zugewiesenen Werten.
+seiner Nachbarn hat. Als Resultat erhält der Benutzer eine Liste mit allen Elementen und ihren zugewiesenen Werten.
 
 \begin{figure}[h]
 \centering
@@ -295,7 +295,7 @@ oft ein Lehrer ein bestimmtes Fach unterrichtet und wie viel Stunden er insgesam
 \subsection{Spielplan Erstellung}
 Eine weitere Ausprägung des Planungsproblem ist das Erstellen eines Spielplans. Der Nutzer gibt eine Liste von Teams, Schiedsrichter, Spielfelder und Kategorien an. Die Teams haben eine 
 bestimmte Kategorie. Die Schiedsrichter haben eine Liste mit Kategorien, welche sie leiten können und eine Liste von Teams, zu welchen sie gehören. Die Spielfelder besitzen eine Liste mit 
-möglichen Kategorien. Neben den Elementen, welche verplant werden, gibt es Randbedingungen wie die Spieldauer, der Starzeit und die Pausenzeiten. Der Algorithmus erhält eine 
+möglichen Kategorien. Neben den Elementen, welche verplant werden, gibt es Randbedingungen wie die Spieldauer, der Startzeit und die Pausenzeiten. Der Algorithmus erhält eine 
 Liste mit allen Teams, Schiedsrichter, Spielfelder und Kategorien. Zusätzlich werden die Elemente generischer benannt, damit der Algorithmus nicht verschiedene Konfigurationen für 
 verschiedene Planungsprobleme besitzen muss.
 
@@ -310,7 +310,7 @@ Es wird davon ausgegangen, dass der Algorithmus eine Liste von Planungskombinati
 einer Kombination von zwei Teams und einem Spielfeld. Beim Übersetzten werden die IDs auf die ursprünglichen Elemente abgebildet und die Zeitfensternummern werden in Uhrzeiten 
 umgewandelt. Zusätzlich wird eine Statistik für die Schiedsrichter und die Teams geführt, wie viele Einsätze sie jeweils haben. Bei der Validierung wird geschaut, ob ein Element zu einer Zeit zwei 
 Mal verplant ist, ob die Schiedsrichter die nötigen Fähigkeiten haben und ob ein Spielfeld für die Kategorie ausgelegt ist. Der Benutzer erhält als Resultat eine Liste mit den berechneten 
-Kombination, sortiert nach Uhrzeit. Die Schiedsrichterstatistik zeigt, wie oft ein Schiedsrichter eine bestimmte Kategorie pfeifft und für wie viel Spiele er insgesamt verantwortlich ist. Die 
+Kombination, sortiert nach Uhrzeit. Die Schiedsrichterstatistik zeigt, wie oft ein Schiedsrichter eine bestimmte Kategorie pfeift und für wie viel Spiele er insgesamt verantwortlich ist. Die 
 Teamstatistik zeigt, wie viele Spiele eine Kategorie insgesamt hat und wie viele Spiele ein Team bestreitet. In \autoref{lst:cat_result_matchScheduling} wird eine Ausschnitt der 
 Schiedsrichterstatistik dargestellt.
 
@@ -375,7 +375,7 @@ die verschiedenen Problem-Implementationen in ein anderes Projekt auszulagern.
 
 Um ein neues Problem in den Katalog aufzunehmen, 
 müsste ein neues Package mit dem Problemnamen erstellt werden. Darin sind weitere Packages zur besseren Übersicht definiert. Als erstes müsste das Problem analysiert werden und 
-dementsprechend die Entities für die Eingabe und das Resultat bereit gestellen werden.
+dementsprechend die Entities für die Eingabe und das Resultat bereit gestellt werden.
 
 Sind die Entities definiert, muss ein Controller für den Algorithmus und einer für den Nutzer erstellt werden. Die Controller leiten von einer abstrakten Klasse ab und dienen lediglich zur Definition
 der neuen Endpunkte. Die Dokumentation der Controller wird auch im den jeweiligen Klassen geschrieben, dies erweitert automatisch die elektronische Dokumentation von Swagger UI. 
@@ -388,7 +388,7 @@ verwendet werden.
 \newpage
 
 \section{Entwicklungsumgebung}\label{entwicklungsumgebung}
-Ein Softwareprojekt benötigt immer eine gewisse Entwicklungsumgebung. Bei der Entwicklung mit Spring-Boot sind die Anfoderungen minimal, da Spring-Boot bereits einen eigenen Webserver 
+Ein Softwareprojekt benötigt immer eine gewisse Entwicklungsumgebung. Bei der Entwicklung mit Spring-Boot sind die Anforderungen minimal, da Spring-Boot bereits einen eigenen Webserver 
 mitbringt.
 
 \subsection{IDE - Integrated Development Environment}

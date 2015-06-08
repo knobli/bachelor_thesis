@@ -12,11 +12,11 @@
 In diesem Kapitel werden die verschiedene Probleme, welche für die Erstellung der Schnittstelle betrachtet wurden, und das dazugehörige Auswahlverfahren erläutert.
 
 \section{Auswahl der Probleme}\label{cat_theo_inf}
-Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Auswahlverfahren herausgefunden werden. Mit diesem Verfahren sollten möglichst unterschiedliche 
-Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. Das Buch 
-'Computers and Intractability: A Guide to the Theory of NP-Completeness' \cite{garey1979computers} von Micheal Garey und David S. Johnson ist in der Informatik immer wieder viel zitiert und 
-war im Jahr 2006 laut einer Studie von CiteSeer das meist zitierteste Buch der Informatik \cite{citeseer_algo_buch}. In diesem Buch werden verschiedene NP-vollständige und NP-schwere 
-Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) werden auch benutzt, um die zu analysierenden Problem auszuwählen.
+Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Auswahlverfahren gefunden werden. Mit diesem Verfahren sollten möglichst unterschiedliche 
+Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. Immer wieder wird sich in der 
+Informatik auf das Buch 'Computers and Intractability: A Guide to the Theory of NP-Completeness' \cite{garey1979computers} von Micheal Garey und David S. Johnson bezogen. Laut einer 
+Studie von CiteSeer war es im Jahr 2006 das meist zitierte Buch der Informatik \cite{citeseer_algo_buch}. In diesem Buch werden verschiedene NP-vollständige und NP-schwere 
+Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) werden auch benutzt, um die zu analysierenden Probleme auszuwählen.
 
 \begin{itemize}
 	\item Graphentheorie
@@ -34,16 +34,16 @@ Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Aufli
 	\item Offene Probleme
 \end{itemize}
 
-Im Rahmen dieser Arbeit konnten nicht alle Probleme betrachtet werden, deshalb wurde geschaut, ob es Probleme gibt, welche in der Realität auftreten und nicht nur rein wissenschaftliche 
-Probleme sind. Aus diesen Problemen wurden fünf ausgewählt, bei der Auswahl wurde darauf geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen. Es wurden jedoch 
-auch zwei aus der gleichen Kategorie ausgewählt, um zu analysieren wie sich diese zwei im Gegensatz zu den anderen verhalten. 
+Im Rahmen dieser Arbeit konnten nicht alle Probleme behandelt werden. Deshalb wurde eine Auswahl von fünf Problemen getroffen, welche in der Realität auftreten und nicht nur von rein 
+wissenschaftlichem Interesse sind. Bei der Auswahl wurde darauf geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen. Es wurden jedoch auch zwei aus der gleichen 
+Kategorie ausgewählt, um zu analysieren wie sich diese im Gegensatz zu den anderen verhalten. 
 
 Die ausgewählten Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine 
 hohe Diversität von Problemen sichergestellt werden, was bei der Erstellung der Anforderungen und des Konzepts hilfreich war.
 
 \subsection{Hierarchie der Reduktion}\label{hierarchy_reduction}
 Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In 
-\autoref{fig:hierarchy_reduction} ist die Hierarchie bis zu den ausgewählten Problemen aufgezeigt.
+\autoref{fig:hierarchy_reduction} ist die Hierarchie der Reduktion für die ausgewählten Problemen aufgezeigt.
 
 \begin{figure}[h]
 \centering 
@@ -62,8 +62,8 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 	Englischer Name: Graph k-colorability
 
 	Bei diesem Problem geht es darum die Knoten eines Graphens so zu färben, dass keine zwei benachbarten Knoten die gleiche Farbe tragen. Ein Graph heisst k-färbbar, wenn die 
-Färbung mit k Farben korrekt durchgeführt werden kann. Dieses Problem ist für $k = 2$ in polynomieller Zeit lösbar, für $k \ge 2$ jedoch nicht mehr, dies jedoch auch nur mit gewiesen 
-Einschränkungen (siehe \cite{garey1979computers}).
+Färbung mit k Farben korrekt durchgeführt werden kann. Dieses Problem ist für $k = 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar, für $k \ge 2$ jedoch nicht mehr. Es gibt Spezialfälle, bei welchem auch ein 
+Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar ist (siehe \cite{garey1979computers}).
 
 	\paragraph{Beispiel}
 	Gegeben sei ein Graph mit 10 Knoten mit einer vorgegebenen Konfiguration (siehe \autoref{fig:graph_faerbung}).\\
@@ -92,7 +92,7 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
 	Bei der Knotenfärbung steigert sich die Komplexität mit Anzahl Kanten, die Knoten sind nur relevant, da sie neue Kanten aufspannen. Dass die Komplexität nur von der Anzahl Kanten 
 	abhängt, zeigt auch die Formel zur Berechnung des Maximum von $k$: $k \le \frac{1}{2} + \sqrt{2m + \frac{1}{4}}$ (wobei m für die Anzahl Kanten steht) 
-	(siehe \cite{seminar_rainer_graph}). Je grösser $k$ desto häufiger treten Kollisionen auf und um so mehr Varianten müssen ausprobiert werden.
+	(siehe \cite{seminar_rainer_graph}). Je grösser $k$ desto häufiger treten Kollisionen auf und umso mehr Varianten müssen ausprobiert werden.
 
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{seminar_algo_graph}, \cite{krumke2012graphentheoretische} und \cite{seminar_rob_graphen})
@@ -109,9 +109,9 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	\begin{itemize}
 		\item Stundenplan: Anhand der eingegebenen Daten wird ein Konfliktmatrix erstellt und diese dann in ein Färbungsproblem umgewandelt. Die Anzahl benötigten Farben sind dann 
 			die Anzahl der verschiedenen Perioden, welche es benötigt, um eine Stundenplan ohne Konflikte zu erstellen. \cite{ieee_exam_table_graph_coloring} \cite{time_table_graph_coloring} \cite{timetabling_abdullah}
-		\item Frequenzverteilung (Mobilfunk): Im Mobilfunkt hat jede Antenne einen Frequenzbereich. Im Graph werden die Antennen miteinander verbunden, bei denen sich die 
-			Reichweite überschneidet. Die Farben können durch Frequenzen ersetzt werden. Das Lösung stellt eine konfliktfreie Mobilnetzabdeckung dar. \cite{seminar_rob_graphen}
-		\item Färben von Landkarten: Die Länder sind die Knoten, die Kanten die Verbindung zu den Nachbarländern und die erreichnete Farbe ist die Einfärbung auf der Landkarte. 
+		\item Frequenzverteilung (Mobilfunk): Im Mobilfunk hat jede Antenne einen Frequenzbereich. Im Graph werden die Antennen miteinander verbunden, bei denen sich die 
+			Reichweite überschneidet. Die Farben können durch Frequenzen ersetzt werden. Die Lösung stellt eine konfliktfreie Mobilnetzabdeckung dar. \cite{seminar_rob_graphen}
+		\item Färben von Landkarten: Die Länder sind die Knoten, die Kanten die Verbindung zu den Nachbarländern und die errechnete Farbe ist die Einfärbung auf der Landkarte. 
 			\cite{seminar_rob_graphen}
 	\end{itemize}
 
@@ -124,12 +124,12 @@ Einschränkungen (siehe \cite{garey1979computers}).
 	\paragraph{Beschreibung}
 	Englischer Name: Traveling Salesman Problem\\
 	Beim Problem des Handlungsreisenden geht es darum, mit einer optimalen Route von einem Ausgangspunkt verschiedene Wegpunkte abzufahren und wieder zum Ausgangspunkt zurück 
-	zu kehren. Bei zehn Wegpunkten und ungleichen Hin- und Zurückwege sind das über dreieinhalb Millionen Möglichkeiten. Bei der symmetrischen Variante sind die Verbindung 
+	zu kehren. Bei zehn Wegpunkten und ungleichen Hin- und Zurückwegen sind das über dreieinhalb Millionen Möglichkeiten. Bei der symmetrischen Variante sind die Verbindungen 
 	zwischen zwei Punkten gleich lang, was die Komplexität halbiert. 
 
 	\paragraph{Beispiel} Gegeben seien vier Wegpunkte (A, B, C, D), der Startpunkt sei A.\\
 	Gesucht ist die optimale Route, welche alle Wegpunkte beinhaltet und wieder bei A endet.\\
-	Die Abbildung \ref{fig:tsp_example} zeigt alle möglichen Lösung mit ihren errechneten Werten. Die Route A-D-C-B-A ist mit einem Wert von 16 die beste Route. Weiter ist zu sehen, 
+	Die Abbildung \ref{fig:tsp_example} zeigt alle möglichen Lösungen mit ihren errechneten Werten. Die Route A-D-C-B-A ist mit einem Wert von 16 die beste Route. Weiter ist zu sehen, 
 	dass schon bei 4 Wegpunkten 6 Möglichkeiten vorhanden sind.
 \begin{figure}[h]
 \centering
@@ -181,7 +181,7 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B.
 	Ausgabedaten: Reihenfolge der Knoten für eine minimale Strecke
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	Wie bei der Knotenfärbung spielt die Anzal Kanten die Hauptrolle bei der Komplexität. Wie viele Knoten ein Graph hat und ob dieser bereits \glslink{eulerkreis}{eulersch} ist, hat einen 
+	Wie bei der Knotenfärbung spielt die Anzahl Kanten die Hauptrolle bei der Komplexität. Wie viele Knoten ein Graph hat und ob dieser bereits \glslink{eulerkreis}{eulersch} ist, hat einen 
 	geringeren Einfluss.
 
 	\paragraph{Bekannte Algorithmen}\mbox{}\\
@@ -194,11 +194,11 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Timetable design\\
-	Die Erstellung von Stundenplänen ist ein sehr komplexes Problem, basierend auf Fächer, Lehrer, Klassen und Klassenzimmern wird versucht, eine optimale Verteilung der Stunden zu 
+	Die Erstellung von Stundenplänen ist ein sehr komplexes Problem. Basierend auf Fächer, Lehrer, Klassen und Klassenzimmern wird versucht, eine optimale Verteilung der Stunden zu 
 	erreichen. Die wichtigste Bedingung ist, dass eine Ressource, sei das ein Lehrer, eine Klasse oder ein Schulzimmer, zu einem Zeitpunkt nur höchstens ein Mal verplant ist. 
-	Zusätzlich gibt es dann noch beliebig weitere Kriterien, wie zum Beispiel das eine Klasse nie mehr als 9 Lektionen pro Tag haben soll oder ein Lehrer nie mehr als 
-	5 Lektionen nacheinander unterrichten sollte. Bei der Erstellung von Stundenplänen wird oft von hard constraints und soft constraints gesprochen. Ein hard constraint ist im Gegensatz zu 
-	einem soft constraint unabdingbar. Es ist nicht möglich, dass ein Lehrer zwei verschiedene Fächer gleichzeitig unterrichtet, jedoch könnte er mehr als 5 Lektionen hintereinander 
+	Zusätzlich gibt es dann noch beliebige weitere Kriterien, dass zum Beispiel das eine Klasse nie mehr als 9 Lektionen pro Tag haben soll oder ein Lehrer nie mehr als 
+	5 Lektionen nacheinander unterrichten sollte. Bei der Erstellung von Stundenplänen wird oft von Hard Constraints und Soft Constraints gesprochen. Ein Hard Constraint ist im Gegensatz zu 
+	einem Soft Constraint unabdingbar. Es ist nicht möglich, dass ein Lehrer zwei verschiedene Fächer gleichzeitig unterrichtet, jedoch könnte er mehr als 5 Lektionen hintereinander 
 	unterrichten. \cite{Abramson92aparallel} \cite{Abramson91constructingschool} \cite{framework_timetabling} \cite{time_table_constraint_opti_ea}
 
 	\paragraph{Beispiel} Gegeben seien die Fächer, Lehrer, Klassen und Klassenzimmer aus den Tabellen \ref{table:eg_subject}, \ref{table:eg_teacher}, \ref{table:eg_schoolclasses} und \ref{table:eg_schoolroom}.\\
@@ -229,7 +229,7 @@ Gesucht ist ein Stundenplan, bei welchem es keine Kollisionen für Lehrer, Klass
 	Arm				& Sport\\ \hline
 	Bernasconi			& Deutsch, Mathematik, Französisch\\ \hline
 	Müller				& Deutsch, Mathematik, Englisch, Französisch\\ \hline
-	Pfister				& Englisch, Franszösisch
+	Pfister				& Englisch, Französisch
   \end{tabular}
    \caption{Lehrer}\label{table:eg_teacher}
 \end{table}
@@ -266,7 +266,7 @@ Gesucht ist ein Stundenplan, bei welchem es keine Kollisionen für Lehrer, Klass
 In der \autoref{table:timetable_1} ist eine mögliche Lösung zu dieser Problemstellung dargestellt. Dabei wurde beachtet, dass die Lehrer möglichst gleich viele Stunden unterrichten und die 
 Schüler keine doppelten Freistunden haben. Es ist jedoch auffällig, dass das Zimmer 201 sehr schlecht ausgenützt ist, in der zweiten Variante (siehe \autoref{table:timetable_2}), wurden die 
 Stunden der Klasse Tja11 so verschoben, dass das Zimmer 201 nicht mehr benötigt wird. Das hat jedoch zur Folge, dass die Klasse Tja11 nun eine doppelte Freistunde hat. Die Eingabedaten 
-sind in diesem Beispiel noch sehr überschaubar, doch es gibt schon bereits enorm viele verschiedenen Möglichkeite und Ausprägungen.
+sind in diesem Beispiel noch sehr überschaubar, doch es gibt bereits enorm viele verschiedenen Möglichkeiten und Ausprägungen.
 
 \begin{table}[ht]
 \centering
@@ -312,7 +312,7 @@ sind in diesem Beispiel noch sehr überschaubar, doch es gibt schon bereits enor
 	Ausgabedaten: Einteilung der Fächer mit den dazugehörigen Klassen, Lehrern und Zimmer auf verschiedene Tage und Uhrzeiten, welche keine Konflikte enthält
 
 	\paragraph{Einfluss der Probleme auf die Komplexität}\mbox{}\\
-	Beim Stundenplanproblem sind es nicht alle vier Listen, welche die Komplexität des Problemes ausmachen. Der grösste Einfluss haben die Anzahl Stunden, welche verplant werden 
+	Beim Stundenplanproblem sind es nicht alle vier Listen, welche die Komplexität des Problems ausmachen. Der grösste Einfluss haben die Anzahl Stunden, welche verplant werden 
 	müssen. Die Anzahl Möglichkeiten berechnet sich wie folgt: $(Anzahl Räume * Anzahl Zeitfenster * Anzahl Lehrer)^{Anzahl Veranstaltungen}$ 
 	(vergleiche \cite{scheduling_komplex}).
 
@@ -335,12 +335,12 @@ sind in diesem Beispiel noch sehr überschaubar, doch es gibt schon bereits enor
 \subsection{Mathematisches Programmieren}\label{mathematical_programming}
 
 	\subsubsection{Rucksack Problem}\label{knapsack}
-	Das Rucksack Problem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Problemes der exakten Überdeckung bewiesen.
+	Das Rucksack Problem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Problems der exakten Überdeckung bewiesen.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Knapsack\\
-	Beim Rucksack Problem geht es um einen Container, symbolisch der Rucksack, mit einer Gewichtsschranke. Desweiteren gibt es Objekte, welche in den Container gepackt werden 
-	können. Diese Objekte besitzen ein Gewicht und einen Profit. Das Ziel ist es, den grösst möglichen Profit zu erlangen, ohne die Gewichtsschranke zu überschreiten. 
+	Beim Rucksack Problem geht es um einen Container, symbolisch der Rucksack, mit einer Gewichtsschranke. Des weiteren gibt es Objekte, welche in den Container gepackt werden 
+	können. Diese Objekte besitzen ein Gewicht und einen Profit. Das Ziel ist es, den grösstmöglichen Profit zu erlangen, ohne die Gewichtsschranke zu überschreiten. 
 	\cite{knapsack_desc_web}
 
 	\paragraph{Beispiel} Gegeben sei ein Rakete mit der Gewichtsschranke 645kg und die Objekte in Tabelle \ref{table:knapsack_objects}.\\
@@ -383,8 +383,8 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 	Es gibt diverse reale Probleme, welche mit der dem Rucksack Problem gelöst werden können \cite{kellerer2004knapsack}, hier sind nur einige davon aufgelistet:
 	\begin{itemize}
 		\item Ausschneiden von verschiedenen Stücken aus einer Metall- oder Holzplatte: Optimale Nutzung der Fläche(n), damit am Schluss genug Einzelstücke für das Herstellen 
-			des Endprodukt vorhanden sind.
-		\item Kreditvergabe: Optimale Ausnutzung des Kreditbudget mit der Vergabe von Krediten an Kunden, welche eine Kredit über eine gewisse Höhe haben möchte und eine 
+			des Endprodukts vorhanden sind.
+		\item Kreditvergabe: Optimale Ausnutzung des Kreditbudgets mit der Vergabe von Krediten an Kunden, welche eine Kredit über eine gewisse Höhe haben möchte und eine 
 			bestimmte Risikoeinstufung haben.
 	\end{itemize}
 
@@ -392,10 +392,10 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 \newpage
 \subsection{Logik}\label{logic}
 Die in diesem Abschnitt aufgeführten Probleme sind zur Vollständigkeit aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet. Sie sind die 
-Grundpfeiler der NP-Vollständigkeit, durch sie konnten für zahlreiche Probleme die NP-Vollständigkeit bewiesen werden.
+Grundpfeiler der NP-Vollständigkeit, durch denn für zahlreiche Probleme die NP-Vollständigkeit bewiesen werden konnte.
 
 	\subsubsection{Erfüllbarkeitsproblems der \gls{aussagenlogik} (SAT)}\label{sat}
-	Das Erfüllbarkeitsproblem der Aussagenlogik ist ein NP-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahre bewiesen \cite{cook_complexity}.
+	Das Erfüllbarkeitsproblem der Aussagenlogik ist ein NP-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahren bewiesen \cite{cook_complexity}.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Satisfiability (SAT)\\
@@ -430,7 +430,7 @@ Grundpfeiler der NP-Vollständigkeit, durch sie konnten für zahlreiche Probleme
 
 \newpage
 	\subsubsection{3-SAT}\label{3sat}
-	Das 3-SAT Problem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des SAT Problemes bewiesen.
+	Das 3-SAT Problem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des SAT Problems bewiesen.
 
 	\paragraph{Beschreibung}
 	Englischer Name: 3-Satisfiability (3-SAT)\\
@@ -438,7 +438,7 @@ Grundpfeiler der NP-Vollständigkeit, durch sie konnten für zahlreiche Probleme
 
 	\paragraph{Beispiel} Gegeben sei eine 3-SAT Formel \ref{eq:aussagenlogik_3sat}.\\
 	Gesucht ist die Antwort auf die Erfüllbarkeit dieser Formel.\\
-	Die \autoref{table:3sat_results} beweisst, dass die Formel erfüllbar ist, lediglich für die Kombinationen 5, 11, 13 und 15 ist sie nicht korrekt.
+	Die \autoref{table:3sat_results} beweist, dass die Formel erfüllbar ist, lediglich für die Kombinationen 5, 11, 13 und 15 ist sie nicht korrekt.
 
 	\begin{equation}
    		(A \wedge B \wedge C) \vee (B \wedge \neg C \wedge D)
@@ -529,18 +529,18 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 
 \newpage
 \subsection{Beispiel für den Einfluss der Parameter auf die Komplexität \resultAssignment{[R1a]}}\label{example_complexity_knapsack}
-Bei den vorgestellten Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt, um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des Rucksack 
-Problemes erstellt.
+Bei den vorgestellten Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt. Um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des Rucksack 
+Problems erstellt.
 
 \subsubsection{Ausgangslage}
-Das Rucksackproblem hat zwei Eingabeparameter, zum einen die Gewichtsschranke und zum anderen die Elemente. Im Beispiel wurden verschiedene Anzahl Elemente verwendet und dies mit 
+Das Rucksack Problem hat zwei Eingabeparameter, zum einen die Gewichtsschranke und zum anderen die Elemente. Im Beispiel wurden verschiedene Anzahl Elemente verwendet und dies mit 
 unterschiedlichen Gewichtsschranken kombiniert. Zum Vergleich wurde die Zeit gestoppt, welche der Brute Force Algorithmus benötigt, um die optimale Lösung herauszufinden. Bei dieser 
-Methode wird das Ergebnis zwar durch andere Prozesse auf dem Testsystem verfälscht, reicht jedoch für eine Veranschaulichung der der Einflüsse.
+Methode wird das Ergebnis zwar durch andere Prozesse auf dem Testsystem verfälscht, reicht jedoch für eine Veranschaulichung der Einflüsse.
 
 \subsubsection{Resultat}
-Die Berechnungzeiten waren ungenau und bei jedem Versuch unterschiedlich. Das Resultat bestätigt jedoch bei jedem Versuch die Theorie, dass die Komplexität durch die Anzahl an Elemente 
+Die Berechnungszeiten waren ungenau und unterschiedlich. Das Resultat bestätigt jedoch bei jedem Versuch die Theorie, dass die Komplexität nur durch die Anzahl an Elementen 
 beeinflusst wird. Die verschiedenen Berechnungszeiten wurden in der \autoref{table:example_complexity_knapsack} festgehalten. Mit einer höheren Gewichtsschranke bleibt die 
-Berechnungszeit in etwa gleich, bei einer Erhöung der Anzahl Elemente nimmt die Komplexität jedoch sehr schnell zu.
+Berechnungszeit in etwa gleich, bei einer Erhöhung der Anzahl Elemente nimmt die Komplexität jedoch sehr schnell zu.
 
 \begin{table}[ht]
 \centering
@@ -557,7 +557,7 @@ Berechnungszeit in etwa gleich, bei einer Erhöung der Anzahl Elemente nimmt die
    \label{table:example_complexity_knapsack}
 \end{table}
 
-In \autoref{fig:example_complexity_knapsack} wird die exponentielle Steigerung der Berechnungsdauer mit zu nehmenden Elementen sehr schön verdeutlicht.
+In \autoref{fig:example_complexity_knapsack} wird die exponentielle Steigerung der Berechnungsdauer mit zunehmender Anzahl an Elementen sehr schön verdeutlicht.
 
 \begin{figure}[h]
 \centering
