@@ -62,7 +62,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 
 	Bei diesem Problem geht es darum die Knoten eines Graphens so zu färben, dass keine zwei benachbarten Knoten die gleiche Farbe tragen. Ein Graph heisst k-färbbar, wenn die 
 Färbung mit k Farben korrekt durchgeführt werden kann. Dieses Problem ist für $k = 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar, für $k \ge 2$ jedoch nicht mehr. Es gibt Spezialfälle, 
-bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar ist (siehe \cite{garey1979computers}).
+bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar sind (siehe \cite{garey1979computers}).
 
 	\paragraph{Beispiel}
 	Gegeben sei ein Graph mit 10 Knoten mit einer vorgegebenen Konfiguration (siehe \autoref{fig:graph_faerbung}).\\
@@ -160,8 +160,8 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	Englischer Name: Chinese postman problem\\
 	Das Briefträgerproblem ist vergleichbar mit dem Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, die 
 	Kanten entsprechen den Strassen. Die minimale Länge kann mit Hilfe des \glslink{eulerkreis}{Eulerkreises} relativ einfach berechnet werden. Falls der Graph die Kriterien des 
-	\glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungerader Anzahl von Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden. 
-	Die minimal Läng ist die Summe aus aller Strecken und den Hilfsstrecken.
+	\glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungerader Anzahl Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden. 
+	Die minimal Läng ist die Summe aller Strecken und Hilfsstrecken.
 	\cite{pearson2004decision}
 
 	\paragraph{Beispiel} Gegeben sei der Graph mit den Punkten A bis H und den Verbindungen in blau.\\
@@ -176,7 +176,7 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B-A.
 \end{figure}
 
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
-	Eingabedaten: Startpunkt und Knoten mit ihren Verbindungen zu anderen Knoten mit einer Gewichtung\\
+	Eingabedaten: Startpunkt und Knoten mit ihren Verbindungen mit einer Gewichtung\\
 	Ausgabedaten: Reihenfolge der Knoten für eine minimale Strecke
 
 	\paragraph{Einfluss der Parameter auf die Komplexität}\mbox{}\\
@@ -194,8 +194,8 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B-A.
 	\paragraph{Beschreibung}
 	Englischer Name: Timetable design\\
 	Die Erstellung von Stundenplänen ist ein sehr komplexes Problem. Basierend auf Fächer, Lehrer, Klassen und Klassenzimmern wird versucht, eine optimale Verteilung der Stunden zu 
-	erreichen. Die wichtigste Bedingung ist, dass eine Ressource, sei das ein Lehrer, eine Klasse oder ein Schulzimmer, zu jedem Zeitpunkt nur höchstens ein Mal verplant ist. 
-	Zusätzlich kann es dann noch beliebige weitere Kriterien geben, beispielsweise dass eine Klasse nie mehr als neun Lektionen pro Tag haben soll oder ein Lehrer nie mehr als 
+	erreichen. Die wichtigste Bedingung ist, dass eine Ressource, sei das ein Lehrer, eine Klasse oder ein Schulzimmer, zu jedem Zeitpunkt höchstens ein Mal verplant ist. 
+	Zusätzlich kann es beliebige weitere Kriterien geben, beispielsweise dass eine Klasse nie mehr als neun Lektionen pro Tag haben soll oder ein Lehrer nie mehr als 
 	fünf Lektionen nacheinander unterrichten sollte. Bei der Erstellung von Stundenplänen wird oft von Hard Constraints und Soft Constraints gesprochen. Ein Hard Constraint ist im Gegensatz zu 
 	einem Soft Constraint unabdingbar. Es ist nicht möglich, dass ein Lehrer zwei verschiedene Fächer gleichzeitig unterrichtet, im Notfall könnte er aber mehr als fünf Lektionen hintereinander 
 	unterrichten. \cite{Abramson92aparallel} \cite{Abramson91constructingschool} \cite{framework_timetabling} \cite{time_table_constraint_opti_ea}
@@ -311,9 +311,9 @@ trotzdem gibt es bereits enorm viele verschiedenen Möglichkeiten und Ausprägun
 	Ausgabedaten: Einteilung der Fächer mit den dazugehörigen Klassen, Lehrern und Zimmer auf verschiedene Tage und Uhrzeiten, welche keine Konflikte enthält
 
 	\paragraph{Einfluss der Parameter auf die Komplexität}\mbox{}\\
-	Beim Stundenplanproblem sind es nicht alle vier Listen, welche die Komplexität des Problems ausmachen. Der grösste Einfluss haben die Anzahl Stunden, welche verplant werden 
-	müssen. Die Anzahl Möglichkeiten berechnet sich wie folgt: $(Anzahl Räume * Anzahl Zeitfenster * Anzahl Lehrer)^{Anzahl Veranstaltungen}$ 
-	(vergleiche \cite{scheduling_komplex}).
+	Beim Stundenplanproblem sind es nicht alle vier Listen, welche die Komplexität des Problems ausmachen. Den grössten Einfluss haben die Anzahl Stunden, welche verplant werden 
+	müssen. Die Anzahl Möglichkeiten berechnen sich wie folgt (vergleiche \cite{scheduling_komplex}): 
+	\[(Anzahl Räume * Anzahl Zeitfenster * Anzahl Lehrer)^{Anzahl Veranstaltungen}\]
 
 	\paragraph{Bekannte Algorithmen}
 	(siehe \cite{framework_timetabling})
@@ -369,7 +369,7 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 	Ausgabedaten: Zusammenstellung der Elemente mit dem höchsten Nutzwert
 
 	\paragraph{Einfluss der Parameter auf die Komplexität}\mbox{}\\
-	Die Komplexität des Rucksack-Problem hängt von der Anzahl der Objekte ab, die Gewichtsschranke trägt nicht zur Komplexität bei.
+	Die Komplexität des Rucksack-Problems hängt von der Anzahl der Objekte ab, die Gewichtsschranke trägt nicht zur Komplexität bei.
 
 	\paragraph{Bekannte Algorithmen}
 	\begin{itemize}
@@ -379,11 +379,11 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 	\end{itemize}	
 
 	\paragraph{Bekannte reale Probleme}	
-	Es gibt diverse reale Probleme, welche mit der dem Rucksack-Problem gelöst werden können \cite{kellerer2004knapsack}, hier sind nur einige davon aufgelistet:
+	Es gibt diverse reale Probleme, welche mit dem Rucksack-Problem gelöst werden können \cite{kellerer2004knapsack}, hier sind nur einige davon aufgelistet:
 	\begin{itemize}
 		\item Ausschneiden von verschiedenen Stücken aus einer Metall- oder Holzplatte: Optimale Nutzung der Fläche(n), damit am Schluss genug Einzelstücke für das Herstellen 
 			des Endproduktes vorhanden sind.
-		\item Kreditvergabe: Optimale Ausnutzung des Kreditbudgets mit der Vergabe von Krediten an Kunden, welche eine Kredit über eine gewisse Höhe haben möchten und eine 
+		\item Kreditvergabe: Optimale Ausnutzung des Kreditbudgets mit der Vergabe von Krediten an Kunden, welche einen Kredit über eine gewisse Höhe haben möchten und eine 
 			bestimmte Risikoeinstufung aufweisen.
 	\end{itemize}
 
@@ -391,7 +391,7 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 \newpage
 \subsection{Logik}\label{logic}
 Die in diesem Abschnitt aufgeführten Probleme sind der Vollständigkeit halber aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet. Sie sind die 
-Grundpfeiler der NP-Vollständigkeit, auf welche zahlreiche Beweise der NP-Vollständigkeit von anderen Probleme basieren.
+Grundpfeiler der NP-Vollständigkeit, auf welche zahlreiche Beweise der NP-Vollständigkeit von Probleme basieren.
 
 	\subsubsection{Erfüllbarkeitsproblems der Aussagenlogik (SAT)}\label{sat}
 	Das Erfüllbarkeitsproblem der \gls{aussagenlogik} ist ein NP-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahren bewiesen \cite{cook_complexity}.
@@ -497,7 +497,7 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 							   \end{enumerate}	\\ \hline
 	Briefträgerproblem	 			& \begin{enumerate}
 								\item Startpunkt
-								\item Knoten mit ihren Verbindungen zu anderen Knoten mit Gewichtung
+								\item Knoten mit ihren Verbindungen mit Gewichtung
 							   \end{enumerate}				
 							&  \begin{enumerate}
 								\item Knoten in der Reihenfolge der minimalen Strecke
@@ -528,8 +528,8 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 
 \newpage
 \subsection{Beispiel für den Einfluss der Parameter auf die Komplexität \resultAssignment{[R1a]}}\label{example_complexity_knapsack}
-Bei den vorgestellten Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt. Um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des Rucksack 
-Problems erstellt.
+Bei den vorgestellten Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt. Um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des 
+Rucksack-Problems erstellt.
 
 \subsubsection{Ausgangslage}
 Das Rucksack-Problem hat zwei Eingabeparameter, zum einen die Gewichtsschranke und zum anderen die Elemente. Im Beispiel wurden verschiedene Anzahl Elemente verwendet und dies mit 
