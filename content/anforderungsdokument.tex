@@ -11,7 +11,7 @@
 \chapter{Anforderungsdokument \resultAssignment{[R3]}}\label{chap.anforderungsdokument}
 
 Das Anforderungsdokument legt die Basis für die Implementation. Es ist für den Verlauf des Projekts wichtig, dass zu Beginn die Anforderungen aufgestellt werden. Bei der 
-Erstellung des Anforderungsdokuments werden verschiedene Betrachtungsweisen aufgezeigt und die Herausforderung in verschiedenen Detailstufen angeschaut.
+Erstellung des Anforderungsdokuments werden verschiedene Betrachtungsweisen aufgezeigt und die Anforderungen an das System in verschiedenen Detailstufen angeschaut.
 
 
 \section{Übersicht}\label{anf_uebersicht}
@@ -30,14 +30,14 @@ Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten
 \label{fig:systemkontext}
 \end{figure}
 
-Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System eine relevanten Schnittstellen zu den Nutzern und zum Verarbeitungssystem hat. Das System muss Daten 
+Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System relevanten Schnittstellen zu den Nutzern und zum Verarbeitungssystem hat. Das System muss Daten 
 für das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Zudem wird das System von den Nutzern, Optimierungsproblemen und den dazugehörigen Algorithmen 
 beeinflusst.
 
 \FloatBarrier
 \subsection{Systemumgebung}\label{systemumgebung}
 Die Systemumgebung (siehe Abbildung \ref{fig:systemumgebung}) definiert die Ausgangslage für das Projekt. Am Anfang des Projekts war bekannt, dass Nutzer und ein Verarbeitungssystem 
-Dienste des zu erstellendem Systems beziehen wollen. Die genaue Ausprägung dieser Dienste werden in diesem Kapitel behandelt.
+Dienste des zu erstellenden Systems beziehen wird. Die genaue Ausprägung dieser Dienste werden in diesem Kapitel behandelt.
 
 \begin{figure}[h]
 \centering
@@ -48,11 +48,11 @@ Dienste des zu erstellendem Systems beziehen wollen. Die genaue Ausprägung dies
 
 \FloatBarrier
 \subsection{Annahmen}\label{annahmen}
-Zwischen dem Endnutzer und dem zu erstellenden System existiert noch ein Sicherheitslayer, welcher nicht Teil dieser Arbeit ist. Später wird dieses Projekt allenfalls um diesen Sicherheitslayer 
-erweitert oder eine übergeordnete Schnittstellen erstellt, welche diese anspricht. 
+Zwischen dem Endnutzer und dem zu erstellenden System existiert noch eine Sicherheitsschicht, welcher nicht Teil dieser Arbeit ist. Später wird dieses Projekt allenfalls um diese Sicherheitsschicht 
+erweitert oder eine übergeordnete Schnittstelle erstellt, welche diese anspricht. 
 
-Je nach Algorithmus-Implementation, ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
-heraus. Deshalb wurden die Ein- und Ausgabe-Schemas der Algorithmen aus der Literaturrecherche abgeleitet.
+Je nach Implementierung der Algorithmen ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
+heraus. Deshalb wurden die Ein- und Ausgabe-Schemata der Algorithmen aus der Literaturrecherche abgeleitet.
 
 \newpage
 \subsection{Stakeholder}\label{stakeholder}
@@ -83,7 +83,7 @@ Auflistung.
 
 \newpage
 \section{Anforderungen}\label{sec.anfoderungen}
-Beim Erfassen der Anforderungen wurden zuerst die Use Cases definiert. Auf der Grundlage der Use Cases wurden die Anforderungen abgeleitet.
+Zum Erfassen der Anforderungen an das System wurden zuerst verschiedene Use Cases definiert, mit deren Hilfe anschliessend der Anforderungskatalog erstellt werden konnte.
 
 \subsection{Use Cases}\label{use_cases}
 Das Use Case Diagramm (siehe Abbildung \ref{fig:use_case}) zeigt einen Akteur, ein System und sechs Use Cases, welche für diese Arbeit relevant sind.
@@ -103,11 +103,11 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Bezeichner}&	\textbf{Eindeutiger Bezeichner}\\ \hline
 	\textbf{Name}		&	Eindeutiger Name\\ \hline
 	\textbf{Beschreibung}	&	Komprimierte Beschreibung\\ \hline
-	\textbf{Auslösendes Ereignis} &	Angabe des Ereignisses, das den Use Case auslöst\\ \hline
-	\textbf{Akteure}		&	Auflistung der Akteure, die mit dem Use Case in Beziehung stehen\\ \hline
-	\textbf{Vorbedingung}	&	Eine Liste notwendiger Voraussetzungen, die erfüllt sein müssen, bevor die Ausführung des Use Case beginnen kann\\ \hline
+	\textbf{Auslösendes Ereignis} &	Angabe des Ereignisses, das den Use Case auslöst.\\ \hline
+	\textbf{Akteure}		&	Auflistung der Akteure, die mit dem Use Case in Beziehung stehen.\\ \hline
+	\textbf{Vorbedingung}	&	Eine Liste notwendiger Voraussetzungen, die erfüllt sein müssen, bevor die Ausführung des Use Case beginnen kann.\\ \hline
 	\textbf{Nachbedingung}	&	Eine Liste von Zuständen, in denen sich das System unmittelbar nach der Ausführung des Hauptszenarios befindet.\\ \hline
-	\textbf{Ergebnis}		&	Beschreibung der Ausgaben, die während der Ausführung des Use Case erzeugt werden\\ \hline
+	\textbf{Ergebnis}		&	Beschreibung der Ausgaben, die während der Ausführung des Use Case erzeugt werden.\\ \hline
 	\textbf{Hauptszenario}	&	Beschreibung des Hauptszenarios eines Use Case\\ \hline
 	\textbf{Alternativszenarien}	&	Beschreibung von Alternativszenarien des Use Case oder lediglich Angabe der auslösenden Ereignisse. 
 					Hier gelten oftmals andere Nachbedingungen.\\ \hline
@@ -125,14 +125,14 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Beschreibung}	&	Ein Nutzer möchte eine Lösung eines Problem mit spezifischen Parametern beauftragen.\\ \hline
 	\textbf{Auslösendes Ereignis} &	Nutzer möchte ein Problem lösen.\\ \hline
 	\textbf{Akteure}		&	Nutzer\\ \hline
-	\textbf{Vorbedingung}	&	Das System bietet zur Lösung dieses Problems einen Aufruf.\\ \hline
+	\textbf{Vorbedingung}	&	Das System bietet zur Lösung dieses Problems eine Schnittstelle.\\ \hline
 	\textbf{Nachbedingung}	&	Das System hat die nötigen Informationen für die Lösung des Problems und der Nutzer erhält eine ID, mit welcher er den Status bzw. das Resultat 
-						abholen kann.\\ \hline
+						abfragen kann.\\ \hline
 	\textbf{Ergebnis}		&	Erfassung der Informationen für die Lösung des Problems\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
 					\item Der Nutzer ruft die Funktion für das zu lösende Problem mit den Parametern auf.
 					\item Das System speichert die Parameter für die weitere Verarbeitung.
-					\item Der Nutzer erhält eine ID für das Abrufen des Status bzw. des Resultates.
+					\item Der Nutzer erhält eine ID für das Abrufen des Status bzw. des Resultats.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Alternativszenarien}	&	\begin{enumerate}
@@ -177,7 +177,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Bezeichner}	&	\textbf{UC-3}\\ \hline
 	\textbf{Name}			&	Eingabe Parameter abholen\\ \hline
 	\textbf{Beschreibung}	&	Das Verarbeitungssystem benötigt für die Lösung des Problems die Eingabeparameter.\\ \hline
-	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem möchte die Eingabeparameter.\\ \hline
+	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem startet eine neue Berechnung.\\ \hline
 	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
 	\textbf{Vorbedingung}	&	Das Verarbeitungssystem wurde angestossen, das Problem zu lösen.\\ \hline
 	\textbf{Nachbedingung}	&	Das Verarbeitungssystem hat die Eingabeparameter erhalten.\\ \hline
@@ -189,7 +189,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 					\end{enumerate}
 					\\ \hline
 	\textbf{Alternativszenarien}	&	\begin{enumerate}
-					\item[2a] Das System sendet eine Fehlermeldung, falls keine Eingabeparameter vorhanden sind.
+					\item[2a] Das System liefert eine Fehlermeldung zurück, falls keine Eingabeparameter vorhanden sind.
 					\end{enumerate}
 					\\ \hline
   \end{tabular}
@@ -247,7 +247,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 					\end{enumerate}
 					\\ \hline
 	\textbf{Alternativszenarien}	&	\begin{enumerate}
-					\item[4a] Das System sendet eine Fehlermeldung, wenn das Resultat nicht korrekt gespeichert werden konnte.
+					\item[4a] Das System liefert eine Fehlermeldung zurück, wenn das Resultat nicht korrekt gespeichert werden konnte.
 					\end{enumerate}
 					\\ \hline
   \end{tabular}
@@ -333,7 +333,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Beschreibung} 	&	Das System muss dem Nutzer die Möglichkeit bieten, die Lösung verschiedener Optimierungsprobleme zu beauftragen.\\ \hline
 	\textbf{Begründung} 		&	Die Schnittstellen ist die Anlaufstelle des Nutzers. Er beauftragt das System, eine Berechnung zu starten.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer kann eine Schnittstelle für eine bereitgestellten Berechnungsfunktionen ansprechen.
+					\item Der Nutzer kann eine Schnittstelle für die bereitgestellten Berechnungsfunktionen ansprechen.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline
@@ -460,7 +460,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Name} 			&	Registrierung eines WebHooks für Statusänderungen\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben und dazu ein WebHook eingetragen wurde, sollte das System den Nutzer über eine Änderung des Status mittels 
-						Webhook informieren.\\ \hline
+						WebHook informieren.\\ \hline
 	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu vermeiden, können 
 							WebHooks verwenden werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
@@ -530,11 +530,11 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
 	\textbf{Name} 			&	Prozess-agnostische Schnittstelle\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
-	\textbf{Beschreibung} 	&	Das System sollte fähig sein, die Lösung eines Problems so bereit zu stellen, dass kein Wissen über den Verarbeitungsprozess erforderlich ist.\\ \hline
+	\textbf{Beschreibung} 	&	Das System sollte fähig sein, die Lösung eines Problems so bereitzustellen, dass kein Wissen über den Verarbeitungsprozess erforderlich ist.\\ \hline
 	\textbf{Begründung} 		&	Der Verarbeitungsprozess kann spezifisch und von Problem zu Problem unterschiedlich sein, der Nutzer sollte eine möglichst einfache 
-							Schnittstelle dazu haben.\\ \hline
+							Schnittstelle dafür haben.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Das Interface kann, ohne dass das Verarbeitungssystem bekannt ist, verwendet werden.
+					\item Das Interface kann verwendet werden, ohne dass das Verarbeitungssystem bekannt ist.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline
@@ -553,9 +553,9 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Name} 			&	Entgegennahme generischer Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System sollte in der Lage sein, unterschiedliche Ausprägungen von Eingabeparametern entgegenzunehmen.\\ \hline
-	\textbf{Begründung} 		&	Da es bei den Probleme unterschiedliche Ausprägungen gibt, ist auf eine generische Deserialisierung der Eingabeparametern hinzuarbeiten.\\ \hline
+	\textbf{Begründung} 		&	Da es bei den Problemen unterschiedliche Ausprägungen gibt, ist auf eine generische Deserialisierung der Eingabeparameter hinzuarbeiten.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Unterschiedliche Ausprägungen eines Problems benutzen das gleiche API.
+					\item Unterschiedliche Ausprägungen eines Problems benutzen die gleiche API.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline
@@ -576,7 +576,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Beschreibung} 	&	Das System sollte Eingabeparameter einheitlich abspeichern.\\ \hline
 	\textbf{Begründung} 		&	Da es viele unterschiedliche Probleme gibt, ist eine generische Persistierung anzustreben.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Unterschiedliche Probleme haben keine abweichendes Persistierungsschema.
+					\item Unterschiedliche Probleme haben kein abweichendes Persistierungsschema.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	-\\ \hline
@@ -586,8 +586,8 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 
 \newpage
 \subsection{Zusammenfassung der Anforderungen}\label{toc_anfoderungen}
-Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde mit den \glslink{stakeholder}{Stakeholdern} zusammen festgelegt und in 
-\autoref{table:req_priorities} zur besseren Übersicht zusammengetragen.
+Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde zusammen mit den \glslink{stakeholder}{Stakeholdern} 
+festgelegt und in \autoref{table:req_priorities} zur besseren Übersicht zusammengetragen.
 \begin{table}[ht]
 \centering
   \begin{tabular}{ l | l | l }
