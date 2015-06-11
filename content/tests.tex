@@ -14,7 +14,7 @@ In diesem Kapitel wird auf das Testverfahren und die Tests für dieses Projekts 
 \section{Einführung}
 In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Leitlinie zum Testen verwendet:
 \begin{enumerate}
-\item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Testabdeckung mit Hilfe von \gls{sonar} ermittelt und anhand der Anforderungen überprüft.
+\item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Die Testabdeckung wurde mit Hilfe von Intellij ermittelt und anhand der Anforderungen überprüft.
 \item \textbf{Vollständiges Testen ist nicht möglich}: Es wurde solange getestet bis alle Akzeptanzkriterien abgedeckt waren und die Testabdeckung gut genug war.
 \item \textbf{Mit dem Testen frühzeitig beginnen}: Die Unit Tests für neuen Funktionen wurden möglichst zeitnah oder zur gleichen Zeit geschrieben.
 \item \textbf{Häufung von Fehlern}: Wenn Fehler auftraten, dann wurde diese Komponente nach der Behebung nochmals intensiv getestet und zusätzliche Tests erfasst.
@@ -27,7 +27,7 @@ In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Le
 
 \section{Testing}
 Komponententests und Integrationstests, bekannt aus \cite{test_soft_book}, wurden bei der Schnittstelle mit JUnit und Mockito durchgeführt. Bei den Integrationstests wurde eine 
-Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Für die Analyse der Testabdeckung wurde die Intellij 
+Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Für die Analyse der Testabdeckung wurde Intellij 
 verwendet und die statische Code Analyse wurde mit \gls{sonar} überprüft. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis 
 zu testen.
 
@@ -35,8 +35,8 @@ zu testen.
 Als Abschluss des Projekts wurde ein Systemtest vorgesehen, für welcher ein Testprotokoll erstellt wurde. Das Protokoll zeigt dem Kunden was getestet wurden und das Ergebnis.
 
 \subsection{Testprotokoll}
-Das Testprotokoll basiert auf den Use Case \ref{use_cases} und den Anforderungen \ref{anforderungen}. Akzeptanz Kriterien mit UND- oder ODER-Verknüpfung wurden 
-aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
+Das Testprotokoll basiert auf den Use Cases (siehe Abschnitt \ref{use_cases}) und den Anforderungen (Abschnitt \ref{anforderungen}). Akzeptanz-Kriterien mit UND- oder ODER-Verknüpfung 
+wurden aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
 
 %%\begin{longtable}{ l | p{7cm} | l | l }
 \begin{longtable}{>{\raggedright}m{1cm}m{6cm}m{3.5cm}m{3cm}}
@@ -55,7 +55,7 @@ aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
 \endlastfoot	
 
 	\addlinespace
-	1	&	Der Nutzer kann eine Schnittstelle für eine bereitgestellten Berechnungsfunktionen ansprechen.			
+	1	&	Der Nutzer kann eine Schnittstelle für eine bereitgestellte Berechnungsfunktionen ansprechen.			
 				&	\nameref{table:req_1} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 	2	&	Der Nutzer erhält nach dem Starten einer Berechnung eine ID.
 				&	\nameref{table:req_2} 	&	erfüllt\\ \addlinespace\hline \addlinespace
@@ -77,7 +77,7 @@ aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
 				&	\nameref{table:req_5} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 	9	&	Der Nutzer erhält einen Status seiner Berechnung.
 				&	\nameref{table:req_6} 	&	erfüllt\\ \addlinespace\hline \addlinespace
-	10	&	Der Nutzer wird über die Änderunge des Status auf dem eingetragen WebHook informiert.
+	10	&	Der Nutzer wird über die Änderungen des Status auf dem eingetragen WebHook informiert.
 				&	\nameref{table:req_7} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 	11	&	Das Verarbeitungssystem kann das Resultat abspeichern.
 				&	\nameref{table:req_8} 	&	erfüllt\\ \addlinespace\hline \addlinespace
@@ -91,7 +91,7 @@ aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
 				&	\nameref{table:req_nf_1} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 	16	&	Unterschiedliche Ausprägungen eines Problems benutzen das gleiche API.
 				&	\nameref{table:req_nf_2} 	&	teilweise erfüllt\\ \addlinespace\hline \addlinespace
-	17	&	Unterschiedliche Probleme haben keine abweichendes Persistierungsschema.
+	17	&	Unterschiedliche Probleme haben kein abweichendes Persistierungsschema.
 				&	\nameref{table:req_nf_3} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 
 \end{longtable}

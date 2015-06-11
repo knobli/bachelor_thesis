@@ -30,8 +30,8 @@ Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten
 \label{fig:systemkontext}
 \end{figure}
 
-Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System eine relevanten Schnittstellen zu den Nutzern und Verarbeitungssystem hat. Das System muss Daten für 
-das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Des weiteren wird das System von den Nutzern, Optimierungsproblemen und den dazugehörigen Algorithmen 
+Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System eine relevanten Schnittstellen zu den Nutzern und zum Verarbeitungssystem hat. Das System muss Daten 
+für das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Zudem wird das System von den Nutzern, Optimierungsproblemen und den dazugehörigen Algorithmen 
 beeinflusst.
 
 \FloatBarrier
@@ -48,17 +48,17 @@ Dienste des zu erstellendem System beziehen wollen. Die genaue Ausprägung diese
 
 \FloatBarrier
 \subsection{Annahmen}\label{annahmen}
-Zwischen dem Endnutzer und dem zu erstellenden System existiert noch ein Sicherheitslayer, welcher nicht Teil dieser Arbeit ist. Später wird dieses Projekt allenfalls mit diesem Sicherheitslayer 
+Zwischen dem Endnutzer und dem zu erstellenden Systems existiert noch ein Sicherheitslayer, welcher nicht Teil dieser Arbeit ist. Später wird dieses Projekt allenfalls um diesen Sicherheitslayer 
 erweitert oder eine übergeordnete Schnittstellen erstellt, welche diese anspricht. 
 
-Je nach Algorithmus Implementation, ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
-heraus. Deshalb wurden die Ein- und Ausgabe Schemas der Algorithmen aus den Literaturrecherchen abgeleitet.
+Je nach Algorithmus-Implementation, ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
+heraus. Deshalb wurden die Ein- und Ausgabe-Schemas der Algorithmen aus der Literaturrecherche abgeleitet.
 
 \newpage
 \subsection{Stakeholder}\label{stakeholder}
-Die \gls{stakeholder} Analyse dient dem erfassen aller Nutzergruppen, die auf ein Projekt Einfluss haben. Zudem ermöglicht sie die Erfassung aller Gruppen, die potentiell 
-Anforderungen an das Projekt stellen. In der der Tabelle \ref{table:stakeholder} wurden die \gls{stakeholder} für dieses Projekt zusammengetragen und ihre Erwartungen, ihre 
-Einstellung und ihr Einfluss gegenüber diesem Projekt festgehalten. Da dieses Projekt eine Machbarkeitsanalyse ist, befindet sich nur der Auftraggeber und ein potenzieller Kunde in der 
+Die \gls{stakeholder}-Analyse dient dem Erfassen aller Nutzergruppen, die Einfluss auf das Projekt haben können. Zudem ermöglicht sie die Erfassung aller Gruppen, die potenziell 
+Anforderungen an das Projekt stellen. In \autoref{table:stakeholder} wurden die \gls{stakeholder} dieses Projekts zusammengetragen und ihre Erwartungen, ihre 
+Einstellung und ihr Einfluss gegenüber dem Projekt festgehalten. Da es sich um eine Machbarkeitsanalyse handelt, befinden sich nur der Auftraggeber und ein einzelner potenzieller Kunde in der 
 Auflistung.
 
 \begin{table}[ht]
@@ -74,8 +74,8 @@ Auflistung.
 									Umsetzung der Gesamtidee.
 												& 	Positiv		&	Hoch		\\ \hline
 	\textbf{Potenzieller Kunde}
-								&	Der potenzielle Kunde wünscht sich eine einfache Abwicklung für seine Probleme, er möchte sich nicht mit Algorithmen und 
-									theoretischer Informatik rumschlagen.
+								&	Er wünscht sich eine einfache Abwicklung für seine Probleme, er möchte sich nicht mit Algorithmen und 
+									theoretischer Informatik herumschlagen.
 												& 	Positiv		&	Hoch		\\ \hline
   \end{tabular}
    \caption{Liste der \gls{stakeholder}}\label{table:stakeholder}
@@ -83,7 +83,7 @@ Auflistung.
 
 \newpage
 \section{Anforderungen}\label{sec.anfoderungen}
-Beim Erfassen der Anforderungen wurden zuerst die Use-Cases definiert. Anhand der Use-Cases wurden die Anforderungen abgeleitet.
+Beim Erfassen der Anforderungen wurden zuerst die Use Cases definiert. Auf Grundlage der der Use Cases wurden die Anforderungen abgeleitet.
 
 \subsection{Use Cases}\label{use_cases}
 Das Use Case Diagramm (siehe Abbildung \ref{fig:use_case}) zeigt einen Akteur, ein System und sechs Use Cases, welche für diese Arbeit relevant sind.
@@ -179,7 +179,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Beschreibung}	&	Das Verarbeitungssystem benötigt für die Lösung des Problems die Eingabeparameter.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem möchte die Eingabeparameter.\\ \hline
 	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
-	\textbf{Vorbedingung}	&	Das Verarbeitungssystem wurden angestossen das Problem zu lösen.\\ \hline
+	\textbf{Vorbedingung}	&	Das Verarbeitungssystem wurde angestossen, das Problem zu lösen.\\ \hline
 	\textbf{Nachbedingung}	&	Das Verarbeitungssystem hat die Eingabeparameter erhalten.\\ \hline
 	\textbf{Ergebnis}		&	Erhalt von Eingabeparametern\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
@@ -239,7 +239,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Nachbedingung}	&	Das Resultat ist gespeichert.\\ \hline
 	\textbf{Ergebnis}		&	Speicherung des Resultats\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
-					\item Das Verarbeitungssystem schickt das Resultat der Berechnung dem System.
+					\item Das Verarbeitungssystem schickt das Resultat der Berechnung an das System.
 					\item Das System erhält das Resultat.
 					\item Das System speichert das Resultat.
 					\item Das System quittiert das Erhalten des Resultats.
@@ -261,14 +261,14 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\rowcolor{gray}
 	\textbf{Bezeichner}	&	\textbf{UC-6}\\ \hline
 	\textbf{Name}			&	Resultat abholen\\ \hline
-	\textbf{Beschreibung}	&	Der Nutzer holt das Resultat an einem bestimmten Zeitpunkt ab.\\ \hline
+	\textbf{Beschreibung}	&	Der Nutzer holt das Resultat zu einem bestimmten Zeitpunkt ab.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Der Nutzer möchte das Resultat der Berechnung abholen.\\ \hline
 	\textbf{Akteure}		&	Nutzer\\ \hline
 	\textbf{Vorbedingung}	&	Der Nutzer hat bereits eine Berechnung beauftragt und kennt die ID.\\ \hline
 	\textbf{Nachbedingung}	&	Der Nutzer hat das Resultat erhalten.\\ \hline
 	\textbf{Ergebnis}		&	Erhalt des Resultats\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
-					\item Der Nutzer ruft das Resultat der Berechnung ab.
+					\item Der Nutzer fragt das Resultat der Berechnung ab.
 					\item Das System sucht das Resultat der Berechnung.
 					\item Das System sendet das Resultat.
 					\item Der Nutzer erhält das Resultat.
@@ -285,8 +285,8 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 \newpage
 \FloatBarrier
 \subsection{Anforderungen}\label{anforderungen}
-Alle Anforderungen wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:req_template}) erfasst. Diese Vorlage basiert auf Angaben von \cite{req_eng_book} und wurde mit 
-eigenen Attributen erweitert.
+Alle Anforderungen wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:req_template}) erfasst. Diese Vorlage basiert auf Angaben von \cite{req_eng_book} und wurde um 
+eigene Attribute erweitert.
 
 \begin{table}[ht]
 \centering
@@ -352,7 +352,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Name} 			&	Speicherung der Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben wurde, muss das System fähig sein, die Eingabeparameter abzuspeichern.\\ \hline
-	\textbf{Begründung} 		&	Die Berechnung wird von einem anderen System ausgeführt, damit dieses auf die Parameter zu greifen kann, müssen sie persistiert werden.\\ \hline
+	\textbf{Begründung} 		&	Die Berechnung wird von einem anderen System ausgeführt. Damit diese auf die Parameter zugreifen können, müssen die Daten persistiert werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Die Parameter sind persistiert.
 					\item Es gibt eine Fehlermeldung, falls bei der Speicherung etwas fehlschlägt oder die Eingabeparameter nicht gültig sind.
@@ -395,7 +395,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Name} 			&	Start der Berechnung\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_2}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben wurde, muss das System fähig sein, die Berechnung beim Verarbeitungssystem zu starten.\\ \hline
-	\textbf{Begründung} 		&	Der Nutzer kennt das Verarbeitungssystem nicht, das System muss dem Verarbeitungssystem den Start Befehl geben.\\ \hline
+	\textbf{Begründung} 		&	Der Nutzer kennt das Verarbeitungssystem nicht, das System muss dem Verarbeitungssystem den Start-Befehl geben.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Der Befehl für den Start wird versendet und die ID dabei übergeben.
 					\item Die Fehlermeldung bei einem Fehlversuch wird gespeichert.
@@ -461,7 +461,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
 	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben und dazu ein WebHook eingetragen wurde, sollte das System den Nutzer über eine Änderung des Status mittels 
 						Webhook informieren.\\ \hline
-	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu verhindern, können 
+	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu vermeiden, können 
 							WebHooks verwenden werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Der Nutzer wird über die Änderung des Status auf dem eingetragen WebHook informiert.
@@ -528,9 +528,9 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Bezeichner}&	\textbf{RE-NF1}\\ \hline
 	\textbf{Priorität} 		&	Should\\ \hline
 	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
-	\textbf{Name} 			&	Prozess agnostische Schnittstelle\\ \hline
+	\textbf{Name} 			&	Prozess-agnostische Schnittstelle\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
-	\textbf{Beschreibung} 	&	Das System sollte fähig sein, die Lösung eines Problems so bereit zu stellen, dass kein Wissen über den Verarbeitungsprozess benötigt wird.\\ \hline
+	\textbf{Beschreibung} 	&	Das System sollte fähig sein, die Lösung eines Problems so bereit zu stellen, dass kein Wissen über den Verarbeitungsprozess erforderlich ist.\\ \hline
 	\textbf{Begründung} 		&	Der Verarbeitungsprozess kann spezifisch und von Problem zu Problem unterschiedlich sein, der Nutzer sollte eine möglichst einfache 
 							Schnittstelle dazu haben.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
@@ -550,7 +550,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Bezeichner}&	\textbf{RE-NF2}\\ \hline
 	\textbf{Priorität} 		&	Should\\ \hline
 	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
-	\textbf{Name} 			&	Annahme von generischen Eingabeparameter\\ \hline
+	\textbf{Name} 			&	Entgegennahme generischer Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System sollte in der Lage sein, unterschiedliche Ausprägungen von Eingabeparametern entgegenzunehmen.\\ \hline
 	\textbf{Begründung} 		&	Da es bei den Probleme unterschiedliche Ausprägungen gibt, ist auf eine generische Deserialisierung der Eingabeparametern hinzuarbeiten.\\ \hline
@@ -571,7 +571,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 	\textbf{Bezeichner}&	\textbf{RE-NF3}\\ \hline
 	\textbf{Priorität} 		&	Should\\ \hline
 	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
-	\textbf{Name} 			&	Speicherung von generischen Eingabeparameter\\ \hline
+	\textbf{Name} 			&	Speicherung generischer Eingabeparameter\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
 	\textbf{Beschreibung} 	&	Das System sollte Eingabeparameter einheitlich abspeichern.\\ \hline
 	\textbf{Begründung} 		&	Da es viele unterschiedliche Probleme gibt, ist eine generische Persistierung anzustreben.\\ \hline
@@ -603,9 +603,9 @@ Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforde
 	RE-F7 			&  Registrierung eines WebHooks für Statusänderungen	& Nice to have\\ \hline
 	RE-F8 			&  Speicherung des Resultats	& Must\\ \hline
 	RE-F9 			&  Abfrage des Resultats	& Must\\ \hline
-	RE-NF1 			&  Prozess agnostische Schnittstelle & Should\\ \hline
-	RE-NF2 			&  Annahme von generischen Eingabeparameter & Should\\ \hline
-	RE-NF3 			&  Speicherung von generischen Eingabeparameter & Should\\ \hline
+	RE-NF1 			&  Prozess-agnostische Schnittstelle & Should\\ \hline
+	RE-NF2 			&  Entgegennahme generischer Eingabeparameter & Should\\ \hline
+	RE-NF3 			&  Speicherung generischer Eingabeparameter & Should\\ \hline
   \end{tabular}
    \caption{Priorität der Anforderungen}\label{table:req_priorities}
 \end{table}

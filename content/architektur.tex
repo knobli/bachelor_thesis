@@ -25,8 +25,8 @@ Um die Daten zu speichern, wird eine Datenbank benötigt. Das ermöglicht einen 
 \section{Konzept}\label{arch_backend}
 Das Konzept sollte simpel und flexibel sein, damit das System möglichst schnell erweitert werden kann. Beim Betrachten der Probleme und der Abläufe wurde bemerkt, dass die Vorgänge 
 Ähnlichkeiten aufweisen. Die Daten werden angenommen und für einen bestimmten Algorithmus aufbereitet. Das Verarbeitungssystem schickt das Resultat zurück und dieses wird dann 
-wieder umgewandelt, so dass es für den Nutzer brauchbar ist. Es finden zwei Umwandlungen statt. Die Umwandlungen an sich sind von Problem zu Problem verschieden, jedoch gibt es 
-auch dort gewisse Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des System gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe der Controller, Entities und 
+wieder umgewandelt, so dass es für den Nutzer brauchbar ist. Es finden zwei Umwandlungen statt. Die Umwandlungen an sich sind von Problem zu Problem verschieden, es gibt jedoch 
+auch dort gewisse Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des Systems gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe der Controller, Entities und 
 den Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
 
 \begin{figure}[h]
@@ -132,14 +132,14 @@ Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jewe
 \end{itemize}
 
 \subsection{Relationales Datenbanksystem}\label{rdbms}
-Die Vorteile einer \gls{rdbms} sind die Transaktionen und das dazugehörige \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
+Eine \gls{rdbms} basiert auf Transaktionen und das dazugehörige \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
 \begin{itemize}
 	\item \textbf{Atomicity}: Eine Reihe von Befehlen wird entweder ganz oder gar nicht ausgeführt.
 	\item \textbf{Consistency}: Der Datenzustand ist nach jeder Veränderung wieder konsistent, wenn dies auch vorher der Fall war.
 	\item \textbf{Isolation}: Unterschiedliche Befehlsketten beeinflussen sich nicht gegenseitig.
 	\item \textbf{Durability}: Vollzogene Änderungen sind dauerhaft, auch bei einem Systemfehler.
 \end{itemize}
-Beziehungen zwischen Tabellen werden mit Fremdschlüssel definiert, welche auf einen Hauptschlüssel der zu referenzierenden Tabelle zeigt. \autoref{lst:table_definition_rdbms} zeigt die
+Beziehungen zwischen Tabellen werden mit Fremdschlüsseln definiert, welche auf den Hauptschlüssel der referenzierenten Tabelle zeigt. \autoref{lst:table_definition_rdbms} zeigt die
 Tabelle 'Person', welche eine Verbindung zur Tabelle 'Address' hat.
 
 \begin{lstlisting}[language=SQL, caption=Tabellendefinition in relationalem Datenbanksystem, label=lst:table_definition_rdbms]  
@@ -165,8 +165,8 @@ Die Abfrage der Strasse bei einer relationaler Datenbank mittels \gls{sql} ist i
 \end{lstlisting}
 
 \subsection{Objektrelationales Datenbanksystem}\label{ordbms}
-\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt um, das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
-Die folgenden Beschreibung der Eigenschaften sind aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
+\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
+Die folgende Beschreibung der Eigenschaften ist aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
 komplexe Datentypen unterstützt, so können zusätzliche Typen definiert werden und diese können dann bei einer Tabellendefinition verwendet werden.  
 In \autoref{lst:type_definition_ordbms} ist eine Typendefinition von 'AddressType' zu sehen, welche wiederum in \autoref{lst:use_type_definition_ordbms} 
 in der Tabelle 'Person' verwendet wird.
@@ -207,11 +207,11 @@ Weiter bieten die Systeme die Möglichkeiten, Methoden auf Typen und Tabellen un
 liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Objekten durchführen.
 
 \subsection{Objekorientiertes Datenbanksystem}\label{object_db}
-Das Ziel einer \gls{oodbms} ist eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen.
+Eine \gls{oodbms} hat als Ziel eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen. 
 Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
 ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
 Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekte gleichzeitig umgehen. 
-Dies kann bei einem geplanten Umstrukturierung sehr hilfreich sein, wenn die neue Version erst für Tests verwendet wird und die bestehenden Objekte erst nach dem 
+Dies kann bei einer geplanten Umstrukturierung sehr hilfreich sein, wenn die neue Version erst für Tests verwendet wird und die bestehenden Objekte erst nach dem 
 Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt, wie das Objekt 'Person' in \gls{odl} definiert wird.
 
 \begin{lstlisting}[language=C++, caption=Objektdefinition in objektorientierem Datenbanksystem, label=lst:table_definition_oodbms]  
@@ -236,8 +236,8 @@ sich \gls{oql}. Die Attribute der Objekte und Structs können mit einem Punkt se
 \end{lstlisting}
 
 Die objektorientierten Datenbanksystemen bietet die aus den \gls{rdbms} bekannten Abfragefunktionen (Avg, Max, Min, Distinct). 
-Zuätzlich können bei diesen Systemen Vererbungshierarchien und Methoden in Objekten definiert werden. Sie werden bei Applikationen verwendet,
-welche oft und lange mit komplexen Objekten arbeiten.
+Zusätzlich können bei diesen Systemen Vererbungshierarchien und Methoden in Objekten definiert werden. Sie werden bei Applikationen verwendet,
+welche viele und lange Transaktionen mit komplexen Objekten haben.
 
 \subsection{NoSQL Datenbanksystem}\label{no_sql_db}
 NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip, sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
@@ -329,12 +329,12 @@ für das Abfragen der Strasse einer Person in Neo4j zu sehen.
 
 \subsection{Vorselektierung}\label{preselection}
 Um nicht alle sechs vorgestellten Datenbanksysteme in der Nutzwertanalyse miteinander vergleichen zu müssen, wurde eine Vorselektierung aufgrund der Ist-Analyse gemacht. Da 
-objektrelationalen und objektorientierte Datenbanksystem eher akademischer Natur sind und keine detailierte Dokumentation darüber gefunden wurde, werden sie von der Nutzwertanalyse 
+objektrelationale und objektorientierte Datenbanksystem eher akademischer Natur sind und keine detaillierte Dokumentation darüber gefunden wurde, werden sie von der Nutzwertanalyse 
 ausgeschlossen. Die Anforderungen lassen auf keinen Anwendungsfall für eine spaltenorientierte Datenbank schliessen. In den einzelnen Problemen spielen Beziehungen zwischen Objekten 
 zwar oft eine Rolle, doch das würde eher in den Bereich des Algorithmus fallen, aus diesem Grund werden Graphdatenbanken ebenfalls ausgeschlossen. Somit bleiben noch die relationale 
 Datenbank und die dokumentorientierten Datenbanken für die Nutzwertanalyse übrig.
 
-Da es innerhalb der ausgewählten Datenbanksystemen sehr viele verschiedene Implementationen gibt, wurden von jedem Typ eine ausgewählt. Bei den relationalen Datenbanken fiel die 
+Da es innerhalb der ausgewählten Datenbanksystemen sehr viele verschiedene Implementationen gibt, wurde von jedem Typ eine ausgewählt. Bei den relationalen Datenbanken fiel die 
 Entscheidung auf MySQL, da diese Implementation kostenlos ist und bereits Erfahrung vorhanden war. Da MongoDB sehr verbreitet und eine gute Integration in die Java Frameworks hat, 
 wurde diese Implementation unter den dokumentorientierten Datenbanken ausgewählt.
 
@@ -348,7 +348,7 @@ Die Kriterien sind grösstenteils aus den \gls{cap_theorem} abgeleitet.
 
 \paragraph{Aufwand}
 \begin{itemize}
-	\item \textbf{Beschreibung}: Wie gross ist der geschätzte Aufwand mit dieser Datenbanktyp?
+	\item \textbf{Beschreibung}: Wie gross ist der geschätzte Aufwand mit diesem Datenbanktyp?
 	\item \textbf{Bewertung}: 1: sehr hoch, 10: sehr niedrig
 	\item \textbf{Gewichtung}: 5 (Die Zeit für dieses Projekt ist beschränkt und die Entscheidung könnte zu einem Risiko werden.)
 \end{itemize}
@@ -369,14 +369,14 @@ Die Kriterien sind grösstenteils aus den \gls{cap_theorem} abgeleitet.
 
 \paragraph{Verfügbarkeit}
 \begin{itemize}
-	\item \textbf{Beschreibung}: Wie hoch ist die Verfügbarkeit der Datenbank Operationen?
+	\item \textbf{Beschreibung}: Wie hoch ist die Verfügbarkeit der Datenbank-Operationen?
 	\item \textbf{Bewertung}: 1: niedrig, 10: sehr hoch
 	\item \textbf{Gewichtung}: 4 (Die Schnittstelle wird für möglichst viele gleichzeitige Requests ausgelegt, eine Warteschlaufe von Operationen ist nicht gewünscht.)
 \end{itemize}
 
 \paragraph{Partitionstoleranz}
 \begin{itemize}
-	\item \textbf{Beschreibung}: Kann die Datenbank verteilt betrieben werden können?
+	\item \textbf{Beschreibung}: Kann die Datenbank verteilt betrieben werden?
 	\item \textbf{Bewertung}: 1: nur eingeschränkt, 10: sehr einfach
 	\item \textbf{Gewichtung}: 4 (Mit zunehmender Grösse wird die Datenbank sehr wahrscheinlich verteilt betrieben.)
 \end{itemize}
@@ -390,7 +390,7 @@ Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese B
   \begin{tabular}{>{\columncolor{darkgray}} l | p{5cm} | p{5cm}}
 	\hline
 	\rowcolor{darkgray}
-	\textbf{Kriterium}		&	\textbf{Relationale Datenbank} 	&	\textbf{Dokumentorientierten Datenbank}	\\ \hline
+	\textbf{Kriterium}		&	\textbf{Relationale Datenbank} 	&	\textbf{Dokumentorientierte Datenbank}	\\ \hline
 	\rowcolor{gray}
 	Aufwand		&	7 (35)		&	7 (35)		\\ \hline
 	Begründung		&	MySQL ist bekannt und das Einrichten ist relativ schnell gemacht.			
@@ -426,10 +426,10 @@ auch die verschiedenen Ausprägungen der einzelnen Problemen gut unterstützt.
 
 \section{Datendiagramm des Datenspeichers}\label{datendiagramm_datenspeicher}
 Da sich bei der Nutzerwertanalyse ergeben hat, dass eine dokumentorientierte Datenbank verwendet wird, entfällt ein Datendiagramm der Tabellen, wie es von relationalen Datenbanken 
-bekannt ist. Die Collections benutzen kein vordefiniertes Schema, jedoch legen die verwendeten Klassen, welchem in die Collections gespeichert werde, das Schema fest. Aus diesem Grund 
+bekannt ist. Die Collections benutzen kein vordefiniertes Schema, jedoch legen die verwendeten Klassen, welche in die Collections gespeichert werden, das Schema fest. Aus diesem Grund 
 reicht ein Klassendiagramm, um zu wissen, wie die Daten abgespeichert werden.
 
-In \autoref{fig:problems_diagramm} ist die Klassen Hierarchie der Probleme dargestellt und in \autoref{fig:solutions_diagramm} werden die verschiedenen 
+In \autoref{fig:problems_diagramm} ist die Klassen-Hierarchie der Berechnungstypen dargestellt und in \autoref{fig:solutions_diagramm} werden die verschiedenen 
 Resultatklassen gezeigt.
 
 
