@@ -11,7 +11,7 @@
 \chapter{Analyse und Auswahl der Probleme \resultAssignment{[R1]}}\label{chap.problemauswahl}
 In diesem Kapitel werden die verschiedene Probleme, welche für die Erstellung der Schnittstelle betrachtet wurden, und das dazugehörige Auswahlverfahren erläutert.
 
-\section{Auswahl der Probleme}\label{cat_theo_inf}
+\section{Auswahlverfahren}\label{cat_theo_inf}
 Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Auswahlverfahren gefunden werden. Mit diesem Verfahren sollten möglichst unterschiedliche 
 Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. Immer wieder wird sich in der 
 Informatik auf das Buch 'Computers and Intractability: A Guide to the Theory of NP-Completeness' \cite{garey1979computers} von Micheal Garey und David S. Johnson bezogen. Laut einer 
@@ -41,6 +41,8 @@ Kategorie ausgewählt, um zu analysieren wie sich diese im Gegensatz zu den ande
 Die ausgewählten Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine 
 hohe Diversität von Problemen sichergestellt werden, was bei der Erstellung der Anforderungen und des Konzepts hilfreich war.
 
+\section{Problemauswahl}\label{cat_theo_inf}
+
 \subsection{Hierarchie der Reduktion}\label{hierarchy_reduction}
 Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In 
 \autoref{fig:hierarchy_reduction} ist die Hierarchie der Reduktion für die ausgewählten Probleme aufgezeigt.
@@ -60,7 +62,7 @@ Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollstän
 	\paragraph{Beschreibung}
 	Englischer Name: Graph k-colorability
 
-	Bei diesem Problem geht es darum die Knoten eines Graphens so zu färben, dass keine zwei benachbarten Knoten die gleiche Farbe tragen. Ein Graph heisst k-färbbar, wenn die 
+	Bei diesem Problem geht es darum, die Knoten eines Graphens so zu färben, dass keine zwei benachbarten Knoten die gleiche Farbe tragen. Ein Graph heisst k-färbbar, wenn die 
 Färbung mit k Farben korrekt durchgeführt werden kann. Dieses Problem ist für $k = 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar, für $k \ge 2$ jedoch nicht mehr. Es gibt Spezialfälle, 
 bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar sind (siehe \cite{garey1979computers}).
 
@@ -148,6 +150,7 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	 \newpage
 	\paragraph{Bekannte Algorithmen}\cite{tsp_algorithmen} \cite{tsp_semesterarbeit}
 	\begin{itemize}
+		\item Branch and Bound
 		\item Nearest-Neighbor
 		\item 2Opt
 		\item Christofides
@@ -471,7 +474,7 @@ Grundpfeiler der NP-Vollständigkeit, auf welche zahlreiche Beweise der NP-Volls
 \end{table}
 
 \newpage
-\subsection{Übersicht Eingabe- und Ausgabedaten \resultAssignment{[R2]}}\label{overview_input_output}
+\section{Übersicht Eingabe- und Ausgabedaten \resultAssignment{[R2]}}\label{overview_input_output}
 Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen unterschiedliche Komplexität auf. Um einen besseren Überblick zu erhalten, wurden sie in der 
 \autoref{table:input_output} zusammengefasst.
 \begin{table}[ht]
@@ -527,16 +530,16 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 \end{table}
 
 \newpage
-\subsection{Beispiel für den Einfluss der Parameter auf die Komplexität \resultAssignment{[R1a]}}\label{example_complexity_knapsack}
+\section{Beispiel für den Einfluss der Parameter auf die Komplexität \resultAssignment{[R1a]}}\label{example_complexity_knapsack}
 Bei den vorgestellten Problemen wurde der Einfluss der Parameter auf die Komplexität der Probleme erwähnt. Um dies zu verdeutlichen wurde ein praktisches Beispiel anhand des 
 Rucksack-Problems erstellt.
 
-\subsubsection{Ausgangslage}
+\subsection{Ausgangslage}
 Das Rucksack-Problem hat zwei Eingabeparameter, zum einen die Gewichtsschranke und zum anderen die Elemente. Im Beispiel wurden verschiedene Anzahl Elemente verwendet und dies mit 
 unterschiedlichen Gewichtsschranken kombiniert. Zum Vergleich wurde die Zeit gestoppt, welche der Brute Force-Algorithmus benötigt, um die optimale Lösung herauszufinden. Bei dieser 
 Methode wird das Ergebnis zwar durch andere Prozesse auf dem Testsystem verfälscht, reicht jedoch für eine Veranschaulichung der Einflüsse.
 
-\subsubsection{Resultat}
+\subsection{Resultat}
 Die Berechnungszeiten waren ungenau und unterschiedlich. Das Resultat bestätigt jedoch bei jedem Versuch die Theorie, dass die Komplexität nur durch die Anzahl an Elementen 
 beeinflusst wird. Die verschiedenen Berechnungszeiten wurden in der \autoref{table:example_complexity_knapsack} festgehalten. Mit einer höheren Gewichtsschranke bleibt die 
 Berechnungszeit in etwa gleich, bei einer Erhöhung der Anzahl Elemente nimmt die Komplexität jedoch sehr schnell zu.

@@ -26,8 +26,8 @@ Eingabelänge und k eine Konstante ist.
 Probleme, welche in \gls{polynomialzeit} mit Hilfe einer \glslink{deterministisch}{deterministischen} \gls{turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
 
 \subsection{NP-schwer}\label{np_hard}
-Probleme, welche nicht in \gls{polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial haben, zum Beispiel 
-$k^n$ (exponentiell) oder $n!$ (faktoriell). Um zu beweisen, dass das Problem NP-schwer ist, wird versucht ein anderes bekanntes NP-schweres Problem auf dieses Problem zu reduzieren. Mit 
+Probleme, welche nicht in \gls{polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial, zum Beispiel 
+$k^n$ (exponentiell) oder $n!$ (faktoriell). Um zu beweisen, dass das Problem NP-schwer ist, wird versucht, ein anderes bekanntes NP-schweres Problem auf dieses Problem zu reduzieren. Mit 
 diesem Beweis wird gezeigt, dass das Problem mindestens so schwer wie das andere Problem ist.
 
 \subsection{NP-vollständig}\label{np_complet}
@@ -56,10 +56,18 @@ Beweis weiter offen.
 Beim Backtracking geht es darum, sich einer Lösung eines Problems schrittweise zu nähern. Bei jedem neuen Schritt wird geprüft, ob das Resultat noch eine gültige Lösung darstellt. Falls dies 
 nicht der Fall ist, wird der letzte Schritt rückgängig gemacht und es wird ein anderer Weg eingeschlagen. In \cite{backtracking} wird dieses Verfahren anhand des Damenproblems aufgezeigt.
 
+Die Laufzeit eines Backtracking Algorithmus ist Abhängig von den Anzahl an Möglichkeiten und der Verzweigungsrate. Im schlechtesten Fall beträg sie
+$O(z^n)$, wobei $n$ die Anzahl Möglichkeiten und $z$ die Verzweigungsrate ist. Die Suche dauert oft lange, deshalb empfiehlt sich ein Backtracking 
+Algorithmus nur bei kleinen Lösungsbäumen \cite{stephens2013essential}. Jedoch wird mithilfe eines Backtracking Algorithmus immer eine Lösung gefunden, falls 
+eine existiert.
+\todo{Laufzeit, Exaktheit, Schwierigkeit}
+
 \subsection{Greedy Algorithmen}\label{greedy_algos}
 Greedy Algorithmen liefern oft eine schnelle Lösung, welche aber meist nicht optimal ist. Die Algorithmen entscheiden bei jedem Schritt, was die aktuell beste Möglichkeit ist. Da sie nicht alle 
-Möglichkeiten betrachten, finden sie oft nur ein lokales Minimum bzw. Maximum. In \autoref{fig:greedy_algo} ist in grün der Weg des Greedy Algorithmus zu sehen. Der Algorithmus entscheidet 
-sich für die 12 auf der zweiten Ebene, da diese im Betrachtungsraum als beste Lösung gilt. Mit dem violetten Pfad könnte jedoch ein viel höherer Wert erzielt werden.
+Möglichkeiten betrachten, finden sie oft nur ein lokales Minimum bzw. Maximum \cite{mcmillan2014data}. In \autoref{fig:greedy_algo} ist in grün der Weg des Greedy Algorithmus zu sehen. 
+Der Algorithmus entscheidet sich für die 12 auf der zweiten Ebene, da diese im Betrachtungsraum als beste Lösung gilt. Mit dem violetten Pfad könnte jedoch ein viel höherer Wert erzielt 
+werden.
+\todo{Laufzeit, Exaktheit, Schwierigkeit}
 
 \begin{figure}[h]
 \centering 
@@ -84,3 +92,4 @@ Ein Ablauf eines Evolutionären Algorithmus sieht meist wie folgt aus:
       	\end{enumerate}
 \end{enumerate}
 Die Mutation und Rekombination können positive, negative oder neutrale Eigenschaften haben. Wie in der Natur überlebt der am besten Angepasste und somit wird die Lösung immer besser.
+\todo{Laufzeit, Exaktheit, Schwierigkeit}
