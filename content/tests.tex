@@ -14,7 +14,7 @@ In diesem Kapitel wird auf das Testverfahren und die Tests für dieses Projekts 
 \section{Einführung}
 In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Leitlinie zum Testen verwendet:
 \begin{enumerate}
-\item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Die Testabdeckung wurde mit Hilfe von Intellij ermittelt und anhand der Anforderungen überprüft.
+\item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Die Testabdeckung wurde mit Hilfe von IntelliJ ermittelt und anhand der Anforderungen überprüft.
 \item \textbf{Vollständiges Testen ist nicht möglich}: Es wurde solange getestet bis alle Akzeptanzkriterien abgedeckt waren und die Testabdeckung gut genug war.
 \item \textbf{Mit dem Testen frühzeitig beginnen}: Die Unit Tests für neuen Funktionen wurden möglichst zeitnah oder zur gleichen Zeit geschrieben.
 \item \textbf{Häufung von Fehlern}: Wenn Fehler auftraten, dann wurde diese Komponente nach der Behebung nochmals intensiv getestet und zusätzliche Tests erfasst.
@@ -27,7 +27,7 @@ In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Le
 
 \section{Testing}
 Komponententests und Integrationstests, bekannt aus \cite{test_soft_book}, wurden bei der Schnittstelle mit JUnit und Mockito durchgeführt. Bei den Integrationstests wurde eine 
-Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Für die Analyse der Testabdeckung wurde Intellij 
+Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Für die Analyse der Testabdeckung wurde IntelliJ 
 verwendet und die statische Code Analyse wurde mit \gls{sonar} überprüft. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis 
 zu testen.
 
