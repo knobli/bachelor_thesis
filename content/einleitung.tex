@@ -51,23 +51,24 @@ Beweis weiter offen.
 \end{figure}
 
 \section{Algorithmentypen}\label{algo_types}
+In diesem Abschnitt werden drei gängige Algorithmentypen erklärt, welche bei der Recherche bei der Lösung vieler Problemen zum 
+Einsatz kamen. Die Aufzählung erhebt keinen Anspruch auf Vollständigkeit. Dynamic Programming oder Divide and Conquer wären 
+weitere gängige Algorithmentypen, welche für das Lösen von Optimierungsproblemen verwendet werden \cite{vazirani_algorithm}.
 
 \subsection{Backtracking Algorithmen}\label{backtracking_algos}
 Beim Backtracking geht es darum, sich einer Lösung eines Problems schrittweise zu nähern. Bei jedem neuen Schritt wird geprüft, ob das Resultat noch eine gültige Lösung darstellt. Falls dies 
 nicht der Fall ist, wird der letzte Schritt rückgängig gemacht und es wird ein anderer Weg eingeschlagen. In \cite{backtracking} wird dieses Verfahren anhand des Damenproblems aufgezeigt.
 
-Die Laufzeit eines Backtracking Algorithmus ist Abhängig von den Anzahl an Möglichkeiten und der Verzweigungsrate. Im schlechtesten Fall beträg sie
-$O(z^n)$, wobei $n$ die Anzahl Möglichkeiten und $z$ die Verzweigungsrate ist. Die Suche dauert oft lange, deshalb empfiehlt sich ein Backtracking 
+Die Laufzeit eines Backtracking Algorithmus ist Abhängig von der Eingabegrösse und der Verzweigungsrate. Im schlechtesten Fall beträg sie
+$O(z^n)$, wobei $n$ die Eingabegrösse und $z$ die Verzweigungsrate ist. Die Suche dauert oft lange, deshalb empfiehlt sich ein Backtracking 
 Algorithmus nur bei kleinen Lösungsbäumen \cite{stephens2013essential}. Jedoch wird mithilfe eines Backtracking Algorithmus immer eine Lösung gefunden, falls 
-eine existiert.
-\todo{Laufzeit, Exaktheit, Schwierigkeit}
+eine existiert \cite{pomberger2008algorithmen}.
 
 \subsection{Greedy Algorithmen}\label{greedy_algos}
 Greedy Algorithmen liefern oft eine schnelle Lösung, welche aber meist nicht optimal ist. Die Algorithmen entscheiden bei jedem Schritt, was die aktuell beste Möglichkeit ist. Da sie nicht alle 
 Möglichkeiten betrachten, finden sie oft nur ein lokales Minimum bzw. Maximum \cite{mcmillan2014data}. In \autoref{fig:greedy_algo} ist in grün der Weg des Greedy Algorithmus zu sehen. 
 Der Algorithmus entscheidet sich für die 12 auf der zweiten Ebene, da diese im Betrachtungsraum als beste Lösung gilt. Mit dem violetten Pfad könnte jedoch ein viel höherer Wert erzielt 
 werden.
-\todo{Laufzeit, Exaktheit, Schwierigkeit}
 
 \begin{figure}[h]
 \centering 
@@ -91,5 +92,6 @@ Ein Ablauf eines Evolutionären Algorithmus sieht meist wie folgt aus:
          		\item Mutation: Veränderung der Eigenschaften (Gene) der Nachfahren
       	\end{enumerate}
 \end{enumerate}
-Die Mutation und Rekombination können positive, negative oder neutrale Eigenschaften haben. Wie in der Natur überlebt der am besten Angepasste und somit wird die Lösung immer besser.
-\todo{Laufzeit, Exaktheit, Schwierigkeit}
+Die Mutation und Rekombination können positive, negative oder neutrale Eigenschaften haben. Wie in der Natur überlebt der am besten Angepasste und somit wird die Lösung immer 
+besser \cite{pomberger2008algorithmen}. Evolutionäre Algorithmen sollten erst zum Einsatz kommen, wenn das Optimierungsproblem nicht effizient mit einem anderen Algorithmustyp 
+gelöst werden kann. Evolutionäre Algorithmen haben oft eine höhere Laufzeit und es ist nicht garantiert, dass sie immer die optimale Lösung liefern \cite{ea_useful}.

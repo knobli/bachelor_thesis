@@ -210,6 +210,7 @@ liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Obj
 Eine \gls{oodbms} hat als Ziel eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen. 
 Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
 ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
+Das objektrelationale Mapping, welches bei \gls{rdbms} notwendig ist, entfällt. 
 Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekte gleichzeitig umgehen. 
 Dies kann bei einer geplanten Umstrukturierung sehr hilfreich sein, wenn die neue Version erst für Tests verwendet wird und die bestehenden Objekte erst nach dem 
 Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt, wie das Objekt 'Person' in \gls{odl} definiert wird.
@@ -235,9 +236,10 @@ sich \gls{oql}. Die Attribute der Objekte und Structs können mit einem Punkt se
     WHERE p.Name = 'Thomas';
 \end{lstlisting}
 
-Die objektorientierten Datenbanksystemen bietet die aus den \gls{rdbms} bekannten Abfragefunktionen (Avg, Max, Min, Distinct). 
+Die objektorientierten Datenbanksysteme bieten die aus den \gls{rdbms} bekannten Abfragefunktionen (Avg, Max, Min, Distinct). 
 Zusätzlich können bei diesen Systemen Vererbungshierarchien und Methoden in Objekten definiert werden. Sie werden bei Applikationen verwendet,
-welche viele und lange Transaktionen mit komplexen Objekten haben.
+welche viele, lange Transaktionen mit komplexen Objekten haben. Lade- und Speichervorgänge sind bei \gls{oodbms} sehr komplex, deshalb 
+sollten kurze Transaktionen, in welchen sehr vielen komplexe Objekten geladen werden, vermieden werden.
 
 \subsection{NoSQL Datenbanksystem}\label{no_sql_db}
 NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip, sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
