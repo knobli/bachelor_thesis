@@ -41,7 +41,7 @@ Kategorie ausgewählt, um zu analysieren wie sich diese im Gegensatz zu den ande
 Die ausgewählten Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine 
 hohe Diversität von Problemen sichergestellt werden, was bei der Erstellung der Anforderungen und des Konzepts hilfreich war.
 
-\section{Problemauswahl}\label{cat_theo_inf}
+\section{Problemauswahl}\label{problem_selection}
 
 \subsection{Hierarchie der Reduktion}\label{hierarchy_reduction}
 Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In 
@@ -157,7 +157,9 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	\end{itemize}
 
 	\subsubsection{Briefträgerproblem}\label{chinese_postman}
-	Das Briefträgerproblem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des 3-SAT Problemes bewiesen.
+	Das Briefträgerproblem ist an sich kein NP-vollständiges Problem, jedoch wurde für Varianten des Problems die NP-Vollständigkeit bewiesen. Für das `Rural Postman Problem`, bei 
+	welchem nicht jeder Punkt zwingend abgefahren werden muss, wurde dies durch die Reduktion des 3-SAT Problemes bewiesen. Da die Varianten alle auf das Grundproblem aufbauen, 
+	wird in dieser Arbeit dieses verwendet.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Chinese postman problem\\
@@ -187,7 +189,7 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B-A.
 	geringeren Einfluss.
 
 	\paragraph{Bekannte Algorithmen}\mbox{}\\
-	Briefträgeralgorithmus (Chinese postman algorithm)
+	Briefträgeralgorithmus (Chinese postman algorithm) \cite{pearson2004decision}
 
 \subsection{Sequenzierung und Planung}\label{sequencing_scheduling}
 
@@ -327,7 +329,7 @@ trotzdem gibt es bereits enorm viele verschiedenen Möglichkeiten und Ausprägun
 	\end{itemize}	
 
 	\paragraph{Bekannte ähnliche Probleme}	
-	Es gibt diverse andere Planungsprobleme, welche auf dem gleichen Konzept basieren, jedoch unterschiedliche Eingabedaten und Beschränkungen haben:
+	Es gibt diverse andere Planungsprobleme, welche auf dem gleichen Konzept basieren, jedoch unterschiedliche Eingabedaten und Beschränkungen haben \cite{framework_timetabling}:
 	\begin{itemize}
 		\item Spielplan
 		\item Prüfungsplan

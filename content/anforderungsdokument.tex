@@ -319,6 +319,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 \newpage
 \FloatBarrier
 \subsubsection{Funktionale Anforderungen}\label{func_anforderungen}
+Mit den funktionalen Anforderungen wird festgelegt, was die Schnittstelle tun sollte.
 
 \begin{table}[ht]
 \centering
@@ -519,6 +520,7 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
 \newpage
 \FloatBarrier
 \subsubsection{Qualitätsanforderung}\label{non_func_anforderungen}
+Die erfassten Qualitätsanforderungen definieren, was für Eigenschaften die Schnittstelle haben sollte.
 
 \begin{table}[ht]
 \centering
@@ -584,6 +586,27 @@ Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \te
    \caption{Qualitätsanforderung RF-NF3}\label{table:req_nf_3}
 \end{table}
 
+\begin{table}[ht]
+\centering
+  \begin{tabular}{ l | p{8cm} }
+	\hline
+	\rowcolor{gray}
+	\textbf{Bezeichner}&	\textbf{RE-NF4}\\ \hline
+	\textbf{Priorität} 		&	Should\\ \hline
+	\textbf{Anforderungstyp}	&	Qualitätsanforderung\\ \hline
+	\textbf{Name} 			&	Erweiterbare Schnittstelle\\ \hline
+	\textbf{Use Case} 		&	-\\ \hline
+	\textbf{Beschreibung} 	&	Das System sollte einfach erweiterbar sein.\\ \hline
+	\textbf{Begründung} 		&	Falls ein Nachfrage für ein anderes Problem besteht, wäre es gut, wenn die Schnittstelle mit wenig Aufwand erweitert werden könnte.\\ \hline
+	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
+					\item Die Schnittstelle kann mit wenig Aufwand erweitert werden.
+					\end{enumerate}
+					\\ \hline
+	\textbf{Abhängigkeiten} 	&	-\\ \hline
+  \end{tabular}
+   \caption{Qualitätsanforderung RF-NF4}\label{table:req_nf_4}
+\end{table}
+
 \newpage
 \subsection{Zusammenfassung der Anforderungen}\label{toc_anfoderungen}
 Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde zusammen mit den \glslink{stakeholder}{Stakeholdern} 
@@ -606,6 +629,7 @@ festgelegt und in \autoref{table:req_priorities} zur besseren Übersicht zusamme
 	RE-NF1 			&  Prozess-agnostische Schnittstelle & Should\\ \hline
 	RE-NF2 			&  Entgegennahme generischer Eingabeparameter & Should\\ \hline
 	RE-NF3 			&  Speicherung generischer Eingabeparameter & Should\\ \hline
+	RE-NF4 			&  Erweiterbare Schnittstelle & Should\\ \hline	
   \end{tabular}
    \caption{Priorität der Anforderungen}\label{table:req_priorities}
 \end{table}

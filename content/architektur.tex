@@ -9,16 +9,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Konzept der Schnittstelle \resultAssignment{[R4]}}\label{chap.architektur}
-In diesem Kapitel wird auf die Strukur und das Konzept der Schnittstelle eingegangen. Dieses Konzept legt die Grundlage für die Umsetzung und entscheidet somit, ob die 
-Aufgabe gelöst werden kann.
+In diesem Kapitel wird auf die Strukur und das Konzept der Schnittstelle eingegangen. Dieses Konzept legt die Grundlage für die Umsetzung und ist somit entscheidend für die Lösung der 
+Aufgabe.
 
 \section{Übersicht}\label{architektur_uebersicht}
-Die Systemumgebung (siehe Abbildung \ref{fig:system_scope}) hat zwei Berührungspunkte zur Aussenwelt. Der eine ist zum Nutzer hin, der andere zu einem Verarbeitungssystem. 
+Die Systemumgebung (siehe Abbildung \ref{fig:system_scope}) hat zwei Berührungspunkte mit der Aussenwelt. Der eine ist zum Nutzer, der andere zu einem Verarbeitungssystem. 
 Um die Daten zu speichern, wird eine Datenbank benötigt. Das ermöglicht einen asynchronen Ablauf und ein mehrfaches Abfragen der Daten.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{images/visio/Systemscope.png}
-\caption[System Übersicht]{System Übersicht \selfmade{}}
+\caption[Systemübersicht]{Systemübersicht \selfmade{}}
 \label{fig:system_scope}
 \end{figure}
 
@@ -26,8 +26,8 @@ Um die Daten zu speichern, wird eine Datenbank benötigt. Das ermöglicht einen 
 Das Konzept sollte simpel und flexibel sein, damit das System möglichst schnell erweitert werden kann. Beim Betrachten der Probleme und der Abläufe wurde bemerkt, dass die Vorgänge 
 Ähnlichkeiten aufweisen. Die Daten werden angenommen und für einen bestimmten Algorithmus aufbereitet. Das Verarbeitungssystem schickt das Resultat zurück und dieses wird dann 
 wieder umgewandelt, so dass es für den Nutzer brauchbar ist. Es finden zwei Umwandlungen statt. Die Umwandlungen an sich sind von Problem zu Problem verschieden, es gibt jedoch 
-auch dort gewisse Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des Systems gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe der Controller, Entities und 
-den Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
+auch dort gewisse Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des Systems gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe des Controllers, Entities und 
+der Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
 
 \begin{figure}[h]
 \centering
@@ -38,32 +38,36 @@ den Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
  
 \FloatBarrier
 \subsection{REST API}
-Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem De-facto-Standard 
-(siehe \cite{wiki_restful}). Falls Fehler auftreten, werden die \gls{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
+Für die Schnittstelle wird eine \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Die \gls{api} funktioniert nach einem De-facto-Standard 
+(siehe \cite{wiki_restful}). Falls Fehler auftreten, werden \glspl{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
 Die Business Logik besteht aus Translator, Service, Entity und Validator von den jeweiligen Problemen. 
 \paragraph{Translator}
-Es gibt jeweils ein `ComputationTranslator' für die Umwandlung vom Nutzer hin zum Algorithmus und einen `SolutionTranslator' für die Umwandlung vom Algorithmus zurück in das System. In den 
-Translators steckt die ganze Logik. Hier fliesst ein, wie der Algorithmus die Daten für die Verarbeitung benötigt und wie das Resultat zurück kommt. Es wäre zum Beispiel möglich, die Daten in 
-Kombinationen für einen evolutionären Algorithmus umzuwandeln, so würde allenfalls ein generischer Algorithmus für alle Probleme ausreichen. Ebenfalls möglich wäre eine Umwandlung des 
-Stundenplanproblems auf ein Knotenfärbungsproblem und somit könnte der gleiche Algorithmus angesprochen werden (vergleiche \cite{timetabling_abdullah}). Die Möglichkeiten mit dem 
-Konzept der Translators ist sehr vielfälltig. Zusätzlich kann im Translator das Resultat mit zusätzlichen Informationen, zum Beispiel Statistiken, angereichert werden.
+Es gibt jeweils ein `ComputationTranslator' für die Umwandlung vom Nutzer hin zum Algorithmus, in diesem Translator werden die Daten für den Algorithmus aufbereitet. Daneben gibt es einen 
+`SolutionTranslator' für die Umwandlung vom Algorithmus zurück in das System, bei welchem das Resultat in ein menschenlesbares Resultat umgewandelt wird. In den Translators steckt die 
+ganze Logik. Es fliesst ein, wie der Algorithmus die Daten für die Verarbeitung benötigt und wie das Resultat zurück kommt. Es wäre zum Beispiel möglich, die Daten in Kombinationen für einen 
+evolutionären Algorithmus umzuwandeln. Damit würde allenfalls ein generischer evolutionärer Algorithmus für alle Probleme ausreichen. Ebenfalls möglich wäre eine Umwandlung des 
+Stundenplanproblems auf ein Knotenfärbungsproblem und somit könnte der gleiche Algorithmus angesprochen werden (vergleiche \cite{timetabling_abdullah}).  Zusätzlich kann im Translator 
+das Resultat mit zusätzlichen Informationen, zum Beispiel Statistiken, angereichert werden. Die Möglichkeiten mit dem Konzept der Translators ist sehr vielfältig.
 \paragraph{Service}
-Der Service kann sehr generisch gehalten werden und benötigt keine problemspezifisches Methoden. 
+Der Service ist zentraler Dreh- und Angelpunkt, er spricht über das Repository die Datenbank an, startet die Umwandlungen und Validierungen und gibt die sequentielle Abfolge vor. Er kann 
+sehr generisch gehalten werden und benötigt keine problemspezifische Methoden. Zu den Services gehören auch die Solver-Klassen, welche für das Starten der jeweiligen Algorithmen zuständig 
+sind.
 \paragraph{Entity}
-Die Entitäten sind von Problem zu Problem unterschiedlich. Es muss analysiert werden, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus 
-gebraucht werden. 
+Die Entitäten repräsentieren die Datenstruktur der Algorithmen, der Nutzereingaben oder der Resultate. Mit den Entitäten wird gerechnet und ihr Zustand wird in der Datenbank persistiert. 
+Es muss analysiert werden, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus gebraucht werden. Weiter muss ein nützliches Format für das Resultat 
+herausgefunden werden.
 \paragraph{Validator}
 Der Validator entscheidet, ob eine Lösung gültig ist oder nicht. Wie bereits im \autoref{cat_theo_inf} erklärt, kann jedes NP-vollständige Problem in \glslink{polynomialzeit}{polynomialer} Zeit validiert werden.
 
 \subsection{Persistance API}
-Die Abstraktion der Datenbank wird mittels eines Persistance APIs, welches mit der Datenbank interagiert, realisiert. Dieses API ist für das Laden und Speichern der Daten 
-verantwortlich und bietet die Möglichkeit, spezifische Abfragen auszuführen.
+Die Abstraktion der Datenbank wird mittels eine Persistence \glspl{api}, welches mit der Datenbank interagiert, realisiert. Diese \gls{api} ist für das Laden und Speichern der Daten 
+verantwortlich und bietet die Möglichkeit, spezifische Abfragen auszuführen. Diese Funktionalitäten werden in Entity-spezifischen Repositories zur Verfügung gestellt.
 
 \subsection{Datenbank}
-Jedes Problem hat seine eigene Ausprägung von Computation und Solution, welche abgespeichert werden müssen. Die Datenbank sollte, wenn möglich, eine ähnliche Flexibilität, wie 
-das Programm selber, aufweisen. Die Vorgänge benötigen keine Transaktionen und sind zum grossen Teil nur Einfüge-Operationen, nur selten wird ein Eintrag geändert. Die Daten werden 
+Jedes Problem hat seine eigene Ausprägung von Computation und Solution, welche abgespeichert werden müssen. Die Datenbank sollte, wenn möglich, eine ähnliche Flexibilität wie 
+das Programm selber aufweisen. Die Vorgänge benötigen keine Transaktionen und sind zum grossen Teil nur Einfüge-Operationen, nur selten wird ein Eintrag geändert. Die Daten werden 
 immer in der Nutzer-Sicht gespeichert.
 
 \newpage
@@ -82,7 +86,7 @@ auf.
 \FloatBarrier
 \newpage
 
-Die \autoref{fig:sequenz_diagramm_start} zeigt das Sequenzdiagramm für den Start eines beliebigen Problems, alle Komponenten mit '\{Problem\}' sind spezifische Problem-Komponenten, 
+Die \autoref{fig:sequenz_diagramm_start} zeigt das Sequenzdiagramm für den Start eines beliebigen Problems. Alle Komponenten mit '\{Problem\}' sind spezifische Problem-Komponenten, 
 die anderen sind generische. Bei Speichern einer Berechnung wird der Status 'CREATED' gesetzt. Nach dem Speichern wird über die `Solver'-Komponente asynchron das Verarbeitungssystem 
 gestartet und der Status auf 'STARTED' gesetzt. Das Verarbeitungssystem holt sich die benötigten Informationen. Der Controller lädt das Problem vom Service, dieser wiederum lädt es vom 
 Repository und wandelt es für den Algorithmus um.
@@ -90,26 +94,26 @@ Repository und wandelt es für den Algorithmus um.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.74]{images/visio/sequenz_diagramm_start.png}
-\caption[Start eines beliebigen Problemes]{Start eines beliebigen Problemes \selfmade{}}
+\caption[Start eines beliebigen Problems]{Start eines beliebigen Problems \selfmade{}}
 \label{fig:sequenz_diagramm_start}
 \end{figure}
 
 \newpage
 
-Die \autoref{fig:sequenz_diagramm_result} zeigt das Sequenzdiagramm für das Abspeichern eines Resultates einer beliebigen Berechnung. Bei einem Speicheraufruf wird zuerst das Problem 
-geladen, danach wird die Lösung vom Algorithmus mit Hilfe der Eingabeparameter transferiert und vom Validator validiert. Nun wird anhand des Resultattypes der Status der Berechnung 
-abgeändert. Das Resultat wird mit dem Ergebnis der Validierung in die Datenbank gespeichert. Wenn der Nutzer den Status einer Berechnung abruft, fragt der Controller über den 
+Die \autoref{fig:sequenz_diagramm_result} zeigt das Sequenzdiagramm für das Abspeichern eines Resultats einer beliebigen Berechnung. Bei einem Speicheraufruf wird zuerst das Problem 
+geladen, danach wird die Lösung vom Algorithmus mit Hilfe der Eingabeparameter transferiert und vom Validator validiert. Nun wird anhand des Resultattyps der Status der Berechnung 
+geändert. Das Resultat wird mit dem Ergebnis der Validierung in die Datenbank gespeichert. Wenn der Nutzer den Status einer Berechnung abruft, fragt der Controller über den 
 Service den Status ab. Der Service lädt das Problem, fragt die vorhandenen Resultate ab, fügt diese zu einem Status zusammen und schickt den Status an den Controller zurück.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.72]{images/visio/sequenz_diagramm_result.png}
-\caption[Abspeichern des Resultates eines beliebigen Problemes]{Abspeichern des Resultates eines beliebigen Problemes \selfmade{}}
+\caption[Abspeichern des Resultats eines beliebigen Problems]{Abspeichern des Resultats eines beliebigen Problems \selfmade{}}
 \label{fig:sequenz_diagramm_result}
 \end{figure}
 
 \section{Datenbank Varianten}\label{db_varianten}
-Es gibt verschiedene Datenbanktypen und jede hat seine Vor- und Nachteile. In diesem Abschnitt werden vier verschiedenen Typen miteinander verglichen und der beste für diesen 
+Es gibt verschiedene Datenbanktypen mit verschiedenen Vor- und Nachteile. In diesem Abschnitt werden vier verschiedene Typen miteinander verglichen und der beste für diesen 
 Anwendungszweck ausgewählt. Um die Eigenheiten der Datenbanken hervorzuheben, wird bei jeder Art das gleiche Beispiel mit der spezifischen Definitions-- und Abfragesprache gemacht.
 
 \subsection{CAP-Theorem}\label{cap_theorem}
@@ -127,8 +131,8 @@ Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jewe
 
 \begin{itemize}
 	\item \textbf{AP}: Domain Name System (DNS), NoSQL Datenbanken
-	\item \textbf{CA}: Relationalen Datenbanken
-	\item \textbf{CP}: Banken Anwendungen
+	\item \textbf{CA}: Relationale Datenbanken
+	\item \textbf{CP}: Anwendungen von Banken
 \end{itemize}
 
 \subsection{Relationales Datenbanksystem}\label{rdbms}
@@ -165,27 +169,27 @@ Die Abfrage der Strasse bei einer relationaler Datenbank mittels \gls{sql} ist i
 \end{lstlisting}
 
 \subsection{Objektrelationales Datenbanksystem}\label{ordbms}
-\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das relationale System mit den Funktionen des objektorientierten Stiles zu erweitern.
+\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das relationale System mit den Funktionen des objektorientierten Stils zu erweitern.
 Die folgende Beschreibung der Eigenschaften ist aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
-komplexe Datentypen unterstützt, so können zusätzliche Typen definiert werden und diese können dann bei einer Tabellendefinition verwendet werden.  
+komplexe Datentypen unterstützt, so können zusätzliche Typen definiert und bei einer Tabellendefinition verwendet werden.  
 In \autoref{lst:type_definition_ordbms} ist eine Typendefinition von 'AddressType' zu sehen, welche wiederum in \autoref{lst:use_type_definition_ordbms} 
 in der Tabelle 'Person' verwendet wird.
 
-\begin{lstlisting}[language=SQL, caption=Typendefinition in objektrelationalem Datenbanksystem, label=lst:type_definition_ordbms]  
+\begin{lstlisting}[language=SQL, caption=Typendefinition im objektrelationalen Datenbanksystem, label=lst:type_definition_ordbms]  
     CREATE TYPE AddressType  AS
              (Street   VARCHAR(30),
               Zip      INTEGER(6),
               City     VARCHAR(12));
 \end{lstlisting}
 
-\begin{lstlisting}[language=SQL, caption=Verwendung von Typendefinition in objektrelationalem Datenbanksystem, label=lst:use_type_definition_ordbms]  
+\begin{lstlisting}[language=SQL, caption=Verwendung von Typendefinition im objektrelationalen Datenbanksystem, label=lst:use_type_definition_ordbms]  
     CREATE TABLE PERSON(
                ID       VARCHAR(20),
                Name     VARCHAR(50),
                Address  AddressType);
 \end{lstlisting}
 
-Wenn nun die Strasse einer bestimmten Person abgefragt werden möchte, sieht dies in einer objektrelationaler Datenbank wie in \autoref{lst:select_street_ordbms} aus.
+Wenn nun die Strasse einer bestimmten Person abgefragt werden möchte, sieht dies in einer objektrelationalen Datenbank wie in \autoref{lst:select_street_ordbms} aus.
 
 \begin{lstlisting}[language=SQL, caption=Abfrage in objektrelationalem Datenbanksystem, label=lst:select_street_ordbms]  
     SELECT Address.Street
@@ -203,12 +207,12 @@ bis zu fünf E-Mail-Adressen gezeigt.
                Mail     VARCHAR(40) ARRAY[5]);
 \end{lstlisting}
 
-Weiter bieten die Systeme die Möglichkeiten, Methoden auf Typen und Tabellen und Vererbungshierarchien zu definieren. Der Anwendungsbereich 
+Weiter bieten die Systeme die Möglichkeiten, Vererbungshierarchien und Methoden auf Typen und Tabellen zu definieren. Der Anwendungsbereich 
 liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Objekten durchführen.
 
 \subsection{Objekorientiertes Datenbanksystem}\label{object_db}
 Eine \gls{oodbms} hat als Ziel eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen. 
-Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
+Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} und \cite{oodbms_details} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
 ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
 Das objektrelationale Mapping, welches bei \gls{rdbms} notwendig ist, entfällt. 
 Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekte gleichzeitig umgehen. 
@@ -252,7 +256,7 @@ Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Bre
 \textbf{Eventual consistency}: The database may be momentarily inconsistent but will be consistent eventually."'
 \end{myQuote}
 
-Nahe zu alle NoSQL Datenbanksysteme sind schemalos, dass heisst, die Tabellen müsse nicht im Vorherein definiert werden. Die Abfragen gestalten sich einfach, JOIN Befehle entfallen 
+Nahezu alle NoSQL Datenbanksysteme sind schemalos, dass heisst, die Tabellen müssen nicht definiert werden. Die Abfragen gestalten sich einfach, JOIN Befehle entfallen 
 komplett. Durch den lockeren Aufbau kann eine höhere Performance erzielt werden, die Unterschiede bei der Geschwindigkeit werden bereits bei kleineren Datenmengen bemerkbar.
 
 \subsubsection{NoSQL Datenbanktypen}\label{no_sql_db_subgroups}
@@ -262,11 +266,11 @@ NoSQL ist eine Übergruppe von unterschiedlichen Datenbanktypen. In diesem Absch
 \paragraph{Document}
 Bei dokumentorientierten Datenbanken werden \gls{semi_structured_data} abgespeichert, diese verwenden meistens die Dateiformate \gls{json}, 
 \gls{xml} oder \gls{yaml}. Die meisten Datenbanksysteme dieser Art haben kein definiertes Schema für Einträge oder 
-nur ein teilweise definiertes Schema. Es ist somit möglich ganz unterschiedliche Elemente in eine Tabelle bzw. Collection, so werden Tabellen in dieser Welt genannt, zu speichern. Diese Erklärung 
+nur ein teilweise definiertes Schema. Es ist somit möglich ganz unterschiedliche Elemente in eine Collection, so werden Tabellen in dieser Welt genannt, zu speichern. Diese Erklärung 
 erinnert an \gls{blob} in relationalen Datenbanken, jedoch können hier Indexes auf bestimmte Attribute gesetzt und innerhalb der Elemente effizient gesucht 
 werden.
 
-In \autoref{lst:person_mongodb} wird ein Personen Element gezeigt, welches in der Collection 'Persons' gespeichert ist. Dieses Beispiel ist basierend auf einer MongoDB Instanz, die Definition 
+In \autoref{lst:person_mongodb} wird ein Eintrag gezeigt, welches in der Collection 'Persons' gespeichert ist. Dieses Beispiel basiert auf einer MongoDB Instanz, die Definition 
 für die Collection entfällt komplett.
 
 \begin{lstlisting}[language=JSON, caption=Personen Element in JSON Format, label=lst:person_mongodb]  
@@ -281,8 +285,8 @@ für die Collection entfällt komplett.
 \end{lstlisting}
 
 \autoref{lst:select_mongodb} zeigt die Abfrage der Strasse bei MongoDB, welche das Resultat aus \autoref{lst:select_result_mongodb} liefert. Bei MongoDB wird bei einer Abfrage standardmässig 
-immer das ganze Element zurückgegeben, falls nur gewiese Attribute abgefragt werden sollen, können diese in dem Projektionsabschnitt definiert werden. Die ID des Elements wird, so lang 
-sie nicht explizit ausgeschlossen wird, immer mit selektiert.
+immer das ganze Element zurückgegeben. Falls nur gewisse Attribute abgefragt werden sollen, können diese in dem Projektionsabschnitt definiert werden. Die ID des Elements wird, falls 
+sie nicht explizit ausgeschlossen wird, immer mitselektiert.
 
 \begin{lstlisting}[language=SQL, caption=Abfrage in MongoDB, label=lst:select_mongodb]  
     db.persons.find({name: "Thomas"}, {_id: 0, "address.street": 1})
@@ -296,7 +300,7 @@ sie nicht explizit ausgeschlossen wird, immer mit selektiert.
 \end{lstlisting}
 
 \paragraph{Column-oriented}
-Anders als bei relationalen Datenbanken, welche zeilenorientierte sind, werden die Daten spaltenorientiert gespeichert. Eine Lohndatenbank würde serialisiert beim zeilenorientierten Konzept
+Anders als bei relationalen Datenbanken, welche zeilenorientiert sind, werden die Daten spaltenorientiert gespeichert. Eine Lohndatenbank würde serialisiert beim zeilenorientierten Konzept
 wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in \autoref{lst:ser_columnbased_db} aussehen.
 
 \begin{lstlisting}[language=SQL, caption=Serialisierung zeilenorientierte Datenbank, label=lst:ser_rowbased_db]  
@@ -313,7 +317,7 @@ wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in 
 
 Die Definitions- und Abfragesprache ist gleich wie bei relationalen Datenbanken, deshalb wird hier auf Beispiele verzichtet. Der Vorteil 
 einer spaltenorientierten Datenbank liegt in der Performance bei \glspl{aggregationsfunktion}. Weiter führt dieser Datenbanktyp Veränderungen, 
-welche alle Werte einer Spalte betreffen, effizient durch. Dafür ist das Einfügen einer neu Zeile oder das Auslesen einer ganze Zeile aufwendiger als bei dem zeilenorientierten Ansatz.
+welche alle Werte einer Spalte betreffen, effizient durch. Dafür ist das Einfügen einer neuen Zeile oder das Auslesen einer ganzen Zeile aufwändiger als bei dem zeilenorientierten Ansatz.
 
 \paragraph{Graph}
 In Graphdatenbanken sind die abgespeicherten Objekte die Knoten und die Beziehung der Objekte bilden die Kanten. Die Kanten können zusätzlich mit Eigenschaften versehen werden. Dieser 
@@ -330,15 +334,17 @@ für das Abfragen der Strasse einer Person in Neo4j zu sehen.
 \end{lstlisting}
 
 \subsection{Vorselektierung}\label{preselection}
-Um nicht alle sechs vorgestellten Datenbanksysteme in der Nutzwertanalyse miteinander vergleichen zu müssen, wurde eine Vorselektierung aufgrund der Ist-Analyse gemacht. Da 
-objektrelationale und objektorientierte Datenbanksystem eher akademischer Natur sind und keine detaillierte Dokumentation darüber gefunden wurde, werden sie von der Nutzwertanalyse 
-ausgeschlossen. Die Anforderungen lassen auf keinen Anwendungsfall für eine spaltenorientierte Datenbank schliessen. In den einzelnen Problemen spielen Beziehungen zwischen Objekten 
-zwar oft eine Rolle, doch das würde eher in den Bereich des Algorithmus fallen, aus diesem Grund werden Graphdatenbanken ebenfalls ausgeschlossen. Somit bleiben noch die relationale 
-Datenbank und die dokumentorientierten Datenbanken für die Nutzwertanalyse übrig.
+Um nicht alle sechs vorgestellten Datenbanksysteme in der Nutzwertanalyse miteinander vergleichen zu müssen, wurde eine Vorselektierung aufgrund der Ist-Analyse gemacht. 
+Objektrelationale Datenbanken unterscheiden sich vor allem bei der Definition des Datenbankschemas, deshalb wurden sie mit den relationalen Datenbanken zusammen genommen. Falls die 
+relationalen Datenbanken bei der Nutzwertanalyse als Gewinner hervorgehen, müsste noch bestimmt werden, welcher der beiden Typen verwendet werden soll. Die Anforderungen lassen auf 
+keinen Anwendungsfall für eine spaltenorientierte Datenbank schliessen. In den einzelnen Problemen spielen Beziehungen zwischen Objekten zwar oft eine Rolle, doch das würde eher in den 
+Bereich des Algorithmus fallen. Aus diesem Grund werden Graphdatenbanken ebenfalls ausgeschlossen. Somit bleiben noch die relationale, die objektorientierte und die dokumentorientierte 
+Datenbank für die Nutzwertanalyse übrig.
 
-Da es innerhalb der ausgewählten Datenbanksystemen sehr viele verschiedene Implementationen gibt, wurde von jedem Typ eine ausgewählt. Bei den relationalen Datenbanken fiel die 
-Entscheidung auf MySQL, da diese Implementation kostenlos ist und bereits Erfahrung vorhanden war. Da MongoDB sehr verbreitet und eine gute Integration in die Java Frameworks hat, 
-wurde diese Implementation unter den dokumentorientierten Datenbanken ausgewählt.
+Da es innerhalb der ausgewählten Datenbanksystemen sehr viele verschiedene Produkte gibt, wurde von jedem Typ eines ausgewählt. Bei den relationalen Datenbanken fiel die 
+Entscheidung auf MySQL\cite{mysql}, da dieses kostenlos ist und bereits Erfahrung vorhanden war. Eine verbreitete objektorientierte Datenbank ist Objectivity/DB \cite{objectivitydb}, welche 
+auch beim Teilchenbeschleuniger in CERN verwendet wird \cite{cern_objectivity}. Da MongoDB \cite{mongodb} sehr verbreitet und eine gute Integration in die Java Frameworks hat, 
+wurde dieses Produkt unter den dokumentorientierten Datenbanken ausgewählt.
 
 \newpage
 \section{Nutzwertanalyse}\label{architektur_nutzwertanalyse}
@@ -346,7 +352,7 @@ wurde diese Implementation unter den dokumentorientierten Datenbanken ausgewähl
 \subsection{Bewertungskriterien}\label{architektur_bewertungspunkte}
 
 In der Nutzwertanalyse werden folgende Punkte betrachtet und nach dem angegebenen Schema bewertet und dann gewichtet. 
-Die Kriterien sind grösstenteils aus den \gls{cap_theorem} abgeleitet.
+Die Kriterien sind grösstenteils aus dem \gls{cap_theorem} abgeleitet.
 
 \paragraph{Aufwand}
 \begin{itemize}
@@ -389,39 +395,45 @@ Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese B
 
 \begin{table}[ht]
 \centering
-  \begin{tabular}{>{\columncolor{darkgray}} l | p{5cm} | p{5cm}}
+  \begin{tabular}{>{\columncolor{darkgray}} l | p{3.5cm} | p{3.5cm} | p{3.5cm}}
 	\hline
 	\rowcolor{darkgray}
-	\textbf{Kriterium}		&	\textbf{Relationale Datenbank} 	&	\textbf{Dokumentorientierte Datenbank}	\\ \hline
+	\textbf{Kriterium}		&	\textbf{Relationale Datenbank} 	&	\textbf{Objektorientierte Datenbank}	&	\textbf{Dokumentorientierte Datenbank}	\\ \hline
+	Produkt		&	MySQL					&	Objectivity/DB				&	MongoDB	\\ \hline
 	\rowcolor{gray}
-	Aufwand		&	7 (35)		&	7 (35)		\\ \hline
-	Begründung		&	MySQL ist bekannt und das Einrichten ist relativ schnell gemacht.			
-				&	Dokumentorientierten Datenbank noch nie benutzt. Laut Informanten ziemlich simpel.	\\ \hline
+	Aufwand		&	7 (35)		&	5 (25)		&	7 (35)		\\ \hline
+	Begründung		&	Ist bekannt und das Einrichten ist relativ schnell gemacht.	
+				&	Keine Erfahrung mit objektorientierte Datenbank, Konzept muss zuerst verstanden werden.		
+				&	Dokumentorientierte Datenbank noch nie benutzt. Laut Dokumentation ziemlich simpel.	\\ \hline
 	\rowcolor{gray}
-	Änderbarkeit		&	3 (15)		&	10 (50)		\\ \hline
+	Änderbarkeit		&	4 (20)		&	3 (15)	&	10 (50)		\\ \hline
 	Begründung		&	Jede Anpassung an den Entities Attributen erfordert auch eine Änderung des Schemas.
-				&	Sehr flexibel, bei Änderungen der Entities oder neuen Probleme keine Anpassung nötig.\\ \hline
+				&	Änderung am Schema erforderlich, was zur Migration aller Daten führt.
+				&	Sehr flexibel, bei Änderungen der Entities oder neuen Problemen keine Anpassung nötig.\\ \hline
 	\rowcolor{gray}
-	Konsistenz		&	10 (20)	&	4 (8)		\\ \hline
-	Begründung		&	Konsistenz ist einer der Hauptgründe für relationale Datenbanksysteme.			
+	Konsistenz		&	10 (20)	&	10 (20)&	5 (10)		\\ \hline
+	Begründung		&	Konsistenz ist einer der Hauptgründe für relationale Datenbanksysteme.	
+				&	Basiert auch auf dem \gls{acid} Prinzip.			
 				&	Die Stärke liegt nicht in der Konsistenz.\\ \hline
 	\rowcolor{gray}
-	Verfügbarkeit	&	6 (24)	&	9 (36)		\\ \hline
-	Begründung		&	Bei Transaktionen sind oft Teile der Datenbank gesperrt und nicht verfügbar.					
+	Verfügbarkeit	&	6 (24)		&	6 (24) &	9 (36)		\\ \hline
+	Begründung		&	Bei Transaktionen sind oft Teile der Datenbank gesperrt und nicht verfügbar.	
+				&	Transaktionen haben einen negativen Einfluss auf die Verfügbarkeit.					
 				&	Keine Sperrzeiten von Einträgen, somit keine Verzögerungen von Aktionen.	\\ \hline
 	\rowcolor{gray}
-	Partitionstoleranz	&	7 (28)	&	9 (36)		\\ \hline
-	Begründung		&	Benötigt aufwendige Konfiguration um die Datenbank verteilt zu betreiben.
+	Partitionstoleranz	&	7 (28)		&	9 (36) &	9 (36)		\\ \hline
+	Begründung		&	Benötigt aufwändige Konfiguration um die Datenbank verteilt zu betreiben.
+				&	Ist für einen verteilten Betrieb ausgelegt.	
 				&	Kann gut und einfach verteilt betrieben werden.		\\ \hline \hline
 	\rowcolor{gray}
-	\textbf{Total (gewichtet)}	&	\textbf{33 (122)}	&	\textbf{39 (165)}	\\ \hline
+	\textbf{Total (gewichtet)}	&	\textbf{34 (122)}	&	\textbf{33 (123)} &	\textbf{40 (167)}	\\ \hline
   \end{tabular}
    \caption{Nutzwertanalyse - Datenbank Varianten}\label{table:bewertungskriterien}
 \end{table}
 
 \FloatBarrier
 \subsection{Fazit}\label{architektur_fazit}
-Das Resultat der Nutzwertanalyse hat ergeben, dass für dieses Projekt am besten eine dokumentorientierte Datenbank Lösung verwendet wird.
+Das Resultat der Nutzwertanalyse hat ergeben, dass für dieses Projekt am besten eine dokumentorientierte Datenbanklösung verwendet wird.
 Die Schnittstelle benötigt keine Transaktionen und profitiert von einer hohen Verfügbarkeit und Partitionstoleranz. Die Flexibilität
 von dokumentorientierten Datenbanksystemen ist ideal für dieses Projekt, da sie eine schnelle und unkomplizierte Erweiterung bzw. Anpassung ermöglicht. Zusätzlich werden 
 auch die verschiedenen Ausprägungen der einzelnen Problemen gut unterstützt.
