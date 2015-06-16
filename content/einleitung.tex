@@ -9,21 +9,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Theoretische Grundlagen}\label{chap.einleitung}
-Die theoretischen Grundlagen dient dazu, wichtige Informationen zum Verständnis der Arbeit zu erläutern. Es werden die Komplexitätsklassen der theoretischen Informatik und die verschiedenen 
+Die theoretischen Grundlagen dienen dazu, wichtige Informationen zum Verständnis der Arbeit zu erläutern. Es werden die Komplexitätsklassen der theoretischen Informatik und die verschiedenen 
 Algorithmentypen erklärt.
 
 \section{Komplexitätsklassen der theoretischen Informatik}\label{cat_theo_inf}
-In der theoretischen Informatik wird zwischen verschiedenen Komplexitätsklassen unterschieden. In diesem Kapitel werden nur auf die Komplexitätsklassen NP, P, NP-schwer und 
+In der theoretischen Informatik wird zwischen verschiedenen Komplexitätsklassen unterschieden. In diesem Kapitel wird nur auf die Komplexitätsklassen NP, P, NP-schwer und 
 NP-vollständig eingegangen, weitere Klassen wie zum Beispiel Random Polynomial (RP) oder Zero-Error, Probabilistic, Polynomial (ZPP) werden nicht erläutert, da sie nicht für das Verständnis der 
 Arbeit notwendig sind. Die nachfolgenden Erklärungen sind aus \cite{hopcroft2011einfuehrung} und \cite{slides_p_np} abgeleitet.
+
+\subsection{P}\label{p_complet}
+Probleme, welche in \gls{polynomialzeit} mit Hilfe einer \glslink{deterministisch}{deterministischen} \gls{turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
 
 \subsection{NP}\label{np}
 Falls die Korrektheit einer Lösung zu einem Problem in \gls{polynomialzeit} überprüft werden kann, liegt das Problem in NP. Die Prozedur, welche für die Überprüfung benötigt wird, 
 wird \gls{polynomialzeit_verifizierer} genannt.  In \gls{polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$ dargestellt werden kann, wobei n die 
 Eingabelänge und k eine Konstante ist.
-
-\subsection{P}\label{p_complet}
-Probleme, welche in \gls{polynomialzeit} mit Hilfe einer \glslink{deterministisch}{deterministischen} \gls{turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
 
 \subsection{NP-schwer}\label{np_hard}
 Probleme, welche nicht in \gls{polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial, zum Beispiel 
@@ -53,7 +53,7 @@ Beweis weiter offen.
 \section{Algorithmentypen}\label{algo_types}
 In diesem Abschnitt werden drei gängige Algorithmentypen erklärt, welche bei der Recherche bei der Lösung vieler Problemen zum 
 Einsatz kamen. Die Aufzählung erhebt keinen Anspruch auf Vollständigkeit. Dynamic Programming oder Divide and Conquer wären 
-weitere gängige Algorithmentypen, welche für das Lösen von Optimierungsproblemen verwendet werden \cite{vazirani_algorithm}.
+weitere gängige Algorithmentypen, welche für das Lösen von Problemen mit hoher Laufzeitkomplexität verwendet werden \cite{vazirani_algorithm}.
 
 \subsection{Backtracking Algorithmen}\label{backtracking_algos}
 Beim Backtracking geht es darum, sich einer Lösung eines Problems schrittweise zu nähern. Bei jedem neuen Schritt wird geprüft, ob das Resultat noch eine gültige Lösung darstellt. Falls dies 
@@ -65,7 +65,7 @@ Algorithmus nur bei kleinen Lösungsbäumen \cite{stephens2013essential}. Jedoch
 eine existiert \cite{pomberger2008algorithmen}.
 
 \subsection{Greedy Algorithmen}\label{greedy_algos}
-Greedy Algorithmen liefern oft eine schnelle Lösung, welche aber meist nicht optimal ist. Die Algorithmen entscheiden bei jedem Schritt, was die aktuell beste Möglichkeit ist. Da sie nicht alle 
+Greedy Algorithmen liefern oft schnell eine Lösung, welche aber meist nicht optimal ist. Die Algorithmen entscheiden bei jedem Schritt, was die aktuell beste Möglichkeit ist. Da sie nicht alle 
 Möglichkeiten betrachten, finden sie oft nur ein lokales Minimum bzw. Maximum \cite{mcmillan2014data}. In \autoref{fig:greedy_algo} ist in grün der Weg des Greedy Algorithmus zu sehen. 
 Der Algorithmus entscheidet sich für die 12 auf der zweiten Ebene, da diese im Betrachtungsraum als beste Lösung gilt. Mit dem violetten Pfad könnte jedoch ein viel höherer Wert erzielt 
 werden.
@@ -73,7 +73,7 @@ werden.
 \begin{figure}[h]
 \centering 
 \includegraphics[scale=1]{images/einleitung/greedy_algo.png}
-\caption[Suchablauf eines Greedy Algorithmus]{Suchablauf eines Greedy Algorithmus \selfmade{, Daten entnommen aus \cite{pic_greedy_algo}}}
+\caption[Suchen des profitabelsten Weg mit Hilfe eines Greedy Algorithmus]{Suchen des profitabelsten Weg mit Hilfe eines Greedy Algorithmus \selfmade{, Daten entnommen aus \cite{pic_greedy_algo}}}
 \label{fig:greedy_algo}
 \end{figure}
 
@@ -84,14 +84,14 @@ Evolutionäre Algorithmen nähern sich einer optimalen Lösung an. Sie basieren 
 Ein Ablauf eines Evolutionären Algorithmus sieht meist wie folgt aus:
 \begin{enumerate}
 	\item Initialisierung: Die erste Generation wird meist zufällig erzeugt
-	\item Iteration durch folgende Schritte, bis die Lösung den gewünschten Wert erreicht hat:
+	\item Iteration durch folgende Schritte, bis zu einer bestimmten Konvergenz oder einer maximalen Anzahl an Generationen:
      	\begin{enumerate}
-		\item Evaluation: Mit Hilfe der Fitnessfunktion wird die erstellte Generation bewertet
-         		\item Selektion: Auswahl von Objekten (Individuen) für die Rekombination
+		\item Evaluation: Mit Hilfe der Fitnessfunktion werden die Individuen bewertet
+         		\item Selektion: Auswahl von Individuen für die Rekombination
          		\item Rekombination: Erstellen einer neuen Generation durch die Kombination der ausgewählten Individuen
          		\item Mutation: Veränderung der Eigenschaften (Gene) der Nachfahren
       	\end{enumerate}
 \end{enumerate}
-Die Mutation und Rekombination können positive, negative oder neutrale Eigenschaften haben. Wie in der Natur überlebt der am besten Angepasste und somit wird die Lösung immer 
+Die Mutation und Rekombination können positive, negative oder neutrale Eigenschaften haben. Wie in der Natur überlebt der am besten Angepasste, somit wird die Lösung laufend 
 besser \cite{pomberger2008algorithmen}. Evolutionäre Algorithmen sollten erst zum Einsatz kommen, wenn das Optimierungsproblem nicht effizient mit einem anderen Algorithmustyp 
-gelöst werden kann. Evolutionäre Algorithmen haben oft eine höhere Laufzeit und es ist nicht garantiert, dass sie immer die optimale Lösung liefern \cite{ea_useful}.
+gelöst werden kann. Evolutionäre Algorithmen haben oft eine höhere Laufzeit und es ist nicht garantiert, dass sie immer eine optimale Lösung liefern \cite{ea_useful}.

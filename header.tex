@@ -85,14 +85,19 @@
 %own commands
 \newcommand{\selfmade}[1]{(eigene Darstellung#1)}
 \newcommand{\resultAssignment}[1]{#1}
+\newcommand{\myTitle}[0]{Machbarkeitsanalyse für eine ressourcenorientierte Schnittstelle zur Verarbeitung grundlegender Probleme der Informatik}
+\newcommand{\releaseDate}[0]{21. Januar 2015 }
+
 
 %header / footer 
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0.3pt}
+\setlength{\headheight}{35pt} 
 
 \fancyhead[LO,RE]{} %clear headings for contents 
 \fancyhead[RO,LE]{\nouppercase{\rightmark}} %right odd pages and left even pages
-\fancyhead[LO,RE]{\MakeUppercase{\leftmark}} %left odd pages and right even pages
+%\fancyhead[C]{\bfseries \myTitle~\\[0.2cm]} %right odd pages and left even pages
+\fancyhead[LO,RE]{\MakeUppercase{\leftmark} ~\\[0.2cm]} %left odd pages and right even pages
 \fancyfoot[LE,RO]{\thepage} %page numbering
 \fancyfoot[C]{} %clear centered page numbering 
 

@@ -12,11 +12,12 @@
 In diesem Kapitel werden die verschiedene Probleme, welche für die Erstellung der Schnittstelle betrachtet wurden, und das dazugehörige Auswahlverfahren erläutert.
 
 \section{Auswahlverfahren}\label{cat_theo_inf}
-Da es in der Welt unzählige Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Auswahlverfahren gefunden werden. Mit diesem Verfahren sollten möglichst unterschiedliche 
-Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. Immer wieder wird sich in der 
-Informatik auf das Buch 'Computers and Intractability: A Guide to the Theory of NP-Completeness' \cite{garey1979computers} von Micheal Garey und David S. Johnson bezogen. Laut einer 
-Studie von CiteSeer war es im Jahr 2006 das meist zitierte Buch der Informatik \cite{citeseer_algo_buch}. In diesem Buch werden verschiedene NP-vollständige und NP-schwere 
-Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) werden auch benutzt, um die zu analysierenden Probleme auszuwählen.
+Da es viele Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes Auswahlverfahren gefunden werden. Mit diesem Verfahren sollten möglichst unterschiedliche 
+Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. In der Informatik wird oft 
+das Buch "`Computers and Intractability: A Guide to the Theory of NP-Completeness"' \cite{garey1979computers} von Micheal Garey und David S. Johnson als Quelle verwendet. Laut einer 
+Auswertung über die freie, digitale Bibliothek "`CiteSeer"' war es das mit 4137 Referenzen im Jahre 2006 am häufigsten Zitierte Informatik Werk der Bibliothek \cite{citeseer_algo_buch}. In 
+diesem Buch werden verschiedene NP-vollständige und NP-schwere Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) wurden auch benutzt, um die zu 
+analysierenden Probleme auszuwählen.
 
 \begin{itemize}
 	\item Graphentheorie
@@ -34,17 +35,17 @@ Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Aufli
 	\item Offene Probleme
 \end{itemize}
 
-Im Rahmen dieser Arbeit konnten nicht alle Probleme behandelt werden. Deshalb wurde eine Auswahl von fünf Problemen getroffen, welche in der Realität auftreten und nicht nur von rein 
-wissenschaftlichem Interesse sind. Bei der Auswahl wurde darauf geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen. Es wurden jedoch auch zwei aus der gleichen 
-Kategorie ausgewählt, um zu analysieren wie sich diese im Gegensatz zu den anderen verhalten. 
+Im Rahmen dieser Arbeit konnten nicht alle Probleme aus dem Buch behandelt werden. Deshalb wurde eine Auswahl von fünf Problemen getroffen, welche in der Realität auftreten und nicht 
+nur von rein wissenschaftlichem Interesse sind. Bei der Auswahl wurde darauf geachtet, dass die Probleme aus unterschiedlichen Kategorien kommen. Es wurden jedoch auch zwei aus der 
+gleichen Kategorie ausgesucht, um zu analysieren wie sich diese im Gegensatz zu den anderen verhalten. 
 
-Die ausgewählten Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine 
+Die Probleme werden im folgenden Abschnitt genauer erläutert und für die weiteren Schritte der Erstellung der Schnittstelle berücksichtigt. Durch dieses Vorgehen konnte eine 
 hohe Diversität von Problemen sichergestellt werden, was bei der Erstellung der Anforderungen und des Konzepts hilfreich war.
 
 \section{Problemauswahl}\label{problem_selection}
 
 \subsection{Hierarchie der Reduktion}\label{hierarchy_reduction}
-Wie bereits in der Einleitung beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In 
+Wie bereits in \ref{np_complet} beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In 
 \autoref{fig:hierarchy_reduction} ist die Hierarchie der Reduktion für die ausgewählten Probleme aufgezeigt.
 
 \begin{figure}[h]
@@ -68,8 +69,8 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 
 	\paragraph{Beispiel}
 	Gegeben sei ein Graph mit 10 Knoten mit einer vorgegebenen Konfiguration (siehe \autoref{fig:graph_faerbung}).\\
-	Gesucht ist die Färbung der Knoten, damit keine zwei benachbarten Knoten die gleiche Farbe haben. Weiter die minimale Anzahl Farben ($k$), welche verwendet werden müssen, damit 
-	die Bedingung erfüllt ist. Der Graph \ref{fig:graph_faerbung_incorrect} zeigt eine ungültige Lösung mit zwei Farben. Durch einen Algorithmus kann ermittelt werden, dass dieser Graph 
+	Gesucht ist die Färbung der Knoten, damit keine zwei benachbarten Knoten die gleiche Farbe haben. Zudem die minimale Anzahl Farben ($k$), welche verwendet werden müssen, damit 
+	die Bedingung erfüllt ist. Der Graph \ref{fig:graph_faerbung_incorrect} zeigt eine ungültige Lösung mit zwei Farben. Es kann gezeigt werden, dass dieser Graph 
 	mindestens drei Fraben benötigt, um die Bedingung zu erfüllen (siehe Graph \ref{fig:graph_faerbung_correct}). Somit ist $k=3$.
 \begin{figure}[ht]
 \centering
@@ -87,12 +88,12 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 
 \FloatBarrier 
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
-	Eingabedaten: Knoten mit ihren Verbindungen zu anderen Knoten\\
+	Eingabedaten: Knoten und ihre Kanten\\
 	Ausgabedaten: Knoten mit ihrer Färbung und $k$ (Anzahl benötigter Farben)
 
 	\paragraph{Einfluss der Parameter auf die Komplexität}\mbox{}\\
 	Bei der Knotenfärbung steigert sich die Komplexität mit Anzahl Kanten. Die Knoten sind nur insofern relevant, dass sie neue Kanten aufspannen. Dass die Komplexität nur von der Anzahl Kanten 
-	abhängt, zeigt auch die Formel zur Berechnung des Maximums von $k$: $k \le \frac{1}{2} + \sqrt{2m + \frac{1}{4}}$, wobei m für die Anzahl Kanten steht 
+	abhängt, zeigt auch die Formel zur Berechnung des Maximums von $k$: $k \le \frac{1}{2} + \sqrt{2m + \frac{1}{4}}$, wobei $m$ für die Anzahl Kanten steht 
 	(siehe \cite{seminar_rainer_graph}). Je grösser $k$, desto häufiger treten Kollisionen auf und umso mehr Varianten müssen ausprobiert werden.
 
 	\paragraph{Bekannte Algorithmen}
@@ -106,14 +107,14 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	\end{itemize}	
 
 	\paragraph{Bekannte reale Probleme}	
-	Es gibt diverse reale Probleme, welche mit der Knotenfärbung gelöst werden können, hier sind nur einige davon aufgelistet:
+	Es gibt einige reale Probleme, welche mit der Knotenfärbung gelöst werden können, hier eine Auswahl:
 	\begin{itemize}
 		\item Stundenplan: Anhand der eingegebenen Daten wird ein Konfliktmatrix erstellt und diese dann in ein Färbungsproblem umgewandelt. Die Anzahl benötigten Farben sind dann 
 			die Anzahl der verschiedenen Perioden, welche es benötigt, um eine Stundenplan ohne Konflikte zu erstellen. \cite{ieee_exam_table_graph_coloring} \cite{time_table_graph_coloring} \cite{timetabling_abdullah}
 		\item Frequenzverteilung (Mobilfunk): Im Mobilfunk hat jede Antenne einen Frequenzbereich. Im Graph werden die Antennen miteinander verbunden, bei denen sich die 
 			Reichweite überschneidet. Die Farben können durch Frequenzen ersetzt werden. Die Lösung stellt eine konfliktfreie Mobilnetzabdeckung dar. \cite{seminar_rob_graphen}
-		\item Färben von Landkarten: Die Länder sind die Knoten, die Kanten die Verbindung zu den Nachbarländern und die errechnete Farbe entspricht der Einfärbung auf der Landkarte. 
-			\cite{seminar_rob_graphen}
+		\item Einfärben von Landkarten: Die Länder sind die Knoten, die Kanten die Verbindung zu den Nachbarländern und die errechnete Farbe entspricht der Einfärbung auf der 
+			Landkarte. \cite{seminar_rob_graphen}
 	\end{itemize}
 
 \newpage
@@ -123,19 +124,19 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	Das Problem des Handlungsreisenden ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Hamiltonkreisproblemes bewiesen.
 
 	\paragraph{Beschreibung}
-	Englischer Name: Traveling Salesman Problem\\
-	Beim Problem des Handlungsreisenden geht es darum, mit einer optimalen Route von einem Ausgangspunkt verschiedene Wegpunkte abzufahren und wieder zum Ausgangspunkt zurück 
-	zu kehren. Bei zehn Wegpunkten und ungleichen Hin- und Zurückwegen sind das über dreieinhalb Millionen Möglichkeiten. Bei der symmetrischen Variante sind die Verbindungen 
-	zwischen zwei Punkten gleich lang, was die Komplexität halbiert. 
+	Englischer Name: Traveling Salesperson Problem\\
+	Beim Problem des Handlungsreisenden geht es darum, mit einer optimalen Route von einem Ausgangspunkt verschiedene Wegpunkte genau ein Mal abzufahren und wieder zum 
+	Ausgangspunkt zurück zu kehren. Bei zehn Wegpunkten und gerichteten Kanten sind das über dreieinhalb Millionen Möglichkeiten. Bei der symmetrischen Variante mit ungerichteten Kanten 
+	sind die Verbindungen zwischen zwei Punkten gleich lang, was die Komplexität halbiert. 
 
 	\paragraph{Beispiel} Gegeben seien vier Wegpunkte (A, B, C, D), der Startpunkt sei A.\\
 	Gesucht ist die optimale Route, welche alle Wegpunkte beinhaltet und wieder bei A endet.\\
-	Die Abbildung \ref{fig:tsp_example} zeigt alle möglichen Lösungen mit ihren errechneten Werten. Die Route A-D-C-B-A ist mit einem Wert von 16 die beste Route. Weiter ist zu sehen, 
-	dass schon bei 4 Wegpunkten 6 Möglichkeiten vorhanden sind.
+	Die Abbildung \ref{fig:tsp_example} zeigt alle möglichen Lösungen mit ihren errechneten Werten. Die Route A-D-C-B-A ist mit Kosten von 16 die beste Route. Weiter ist zu sehen, 
+	dass bei vier Wegpunkten mit gerichteten Kanten bereits sechs Möglichkeiten vorhanden sind.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{images/visio/tsp.png}
-\caption[Problem des Handlungsreisenden mit 4 Wegpunkten]{Problem des Handlungsreisenden mit 4 Wegpunkten \selfmade{}}
+\caption[Problem des Handlungsreisenden mit 4 Wegpunkten]{Problem des Handlungsreisenden mit vier Wegpunkten \selfmade{}}
 \label{fig:tsp_example}
 \end{figure}
 
@@ -144,15 +145,14 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	Ausgabedaten: Reihenfolge der Wegpunkte für eine optimale Route
 
 	\paragraph{Einfluss der Parameter auf die Komplexität}\mbox{}\\
-	Die Komplexität beim Problem des Handlungsreisenden wird durch die Anzahl Wegpunkte bestimmt. Für ein asymmetrisches Problem ist die Formel zur Berechnung der Möglichkeit $(n-1)!$ 
-	für ein symmetrisches Problem hingegen $\frac{(n-1)!}{2}$.
+	Die Komplexität beim Problem des Handlungsreisenden wird durch die Anzahl Wegpunkte bestimmt. Für die asymmetrische Variante ist die Formel zur Berechnung der Möglichkeiten $(n-1)!$ 
+	für ein symmetrische hingegen $\frac{(n-1)!}{2}$.
 	
 	 \newpage
 	\paragraph{Bekannte Algorithmen}\cite{tsp_algorithmen} \cite{tsp_semesterarbeit} \cite{pomberger2008algorithmen}
 	\begin{itemize}
 		\item Branch and Bound
 		\item Nearest-Neighbor
-		\item 2Opt
 		\item Christofides
 	\end{itemize}
 
@@ -163,11 +163,10 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 
 	\paragraph{Beschreibung}
 	Englischer Name: Chinese postman problem\\
-	Das Briefträgerproblem ist vergleichbar mit dem Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, die 
-	Kanten entsprechen den Strassen. Die minimale Länge kann mit Hilfe des \glslink{eulerkreis}{Eulerkreises} relativ einfach berechnet werden. Falls der Graph die Kriterien des 
-	\glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungerader Anzahl Kanten mit einem anderen solchen Knoten über die kürzeste Route verbunden. 
-	Die minimal Läng ist die Summe aller Strecken und Hilfsstrecken.
-	\cite{pearson2004decision}
+	Das Briefträgerproblem ist vergleichbar mit dem Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, 
+	die Kanten entsprechen den Strassen, beide dürfen mehrfach befahren werden. Die minimale Länge kann mit Hilfe des \glslink{eulerkreis}{Eulerkreises} relativ einfach berechnet werden. 
+	Falls der Graph die Kriterien des \glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungerader Anzahl Kanten mit einem anderen solchen Knoten über die kürzeste 
+	Route verbunden. Die minimal Länge ist die Summe aller Strecken und Hilfsstrecken. \cite{pearson2004decision}
 
 	\paragraph{Beispiel} Gegeben sei der Graph mit den Punkten A bis H und den Verbindungen in blau.\\
 Gesucht ist eine Route mit dem kürzesten Weg, welche jede Kante mindestens ein Mal abfährt. \cite{pearson2004decision}\\
@@ -309,7 +308,6 @@ trotzdem gibt es bereits enorm viele verschiedenen Möglichkeiten und Ausprägun
 \end{table}
 
 \FloatBarrier
-	Eine sehr gut ausgearbeitete Software ist 'Units' \cite{unit_express}, sie liefert umfangreiche Funktionen zur Erstellung von Stundenplänen.
 
 	\paragraph{Eingabe- und Ausgabedaten}\mbox{}\\
 	Eingabedaten: Fächer, Lehrer, Klassen und Klassenzimmer mit verschiedenen Einschränkungen und Zusatzinformationen\\
@@ -336,6 +334,9 @@ trotzdem gibt es bereits enorm viele verschiedenen Möglichkeiten und Ausprägun
 		\item Schichtenplanung
 	\end{itemize}
 
+	\paragraph{Bekannte Lösungen}		
+	Eine gut ausgearbeitete Software ist 'Units' \cite{unit_express}, sie liefert umfangreiche Funktionen zur Erstellung von Stundenplänen.
+
 \subsection{Mathematisches Programmieren}\label{mathematical_programming}
 
 	\subsubsection{Rucksack-Problem}\label{knapsack}
@@ -343,7 +344,7 @@ trotzdem gibt es bereits enorm viele verschiedenen Möglichkeiten und Ausprägun
 
 	\paragraph{Beschreibung}
 	Englischer Name: Knapsack\\
-	Beim Rucksack-Problem geht es um einen Container, symbolisch der Rucksack, mit einer Gewichtsschranke. Zudem gibt es Objekte, welche in den Container gepackt werden 
+	Beim Rucksack-Problem geht es um einen beliebigen Behälter, symbolisch der Rucksack, mit einer Gewichtsschranke. Zudem gibt es Objekte, welche in den Container gepackt werden 
 	können. Diese Objekte besitzen ein Gewicht und einen Profit. Das Ziel ist es, den grösstmöglichen Profit zu erlangen, ohne die Gewichtsschranke zu überschreiten. 
 	\cite{knapsack_desc_web}
 
@@ -383,8 +384,8 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 		\item Algorithmus von Nemhauser und Ullmann \cite{knapsack_desc_web}
 	\end{itemize}	
 
-	\paragraph{Bekannte reale Probleme}	
-	Es gibt diverse reale Probleme, welche mit dem Rucksack-Problem gelöst werden können \cite{kellerer2004knapsack}, hier sind nur einige davon aufgelistet:
+	\paragraph{Bekannte reale Probleme}
+	Es gibt einige reale Probleme, welche mit der Rucksack-Problem gelöst werden können \cite{kellerer2004knapsack}, hier eine Auswahl:	
 	\begin{itemize}
 		\item Ausschneiden von verschiedenen Stücken aus einer Metall- oder Holzplatte: Optimale Nutzung der Fläche(n), damit am Schluss genug Einzelstücke für das Herstellen 
 			des Endproduktes vorhanden sind.
@@ -395,8 +396,8 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 
 \newpage
 \subsection{Logik}\label{logic}
-Die in diesem Abschnitt aufgeführten Probleme sind der Vollständigkeit halber aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet. Sie sind die 
-Grundpfeiler der NP-Vollständigkeit, auf welche zahlreiche Beweise der NP-Vollständigkeit von Probleme basieren.
+Die in diesem Abschnitt aufgeführten Probleme sind der Vollständigkeit halber aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet, bilden jedoch 
+die Grundpfeiler der NP-Vollständigkeit. Auf diese Grundpfeiler basieren zahlreiche Beweise der NP-Vollständigkeit von Problemen.
 
 	\subsubsection{Erfüllbarkeitsproblems der Aussagenlogik (SAT)}\label{sat}
 	Das Erfüllbarkeitsproblem der \gls{aussagenlogik} ist ein NP-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahren bewiesen \cite{cook_complexity}.
@@ -486,7 +487,7 @@ Die Eingabe- und Ausgabedaten der Probleme sind sehr unterschiedlich und weisen 
 	\rowcolor{gray}
 	\textbf{Problem}				& \textbf{Eingabedaten}								& \textbf{Ausgabedaten}\\ \hline
 	Färbung (Graphtheorie)			& \begin{enumerate}
-								\item Knoten mit ihren Verbindungen zu anderen Knoten
+								\item Knoten und ihre Kanten
 							   \end{enumerate}				
 							&  \begin{enumerate}
 								\item Knoten mit ihrer Färbung
