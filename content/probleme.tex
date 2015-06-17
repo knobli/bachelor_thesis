@@ -16,8 +16,8 @@ Da es viele Probleme mit hoher Laufzeitkomplexität gibt, musste ein geeignetes 
 Typen dieser Probleme für die Schnittstelle evaluiert werden. Dafür wurde eine Kategorisierung der Probleme gesucht, auf welche sich gestützt werden konnte. In der Informatik wird oft 
 das Buch "`Computers and Intractability: A Guide to the Theory of NP-Completeness"' \cite{garey1979computers} von Micheal Garey und David S. Johnson als Quelle verwendet. Laut einer 
 Auswertung über die freie, digitale Bibliothek "`CiteSeer"' war es das mit 4137 Referenzen im Jahre 2006 am häufigsten Zitierte Informatik Werk der Bibliothek \cite{citeseer_algo_buch}. In 
-diesem Buch werden verschiedene NP-vollständige und NP-schwere Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) wurden auch benutzt, um die zu 
-analysierenden Probleme auszuwählen.
+diesem Buch werden verschiedene \gls{np}-vollständige und \gls{np}-schwere Probleme vorgestellt und in Kategorien unterteilt. Diese Kategorien (siehe Auflistung unten) wurden auch benutzt, 
+um die zu analysierenden Probleme auszuwählen.
 
 \begin{itemize}
 	\item Graphentheorie
@@ -45,33 +45,33 @@ hohe Diversität von Problemen sichergestellt werden, was bei der Erstellung der
 \section{Problemauswahl}\label{problem_selection}
 
 \subsection{Hierarchie der Reduktion}\label{hierarchy_reduction}
-Wie bereits in \ref{np_complet} beschrieben, muss für den Beweis der NP-Vollständigkeit ein bekanntes NP-vollständiges Problem auf das Bestehende reduziert werden können. In 
-\autoref{fig:hierarchy_reduction} ist die Hierarchie der Reduktion für die ausgewählten Probleme aufgezeigt.
+Wie bereits in \ref{np_complet} beschrieben, muss für den Beweis der \gls{np}-Vollständigkeit bzw. \gls{np}-Schwere ein bekanntes \gls{np}-schweres Problem auf das Bestehende in 
+\gls{polynomialzeit} reduziert werden können. In \autoref{fig:hierarchy_reduction} ist die Hierarchie der Reduktion für die ausgewählten Probleme aufgezeigt.
 
 \begin{figure}[h]
 \centering 
 \includegraphics[scale=0.75]{images/visio/problem_hierarchy.png}
-\caption[Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit]{Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit \selfmade{, Daten aus \cite{garey1979computers}}}
+\caption[Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit bzw. NP-Schwere]{Hierarchie der Reduktion zum Beweis der NP-Vollständigkeit bzw. NP-Schwere \selfmade{, Daten aus \cite{garey1979computers}}}
 \label{fig:hierarchy_reduction}
 \end{figure}
 
 \subsection{Graphentheorie}\label{graph_theory}
 
 	\subsubsection{Färbung (Graphtheorie)}\label{colarability_graph_theory}
-	Die Färbung in der Graphtheorie ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des 3-SAT Problemes bewiesen.
+	Die Färbung in der Graphtheorie ist ein \gls{np}-vollständiges Problem. Dies wurde durch die Reduktion des 3-SAT Problemes bewiesen.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Graph k-colorability
 
 	Bei diesem Problem geht es darum, die Knoten eines Graphens so zu färben, dass keine zwei benachbarten Knoten die gleiche Farbe tragen. Ein Graph heisst k-färbbar, wenn die 
-Färbung mit k Farben korrekt durchgeführt werden kann. Dieses Problem ist für $k = 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar, für $k \ge 2$ jedoch nicht mehr. Es gibt Spezialfälle, 
-bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar sind (siehe \cite{garey1979computers}).
+Färbung mit k Farben korrekt durchgeführt werden kann. Dieses Problem ist für $k = 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar, für $k > 2$ jedoch nicht mehr. Es gibt Spezialfälle, 
+bei welchen auch ein Problem mit $k > 2$ in \glslink{polynomialzeit}{polynomieller} Zeit lösbar sind (siehe \cite{garey1979computers}).
 
 	\paragraph{Beispiel}
 	Gegeben sei ein Graph mit 10 Knoten mit einer vorgegebenen Konfiguration (siehe \autoref{fig:graph_faerbung}).\\
 	Gesucht ist die Färbung der Knoten, damit keine zwei benachbarten Knoten die gleiche Farbe haben. Zudem die minimale Anzahl Farben ($k$), welche verwendet werden müssen, damit 
 	die Bedingung erfüllt ist. Der Graph \ref{fig:graph_faerbung_incorrect} zeigt eine ungültige Lösung mit zwei Farben. Es kann gezeigt werden, dass dieser Graph 
-	mindestens drei Fraben benötigt, um die Bedingung zu erfüllen (siehe Graph \ref{fig:graph_faerbung_correct}). Somit ist $k=3$.
+	mindestens drei Farben benötigt, um die Bedingung zu erfüllen (siehe Graph \ref{fig:graph_faerbung_correct}). Somit ist $k=3$.
 \begin{figure}[ht]
 \centering
 \subfigure[Inkorrekte Färbung]{
@@ -82,7 +82,7 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
   \includegraphics[scale=0.5]{images/visio/graph_faerbung_correct.png}
   \label{fig:graph_faerbung_correct}
 }
-\caption[Kanten Färbung eines Graphen mit 10 Knoten]{Kanten Färbung eines Graphen mit 10 Knoten \selfmade{}}
+\caption[Knotenfärbung eines Graphen mit 10 Knoten]{Kanten Färbung eines Graphen mit 10 Knoten \selfmade{}}
 \label{fig:graph_faerbung}
 \end{figure}
 
@@ -121,7 +121,9 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 \subsection{Netzwerk Design}\label{network_design}
 
 	\subsubsection{Problem des Handlungsreisenden}\label{tsp}
-	Das Problem des Handlungsreisenden ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Hamiltonkreisproblemes bewiesen.
+	Das Problem des Handlungsreisenden ist ein \gls{np}-schweres Problem. Dies wurde durch die Reduktion des Hamiltonkreisproblemes bewiesen. Das Problem wird fälschlicherweise oft als 
+	\gls{np}-vollständig bezeichnet. Es ist jedoch noch kein \gls{polynomialzeit_verifizierer} bekannt, der in \gls{polynomialzeit} überprüfen kann, ob die errechnete Route das optimale Resultat 
+	ist.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Traveling Salesperson Problem\\
@@ -157,7 +159,7 @@ bei welchen auch ein Problem mit $k \ge 2$ in \glslink{polynomialzeit}{polynomie
 	\end{itemize}
 
 	\subsubsection{Briefträgerproblem}\label{chinese_postman}
-	Das Briefträgerproblem ist an sich kein NP-vollständiges Problem, jedoch wurde für Varianten des Problems die NP-Vollständigkeit bewiesen. Für das `Rural Postman Problem`, bei 
+	Das Briefträgerproblem ist an sich kein \gls{np}-vollständiges Problem, jedoch wurde für Varianten des Problems die \gls{np}-Vollständigkeit bewiesen. Für das `Rural Postman Problem`, bei 
 	welchem nicht jeder Punkt zwingend abgefahren werden muss, wurde dies durch die Reduktion des 3-SAT Problemes bewiesen. Da die Varianten alle auf das Grundproblem aufbauen, 
 	wird in dieser Arbeit dieses verwendet.
 
@@ -193,7 +195,7 @@ Route A-D-C-G-H-C-A-B-D-F-B-E-F-H-F-B-A.
 \subsection{Sequenzierung und Planung}\label{sequencing_scheduling}
 
 	\subsubsection{Stundenplan-Erstellung}\label{tsp}
-	Das Erstellen eines Stundenplans ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des 3-SAT-Problems bewiesen.
+	Das Erstellen eines Stundenplans ist ein \gls{np}-vollständiges Problem. Dies wurde durch die Reduktion des 3-SAT-Problems bewiesen.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Timetable design\\
@@ -340,7 +342,9 @@ trotzdem gibt es bereits enorm viele verschiedenen Möglichkeiten und Ausprägun
 \subsection{Mathematisches Programmieren}\label{mathematical_programming}
 
 	\subsubsection{Rucksack-Problem}\label{knapsack}
-	Das Rucksack-Problem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des Problems der exakten Überdeckung bewiesen.
+	Das Rucksack-Problem ist ein \gls{np}-schweres Problem. Dies wurde durch die Reduktion des Problems der exakten Überdeckung bewiesen. Das Problem wird fälschlicherweise oft als 
+	\gls{np}-vollständig bezeichnet. Es ist jedoch noch kein \gls{polynomialzeit_verifizierer} bekannt, der in \gls{polynomialzeit} überprüfen kann, ob die errechnete Lösung das optimale Resultat 
+	ist.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Knapsack\\
@@ -397,10 +401,10 @@ In diesem Beispiel wäre die optimale Lösung 1, 2, 3 und 5. \cite{knapsack_desc
 \newpage
 \subsection{Logik}\label{logic}
 Die in diesem Abschnitt aufgeführten Probleme sind der Vollständigkeit halber aufgelistet und beschrieben. Sie werden nicht für die weiteren Schritte der Schnittstelle verwendet, bilden jedoch 
-die Grundpfeiler der NP-Vollständigkeit. Auf diese Grundpfeiler basieren zahlreiche Beweise der NP-Vollständigkeit von Problemen.
+die Grundpfeiler der \gls{np}-Vollständigkeit. Auf diese Grundpfeiler basieren zahlreiche Beweise der \gls{np}-Vollständigkeit von Problemen.
 
 	\subsubsection{Erfüllbarkeitsproblems der Aussagenlogik (SAT)}\label{sat}
-	Das Erfüllbarkeitsproblem der \gls{aussagenlogik} ist ein NP-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahren bewiesen \cite{cook_complexity}.
+	Das Erfüllbarkeitsproblem der \gls{aussagenlogik} ist ein \gls{np}-vollständiges Problem. Dies wurde durch Stephen A. Cook in den 1970er Jahren bewiesen \cite{cook_complexity}.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Satisfiability (SAT)\\
@@ -435,7 +439,7 @@ die Grundpfeiler der NP-Vollständigkeit. Auf diese Grundpfeiler basieren zahlre
 
 \newpage
 	\subsubsection{3-SAT}\label{3sat}
-	Das 3-SAT Problem ist ein NP-vollständiges Problem. Dies wurde durch die Reduktion des SAT Problems bewiesen.
+	Das 3-SAT Problem ist ein \gls{np}-vollständiges Problem. Dies wurde durch die Reduktion des SAT Problems bewiesen.
 
 	\paragraph{Beschreibung}
 	Englischer Name: 3-Satisfiability (3-SAT)\\

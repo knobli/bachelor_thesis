@@ -13,36 +13,41 @@ Die theoretischen Grundlagen dienen dazu, wichtige Informationen zum Verständni
 Algorithmentypen erklärt.
 
 \section{Komplexitätsklassen der theoretischen Informatik}\label{cat_theo_inf}
-In der theoretischen Informatik wird zwischen verschiedenen Komplexitätsklassen unterschieden. In diesem Kapitel wird nur auf die Komplexitätsklassen NP, P, NP-schwer und 
-NP-vollständig eingegangen, weitere Klassen wie zum Beispiel Random Polynomial (RP) oder Zero-Error, Probabilistic, Polynomial (ZPP) werden nicht erläutert, da sie nicht für das Verständnis der 
+In der theoretischen Informatik wird zwischen verschiedenen Komplexitätsklassen unterschieden. In diesem Kapitel wird nur auf die Komplexitätsklassen \gls{np}, \gls{p}, \gls{np}-schwer und 
+\gls{np}-vollständig eingegangen, weitere Klassen wie zum Beispiel Random Polynomial (RP) oder Zero-Error Probabilistic Polynomial (ZPP) werden nicht erläutert, da sie nicht für das Verständnis der 
 Arbeit notwendig sind. Die nachfolgenden Erklärungen sind aus \cite{hopcroft2011einfuehrung} und \cite{slides_p_np} abgeleitet.
 
 \subsection{P}\label{p_complet}
-Probleme, welche in \gls{polynomialzeit} mit Hilfe einer \glslink{deterministisch}{deterministischen} \gls{turingmaschine} lösbar sind, gehören zu der Klasse der P-vollständigen Probleme.
+Probleme, welche in \gls{polynomialzeit} mit Hilfe einer \glslink{deterministisch}{deterministischen} \gls{turingmaschine} lösbar sind, gehören zu der Klasse der \gls{p} Probleme. In 
+\gls{polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$ dargestellt werden kann, wobei n die Eingabelänge und k eine Konstante ist.
 
 \subsection{NP}\label{np}
-Falls die Korrektheit einer Lösung zu einem Problem in \gls{polynomialzeit} überprüft werden kann, liegt das Problem in NP. Die Prozedur, welche für die Überprüfung benötigt wird, 
-wird \gls{polynomialzeit_verifizierer} genannt.  In \gls{polynomialzeit} lösbar heisst, dass die Laufzeitkomplexität in einem Polynom mit der Form $n^k$ dargestellt werden kann, wobei n die 
-Eingabelänge und k eine Konstante ist.
+\gls{np} Probleme können mit Hilfe einer \glslink{nichtdeterministisch}{nichtdeterministischen} \gls{turingmaschine} in \gls{polynomialzeit} gelöst werden. Zusätzlich muss die Korrektheit einer 
+Lösung zu einem \gls{np} Problem ebenfalls in \gls{polynomialzeit} überprüft werden können. Die Prozedur, welche für die Überprüfung benötigt wird, wird \gls{polynomialzeit_verifizierer} 
+genannt.
 
 \subsection{NP-schwer}\label{np_hard}
-Probleme, welche nicht in \gls{polynomialzeit} lösbar sind, gehören zu den NP-schweren Problemen. Sie besitzen eine Laufzeitkomplexität höher als polynomial, zum Beispiel 
-$k^n$ (exponentiell) oder $n!$ (faktoriell). Um zu beweisen, dass das Problem NP-schwer ist, wird versucht, ein anderes bekanntes NP-schweres Problem auf dieses Problem zu reduzieren. Mit 
-diesem Beweis wird gezeigt, dass das Problem mindestens so schwer wie das andere Problem ist.
+Um zu beweisen, dass ein Problem \gls{np}-schwer ist, müssen für alle bekannten \gls{np}-schweren Probleme eine \gls{polynomialzeitreduktion} auf dieses Problem durchgeführt werden können. 
+Mit diesem Beweis wird gezeigt, dass das Problem mindestens so schwer wie die anderen Probleme ist. Stephen Cook hat die \gls{np}-Schwere des SAT-Problems bewiesen, indem er die 
+Arbeitsweise einer \glslink{nichtdeterministisch}{nichtdeterministischen} \gls{turingmaschine} durch eine logische Formel beschrieb \cite{cook_complexity}. Wenn das SAT-Problem gelöst 
+werden kann, kann auch entschieden werden, ob die \glslink{nichtdeterministisch}{nichtdeterministische} \gls{turingmaschine} hält, somit ist SAT \gls{np}-schwer. Die derzeit bekannten 
+Algorithmen zur Lösung \gls{np}-schwerer Probleme besitzen eine Laufzeitkomplexität höher als polynomial, zum Beispiel $k^n$ (exponentiell) oder $n!$ (faktoriell). Die Probleme werden in 
+Entscheidungsprobleme und Optimierungsprobleme, bei welche die optimale Lösung gesucht wird, unterteilt.
 
 \subsection{NP-vollständig}\label{np_complet}
-Stephen Cook hat mit dem Beweis der NP-Vollständigkeit des SAT-Problems \cite{cook_complexity} die Grundlage für den Beweis der NP-Vollständigkeit vieler weiterer Probleme 
-gelegt. Damit ein Problem als NP-vollständig gilt, müssen folgende zwei Punkte erfüllt sein:
+Stephen Cook bewies nicht nur die \gls{np}-Schwere des SAT-Problems. Er zeigte auch, dass die Überprüfung einer Lösung in \gls{polynomialzeit} möglich ist. Das SAT-Problem ist somit
+\gls{np}-vollständig. Die Arbeit von Cook ist die Grundlage für den Beweis der \gls{np}-Vollständigkeit vieler Probleme. Für den Nachweis der \gls{np}-Vollständigkeit weiterer Probleme müssen 
+folgende Punkte erfüllt sein:
 \begin{itemize}
 	\item Ein \gls{polynomialzeit_verifizierer} für das Problem ist vorhanden.
-	\item Ein anderes bekanntes NP-vollständiges Problem ist auf dieses Problem reduzierbar.
+	\item Ein anderes bekanntes \gls{np}-vollständiges Problem ist auf dieses Problem reduzierbar.
 \end{itemize}
 
 \subsection{$P = NP$?}
-Die \autoref{fig:complexity_overview} zeigt die Aufteilung der verschiedenen Komplexitätsklassen für die beiden Fälle $P \neq NP$ und $P=NP$. Momentan wird davon ausgegangen, 
-dass $P \neq NP$ ist und somit die linke Aufteilung stimmt. Keine der beiden Behauptungen konnte bis jetzt bewiesen werden. Der letzte Versuch, $P \neq NP$ zu beweisen, wurde von 
-Vinay Deolalikar im Jahr 2010 unternommen \cite{p_neq_np_paper}. In diesem Versuch wurden jedoch zwei Fehler entdeckt (siehe \cite{p_neq_np_paper_blog}) und somit bleibt der 
-Beweis weiter offen.
+Eine der grossen Fragen in der theoretischen Informatik ist, ob $P = NP$ gilt. Dies würde bedeuten, dass alle Probleme in \gls{np} in \gls{polynomialzeit} berechnet werden können. Falls dies für ein 
+Problem bewiesen werden könnte, wäre die Aussage per Definition für alle gültig. Immer wieder wird versucht $P!=NP$ bzw. $P=NP$ zu beweisen, eine Liste der Versuche ist unter 
+\cite{proof_np_v_p} zu finden. Die Beweise werden jedoch meist ziemlich schnell widerlegt und somit bleibt der Beweis weiter offen. Die \autoref{fig:complexity_overview} zeigt die Aufteilung 
+der verschiedenen Komplexitätsklassen für die beiden Fälle $P \neq NP$ und $P=NP$. Momentan wird davon ausgegangen, dass $P \neq NP$ ist und somit die linke Aufteilung stimmt.
 
 \begin{figure}[h]
 \includegraphics[scale=0.65]{images/einleitung/p_np_np-complete_np-hard.png}
@@ -59,7 +64,7 @@ weitere gängige Algorithmentypen, welche für das Lösen von Problemen mit hohe
 Beim Backtracking geht es darum, sich einer Lösung eines Problems schrittweise zu nähern. Bei jedem neuen Schritt wird geprüft, ob das Resultat noch eine gültige Lösung darstellt. Falls dies 
 nicht der Fall ist, wird der letzte Schritt rückgängig gemacht und es wird ein anderer Weg eingeschlagen. In \cite{backtracking} wird dieses Verfahren anhand des Damenproblems aufgezeigt.
 
-Die Laufzeit eines Backtracking Algorithmus ist Abhängig von der Eingabegrösse und der Verzweigungsrate. Im schlechtesten Fall beträg sie
+Die Laufzeit eines Backtracking Algorithmus ist Abhängig von der Eingabegrösse und der Verzweigungsrate. Im schlechtesten Fall beträgt sie
 $O(z^n)$, wobei $n$ die Eingabegrösse und $z$ die Verzweigungsrate ist. Die Suche dauert oft lange, deshalb empfiehlt sich ein Backtracking 
 Algorithmus nur bei kleinen Lösungsbäumen \cite{stephens2013essential}. Jedoch wird mithilfe eines Backtracking Algorithmus immer eine Lösung gefunden, falls 
 eine existiert \cite{pomberger2008algorithmen}.

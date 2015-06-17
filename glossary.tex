@@ -22,6 +22,14 @@
 % you want to include more information here such as the definition.
 \defglsdisplayfirst[\glsdefaulttype]{\textit{#1}}
 
+\newdualentry{p}    % label
+  {P}               % abbreviation
+  {deterministische Polynomialzeit}  % long form
+  {Es existiert eine \glslink{deterministisch}{deterministisch} \gls{turingmaschine}, die das Problem in \gls{polynomialzeit} löst.}
+\newdualentry{np}    % label
+  {NP}               % abbreviation
+  {Nichtdeterministische Polynomialzeit}  % long form
+  {Es existiert eine \glslink{nichtdeterministisch}{nichtdeterministisch} \gls{turingmaschine}, die das Problem in \gls{polynomialzeit} löst.}
 \newdualentry{mvvm}    % label
   {MVVM}               % abbreviation
   {Model View ViewModel}  % long form
@@ -210,9 +218,9 @@ kann genau bestimmt werden, ob sie wahr oder falsch ist.}
   name={deterministisch},
   description={Einen Algorithmus wird deterministisch genannt, wenn zu jedem Zeitpunkt der Folgeschritt eindeutig bestimmt ist. \cite{algo_properties}}
 }
-\newglossaryentry{nichtdeterministische}{%
-  name={nichtdeterministische},
-  description={Einen Algorithmus wird deterministisch genannt, wenn zu einem Zeitpunkt der Folgeschritt durch einen Zufallsmechanismus beeinflusst wird. \cite{algo_properties}}
+\newglossaryentry{nichtdeterministisch}{%
+  name={nichtdeterministisch},
+  description={Einen Algorithmus wird nichtdeterministisch genannt, wenn zu einem Zeitpunkt der Folgeschritt durch einen Zufallsmechanismus beeinflusst wird. \cite{algo_properties}}
 }
 \newglossaryentry{http_statuscode}{%
   name={HTTP-Statuscode},
@@ -236,3 +244,8 @@ kann genau bestimmt werden, ob sie wahr oder falsch ist.}
   name={VIM},
   description={Ein Texteditor, welcher auf vi basiert und sehr viele Möglichkeiten (z. B. Suchen und Ersetzen) und Shortcuts (z. B. mehrere Zeilen kopieren, verschieben oder löschen) besitzt.}
 }
+\newglossaryentry{polynomialzeitreduktion}{%
+  name={Polynomialzeitreduktion},
+  description={Eine Reduktion eines Problems auf ein anders in \gls{polynomialzeit}.}
+}
+
