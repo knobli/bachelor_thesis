@@ -38,8 +38,8 @@ der Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
  
 \FloatBarrier
 \subsection{REST API}
-Für die Schnittstelle wird eine \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Die \gls{api} funktioniert nach einem De-facto-Standard 
-(siehe \cite{wiki_restful}). Falls Fehler auftreten, werden \glspl{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
+Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem \gls{rest} De-facto-Standard 
+(siehe \cite{masse2011rest}). Falls Fehler auftreten, werden \glspl{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
 Die Business Logik besteht aus Translator, Service, Entity und Validator von den jeweiligen Problemen. 
@@ -59,11 +59,13 @@ Die Entitäten repräsentieren die Datenstruktur der Algorithmen, der Nutzereing
 Es muss analysiert werden, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus gebraucht werden. Weiter muss ein nützliches Format für das Resultat 
 herausgefunden werden.
 \paragraph{Validator}
-Der Validator entscheidet, ob eine Lösung gültig ist oder nicht. Wie bereits im \autoref{cat_theo_inf} erklärt, kann jedes \gls{np}-vollständige Problem in \glslink{polynomialzeit}{polynomialer} 
-Zeit validiert werden.
+Der Validator entscheidet, ob eine Lösung gültig ist oder nicht. Die Validatoren wurden erstellt, um bei der Entwicklung der Algorithmen die Resultate überprüfen zu können und um manuell 
+erstellte Lösungen zu testen. Grundsätzlich könnte ein Algorithmus geschrieben werden, welcher sich nur auf die Antwort des Service verlässt und so lange neue Kombinationen versucht, 
+bis die Schnittstelle keine Fehler mehr findet. Wie bereits im \autoref{cat_theo_inf} erklärt, kann jedes \gls{np}-vollständige Problem in \glslink{polynomialzeit}{polynomialer} Zeit validiert 
+werden. Weiter werden im Validator Angaben überprüft, welche der Algorithmus eventuell nicht berücksichtigen konnte. Dies hilft dem Nutzer die Qualität des Resultats abzuschätzen.
 
 \subsection{Persistence API}
-Die Abstraktion der Datenbank wird mittels eine Persistence \glspl{api}, welches mit der Datenbank interagiert, realisiert. Diese \gls{api} ist für das Laden und Speichern der Daten 
+Die Abstraktion der Datenbank wird mittels eines Persistence \glspl{api}, welches mit der Datenbank interagiert, realisiert. Dieses \gls{api} ist für das Laden und Speichern der Daten 
 verantwortlich und bietet die Möglichkeit, spezifische Abfragen auszuführen. Diese Funktionalitäten werden in Entity-spezifischen Repositories zur Verfügung gestellt.
 
 \subsection{Datenbank}
@@ -87,39 +89,39 @@ auf.
 \FloatBarrier
 \newpage
 
-Die \autoref{fig:sequenz_diagramm_start} zeigt das Sequenzdiagramm für den Start eines beliebigen Problems. Alle Komponenten mit '\{Problem\}' sind spezifische Problem-Komponenten, 
+Die \autoref{fig:sequenz_diagramm_start} zeigt das Sequenzdiagramm für den Start einer Berechnung. Alle Komponenten mit '\{Problem\}' sind spezifische Problem-Komponenten, 
 die anderen sind generische. Bei Speichern einer Berechnung wird der Status 'CREATED' gesetzt. Nach dem Speichern wird über die `Solver'-Komponente asynchron das Verarbeitungssystem 
-gestartet und der Status auf 'STARTED' gesetzt. Das Verarbeitungssystem holt sich die benötigten Informationen. Der Controller lädt das Problem vom Service, dieser wiederum lädt es vom 
+gestartet und der Status auf 'STARTED' gesetzt. Das Verarbeitungssystem holt sich die benötigten Informationen. Der Controller lädt die Parameter vom Service, dieser wiederum lädt es vom 
 Repository und wandelt es für den Algorithmus um.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.74]{images/visio/sequenz_diagramm_start.png}
-\caption[Start eines beliebigen Problems]{Start eines beliebigen Problems \selfmade{}}
+\caption[Start einer Berechnung]{Start einer Berechnung \selfmade{}}
 \label{fig:sequenz_diagramm_start}
 \end{figure}
 
 \newpage
 
-Die \autoref{fig:sequenz_diagramm_result} zeigt das Sequenzdiagramm für das Abspeichern eines Resultats einer beliebigen Berechnung. Bei einem Speicheraufruf wird zuerst das Problem 
-geladen, danach wird die Lösung vom Algorithmus mit Hilfe der Eingabeparameter transferiert und vom Validator validiert. Nun wird anhand des Resultattyps der Status der Berechnung 
-geändert. Das Resultat wird mit dem Ergebnis der Validierung in die Datenbank gespeichert. Wenn der Nutzer den Status einer Berechnung abruft, fragt der Controller über den 
-Service den Status ab. Der Service lädt das Problem, fragt die vorhandenen Resultate ab, fügt diese zu einem Status zusammen und schickt den Status an den Controller zurück.
+Die \autoref{fig:sequenz_diagramm_result} zeigt das Sequenzdiagramm für das Abspeichern eines Resultats einer beliebigen Berechnung. Bei einem Speicheraufruf werden zuerst die 
+Berechnungsinformationen geladen, danach wird die Lösung vom Algorithmus mit Hilfe der Eingabeparameter transferiert und vom Validator validiert. Nun wird anhand des Resultattyps der 
+Status der Berechnung geändert. Das Resultat wird mit dem Ergebnis der Validierung in die Datenbank gespeichert. Wenn der Nutzer den Status einer Berechnung abruft, fragt der Controller 
+über den Service den Status ab. Der Service lädt die Berechnung, fragt die vorhandenen Resultate ab, fügt diese zu einem Status zusammen und schickt den Status an den Controller zurück.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.72]{images/visio/sequenz_diagramm_result.png}
-\caption[Abspeichern des Resultats eines beliebigen Problems]{Abspeichern des Resultats eines beliebigen Problems \selfmade{}}
+\caption[Abspeichern des Resultats einer Berechnung]{Abspeichern des Resultats einer Berechnung \selfmade{}}
 \label{fig:sequenz_diagramm_result}
 \end{figure}
 
 \section{Datenbank Varianten}\label{db_varianten}
-Es gibt verschiedene Datenbanktypen mit verschiedenen Vor- und Nachteile. In diesem Abschnitt werden vier verschiedene Typen miteinander verglichen und der beste für diesen 
+Es gibt verschiedene Datenbanktypen mit verschiedenen Vor- und Nachteilen. In diesem Abschnitt werden vier verschiedene Typen miteinander verglichen und der beste für diesen 
 Anwendungszweck ausgewählt. Um die Eigenheiten der Datenbanken hervorzuheben, wird bei jeder Art das gleiche Beispiel mit der spezifischen Definitions-- und Abfragesprache gemacht.
 
 \subsection{CAP-Theorem}\label{cap_theorem}
-Das CAP-Theorem ist im Jahr 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem zeigt, dass die Werte Konsistenz (C), Verfügbarkeit (A) und Partitionstoleranz (P) ein 
-Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
+Das CAP-Theorem ist im Jahr 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem behauptet, dass die Werte Konsistenz (C), Verfügbarkeit (A) und 
+Partitionstoleranz (P) ein Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
 
 \begin{figure}[h]
 \centering
@@ -247,7 +249,7 @@ welche viele, lange Transaktionen mit komplexen Objekten haben. Lade- und Speich
 sollten kurze Transaktionen, in welchen sehr vielen komplexe Objekten geladen werden, vermieden werden.
 
 \subsection{NoSQL Datenbanksystem}\label{no_sql_db}
-NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip, sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
+NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip. Sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
 Facebook, Yahoo und Twitter zu genügen. Die Systeme sind nicht relational aufgebaut und verwenden oft eine andere Abfragesprache als \gls{sql} (siehe \cite{vaish2013getting}). 
 Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Brewer.
 
@@ -404,7 +406,7 @@ Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese B
 	\rowcolor{gray}
 	Aufwand		&	7 (35)		&	5 (25)		&	7 (35)		\\ \hline
 	Begründung		&	Ist bekannt und das Einrichten ist relativ schnell gemacht.	
-				&	Keine Erfahrung mit objektorientierte Datenbank, Konzept muss zuerst verstanden werden.		
+				&	Keine Erfahrung mit objektorientierten Datenbanken, Konzept muss zuerst verstanden werden.		
 				&	Dokumentorientierte Datenbank noch nie benutzt. Laut Dokumentation ziemlich simpel.	\\ \hline
 	\rowcolor{gray}
 	Änderbarkeit		&	4 (20)		&	3 (15)	&	10 (50)		\\ \hline
