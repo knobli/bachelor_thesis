@@ -159,16 +159,16 @@ bei welchen auch ein Problem mit $k > 2$ in \glslink{polynomialzeit}{polynomiell
 	\end{itemize}
 
 	\subsubsection{Briefträgerproblem}\label{chinese_postman}
-	Das Briefträgerproblem ist an sich kein \gls{np}-vollständiges Problem, jedoch wurde für Varianten des Problems die \gls{np}-Vollständigkeit bewiesen. Für das `Rural Postman Problem`, bei 
-	welchem nicht jeder Punkt zwingend abgefahren werden muss, wurde dies durch die Reduktion des 3-SAT Problemes bewiesen. Da die Varianten alle auf das Grundproblem aufbauen, 
-	wird in dieser Arbeit dieses verwendet.
+	Das Briefträgerproblem ist an sich kein \gls{np}-vollständiges Problem, jedoch wurde für Varianten des Problems die \gls{np}-Vollständigkeit bewiesen. Für das `Rural Postman Problem`, 
+	bei welchem nicht jeder Punkt zwingend abgefahren werden muss, wurde dies durch die Reduktion des 3-SAT Problemes bewiesen. In dieser Arbeit wird das Briefträgerproblem behandelt,
+	da die Varianten darauf aufbauen und so die Basis betrachtet wird.
 
 	\paragraph{Beschreibung}
 	Englischer Name: Chinese postman problem\\
 	Das Briefträgerproblem ist vergleichbar mit dem Problem des Handlungsreisenden, jedoch geht es darum jede Kante mindestens ein Mal abzufahren. Die Knoten stellen Kreuzungen dar, 
 	die Kanten entsprechen den Strassen, beide dürfen mehrfach befahren werden. Die minimale Länge kann mit Hilfe des \glslink{eulerkreis}{Eulerkreises} relativ einfach berechnet werden. 
-	Falls der Graph die Kriterien des \glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungerader Anzahl Kanten mit einem anderen solchen Knoten über die kürzeste 
-	Route verbunden. Die minimal Länge ist die Summe aller Strecken und Hilfsstrecken. \cite{pearson2004decision}
+	Falls der Graph die Kriterien des \glslink{eulerkreis}{Eulerkreises} nicht erfüllt, werden alle Knoten mit ungerader Anzahl Kanten mit einem anderen Knoten verbunden. Für die Auswahl der 
+	zu verbindenden Knoten wird die perfekte Paarung berechnet. Die minimal Länge ist die Summe aller Strecken und Hilfsstrecken. \cite{pearson2004decision}
 
 	\paragraph{Beispiel} Gegeben sei der Graph mit den Punkten A bis H und den Verbindungen in blau.\\
 Gesucht ist eine Route mit dem kürzesten Weg, welche jede Kante mindestens ein Mal abfährt. \cite{pearson2004decision}\\
