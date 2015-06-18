@@ -10,7 +10,7 @@
 
 \chapter{Umsetzung des Prototyps \resultAssignment{[R5]}}\label{chap.umsetzung}
 In diesem Kapitel wird kurz auf die Erkenntnisse aus dem \glslink{vertikaler_durchstich}{vertikalen Durchstich} eingegangen. Danach wird erklärt, wie die Umsetzung für die ausgewählten 
-Problemtypen durchgeführt wurde. Zu guter Letzt wird noch die Entwicklungsumgebung für dieses Projekt aufgezeigt.
+Problemtypen durchgeführt wurde. Zu guter Letzt wird noch die Entwicklungsumgebung für dieses Projekt beschrieben.
 
 \section{Erster Durchstich}\label{entwicklungsumgebung}
 Zum Start der Umsetzung wurde ein erster \gls{vertikaler_durchstich} anhand des Rucksack-Problems gemacht, um zu sehen, ob sich das Konzept bewährt. Während der 
@@ -24,21 +24,22 @@ Implementation wurde bereits überlegt, wie die Logik möglichst generisch gehal
 \end{figure}
 
 \subsection{Erkenntnisse nach dem ersten Durchstich}\label{learning_prototyp}
-Die Kontaktschnittstelle nach Aussen generisch zu halten, macht aus Gründen der Benutzerfreundlichkeit keinen Sinn. Für den Kunden ist es transparenter, wenn er eine Schnittstelle aufruft, 
-welche zum Beispiel 'timetabelScheduleComputations' heisst, als eine generische Schnittstelle, welche 'computations' heisst. Zudem ist nicht möglich, nur aus den Daten herauszufinden, was für 
-ein Problem gelöst werden möchte. Dazu würde es einen zusätzlichen Parameter benötigen. Weiter stellt es sich in Java mit Spring als schwierig heraus, einen Endpunkt bereitzustellen, welcher 
+Die Kontaktschnittstelle nach aussen generisch zu halten, macht aus Gründen der Benutzerfreundlichkeit keinen Sinn. Für den Kunden ist es transparenter, wenn er eine Schnittstelle aufruft, 
+welche zum Beispiel 'timetableComputations' heisst, statt einer generischen Schnittstelle namens 'computations'. Zudem ist es nicht möglich nur mithilfe der Daten herauszufinden, welches 
+Problem gelöst werden möchte. Dazu würde es einen zusätzlichen Parameter benötigen. Weiter stellt es sich als schwierig heraus, mit Spring einen Endpunkt bereitzustellen, welcher 
 verschiedene Ressourcentypen akzeptiert. Die Validierung der Eingabeparameter würde dadurch zusätzlich erschwert werden.
 
-Das Konzept mit den beiden Translators bietet sehr viel Möglichkeiten und Flexibilität. Es entkoppelt die Nutzer-Schnittstelle komplett von der Schnittstelle für die Algorithmen. Um diese 
+Das Konzept mit den beiden Translators bietet sehr viele Möglichkeiten und Flexibilität. Es entkoppelt die Nutzer-Schnittstelle komplett von der Schnittstelle für die Algorithmen. Um diese 
 Flexibilität ausnutzen zu können, müssen jedoch oft verschiedene Entities für die Nutzer- und Algorithmus-Sicht erstellt werden.
 
 In der Business Logik kann vieles generisch gehalten werden. Die Repositories, Services und die Interfaces können generisch programmiert werden und bleiben für alle Probleme gleich. Beim 
-Controller kann die Logik in einer abstrakten Klasse definiert werden. Somit müssen nur noch die Namen der Schnittstellen in der spezifischen Implementation definiert werden. Es zeigte sich, 
-dass sich das Konzept bewährt und die weiteren Probleme dementsprechend gelöst werden können.
+Controller kann die Logik in einer abstrakten Klasse definiert werden. Somit müssen nur noch die Namen der Schnittstellen in der spezifischen Implementation definiert werden. Es hat sich 
+gezeigt, dass sich das Konzept bewährt und die weiteren Probleme dementsprechend gelöst werden konnten.
 
 \subsection{Anpassung des Konzepts nach dem ersten Durchstich}\label{doings_prototyp}
-Das Konzept wurde nach dem ersten \glslink{vertikaler_durchstich}{Durchstich} dahingegen abgeändert, dass die Schnittstellen auf der Nutzer-Seite umbenannt wurden und die 
-Algorithmus-Seite einen anderen Namespace erhielt. Weiter verschwand die separate Schnittstelle für das Abfragen des Resultats, die Funktionalität wurde in die Status-Abfrage integriert.
+Das Konzept wurde nach dem ersten \glslink{vertikaler_durchstich}{Durchstich} dahingegen geändert, dass die Schnittstellen auf der Nutzer-Seite umbenannt wurden und die 
+Algorithmus-Seite einen anderen Namespace erhielt. Weiter verschwand die separate Schnittstelle für das Abfragen des Resultats, die Funktionalität wurde stattdessen in die Status-Abfrage 
+integriert.
 
 \section{Implementierung der Schnittstelle}\label{impl_interface}
 In diesem Abschnitt wird über die Implementation der Schnittstelle im Allgemeinen geschrieben. Wie bereits erwähnt ist der Ablauf bei jedem Problem gleich, dementsprechend verhält sich die 
@@ -47,12 +48,12 @@ Schnittstelle im Allgemeinen gleich.
 \subsection{Statusabfrage}
 Damit der Nutzer möglichst wenig Schnittstellen ansprechen muss, erhält er bei einer Statusabfrage zugleich die vorhandenen Resultate. Der Nutzer erhält nur Resultate mit dem Status 'FINAL'. 
 Resultate mit dem Status 'PARTIAL' werden zwar beim Status und der Zeit des zuletzt empfangenen Resultats berücksichtigt, aber nicht herausgegeben. Der Status besitzt neben den 
-Resultaten, die ID und den Namen, weiter werden Start- und Endzeit angeben und zusätzlich noch die Zeit des zuletzt empfangenen Resultats. Falls eine Berechnung beendet ist, wird eine 
-Begründung der Beendigung angezeigt. Dies kann zum Beispiel ein aufgetretener Fehler während des Starts oder der Berechnung sein.
+Resultaten eine ID und den Namen, weiter werden Startzeit, Endzeit und die Zeit des zuletzt empfangenen Resultats angegeben. Falls eine Berechnung beendet ist, wird eine 
+Begründung der Beendigung angezeigt. Dies kann zum Beispiel ein aufgetretener Fehler während des Starts oder der Berechnung sein oder eine Bestätigung der erfolgreichen Berechnung.
 
 \begin{lstlisting}[language=JSON, caption=Aufbau einer Antwort auf eine Statusabfrage, label=lst:status_response]  
 {
-  "id: "<Berechnung ID>",
+  "id'': "<Berechnung ID>",
   "name": "<Berechnungsname>",
   "computationStatus": "<Status der Berechnung>",
   "createDate": <Erstelldatum>,
@@ -65,11 +66,11 @@ Begründung der Beendigung angezeigt. Dies kann zum Beispiel ein aufgetretener F
 
 \subsection{WebHook Möglichkeit}
 Die Berechnungen können je nach Komplexität sehr lange dauern. Der Nutzer müsste immer wieder den Status abfragen, um zu sehen, ob ein Resultat vorhanden ist. \glspl{webhook} 
-bieten Abhilfe für dieses Problem. Das Verfahren ist nicht standardisiert, ist aber sehr simpel und hilfreich. Beim Start einer Berechnung kann eine URL mitgegeben werden, zu welcher 
-bei jeder Statusänderung ein POST-Request abgeschickt wird. Um diese Schnittstelle möglichst generisch zu halten, wurde eine Möglichkeit geschaffen, eine beliebige Payload für den 
+bieten Abhilfe für dieses Problem. Das Verfahren ist nicht standardisiert, es ist aber sehr simpel und hilfreich. Beim Start einer Berechnung kann eine URL mitgegeben werden, zu welcher 
+bei jeder Statusänderung ein POST-Request gesendet wird. Um diese Schnittstelle möglichst generisch zu halten, wurde eine Möglichkeit geschaffen, eine beliebige Payload für den 
 POST-Request anzugeben. Die Nachricht der Statusänderung kann nach belieben mit dem Platzhalter '\_\_MESSAGE\_\_' irgendwo in die Payload eingebunden werden. Das Attribut 'message' 
-wird in der Nachricht gesetzt, wenn der Platzhalter nirgends verwendet wird. Eine Konfiguration für die Chat Applikation 'Slack' würde wie in \autoref{lst:webhook_configuration} 
-aussehen. Die Nachrichten bei den Statusänderungen sähen dann wie in \autoref{fig:slack_chat} aus.
+wird in der Nachricht gesetzt, wenn der Platzhalter nirgends verwendet wird. Eine Konfiguration für die Chat-Applikation 'Slack' würde wie in \autoref{lst:webhook_configuration} 
+aussehen. Die Nachrichten bei Statusänderungen sähen dann wie in \autoref{fig:slack_chat} aus.
 
 \begin{lstlisting}[language=JSON, caption=Beispiel einer WebHook Konfiguration für Slack, label=lst:webhook_configuration]
   ...  
@@ -93,20 +94,20 @@ aussehen. Die Nachrichten bei den Statusänderungen sähen dann wie in \autoref{
 \end{figure}
 
 \subsection{Technische Umsetzung und Probleme}
-Das Fundament der Software war mit Spring-Boot \cite{spring_boot} sehr schnell gebaut, die Anbindung an die MongoDB wurde mit SpringData \cite{spring_data} realisiert. Leider waren 
-oftmals die Dokumentationen nicht ausreichend oder nur für die XML-Konfiguration von Spring ausgelegt. Weiter gab es fehlende Teile in SpringData, welche gefunden werden mussten. 
-So gibt es zum Beispiel zu diesem Zeitpunkt standardmässig keine Möglichkeit ein 'LocalTime'-Objekt oder ein 'LocalDateTime'-Objekt von Java 8 zu persistieren. Dies führte zu einem 
-Stackoverflow anstatt einem Fehler, was wiederum die Suche nach dem Fehler erheblich erschwerte. Um diese Probleme zu beheben, musste ein eigener Converter geschrieben und dieser 
-bei der MongoDB-Konfiguration angegeben werden.
+Das Fundament der Software war mit Spring Boot \cite{spring_boot} sehr schnell gebaut, die Anbindung an MongoDB wurde mit Spring Data \cite{spring_data} realisiert. Leider war 
+oftmals die Dokumentation nicht ausreichend oder nur für die XML-Konfiguration von Spring ausgelegt. Weiter gab es fehlende Teile in Spring Data, welche gefunden werden mussten. 
+So gibt es zum Beispiel zu diesem Zeitpunkt standardmässig keine Möglichkeit, ein 'LocalTime'-Objekt oder ein 'LocalDateTime'-Objekt von Java 8 zu persistieren. Dies führte zu einem 
+Stackoverflow anstatt einer spezifischeren Exception, was wiederum die Suche nach dem Fehler erheblich erschwerte. Um diese Probleme zu beheben, musste ein eigener Converter 
+geschrieben und dieser bei der MongoDB-Konfiguration angegeben werden.
 
-Bei der Business Logik wurde geschaut, dass vieles mit \gls{generics} gelöst werden konnte, vor allem bei den Services konnte viel Code für alle Probleme verwendet werden. Auch 
-bei den beiden Scheduling-Problemen, konnte viel Code-Duplizierung umgangen werden. Zusätzlich wurden häufig verwendete Funktionen, wie das Abbilden auf die Input Objekte, in 
+Bei der Business Logik wurde geschaut, dass vieles mit \gls{generics} gelöst werden konnte. Vor allem bei den Services konnte viel Code für alle Probleme verwendet werden. Auch 
+bei den beiden Scheduling-Problemen konnte viel Code-Duplizierung vermieden werden. Zusätzlich wurden häufig verwendete Funktionen, wie das Abbilden auf die Input-Objekte, in 
 Helfer-Klassen ausgelagert, damit sie nur ein Mal implementiert werden mussten.
 
 \section{Implementierung der Probleme}\label{impl_problems}
 In diesem Unterkapitel wird für jedes Problem kurz erklärt, was beim Prototyp implementiert wurde, um die Möglichkeiten des Konzepts aufzuzeigen. Eine ausführliche 
 Schnittstellen-Dokumentation ist in \autoref{api_doc} zu finden. Zusätzlich wurde noch eine elektronische Dokumentation der Schnittstelle mit Hilfe von Swagger UI erstellt. Diese stellt die 
-angebotenen Schnittstellen, die Eingabeparameter und Resultat sehr übersichtlich dar.
+angebotenen Schnittstellen, die Eingabeparameter und die Resultat sehr übersichtlich dar.
 
 \begin{figure}[h]
 \centering
@@ -129,12 +130,12 @@ um zu schauen, wie sich die Schnittstelle bei sehr ähnlichen Problemen verhält
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Rucksack}
-Das Rucksack-Problem ist aus Sicht der Schnittstelle ein relativ einfaches Problem. Aus Benutzerfreundlichkeit kann der Nutzer bei den Elementen eine Anzahl definieren und muss sie nicht 
-doppelt angeben. Der Algorithmus hingegen bekommt eine Liste mit allen Elementen, es gibt nur noch einzelne Elemente und der Name wird nicht weiter gegeben, da er vom Algorithmus nicht 
-benötigt wird. Der Algorithmus liefert als Resultat eine Liste von Boolean-Werten zurück, diese müssen zuerst wieder auf die ursprünglichen Elemente abgebildet werden. Bei der Validierung wird 
-überprüft, ob die Gewichtsschranke nicht überschritten wurde und ob ein Element nicht zu oft verwendet wurde. Letzteres ist zwar bei dem Test-Algorithmus nicht möglich, könnte jedoch bei 
-einer anderen Implementation der Fall sein. Der Benutzer erhält als Resultat eine Liste mit allen Objekten, welche verwendet wurden. Wenn das Objekt mehrmals verwendet wurde, 
-wird die entsprechende Anzahl angegeben.
+Das Rucksack-Problem ist aus Sicht der Schnittstelle ein relativ einfaches Problem. Um die Benutzerfreundlichkeit zu verbessern, kann der Nutzer bei den Elementen eine Anzahl definieren und 
+muss sie nicht doppelt angeben. Der Algorithmus hingegen bekommt eine Liste mit allen Elementen, es gibt nur noch einzelne Elemente und der Name wird nicht weitergegeben, da er vom 
+Algorithmus nicht benötigt wird. Der Algorithmus liefert als Resultat eine Liste von booleschen Werten zurück, diese müssen zuerst wieder auf die ursprünglichen Elemente abgebildet werden. Bei 
+der Validierung wird überprüft, ob die Gewichtsschranke nicht überschritten wurde und ob ein Element nicht zu oft verwendet wurde. Letzteres ist zwar beim getesteten Algorithmus nicht 
+möglich, könnte jedoch bei einer anderen Implementation der Fall sein. Der Benutzer erhält als Resultat eine Liste mit allen Objekten, welche verwendet wurden. Wenn ein Objekt mehrmals 
+verwendet wurde, wird die entsprechende Anzahl angegeben.
 
 \begin{figure}[h]
 \centering
@@ -155,9 +156,9 @@ wird die entsprechende Anzahl angegeben.
 
 \subsection{Knotenfärbung}
 Bei der Knotenfärbung geht es darum, Kollisionen zu vermeiden. Dies wurde für den Nutzer möglichst transparent umgesetzt. Der Nutzer kann mögliche Werte (z.B. Farben oder 
-Frequenzen) angeben, welche die Elemente zugeteilt bekommen sollen. Der Algorithmus erhält eine Liste mit allen Elementen und ihren Nachbarn. Der Name der Elemente und die möglichen 
-Werte werden nicht weiter gegeben. Es wird davon ausgegangen, dass der Algorithmus eine Liste von Elementen mit den zugewiesenen Werten zurückgibt. Beim Übersetzen werden, falls 
-vorhanden, die Werte vom Algorithmus mit den möglichen Werten aus der Benutzereingabe ausgetauscht. Bei der Validierung wird überprüft, ob kein Element den gleichen Wert wie einer 
+Frequenzen) angeben, welche die Elemente zugeteilt bekommen sollen. Der Algorithmus erhält eine Liste mit allen Elementen und ihren Nachbarn. Die Namen der Elemente und die möglichen 
+Werte werden nicht weitergegeben. Es wird davon ausgegangen, dass der Algorithmus eine Liste von Elementen mit den zugewiesenen Werten zurückgibt. Beim Übersetzen werden, falls 
+vorhanden, die Werte vom Algorithmus mit den möglichen Werten aus der Benutzereingabe ausgetauscht. Bei der Validierung wird überprüft, dass kein Element den gleichen Wert wie einer 
 seiner Nachbarn hat. Als Resultat erhält der Benutzer eine Liste mit allen Elementen und ihren zugewiesenen Werten.
 
 \begin{figure}[h]
@@ -176,12 +177,11 @@ seiner Nachbarn hat. Als Resultat erhält der Benutzer eine Liste mit allen Elem
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Problem des Handlungsreisenden}
-Der Service bietet nicht nur die kürzeste Route für eine Liste von Wegpunkten an, es ist auch möglich für jeden Wegpunkt eine gewünschte Ankunftszeit und Aufenthaltszeit anzugeben. Der 
-Nutzer kann eine Liste von Wegpunkten mit gewünschter Ankunftszeit und Aufenthaltszeit angeben. Der Algorithmus erhält vom System eine Liste mit allen Wegpunkten, bei diesem Schritt wird 
-nichts übersetzt. Es wäre möglich, dass die Schnittstelle bereits die Distanzen zwischen den Wegpunkten berechnet oder die Daten sonst irgendwie für den Algorithmus aufbereitet. Es 
-wird davon ausgegangen, dass der Algorithmus eine Liste der Wegpunkte in der berechneten Reihenfolge zurückgibt. Beim Übersetzen werden die geplanten Ankunftszeiten berechnet, 
-welche dann während der Validierung mittels der maximal angegebenen Abweichung überprüft werden. Der Benutzer erhält als Resultat eine Liste mit der berechneten Reihenfolge der 
-Wegpunkte. Jeder Wegpunkt besitzt die gewünschte und geplante Ankunftszeit.
+Der Service bietet nicht nur die kürzeste Route für eine Liste von Wegpunkten an, es ist auch möglich, für jeden Wegpunkt eine gewünschte Ankunftszeit und Aufenthaltszeit anzugeben. Der 
+Algorithmus erhält vom System eine Liste mit allen Wegpunkten, bei diesem Schritt wird nichts übersetzt. Es wäre jedoch theoretisch möglich, dass die Schnittstelle die Daten bereits für den 
+Algorithmus aufbereitet, zum Beispiel indem sie die Distanzen zwischen den Wegpunkten berechnet. Es wird davon ausgegangen, dass der Algorithmus eine Liste der Wegpunkte in der 
+berechneten Reihenfolge zurückgibt. Beim Übersetzen werden die geplanten Ankunftszeiten berechnet, welche dann während der Validierung mittels der maximal angegebenen Abweichung 
+überprüft werden. Der Benutzer erhält als Resultat eine Liste von Wegpunkten mit gewünschter und geplanter Ankunftszeit in der berechneten Reihenfolge.
 
 \begin{figure}[h]
 \centering
@@ -199,7 +199,7 @@ Wegpunkte. Jeder Wegpunkt besitzt die gewünschte und geplante Ankunftszeit.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Briefträgerproblem}
-Das Briefträgerproblem berechnet eine Route, welche alle bekannten Wege einer Strecke abfährt. Der Nutzer kann eine Liste von Wegpunkten mit den bekannten Verknüpfungen zu anderen 
+Das Briefträgerproblem berechnet eine Route, welche alle bekannten Wege eines Graphen abfährt. Der Nutzer kann eine Liste von Wegpunkten mit den bekannten Verknüpfungen zu anderen 
 Wegpunkten und ihrer Distanz angeben. Der Algorithmus erhält vom System eine Liste mit allen Wegpunkten, die Namen der Wegpunkte werden nicht weitergegeben. Es wird davon ausgegangen, 
 dass der Algorithmus eine Liste der Wegpunkte in der berechneten Reihenfolge zurückgibt. Beim Übersetzen werden die Wegpunkte wieder auf die Eingabewerte abgebildet und die komplette 
 Länge der Route berechnet. Die Validierung überprüft, ob der Weg möglich ist und ob jede Verbindung mindestens ein Mal benutzt wurde. Der Benutzer erhält als Resultat eine Liste mit der berechneten 
@@ -222,16 +222,16 @@ Reihenfolge der Wegpunkte und die totale Länge der Strecke.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Stundenplan Erstellung}
-Das Erstellen eines Stundenplans ist ein Planungsproblem, welches sehr vielen Möglichkeiten und Einschränkungen besitzt und somit sehr komplex ist. In dieser Implementation sind bei weitem 
+Das Erstellen eines Stundenplans ist ein Planungsproblem, welches sehr viele Möglichkeiten und Einschränkungen besitzt und somit sehr komplex ist. In dieser Implementation sind bei weitem 
 nicht alle Spezialitäten abgedeckt. Es wurde geschaut, dass bereits einige Einschränkungen, wie zum Beispiel freie Tage von Lehrern und blockierte Schulzimmer, miteinbezogen werden. 
-Der Nutzer gibt eine Liste von Klassen, Lehrern, Schulzimmern und Schulfächern an. Die Klassen haben eine Grösse und definieren auch, welche Fächer sie besuchen müssen. Die Lehrer haben 
-eine Liste mit Schulfächern, welche sie unterrichten können, eine List mit zugehörigen Klassen und eine Definition ihrer freien Tage. Die Klassenzimmer besitzen eine Liste mit möglichen 
-Schulfächern und eine Sperrlist, in welcher definiert ist, wann der Raum nicht verfügbar ist. Die Schulfächer können definieren, ob sie eine Raum brauchen, welcher explizit dafür 
-bestimmt ist, zum Beispiel Sport in der Turnhalle. Neben den Elementen, welche verplant werden, gibt es Randbedingungen wie die Pausenzeiten, die Lektionsdauer und die Definition, 
-wann unterrichtet werden soll. Der Algorithmus erhält eine Liste mit allen Klassen, Lehrern, Schulzimmern und Schulfächern. Die Rahmenbedingungen werden in Zeitschlitze umgewandelt, 
+Der Nutzer gibt eine Liste von Klassen, Lehrern, Schulzimmern und Schulfächern an. Die Klassen haben eine bestimmte Grösse und definieren auch, welche Fächer sie besuchen müssen. Die 
+Lehrer haben eine Liste mit Schulfächern, welche sie unterrichten können, eine List mit zugehörigen Klassen und eine Definition ihrer freien Tage. Die Klassenzimmer besitzen eine Liste mit 
+möglichen Schulfächern und eine Sperrliste, in welcher definiert ist, wann der Raum nicht verfügbar ist. Die Schulfächer können definieren, ob sie eine Raum brauchen, welcher explizit dafür 
+bestimmt ist, zum Beispiel Sport in der Turnhalle. Neben den zu verplanenden Elementen gibt es Randbedingungen wie die Pausenzeiten, die Lektionsdauer und die Definition, 
+wann unterrichtet werden soll. Der Algorithmus erhält eine Liste mit allen Klassen, Lehrern, Schulzimmern und Schulfächern. Die Rahmenbedingungen werden in Zeitfenster umgewandelt, 
 welche vom Algorithmus verplant werden können. Zusätzlich werden die Elemente generischer benannt, damit der Algorithmus nicht verschiedene Konfigurationen für verschiedene 
-Planungsprobleme besitzen muss. In \autoref{lst:cat_input_timetableScheduling} ist ein Beispiel für eine Eingabe der Rahmenbedingungen gezeigt, welche durch den Translator in die 36 Zahl 
-umgewandelt werden würde. Die Zahl wird aus der Lektionsdauer, den Pausen und den einzelnen Zeitfenstern pro Tag berechnet, die \autoref{table:timeslice_calc} stellt dies visuell dar.
+Planungsprobleme besitzen muss. In \autoref{lst:cat_input_timetableScheduling} ist ein Beispiel für eine Eingabe der Rahmenbedingungen gezeigt, welche durch den Translator in die Zahl 36 
+umgewandelt wird. Die Zahl wird aus der Lektionsdauer, den Pausen und den einzelnen Zeitfenstern pro Tag berechnet, die \autoref{table:timeslice_calc} stellt dies visuell dar.
 
 \begin{lstlisting}[language=JSON, caption=Ausschnitt einer Eingabe für das Stundenplanproblem für die Rahmenbedingungen, label=lst:cat_input_timetableScheduling]  
 {
@@ -279,11 +279,11 @@ umgewandelt werden würde. Die Zahl wird aus der Lektionsdauer, den Pausen und d
 
 \FloatBarrier
 
-Es wird davon ausgegangen, dass der Algorithmus eine Liste von Planungskombinationen zurück gibt. Eine Kombination besteht aus einer Zeitfensternummer, einem Lehrer, einer Klasse, 
-einem Schulfach und einem Klassenzimmer. Beim Übersetzen werden die IDs auf die ursprünglichen Elemente abgebildet, die Zeitfensternummern werden in Uhrzeiten umgewandelt. 
+Es wird davon ausgegangen, dass der Algorithmus eine Liste von Planungskombinationen zurückgibt. Eine Kombination besteht aus einer Zeitfensternummer, einem Lehrer, einer Klasse, 
+einem Schulfach und einem Klassenzimmer. Beim Übersetzen werden die IDs auf die ursprünglichen Elemente abgebildet, die Zeitfensternummern wieder werden in Uhrzeiten umgewandelt. 
 Zusätzlich wird eine Statistik für die Lehrer geführt. Bei der Validierung wird geschaut, ob ein Element zu einer Zeit mehrfach verplant ist, ob der Lehrer die nötigen Fähigkeiten hat und ob ein 
-Klassenzimmer für das Fach ausgelegt ist. Das Resultat für den Nutzer enthält eine Liste mit den berechneten Kombination, sortiert nach Wochentag und Uhrzeit. Die Lehrerstatistik zeigt, wie 
-oft ein Lehrer ein bestimmtes Fach unterrichtet und wie viel Stunden er insgesamt unterrichtet.
+Klassenzimmer für das Fach ausgelegt ist. Das umgewandelte Resultat enthält eine Liste mit den berechneten Kombination, sortiert nach Wochentag und Uhrzeit. Die Lehrerstatistik zeigt, wie 
+oft ein Lehrer ein bestimmtes Fach und wie viele Stunden er insgesamt unterrichtet.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -294,10 +294,10 @@ oft ein Lehrer ein bestimmtes Fach unterrichtet und wie viel Stunden er insgesam
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Spielplan Erstellung}
-Eine weitere Ausprägung des Planungsproblems ist das Erstellen eines Spielplans. Der Nutzer gibt eine Liste von Teams, Schiedsrichter, Spielfelder und Kategorien an. Die Teams haben eine 
-bestimmte Kategorie. Die Schiedsrichter haben eine Liste mit Kategorien, welche sie leiten können und eine Liste von Teams, zu welchen sie gehören. Die Spielfelder besitzen eine Liste mit 
-möglichen Kategorien. Neben den Elementen, welche verplant werden, gibt es Randbedingungen wie die Spieldauer, die Startzeit und die Pausenzeiten. Der Algorithmus erhält eine 
-Liste mit allen Teams, Schiedsrichter, Spielfelder und Kategorien. Zusätzlich werden die Elemente generischer benannt, damit der Algorithmus nicht verschiedene Konfigurationen für 
+Eine weitere Ausprägung des Planungsproblems ist das Erstellen eines Spielplans. Der Nutzer gibt eine Liste von Teams, Schiedsrichtern, Spielfeldern und Kategorien an. Die Teams haben eine 
+bestimmte Kategorie. Die Schiedsrichter haben eine Liste mit Kategorien, welche sie leiten können, und eine Liste von Teams, zu welchen sie gehören. Die Spielfelder besitzen eine Liste mit 
+möglichen Kategorien. Neben den zu verplanenden Elementen gibt es Randbedingungen wie die Spieldauer, die Startzeit und die Pausenzeiten. Der Algorithmus erhält eine 
+Liste mit allen Teams, Schiedsrichtern, Spielfeldern und Kategorien. Zusätzlich werden die Elemente generischer benannt, damit der Algorithmus nicht verschiedene Konfigurationen für 
 verschiedene Planungsprobleme besitzen muss.
 
 \begin{figure}[h]
@@ -307,11 +307,11 @@ verschiedene Planungsprobleme besitzen muss.
 \label{fig:matchschedule_input}
 \end{figure}
 
-Es wird davon ausgegangen, dass der Algorithmus eine Liste von Planungskombinationen zurück gibt. Eine Kombination besteht aus einer Zeitfensternummer, einem Schiedsrichter, 
-einer Kombination von zwei Teams und einem Spielfeld. Beim Übersetzen werden die IDs auf die ursprünglichen Elemente abgebildet, die Zeitfensternummern werden in Uhrzeiten 
-umgewandelt. Zusätzlich wird eine Statistik für die Schiedsrichter und die Teams geführt, wie viele Einsätze sie jeweils haben. Bei der Validierung wird geschaut, ob ein Element zu einer 
+Es wird davon ausgegangen, dass der Algorithmus eine Liste von Planungskombinationen zurückgibt. Eine Kombination besteht aus einer Zeitfensternummer, einem Schiedsrichter, 
+einer Kombination von zwei Teams und einem Spielfeld. Beim Übersetzen werden die IDs auf die ursprünglichen Elemente abgebildet, die Zeitfensternummern werden wieder in Uhrzeiten 
+umgewandelt. Zusätzlich wird eine Statistik über die Einsätze der Schiedsrichter und der Teams geführt. Bei der Validierung wird geschaut, ob ein Element zu einer 
 bestimmten Zeit mehrfach verplant ist, ob die Schiedsrichter die nötigen Fähigkeiten haben und ob ein Spielfeld für die Kategorie ausgelegt ist. Der Benutzer erhält als Resultat eine Liste 
-mit den berechneten Kombination, sortiert nach Uhrzeit. Die Schiedsrichterstatistik zeigt, wie oft ein Schiedsrichter eine bestimmte Kategorie pfeift und für wie viel Spiele er insgesamt 
+mit den berechneten Kombination, sortiert nach Uhrzeit. Die Schiedsrichterstatistik zeigt, wie oft ein Schiedsrichter eine bestimmte Kategorie pfeift und für wie viele Spiele er insgesamt 
 verantwortlich ist. Die Teamstatistik zeigt, wie viele Spiele eine Kategorie insgesamt hat und wie viele Spiele ein Team bestreitet. In \autoref{lst:cat_result_matchScheduling} wird ein 
 Ausschnitt der Schiedsrichterstatistik dargestellt.
 
@@ -330,9 +330,9 @@ Ausschnitt der Schiedsrichterstatistik dargestellt.
 \end{lstlisting}
 
 \subsection{Übersicht der Schnittstellen}
-Für den Nutzer wurde ein problem-agnostischer Name für die Schnittstelle gewählt. Die Namen unterscheiden sich somit zum Teil zwischen Nutzer- und Algorithmus-Sicht voneinander. Damit die 
-Verknüpfung der beiden Schnittstellen nicht verloren geht und um eine Übersicht über alle angebotenen Schnittstellen zu haben, wurden sie in der \autoref{table:overview_api_interfaces} 
-zusammengetragen. Die Schnittstellen für die Algorithmen sind unter einem anderen Namespace '/algorithm', damit diese sauber voneinander getrennt sind.
+Für den Nutzer wurde ein problem-agnostischer Name für die Schnittstelle gewählt. Die Namen unterscheiden sich somit zum Teil zwischen Nutzer- und Algorithmus-Sicht. Damit die 
+Verknüpfung der beiden Schnittstellen nicht verloren geht, und um eine Übersicht über alle angebotenen Schnittstellen zu haben, wurden sie in der \autoref{table:overview_api_interfaces} 
+zusammengetragen. Die Endpunkte für die Algorithmen sind unter dem Namespace '/algorithm', damit diese beiden sauber voneinander getrennt sind.
 
 \begin{table}[ht]
 \centering
@@ -341,7 +341,7 @@ zusammengetragen. Die Schnittstellen für die Algorithmen sind unter einem ander
 	\rowcolor{gray}
 	\textbf{Nutzer}							& \textbf{Algorithmus}					\\ \hline
 	/									& /algorithm/							\\ \hline
-	\multicolumn{2}{|c|}{\textbf{Allgemein}}\\ \hline
+	\multicolumn{2}{|c|}{\textbf{Allgemein / Beschreibung}}\\ \hline
 	 Berechnung starten				& Berechnungsinformationen abholen			\\ \hline
 	Status bzw. Lösung	abholen & Lösung bekannt geben	\\ \hline
 	\multicolumn{2}{|c|}{\textbf{Rucksack}}\\ \hline
@@ -370,17 +370,16 @@ zusammengetragen. Die Schnittstellen für die Algorithmen sind unter einem ander
 
 \subsection{Erstellung eines neuen Problems}
 Das Ziel dieser Arbeit war die Erstellung einer Schnittstelle, welche einfach zu erweitern ist. Dieser Abschnitt soll zeigen, wie dies erreicht wurde und wie sie erweitert werden kann. Das 
-Software Projekt ist in Packages gegliedert. Auf der ersten Ebenen befinden sich die generischen Klassen. Die spezifischen Implementierung sind unter dem Package 'problem'  angesiedelt. 
-Die Gliederung ist so gewählt, damit ein Problem nur an einem Ort im Projekt verhängt ist und nicht an vielen verschiedenen Stellen gesucht werden muss. Es wäre möglich, 
+Software-Projekt ist in Packages gegliedert. Auf der ersten Ebene befinden sich die generischen Klassen. Die spezifischen Implementierungen sind unter dem Package 'problem'  angesiedelt. 
+Die Gliederung ist so gewählt, damit ein Problem nur an einem Ort im Projekt vorhanden ist und nicht an vielen verschiedenen Stellen gesucht werden muss. Es wäre auch möglich, 
 die verschiedenen Problem-Implementationen in ein anderes Projekt auszulagern.
 
-Um ein neues Problem in den Katalog aufzunehmen, 
-müsste ein neues Package mit dem Problemnamen erstellt werden. Darin sind weitere Packages zur besseren Übersicht definiert. Als erstes müsste das Problem analysiert werden und 
-dementsprechend die Entities für die Eingabe und das Resultat bereit gestellt werden.
+Um ein neues Problem in den Katalog aufzunehmen, muss ein neues Package mit dem Problemnamen erstellt werden. Darin sind weitere Packages zur besseren Übersicht definiert. Als 
+erstes muss das Problem analysiert werden und dementsprechend die Entities für die Eingabe und das Resultat bereit gestellt werden.
 
-Sind die Entities definiert, muss ein Controller für den Algorithmus und einer für den Nutzer erstellt werden. Die Controller leiten von einer abstrakten Klasse ab und dienen lediglich zur Definition
-der neuen Endpunkte. Die Dokumentation der Controller wird auch in die jeweiligen Klassen geschrieben, dies erweitert automatisch die elektronische Dokumentation von Swagger UI. 
-Nun fehlen noch die beiden Translator für das Umwandeln der Nutzer-Sicht in die Algorithmus-Sicht, der Validator für das Problem und der Solver, welcher den Algorithmus 
+Sind die Entities definiert, muss je ein Controller für den Algorithmus den Nutzer erstellt werden. Die Controller leiten von einer abstrakten Klasse ab und dienen lediglich zur Definition
+der neuen Endpunkte. Die Dokumentation der Controller wird in die jeweiligen Klassen geschrieben, dies erweitert automatisch die elektronische Dokumentation von Swagger UI. 
+Nun fehlen noch die beiden Translators für das Umwandeln der Nutzer-Sicht in die Algorithmus-Sicht, der Validator für das Problem und der Solver, welcher den Algorithmus 
 startet. Alles andere ist generischer Code, welcher nur noch mit den jeweiligen Entity-Typen spezifiziert werden muss.
 
 Zu guter Letzt wird noch ein Beispiel für eine Eingabe aus Nutzer-Sicht und ein Resultat aus Algorithmus-Sicht in JSON unter den Ressourcen abgelegt. Diese Beispiele können für Tests 
@@ -389,12 +388,12 @@ verwendet werden.
 \newpage
 
 \section{Entwicklungsumgebung}\label{entwicklungsumgebung}
-Ein Softwareprojekt benötigt immer eine gewisse Entwicklungsumgebung. Bei der Entwicklung mit Spring-Boot sind die Anforderungen minimal, da Spring-Boot bereits einen eigenen Webserver 
+Ein Softwareprojekt benötigt immer eine gewisse Entwicklungsumgebung. Bei der Entwicklung mit Spring Boot sind die Anforderungen minimal, da Spring Boot bereits einen eigenen Webserver 
 mitbringt.
 
 \subsection{IDE - Integrated Development Environment}
-Als \gls{ide} wurde IntelliJ verwendet, IntelliJ bietet gute Refactoring-Methoden an und ist eine grosse Unterstützung beim Programmieren von Java-Code. Die \gls{ide} 
-bietet auch die Möglichkeit Klassen-Diagramme zu erstellen und hat ein \gls{vim}-Plugin. Mit diesem Plugin können \gls{vim}-Befehle benutzt werden, was die 
+Als \gls{ide} wurde IntelliJ \cite{intellij} verwendet, IntelliJ bietet gute Refactoring-Methoden und Unterstützung beim Programmieren von Java-Code an. Die \gls{ide} 
+bietet auch die Möglichkeit, Klassen-Diagramme zu erstellen und hat ein \gls{vim}-Plugin. Mit diesem Plugin können \gls{vim}-Befehle benutzt werden, was die 
 Geschwindigkeit beim Programmieren enorm erhöht.
 
 \begin{figure}[h]
@@ -408,8 +407,9 @@ Geschwindigkeit beim Programmieren enorm erhöht.
 
 \subsection{Versionierung}
 Für die Versionierung der Software wurde git \cite{git} verwendet. Das Remote Repository wurde auf Github \cite{github_simplatyzer} erstellt. Es wurde darauf geachtet, dass 
-der Code oft ins Repository geladen wurde, damit ein Backup existiert. Die Dokumentation wurde in Dropbox gespeichert, damit auf verschiedenen Computern darauf zugegriffen werden konnte 
-und immer ein Backup vorhanden war. Zu Korrekturzwecken wurde die Arbeit ebenfalls auf github hochgeladen und die Änderungsvorschläge wurden mit Latexdiff verglichen.
+der Code oft ins Repository geladen wurde, damit ein Backup existiert. Die Dokumentation wurde in Dropbox \cite{dropbox} gespeichert, damit auf verschiedenen Computern darauf 
+zugegriffen werden konnte und immer ein Backup vorhanden war. Zu Korrekturzwecken wurde die Arbeit ebenfalls auf Github hochgeladen und die Änderungsvorschläge wurden mit Latexdiff 
+\cite{latexdiff} verglichen.
 
 \begin{figure}[h]
 \centering
@@ -422,12 +422,12 @@ und immer ein Backup vorhanden war. Zu Korrekturzwecken wurde die Arbeit ebenfal
 \newpage
 
 \subsection{Testen - Analysieren}
- Über den Chrome App 'Advanced REST client' (siehe Abbildung \ref{fig:advanced_rest_client})  wurde die Schnittstelle manuell getestet. Für die Regression-Tests wurde Junit und Mockito 
-verwendet. Die statische Code Analyse wurde mit \gls{sonar} \cite{sonar} durchgeführt.
+Über die Chrome App 'Advanced REST client' \cite{advanced_rest_client} (siehe Abbildung \ref{fig:advanced_rest_client})  wurde die Schnittstelle manuell getestet. Für die Regression-Tests 
+wurde JUnit \cite{junit} und Mockito \cite{mockito} verwendet. Die statische Code Analyse wurde mit \gls{sonar} \cite{sonar} durchgeführt.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.65]{images/advanced_rest_client.png}
-\caption[Advanced Rest client]{Advanced Rest client \selfmade{}}
+\caption[Advanced REST client]{Advanced REST client \selfmade{}}
 \label{fig:advanced_rest_client}
 \end{figure}
