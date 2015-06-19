@@ -16,26 +16,26 @@ In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Le
 \begin{enumerate}
 \item \textbf{Testen zeigt die Anwesenheit von Fehlern}: Die Testabdeckung wurde mit Hilfe von IntelliJ ermittelt und anhand der Anforderungen überprüft.
 \item \textbf{Vollständiges Testen ist nicht möglich}: Es wurde solange getestet bis alle Akzeptanzkriterien abgedeckt waren und die Testabdeckung gut genug war.
-\item \textbf{Mit dem Testen frühzeitig beginnen}: Die Unit Tests für neuen Funktionen wurden möglichst zeitnah oder zur gleichen Zeit geschrieben.
-\item \textbf{Häufung von Fehlern}: Wenn Fehler auftraten, dann wurde diese Komponente nach der Behebung nochmals intensiv getestet und zusätzliche Tests erfasst.
+\item \textbf{Mit dem Testen frühzeitig beginnen}: Die Unit Tests für neue Funktionen wurden möglichst zeitnah oder zur gleichen Zeit geschrieben.
+\item \textbf{Häufung von Fehlern}: Wenn Fehler in einer Komponente auftraten, dann wurde diese nach der Behebung nochmals intensiv getestet und zusätzliche Tests erfasst.
 \item \textbf{Zunehmende Testresistenz (Pesticide paradox)}: Jede Änderungen am Code hatte auch eine Anpassung oder Erweiterung der Tests zur Folge.
 \item \textbf{Testen ist abhängig vom Umfeld}: Der Prototyp ist nicht sicherheitskritisch, jedoch wurde Wert auf eine hohe Testabdeckung gelegt. Es wurden zusätzlich immer wieder 
 	End-zu-End Tests mit den verschiedenen Problemen durchgeführt.
-\item \textbf{Trugschluss: Keine Fehler bedeutet ein brauchbares System}: Die Schnittstelle wurde dem \gls{stakeholder}, bevor das Projekt zu Ende war, demonstriert und erklärt. So 
-	konnten allfällige Missverständnis frühzeitig erkannt werden. Die hohe Testabdeckung trägt ebenfalls zur Aufdeckung von unbemerkten Fehler bei.
+\item \textbf{Trugschluss: Keine Fehler bedeutet ein brauchbares System}: Die Schnittstelle wurde dem \gls{stakeholder} demonstriert und erklärt bevor das Projekt zu Ende war. So 
+	konnten allfällige Missverständnise frühzeitig erkannt werden. Die hohe Testabdeckung trägt ebenfalls zur Aufdeckung von unbemerkten Fehlern bei.
 \end{enumerate}
 
 \section{Testing}
 Komponententests und Integrationstests, bekannt aus \cite{test_soft_book}, wurden bei der Schnittstelle mit JUnit und Mockito durchgeführt. Bei den Integrationstests wurde eine 
 Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Für die Analyse der Testabdeckung wurde IntelliJ 
-verwendet und die statische Code Analyse wurde mit \gls{sonar} überprüft. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis 
+verwendet und die statische Code Analyse wurde mit \gls{sonar} ausgeführt. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis 
 zu testen.
 
 \section{Systemtest}
-Als Abschluss des Projekts wurde ein Systemtest vorgesehen, für welcher ein Testprotokoll erstellt wurde. Das Protokoll zeigt dem Kunden was getestet wurden und das Ergebnis.
+Als Abschluss des Projekts wurde ein Systemtest durchgeführt, für welcher ein Testprotokoll erstellt wurde. Das Protokoll zeigt dem Kunden die Testabfolge und das Ergebnis.
 
 \subsection{Testprotokoll}
-Das Testprotokoll basiert auf den Use Cases (siehe Abschnitt \ref{use_cases}) und den Anforderungen (Abschnitt \ref{anforderungen}). Akzeptanz-Kriterien mit UND- oder ODER-Verknüpfung 
+Das Testprotokoll basiert auf den Use Cases (siehe Abschnitt \ref{use_cases}) und den Anforderungen (Abschnitt \ref{anforderungen}). Akzeptanzkriterien mit UND- oder ODER-Verknüpfung 
 wurden aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
 
 %%\begin{longtable}{ l | p{7cm} | l | l }
@@ -57,14 +57,14 @@ wurden aufgesplittet, um sicher zu gehen, dass beide Bedingungen erfüllt sind.
 	\addlinespace
 	1	&	Der Nutzer kann eine Schnittstelle für die bereitgestellte Berechnungsfunktionen ansprechen.			
 				&	\nameref{table:req_1} 	&	erfüllt\\ \addlinespace\hline \addlinespace
-	2	&	Der Nutzer erhält nach dem Starten einer Berechnung eine ID.
-				&	\nameref{table:req_2} 	&	erfüllt\\ \addlinespace\hline \addlinespace
-	3	&	Die Parameter sind persistiert.			
+	2	&	Die Parameter sind persistent.			
 				&	\nameref{table:req_3} 	&	erfüllt\\ \addlinespace\hline \addlinespace
-	4a	&	Es gibt eine Fehlermeldung, falls bei der Speicherung etwas fehlschlägt			
+	3a	&	Es gibt eine Fehlermeldung, falls bei der Speicherung etwas fehlschlägt			
 				&	\nameref{table:req_3} 	&	erfüllt\\ \addlinespace\hline \addlinespace
-	4b	&	oder die Eingabeparameter nicht gültig sind.			
+	3b	&	oder die Eingabeparameter nicht gültig sind.			
 				&	\nameref{table:req_3} 	&	erfüllt\\ \addlinespace\hline \addlinespace				
+	4	&	Der Nutzer erhält nach dem Start einer Berechnung eine ID.
+				&	\nameref{table:req_2} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 	5a	&	Der Befehl für den Start wird versendet		
 				&	\nameref{table:req_4} 	&	erfüllt\\ \addlinespace\hline \addlinespace
 	5b	&	und die ID dabei übergeben.		
