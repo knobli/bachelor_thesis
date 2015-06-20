@@ -14,7 +14,7 @@ Aufgabe.
 
 \section{Übersicht}\label{architektur_uebersicht}
 Die Systemumgebung (siehe Abbildung \ref{fig:system_scope}) hat zwei Berührungspunkte mit der Aussenwelt. Der eine ist zum Nutzer, der andere zu einem Verarbeitungssystem. 
-Um die Daten zu speichern, wird eine Datenbank benötigt. Das ermöglicht einen asynchronen Ablauf und ein mehrfaches Abfragen der Daten.
+Um die Daten zu speichern, wird eine Datenbank benötigt. Dadurch wird einen asynchronen Ablauf und ein mehrfaches Abfragen der Daten ermöglicht.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{images/visio/Systemscope.png}
@@ -23,11 +23,12 @@ Um die Daten zu speichern, wird eine Datenbank benötigt. Das ermöglicht einen 
 \end{figure}
 
 \section{Konzept}\label{arch_backend}
-Das Konzept sollte simpel und flexibel sein, damit das System möglichst schnell erweitert werden kann. Beim Betrachten der Probleme und der Abläufe wurde bemerkt, dass die Vorgänge 
-Ähnlichkeiten aufweisen. Die Daten werden angenommen und für einen bestimmten Algorithmus aufbereitet. Das Verarbeitungssystem schickt das Resultat zurück und dieses wird dann 
+Das Konzept sollte einfach und flexibel sein, damit das System möglichst schnell erweitert werden kann. Beim Betrachten der Probleme und der Abläufe wurde bemerkt, dass die Vorgänge 
+Ähnlichkeiten aufweisen. Die Daten werden jeweils angenommen und für einen bestimmten Algorithmus aufbereitet. Das Verarbeitungssystem schickt das Resultat zurück und dieses wird dann 
 wieder umgewandelt, so dass es für den Nutzer brauchbar ist. Es finden zwei Umwandlungen statt. Die Umwandlungen an sich sind von Problem zu Problem verschieden, es gibt jedoch 
-auch dort gewisse Ähnlichkeiten. In \autoref{fig:architektur} wird der Aufbau des Systems gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe des Controllers, Entities und 
-der Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
+auch dort gewisse Ähnlichkeiten. Für den Aufbau des System wurde das \gls{ddd} gewählt, da es sich in der Entwicklungswelt etabliert hat (siehe \cite{evans2004domain} 
+\cite{soft_arch_book}). In \autoref{fig:architektur} wird der Aufbau des Systems gezeigt. Die  \gls{domainlanguage} des Nutzers wird mit Hilfe des Controllers, Entities und der Translators auf 
+die \gls{domainlanguage} der Algorithmen abgebildet.
 
 \begin{figure}[h]
 \centering
@@ -38,7 +39,7 @@ der Translators auf die \gls{domainlanguage} der Algorithmen abgebildet.
  
 \FloatBarrier
 \subsection{REST API}
-Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem \gls{rest} De-facto-Standard 
+Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} functioniert nach dem \gls{rest} De-facto-Standard 
 (siehe \cite{masse2011rest}). Falls Fehler auftreten, werden \glspl{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
@@ -47,9 +48,10 @@ Die Business Logik besteht aus Translator, Service, Entity und Validator von den
 Es gibt jeweils ein `ComputationTranslator' für die Umwandlung vom Nutzer hin zum Algorithmus, in diesem Translator werden die Daten für den Algorithmus aufbereitet. Daneben gibt es einen 
 `SolutionTranslator' für die Umwandlung vom Algorithmus zurück in das System, bei welchem das Resultat in ein menschenlesbares Resultat umgewandelt wird. In den Translators steckt die 
 ganze Logik. Es fliesst ein, wie der Algorithmus die Daten für die Verarbeitung benötigt und wie das Resultat zurück kommt. Es wäre zum Beispiel möglich, die Daten in Kombinationen für einen 
-evolutionären Algorithmus umzuwandeln. Damit würde allenfalls ein generischer evolutionärer Algorithmus für alle Probleme ausreichen. Ebenfalls möglich wäre eine Umwandlung des 
-Stundenplanproblems auf ein Knotenfärbungsproblem und somit könnte der gleiche Algorithmus angesprochen werden (vergleiche \cite{timetabling_abdullah}).  Zusätzlich kann im Translator 
-das Resultat mit zusätzlichen Informationen, zum Beispiel Statistiken, angereichert werden. Die Möglichkeiten mit dem Konzept der Translators ist sehr vielfältig.
+evolutionären Algorithmus umzuwandeln. Damit würde theoretisch ein generischer evolutionärer Algorithmus für alle Probleme ausreichen, jedoch ist das nach dem No-free-Lunch Theorem 
+\cite{no_free_lunch} unmöglich. Ebenfalls möglich wäre eine Umwandlung des Stundenplanproblems auf ein Knotenfärbungsproblem und somit könnte der gleiche Algorithmus angesprochen 
+werden (vergleiche \cite{timetabling_abdullah}).  Zusätzlich kann im Translator das Resultat mit zusätzlichen Informationen, zum Beispiel Statistiken, angereichert werden. Die Möglichkeiten mit 
+dem Konzept der Translators ist sehr vielfältig.
 \paragraph{Service}
 Der Service ist zentraler Dreh- und Angelpunkt, er spricht über das Repository die Datenbank an, startet die Umwandlungen und Validierungen und gibt die sequentielle Abfolge vor. Er kann 
 sehr generisch gehalten werden und benötigt keine problemspezifische Methoden. Zu den Services gehören auch die Solver-Klassen, welche für das Starten der jeweiligen Algorithmen zuständig 
@@ -70,8 +72,10 @@ verantwortlich und bietet die Möglichkeit, spezifische Abfragen auszuführen. D
 
 \subsection{Datenbank}
 Jedes Problem hat seine eigene Ausprägung von Computation und Solution, welche abgespeichert werden müssen. Die Datenbank sollte, wenn möglich, eine ähnliche Flexibilität wie 
-das Programm selber aufweisen. Die Vorgänge benötigen keine Transaktionen und sind zum grossen Teil nur Einfüge-Operationen, nur selten wird ein Eintrag geändert. Die Daten werden 
-immer in der Nutzer-Sicht gespeichert.
+das Programm aufweisen. Zum überwiegenden Teil sind nur Einfüge-Operationen notwendig, nur selten wird ein Status einer Berechnung geändert. Pro Berechnung wird jeweils nur ein 
+Algorithmus angesetzt, demnach gibt es keine gleichzeitigen Zugriffe auf die Ressourcen. Dies wäre jedoch auch kein Problem, da die Resultate separat gespeichert und nicht verändert 
+werden. Die Vorgänge benötigen somit nicht zwingend eine transaktionale Unterstützung seitens der Datenbank. Die Daten werden immer in der Nutzer-Sicht gespeichert, damit jederzeit 
+Algorithmus unabhängig auf die Daten zugreifen werden kann.
 
 \newpage
 \subsection{Ablauf}
@@ -116,11 +120,11 @@ Status der Berechnung geändert. Das Resultat wird mit dem Ergebnis der Validier
 \end{figure}
 
 \section{Datenbank Varianten}\label{db_varianten}
-Es gibt verschiedene Datenbanktypen mit verschiedenen Vor- und Nachteilen. In diesem Abschnitt werden vier verschiedene Typen miteinander verglichen und der beste für diesen 
+Es gibt verschiedene Datenbanktypen mit verschiedenen Vor- und Nachteilen. In diesem Abschnitt werden vier verschiedene Typen miteinander verglichen und der Beste für diesen 
 Anwendungszweck ausgewählt. Um die Eigenheiten der Datenbanken hervorzuheben, wird bei jeder Art das gleiche Beispiel mit der spezifischen Definitions-- und Abfragesprache gemacht.
 
 \subsection{CAP-Theorem}\label{cap_theorem}
-Das CAP-Theorem ist im Jahr 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem behauptet, dass die Werte Konsistenz (C), Verfügbarkeit (A) und 
+Das \gls{cap_theorem} ist im Jahr 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem behauptet, dass die Werte Konsistenz (C), Verfügbarkeit (A) und 
 Partitionstoleranz (P) ein Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
 
 \begin{figure}[h]
@@ -135,11 +139,10 @@ Partitionstoleranz (P) ein Dreieck (siehe \autoref{fig:cap}) bilden und dass ein
 \begin{itemize}
 	\item \textbf{AP}: Domain Name System (DNS), NoSQL Datenbanken
 	\item \textbf{CA}: Relationale Datenbanken
-	\item \textbf{CP}: Anwendungen von Banken
 \end{itemize}
 
 \subsection{Relationales Datenbanksystem}\label{rdbms}
-Eine \gls{rdbms} basiert auf Transaktionen und das dazugehörige \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
+Ein \gls{rdbms} basiert auf Transaktionen und das dazugehörige \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
 \begin{itemize}
 	\item \textbf{Atomicity}: Eine Reihe von Befehlen wird entweder ganz oder gar nicht ausgeführt.
 	\item \textbf{Consistency}: Der Datenzustand ist nach jeder Veränderung wieder konsistent, wenn dies auch vorher der Fall war.
@@ -172,7 +175,7 @@ Die Abfrage der Strasse bei einer relationaler Datenbank mittels \gls{sql} ist i
 \end{lstlisting}
 
 \subsection{Objektrelationales Datenbanksystem}\label{ordbms}
-\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das relationale System mit den Funktionen des objektorientierten Stils zu erweitern.
+\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das \gls{rdbms} mit den Funktionen des objektorientierten Stils zu erweitern.
 Die folgende Beschreibung der Eigenschaften ist aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
 komplexe Datentypen unterstützt, so können zusätzliche Typen definiert und bei einer Tabellendefinition verwendet werden.  
 In \autoref{lst:type_definition_ordbms} ist eine Typendefinition von 'AddressType' zu sehen, welche wiederum in \autoref{lst:use_type_definition_ordbms} 
@@ -214,7 +217,7 @@ Weiter bieten die Systeme die Möglichkeiten, Vererbungshierarchien und Methoden
 liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Objekten durchführen.
 
 \subsection{Objekorientiertes Datenbanksystem}\label{object_db}
-Eine \gls{oodbms} hat als Ziel eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen. 
+Ein \gls{oodbms} hat als Ziel eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen. 
 Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} und \cite{oodbms_details} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
 ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
 Das objektrelationale Mapping, welches bei \gls{rdbms} notwendig ist, entfällt. 

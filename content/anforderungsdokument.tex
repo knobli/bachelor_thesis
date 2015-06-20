@@ -30,13 +30,13 @@ Der Systemkontext umfasst alle Aspekte, die für die Anforderungen des geplanten
 \label{fig:systemkontext}
 \end{figure}
 
-Der Systemkontext (siehe Abbildung \ref{fig:systemkontext}) zeigt, dass das System relevante Schnittstellen zu den Nutzern und zum Verarbeitungssystem hat. Das System muss Daten 
+Der Systemkontext (siehe \autoref{fig:systemkontext}) zeigt, dass das System relevante Schnittstellen zu den Nutzern und zum Verarbeitungssystem hat. Das System muss Daten 
 für das Verarbeitungssystem zur Verfügung stellen und auch solche annehmen. Zudem wird das System von den Nutzern, Optimierungsproblemen und den dazugehörigen Algorithmen 
 beeinflusst.
 
 \FloatBarrier
 \subsection{Systemumgebung}\label{systemumgebung}
-Die Systemumgebung (siehe Abbildung \ref{fig:systemumgebung}) definiert die Ausgangslage für das Projekt. Am Anfang des Projekts war bekannt, dass Nutzer und ein Verarbeitungssystem 
+\autoref{fig:systemumgebung} zeigt die Systemumgebung, welche die Ausgangslage für das Projekt definiert. Am Anfang des Projekts war bekannt, dass Nutzer und ein Verarbeitungssystem 
 Dienste des zu erstellenden Systems beziehen werden. Die genaue Ausprägung dieser Dienste werden in diesem Kapitel behandelt.
 
 \begin{figure}[h]
@@ -56,7 +56,7 @@ heraus. Deshalb wurden die Ein- und Ausgabe-Schemata der Algorithmen aus der Lit
 
 \newpage
 \subsection{Stakeholder}\label{stakeholder}
-Die \gls{stakeholder}-Analyse dient dem Erfassen aller Nutzergruppen, die Einfluss auf das Projekt haben können. Zudem ermöglicht sie die Erfassung aller Gruppen, die potenziell 
+Zum Erfassen aller Nutzergruppen, die Einfluss auf das Projekt haben können, dient die \gls{stakeholder}-Analyse. Zudem ermöglicht sie die Erfassung aller Gruppen, die potenziell 
 Anforderungen an das Projekt stellen. In \autoref{table:stakeholder} wurden die \gls{stakeholder} dieses Projekts zusammengetragen und ihre Erwartungen, ihre 
 Einstellung und ihr Einfluss gegenüber dem Projekt festgehalten. Da es sich um eine Machbarkeitsanalyse handelt, befinden sich nur der Auftraggeber und ein einzelner potenzieller Kunde in der 
 Auflistung.
@@ -70,15 +70,15 @@ Auflistung.
 	\rowcolor{gray}
 								&				&	-Positiv \mbox{-Neutral} \mbox{-Negativ} 	&	-Hoch \mbox{-Mittel} \mbox{-Niedrig} \\ \hline
 	\textbf{Phil Hofmann} (Vorsteher der Geschäftsführung der 200ok GmbH)						
-								&	Phil ist der Auftraggeber in diesem Projekt. Er erwartet von der Machbarkeitsanalyse Informationen für ein mögliches Projekt zur 
+								&	Der Auftraggeber in diesem Projekt erwartet von der Machbarkeitsanalyse Informationen für ein mögliches Projekt zur 
 									Umsetzung der Gesamtidee.
 												& 	Positiv		&	Hoch		\\ \hline
 	\textbf{Potenzieller Kunde}
 								&	Er wünscht sich eine einfache Abwicklung für seine Probleme, er möchte sich nicht mit Algorithmen und 
-									theoretischer Informatik herumschlagen.
+									theoretischer Informatik beschäftigen.
 												& 	Positiv		&	Hoch		\\ \hline
 	\textbf{Entwickler}
-								&	Er hofft, dass sich die Schnittstelle als machbar erweist.
+								&	Er hofft, dass sich die Schnittstelle wie gewünscht umsetzen lässt.
 												& 	Positiv		&	Hoch		\\ \hline												
   \end{tabular}
    \caption{Liste der \gls{stakeholder}}\label{table:stakeholder}
@@ -96,23 +96,25 @@ Das Use Case Diagramm (siehe Abbildung \ref{fig:use_case}) zeigt einen Akteur, e
 \label{fig:use_case}
 \end{figure}
 
-Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use_case_template}) spezifiziert. Diese Vorlage basiert auf Angaben von \cite{req_eng_book}.
+Alle Use Cases wurden anhand der Vorlage in \autoref{table:use_case_template} spezifiziert. Diese Vorlage basiert auf Angaben von \cite{req_eng_book}.
 
 \begin{table}[ht]
 \centering
   \begin{tabular}{ l | p{10cm} }
 	\hline
+	\rowcolor{darkgray}
+	\textbf{Attribute}&	\textbf{Beschreibung}\\ \hline
 	\rowcolor{gray}
 	\textbf{Bezeichner}&	\textbf{Eindeutiger Bezeichner}\\ \hline
-	\textbf{Name}		&	Eindeutiger Name\\ \hline
+	\textbf{Name}		&	Eindeutiger Name des Use Case\\ \hline
 	\textbf{Beschreibung}	&	Komprimierte Beschreibung\\ \hline
-	\textbf{Auslösendes Ereignis} &	Angabe des Ereignisses, das den Use Case auslöst.\\ \hline
+	\textbf{Auslösendes Ereignis} &	Ereignis, das den Use Case auslöst.\\ \hline
 	\textbf{Akteure}		&	Auflistung der Akteure, die mit dem Use Case in Beziehung stehen.\\ \hline
-	\textbf{Vorbedingung}	&	Eine Liste notwendiger Voraussetzungen, die erfüllt sein müssen, bevor die Ausführung des Use Case beginnen kann.\\ \hline
-	\textbf{Nachbedingung}	&	Eine Liste von Zuständen, in denen sich das System unmittelbar nach der Ausführung des Hauptszenarios befindet.\\ \hline
+	\textbf{Vorbedingung}	&	Liste notwendiger Voraussetzungen, die erfüllt sein müssen, bevor die Ausführung des Use Case beginnen kann.\\ \hline
+	\textbf{Nachbedingung}	&	Liste von Zuständen, in denen sich das System unmittelbar nach der Ausführung des Hauptszenarios befindet.\\ \hline
 	\textbf{Ergebnis}		&	Beschreibung der Ausgaben, die während der Ausführung des Use Case erzeugt werden.\\ \hline
-	\textbf{Hauptszenario}	&	Beschreibung des Hauptszenarios eines Use Case\\ \hline
-	\textbf{Alternativszenarien}	&	Beschreibung von Alternativszenarien des Use Case oder lediglich Angabe der auslösenden Ereignisse. 
+	\textbf{Hauptszenario}	&	Beschreibung des Hauptszenarios des Use Case\\ \hline
+	\textbf{Alternativszenarien}	&	Beschreibung von Alternativszenarien des Use Case oder Angabe der auslösenden Ereignisse. 
 					Hier gelten oftmals andere Nachbedingungen.\\ \hline
   \end{tabular}
    \caption{Vorlage für Use Case Spezifikation}\label{table:use_case_template}
@@ -207,7 +209,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\rowcolor{gray}
 	\textbf{Bezeichner}	&	\textbf{UC-4}\\ \hline
 	\textbf{Name}			&	Status abfragen\\ \hline
-	\textbf{Beschreibung}	&	Der Nutzer kann den Status einer Berechnung abfragen, da die Verarbeitung einige Zeit benötigt.\\ \hline
+	\textbf{Beschreibung}	&	Der Nutzer kann den Status einer Berechnung abfragen, da die Verarbeitung einige Zeit benötigen könnte.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Der Nutzer möchte den Status der Berechnung wissen.\\ \hline
 	\textbf{Akteure}		&	Nutzer\\ \hline
 	\textbf{Vorbedingung}	&	Der Nutzer hat bereits eine Berechnung beauftragt und kennt die ID.\\ \hline
@@ -215,7 +217,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\textbf{Ergebnis}		&	Kenntnis des Status\\ \hline
 	\textbf{Hauptszenario}	&	\begin{enumerate}
 					\item Der Nutzer fragt den Status einer Berechnung ab.
-					\item Das System fragt den Status ab.
+					\item Das System fragt den Status in der Datenbank ab.
 					\item Das System sendet den Status zurück.
 					\item Der Nutzer erhält den Status.
 					\end{enumerate}
@@ -235,7 +237,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 	\rowcolor{gray}
 	\textbf{Bezeichner}	&	\textbf{UC-5}\\ \hline
 	\textbf{Name}			&	Resultat speichern\\ \hline
-	\textbf{Beschreibung}	&	Da die Aufrufe asynchron sind, muss das Ergebnis nach der Berechnung zwischengespeichert werden.\\ \hline
+	\textbf{Beschreibung}	&	Um das Resultat nicht zu verlieren, muss das Ergebnis nach der Berechnung gespeichert werden.\\ \hline
 	\textbf{Auslösendes Ereignis}&	Das Verarbeitungssystem möchte das Resultat speichern.\\ \hline
 	\textbf{Akteure}		&	Verarbeitungssystem\\ \hline
 	\textbf{Vorbedingung}	&	Das Verarbeitungssystem hat ein Resultat berechnet.\\ \hline
@@ -245,7 +247,7 @@ Alle Use Cases wurden anhand der folgenden Vorlage (siehe Tabelle \ref{table:use
 					\item Das Verarbeitungssystem schickt das Resultat der Berechnung an das System.
 					\item Das System erhält das Resultat.
 					\item Das System speichert das Resultat.
-					\item Das System quittiert das Erhalten des Resultats.
+					\item Das System bestätigt das Erhalten des Resultats.
 					\item Das Verarbeitungssystem erhält die Bestätigung.
 					\end{enumerate}
 					\\ \hline
@@ -311,7 +313,7 @@ eigene Attribute erweitert.
 
 
 Die Beschreibung der Anforderungen wurden zusätzlich mit der Satzschablone in \autoref{fig:satzschablone}) aus \cite{req_eng_book} erstellt. Dies hat den Vorteil, dass die 
-Anforderungen normiert und exakt daherkommen. Die Abstufungen \textit{muss}, \textit{sollte} und \textit{wird} werden verwendet, um die Wichtigkeit der Anforderungen auszudrücken.
+Anforderungen normiert und exakt sind. Die Abstufungen "`muss"' und "`sollte"' werden verwendet, um die Wichtigkeit der Anforderungen auszudrücken.
 \begin{figure}[h]
 \includegraphics[scale=0.95]{images/anforderungen/satzschablone.png}
 \caption[Satzschablone]{Satzschablone (Grafik entnommen aus \cite{req_eng_book})}
@@ -332,9 +334,9 @@ Mit den funktionalen Anforderungen wird festgelegt, was die Schnittstelle tun so
 	\textbf{Bezeichner}&	\textbf{RE-F1}\\ \hline
 	\textbf{Priorität} 		&	Must\\ \hline
 	\textbf{Anforderungstyp}	&	Funktionale Anforderung\\ \hline
-	\textbf{Name} 			&	Bereitstellung der Schnittstellen für Optimierungsprobleme\\ \hline
+	\textbf{Name} 			&	Bereitstellung der Schnittstellen für Probleme mit hoher Laufzeitkomplexität\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_1}\\ \hline
-	\textbf{Beschreibung} 	&	Das System muss dem Nutzer die Möglichkeit bieten, die Lösung verschiedener Optimierungsprobleme zu beauftragen.\\ \hline
+	\textbf{Beschreibung} 	&	Das System muss dem Nutzer die Möglichkeit bieten, die Lösung verschiedener Probleme zu beauftragen.\\ \hline
 	\textbf{Begründung} 		&	Die Schnittstellen ist die Anlaufstelle des Nutzers. Er beauftragt das System, eine Berechnung zu starten.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
 					\item Der Nutzer kann eine Schnittstelle für die bereitgestellten Berechnungsfunktionen ansprechen.
@@ -461,14 +463,14 @@ Mit den funktionalen Anforderungen wird festgelegt, was die Schnittstelle tun so
 	\textbf{Bezeichner}&	\textbf{RE-F7}\\ \hline
 	\textbf{Priorität} 		&	Nice to have\\ \hline
 	\textbf{Anforderungstyp}	&	Funktionale Anforderung\\ \hline
-	\textbf{Name} 			&	Registrierung eines WebHooks für Statusänderungen\\ \hline
+	\textbf{Name} 			&	Registrierung eines Dienstes zur Benachrichtigung für Statusänderungen\\ \hline
 	\textbf{Use Case} 		&	\nameref{table:use_case_4}\\ \hline
-	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben und dazu ein WebHook eingetragen wurde, sollte das System den Nutzer über eine Änderung des Status mittels 
-						WebHook informieren.\\ \hline
-	\textbf{Begründung} 		&	Da die Verarbeitung asynchron läuft, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu vermeiden, können 
-							WebHooks verwenden werden.\\ \hline
+	\textbf{Beschreibung} 	&	Falls eine Berechnung in Auftrag gegeben und dazu ein Dienst zur Benachrichtigung eingetragen wurde, sollte das System den Nutzer über eine 
+						Änderung des Status mittels dieses Dienstes informieren.\\ \hline
+	\textbf{Begründung} 		&	Da die Verarbeitung lange dauern könnte, weiss der Benutzer nicht, wann seine Berechnung fertig ist. Um ein ständiges Pollen zu vermeiden, 
+							können Dienst zur Benachrichtigung (zum Beispiel WebHooks) verwenden werden.\\ \hline
 	\textbf{Akzeptanz Kriterium}	&	\begin{enumerate}
-					\item Der Nutzer wird über die Änderung des Status auf dem eingetragen WebHook informiert.
+					\item Der Nutzer wird über die Änderung des Status auf dem eingetragen Dienst informiert.
 					\end{enumerate}
 					\\ \hline
 	\textbf{Abhängigkeiten} 	&	\nameref{table:req_2}\\ \hline
@@ -610,23 +612,28 @@ Die erfassten Qualitätsanforderungen definieren, was für Eigenschaften die Sch
    \caption{Qualitätsanforderung RF-NF4}\label{table:req_nf_4}
 \end{table}
 
+\FloatBarrier
+\clearpage
 \newpage
+
 \subsection{Zusammenfassung der Anforderungen}\label{toc_anfoderungen}
 Die Priorität der einzelnen Anforderungen ist wichtig, falls nicht alle Anforderungen umgesetzt werden können. Die Priorität wurde zusammen mit den \glslink{stakeholder}{Stakeholdern} 
-festgelegt und in \autoref{table:req_priorities} zur besseren Übersicht zusammengetragen.
+festgelegt und in \autoref{table:req_priorities} zur besseren Übersicht zusammengetragen. Falls es nicht möglich gewesen wäre, alle Anforderungen in der Zeit umzusetzen, wären sie anhand 
+dieser Listen zurückgestellt worden.
+
 \begin{table}[ht]
 \centering
-  \begin{tabular}{ l | l | l }
+  \begin{tabular}{ l | p{9cm}| l }
 	\hline
 	\rowcolor{gray}
 	\textbf{Bezeichner}	& \textbf{Name}	&	\textbf{Priorität}\\ \hline
-	RE-F1 			&  Bereitstellung der Schnittstellen für Optimierungsprobleme	& Must\\ \hline
+	RE-F1 			&  Bereitstellung der Schnittstellen für Probleme mit hoher Laufzeitkomplexität	& Must\\ \hline
 	RE-F2 			&  Speicherung der Eingabeparameter	& Must\\ \hline
 	RE-F3 			&  Rückgabe einer ID bei Beauftragung	& Must\\ \hline
 	RE-F4 			&  Start der Berechnung	& Must\\ \hline
 	RE-F5 			&  Abfrage der Eingabeparameter	& Must\\ \hline
 	RE-F6 			&  Abfrage des Status	& Should\\ \hline
-	RE-F7 			&  Registrierung eines WebHooks für Statusänderungen	& Nice to have\\ \hline
+	RE-F7 			&  Registrierung eines Dienstes zur Benachrichtigung für Statusänderungen	& Nice to have\\ \hline
 	RE-F8 			&  Speicherung des Resultats	& Must\\ \hline
 	RE-F9 			&  Abfrage des Resultats	& Must\\ \hline
 	RE-NF1 			&  Prozess-agnostische Schnittstelle & Should\\ \hline
