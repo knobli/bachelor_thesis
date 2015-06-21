@@ -14,25 +14,24 @@
 \newpage
 \thispagestyle{empty}
 \chapter*{Abstract}\label{abstract}
-Ziel dieser Arbeit war es zu analysieren, ob eine generische Schnittstelle für grundlegende Probleme der Informatik möglich ist. Die Schnittstelle sollte keinerlei Kenntnisse 
-der theoretischen Informatik oder der jeweiligen Probleme voraussetzen. Dazu wurden fünf Probleme mit hoher Laufzeitkomplexität aus "`Computers and Intractability: A Guide to the Theory of 
-NP-Completeness"' von Micheal Garey und David S. Johnson ausgewählt. Die Problemfelder wurden auf ihre Ein- und Ausgabeparameter analysiert und die dazugehörigen 
-Algorithmen betrachtet. Im späteren Verlauf der Arbeit wurde noch ein sechstes Problem dazugenommen, welches sehr ähnlich zu einem bereits ausgewählten Problem war. Um zu überprüfen, ob 
-sich die Implementierung der beiden Probleme generischer umsetzten lässt als bei den anderen Problemen.\\
+Bei einigen Problemen der Informatik werden Approximierungsalgorithmen verwenden, um eine Lösung in nützlicher Frist zu erhalten. Ziel dieser Arbeit ist eine Machbarkeitanalyse für eine 
+generische Schnittstelle zur Lösung solcher Probleme. Die Schnittstelle sollte keinerlei Kenntnisse der theoretischen Informatik oder der jeweiligen Probleme voraussetzen. Dazu wurden fünf 
+Probleme mit hoher Laufzeitkomplexität ausgewählt, welche nicht nur von wissenschaftlich Interesse sind. Die Problemfelder wurden auf ihre Ein- und Ausgabeparameter analysiert und die 
+dazugehörigen Algorithmen betrachtet. Im späteren Verlauf der Arbeit wurde ein sechstes Problem dazugenommen, welches eine leichte Abwandlung eines bereits ausgewählten Problems ist. 
+Damit konnte geprüft werden, ob sich die Implementierung der beiden Probleme generischer umsetzen lässt als bei den anderen Problemen.\\
 
-Beim Erstellen des Konzept wurden die Gemeinsamkeiten des Berechnungsablaufs betrachtet. Um mehr Freiheiten zu haben und Benutzerfreundlichkeit zu garantieren, wurde die Nutzer- und 
-Algorithmus-Domäne voneinander entkoppelt. Dies bot die Möglichkeit jeweils eine andere Domänensprache zu verwenden. Zwischen den beiden Domänen kamen pre- und post-Aktionen zum Einsatz, 
-welche die Datenaufbereitung für den Algorithmus bzw. den Nutzer durchführten.\\
+Beim Erstellen des Konzepts wurden die Gemeinsamkeiten des Berechnungsablaufs betrachtet. Um mehr Freiheiten bei der Implementierung zu haben und eine grosse Benutzerfreundlichkeit zu 
+garantieren, wurde die Nutzer- und Algorithmus-Domäne voneinander entkoppelt. Dies bot die Möglichkeit, jeweils eine andere Domänensprache zu verwenden. Zwischen den beiden Domänen 
+kamen pre- und post-Aktionen zum Einsatz, welche die Datenaufbereitung für den Algorithmus beziehungsweise den Nutzer durchführten.\\
 
-Vor der Umsetzung wurde eine Nutzwertanalyse zur Auswahl eines geeigneten Datenbanksystems durchgeführt. Nach der Vorselektierung standen die relationalen, objektorientierten und 
-dokumentorientierten Datenbanken zur Auswahl. Beim Vergleich wies das dokumentorientierte Datenbanksystem mit seiner Flexibilität einen grossen Vorteil auf. Die Flexibilität ermöglicht eine 
-schnelle und unkomplizierte Erweiterung bzw. Anpassung.\\
+Vor der Umsetzung wurde eine Nutzwertanalyse zur Auswahl eines geeigneten Datenbanksystems durchgeführt. Nach einer Vorselektierung standen eine relationale, eine objektorientierte und 
+eine dokumentorientierte Datenbank zur Auswahl. Beim Vergleich wies das dokumentorientierte Datenbanksystem mit seiner Flexibilität einen grossen Vorteil auf. Diese Flexibilität ermöglichte eine 
+schnelle und unkomplizierte Implementierung und bietet dies auch für kommende Erweiterung.\\
 
-Als Prototyp wurde ein REST API implementiert, welches die Funktionalität bereitstellt, Berechnung von den sechs verschiedenen Problemen zu erstellen. Hinter einem dieser Probleme wurde ein 
-Algorithmus angebunden, womit der ganze Prozess durchgespielt werden konnte. Bei den anderen Problemen wurde anhand der Recherche Ein- und Ausgabeschemata der Algorithmen definiert. 
-Zusätzlich wurde zu jedem Problem ein Validator geschrieben, welcher überprüft, ob ein Resultat gültig ist oder nicht.\\
+Als Prototyp wurde ein REST API implementiert, welches die Funktionalität zur Berechnung der sechs vorher definierten Probleme bereitstellt. Hinter einem dieser Probleme wurde ein 
+Algorithmus implementiert, womit der ganze Prozess getestet werden konnte. Bei den anderen Problemen wurde anhand der Recherche Ein- und Ausgabeschemata der Algorithmen definiert.\\
 
-Das Konzept für die Schnittstelle konnte für alle sechs Probleme angewandt und der Ablauf generisch gehalten werden. Das Auswahlverfahren der Probleme hat sich bewährt, die Probleme 
-zeigten unterschiedliche Ausprägungen. Einige Probleme könnten mit dem gleichen generischen Algorithmus gelöst werden. Zwei andere Probleme, welche beide aus dem gleichen Bereich stammen, 
-benötigen sehr unterschiedliche Herangehensweisen. Die Schnittstelle bietet genug Flexibilität um ganz unterschiedliche Probleme zu behandeln und verschiedene Algorithmen anzusteuern. Die 
-Machbarkeitsstudie ist als erfolgreich zu betrachten.
+Das Konzept für die Schnittstelle konnte für alle sechs Probleme angewandt und der Ablauf konnte generisch gehalten werden. Das Auswahlverfahren der Probleme hat sich bewährt, die Probleme 
+zeigen unterschiedliche Ausprägungen in ihrer Parametern und Lösungsweise. Einige Probleme können mit dem gleichen generischen Algorithmus gelöst werden. Zwei der Probleme, welche 
+beide aus dem Bereich "`Netzwerk Design"' stammen, benötigen sehr unterschiedliche Herangehensweisen. Die Schnittstelle bietet genug Flexibilität, um ganz unterschiedliche Probleme zu behandeln und 
+verschiedene Algorithmen anzusteuern. Die Machbarkeitsstudie ist als erfolgreich zu betrachten.
