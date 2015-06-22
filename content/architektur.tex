@@ -142,10 +142,10 @@ Partitionstoleranz (P) ein Dreieck (siehe \autoref{fig:cap}) bilden und dass ein
 \end{itemize}
 
 \subsection{Relationales Datenbanksystem}\label{rdbms}
-Ein \gls{rdbms} basiert auf Transaktionen und das dazugehörige \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
+Ein \gls{rdbms} basiert auf Transaktionen und dem \gls{acid} Prinzip (vergleiche \cite{limited2010introduction}). 
 \begin{itemize}
 	\item \textbf{Atomicity}: Eine Reihe von Befehlen wird entweder ganz oder gar nicht ausgeführt.
-	\item \textbf{Consistency}: Der Datenzustand ist nach jeder Veränderung wieder konsistent, wenn dies auch vorher der Fall war.
+	\item \textbf{Consistency}: Der Datenzustand ist nach jeder Veränderung wieder konsistent, wenn es auch vorher der Fall war.
 	\item \textbf{Isolation}: Unterschiedliche Befehlsketten beeinflussen sich nicht gegenseitig.
 	\item \textbf{Durability}: Vollzogene Änderungen sind dauerhaft, auch bei einem Systemfehler.
 \end{itemize}
@@ -175,7 +175,7 @@ Die Abfrage der Strasse bei einer relationaler Datenbank mittels \gls{sql} ist i
 \end{lstlisting}
 
 \subsection{Objektrelationales Datenbanksystem}\label{ordbms}
-\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das \gls{rdbms} mit den Funktionen des objektorientierten Stils zu erweitern.
+\glslink{ordbms}{Objektrelationale Datenbankmanagementsysteme (ORDBMS)} wurden entwickelt, um das \gls{rdbms} mit den Funktionen des objektorientierten Paradigmas zu erweitern.
 Die folgende Beschreibung der Eigenschaften ist aus \cite{limited2010introduction} abgeleitet. In objektrelationalen Datenbanksystemen werden 
 komplexe Datentypen unterstützt, so können zusätzliche Typen definiert und bei einer Tabellendefinition verwendet werden.  
 In \autoref{lst:type_definition_ordbms} ist eine Typendefinition von 'AddressType' zu sehen, welche wiederum in \autoref{lst:use_type_definition_ordbms} 
@@ -195,7 +195,7 @@ in der Tabelle 'Person' verwendet wird.
                Address  AddressType);
 \end{lstlisting}
 
-Wenn nun die Strasse einer bestimmten Person abgefragt werden möchte, sieht dies in einer objektrelationalen Datenbank wie in \autoref{lst:select_street_ordbms} aus.
+Eine Abfrage der Strasse einer bestimmten Person wird mittels der erweiterten \gls{sql}-Syntax, wie in \autoref{lst:select_street_ordbms} dargestellt, abgefragt.
 
 \begin{lstlisting}[language=SQL, caption=Abfrage in objektrelationalem Datenbanksystem, label=lst:select_street_ordbms]  
     SELECT Address.Street
@@ -220,8 +220,8 @@ liegt bei Applikationen, welche viele kurzlebige Transaktionen mit komplexen Obj
 Ein \gls{oodbms} hat als Ziel eine bessere und nähere Zusammenarbeit mit objektorientierten Sprachen. 
 Die Informationen über \gls{oodbms} sind aus \cite{limited2010introduction} und \cite{oodbms_details} entnommen. Der grosse Unterschied zu anderen Datenbanksystemen
 ist die Persistierung, bei \gls{oodbms} wird bereits beim Erstellen eines neuen persistenten Objekts im Code ein Pointer auf das Objekt in der Datenbank zurückgegeben. 
-Das objektrelationale Mapping, welches bei \gls{rdbms} notwendig ist, entfällt. 
-Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekte gleichzeitig umgehen. 
+Das objektrelationale Mapping, welches bei \gls{rdbms} und \glslink{ordbms}{ORDBMS} notwendig ist, entfällt. 
+Weiter unterstützen die Systeme Versionierung von Objekten, die Datenbank kann somit mit verschiedenen Versionen der Objekten gleichzeitig umgehen. 
 Dies kann bei einer geplanten Umstrukturierung sehr hilfreich sein, wenn die neue Version erst für Tests verwendet wird und die bestehenden Objekte erst nach dem 
 Release migriert werden sollen. \autoref{lst:table_definition_oodbms} zeigt, wie das Objekt 'Person' in \gls{odl} definiert wird.
 
@@ -252,9 +252,9 @@ welche viele, lange Transaktionen mit komplexen Objekten haben. Lade- und Speich
 sollten kurze Transaktionen, in welchen sehr vielen komplexe Objekten geladen werden, vermieden werden.
 
 \subsection{NoSQL Datenbanksystem}\label{no_sql_db}
-NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip. Sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen wie Google, 
+NoSQL Datenbanksysteme folgen nicht dem \gls{acid} Prinzip. Sie sind entwickelt worden, um den erforderlichen Geschwindigkeiten und Grössen von Anwendungen in Firmen wie Google, 
 Facebook, Yahoo und Twitter zu genügen. Die Systeme sind nicht relational aufgebaut und verwenden oft eine andere Abfragesprache als \gls{sql} (siehe \cite{vaish2013getting}). 
-Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Brewer.
+Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Brewer und sind im Bezug auf das \gls{cap_theorem} je nach Implementation in AP oder CP einzugliedern.
 
 \begin{myQuote}{Gaurav Vaish \cite{vaish2013getting}}
 "`\textbf{Basic availability}: Each request is guaranteed a response—successful or failed execution.\\
@@ -272,7 +272,7 @@ NoSQL ist eine Übergruppe von unterschiedlichen Datenbanktypen. In diesem Absch
 \paragraph{Document}
 Bei dokumentorientierten Datenbanken werden \gls{semi_structured_data} abgespeichert, diese verwenden meistens die Dateiformate \gls{json}, 
 \gls{xml} oder \gls{yaml}. Die meisten Datenbanksysteme dieser Art haben kein definiertes Schema für Einträge oder 
-nur ein teilweise definiertes Schema. Es ist somit möglich ganz unterschiedliche Elemente in eine Collection, so werden Tabellen in dieser Welt genannt, zu speichern. Diese Erklärung 
+nur ein teilweise definiertes Schema. Es ist somit möglich ganz unterschiedliche Elemente in eine Collection, so werden Tabellen in diesem Kontext genannt, zu speichern. Diese Erklärung 
 erinnert an \gls{blob} in relationalen Datenbanken, jedoch können hier Indexes auf bestimmte Attribute gesetzt und innerhalb der Elemente effizient gesucht 
 werden.
 
@@ -306,8 +306,8 @@ sie nicht explizit ausgeschlossen wird, immer mitselektiert.
 \end{lstlisting}
 
 \paragraph{Column-oriented}
-Anders als bei relationalen Datenbanken, welche zeilenorientiert sind, werden die Daten spaltenorientiert gespeichert. Eine Lohndatenbank würde serialisiert beim zeilenorientierten Konzept
-wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in \autoref{lst:ser_columnbased_db} aussehen.
+Anders als bei relationalen Datenbanken, welche zeilenorientiert arbeiten, werden die Daten in diesen Systemen spaltenorientiert gespeichert. Eine serialisierte Lohndatenbank würde beim 
+zeilenorientierten Konzept wie in \autoref{lst:ser_rowbased_db} und beim spaltenorientierten Ansatz wie in \autoref{lst:ser_columnbased_db} aussehen.
 
 \begin{lstlisting}[language=SQL, caption=Serialisierung zeilenorientierte Datenbank, label=lst:ser_rowbased_db]  
     1,Thomas,100000
@@ -348,26 +348,26 @@ Bereich des Algorithmus fallen. Aus diesem Grund werden Graphdatenbanken ebenfal
 Datenbank für die Nutzwertanalyse übrig.
 
 Da es innerhalb der ausgewählten Datenbanksystemen sehr viele verschiedene Produkte gibt, wurde von jedem Typ eines ausgewählt. Bei den relationalen Datenbanken fiel die 
-Entscheidung auf MySQL\cite{mysql}, da dieses kostenlos ist und bereits Erfahrung vorhanden war. Eine verbreitete objektorientierte Datenbank ist Objectivity/DB \cite{objectivitydb}, welche 
-auch beim Teilchenbeschleuniger in CERN verwendet wird \cite{cern_objectivity}. Da MongoDB \cite{mongodb} sehr verbreitet und eine gute Integration in die Java Frameworks hat, 
-wurde dieses Produkt unter den dokumentorientierten Datenbanken ausgewählt.
+Entscheidung auf MySQL\cite{mysql}, da dieses kostenlos verfügbar ist und bereits Erfahrung vorhanden war. Die ausgewählte objektorientierte Datenbank ist Objectivity/DB \cite{objectivitydb}, 
+welche auch beim Teilchenbeschleuniger in CERN verwendet wird \cite{cern_objectivity}. Da MongoDB \cite{mongodb} sehr verbreitet und eine gute Integration in die Java Frameworks hat 
+\cite{spring_data_mongodb} \cite{hibernate_mongodb}, wurde dieses Produkt unter den dokumentorientierten Datenbanken ausgewählt.
 
 \newpage
 \section{Nutzwertanalyse}\label{architektur_nutzwertanalyse}
 
 \subsection{Bewertungskriterien}\label{architektur_bewertungspunkte}
 
-In der Nutzwertanalyse werden folgende Punkte betrachtet und nach dem angegebenen Schema bewertet und dann gewichtet. 
+In der Nutzwertanalyse werden folgende Punkte betrachtet, nach dem angegebenen Schema bewertet und dann gewichtet. 
 Die Kriterien sind grösstenteils aus dem \gls{cap_theorem} abgeleitet.
 
 \paragraph{Aufwand}
 \begin{itemize}
-	\item \textbf{Beschreibung}: Wie gross ist der geschätzte Aufwand mit diesem Datenbanktyp?
+	\item \textbf{Beschreibung}: Wie gross ist der geschätzte Aufwand für die Einarbeitung und Implementation mit diesem Datenbanktyp?
 	\item \textbf{Bewertung}: 1: sehr hoch, 10: sehr niedrig
 	\item \textbf{Gewichtung}: 5 (Die Zeit für dieses Projekt ist beschränkt und die Entscheidung könnte zu einem Risiko werden.)
 \end{itemize}
 
-\paragraph{Änderbarkeit}
+\paragraph{Flexibilität}
 \begin{itemize}
 	\item \textbf{Beschreibung}: Wie flexibel ist diese Variante in Bezug auf Erweiterungen/Vererbung?
 	\item \textbf{Bewertung}: 1: sehr spezifisch, 10: sehr flexibel
@@ -397,7 +397,7 @@ Die Kriterien sind grösstenteils aus dem \gls{cap_theorem} abgeleitet.
 
 \newpage
 \subsection{Bewertung}\label{architektur_bewertung}
-Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese Bewertung ist nicht generell gültig, sie bezieht sich nur auf dieses Projekt.
+Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese Einschätzung ist nicht generell gültig, sondern bezieht sich nur auf dieses Projekt.
 
 \begin{table}[ht]
 \centering
@@ -408,11 +408,11 @@ Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese B
 	Produkt		&	MySQL					&	Objectivity/DB				&	MongoDB	\\ \hline
 	\rowcolor{gray}
 	Aufwand		&	7 (35)		&	5 (25)		&	7 (35)		\\ \hline
-	Begründung		&	Ist bekannt und das Einrichten ist relativ schnell gemacht.	
+	Begründung		&	Ist bekannt und das Einrichten ist relativ schnell durchgeführt.	
 				&	Keine Erfahrung mit objektorientierten Datenbanken, Konzept muss zuerst verstanden werden.		
-				&	Dokumentorientierte Datenbank noch nie benutzt. Laut Dokumentation ziemlich simpel.	\\ \hline
+				&	Dokumentorientierte Datenbank noch nie benutzt, jedoch bereits Erfahrung mit dem verwendeten Speicherformat \gls{json}.\\ \hline
 	\rowcolor{gray}
-	Änderbarkeit		&	4 (20)		&	3 (15)	&	10 (50)		\\ \hline
+	Flexibilität		&	4 (20)		&	3 (15)	&	10 (50)		\\ \hline
 	Begründung		&	Jede Anpassung an den Entities Attributen erfordert auch eine Änderung des Schemas.
 				&	Änderung am Schema erforderlich, was zur Migration aller Daten führt.
 				&	Sehr flexibel, bei Änderungen der Entities oder neuen Problemen keine Anpassung nötig.\\ \hline
@@ -423,7 +423,7 @@ Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese B
 				&	Die Stärke liegt nicht in der Konsistenz.\\ \hline
 	\rowcolor{gray}
 	Verfügbarkeit	&	6 (24)		&	6 (24) &	9 (36)		\\ \hline
-	Begründung		&	Bei Transaktionen sind oft Teile der Datenbank gesperrt und nicht verfügbar.	
+	Begründung		&	Bei Transaktionen sind zeitweise Teile der Datenbank gesperrt und nicht verfügbar.	
 				&	Transaktionen haben einen negativen Einfluss auf die Verfügbarkeit.					
 				&	Keine Sperrzeiten von Einträgen, somit keine Verzögerungen von Aktionen.	\\ \hline
 	\rowcolor{gray}
@@ -441,13 +441,15 @@ Anhand der zuvor definierten Kriterien wurde eine Bewertung vorgenommen. Diese B
 \subsection{Fazit}\label{architektur_fazit}
 Das Resultat der Nutzwertanalyse hat ergeben, dass für dieses Projekt am besten eine dokumentorientierte Datenbanklösung verwendet wird.
 Die Schnittstelle benötigt keine Transaktionen und profitiert von einer hohen Verfügbarkeit und Partitionstoleranz. Die Flexibilität
-von dokumentorientierten Datenbanksystemen ist ideal für dieses Projekt, da sie eine schnelle und unkomplizierte Erweiterung bzw. Anpassung ermöglicht. Zusätzlich werden 
-auch die verschiedenen Ausprägungen der einzelnen Problemen gut unterstützt.
+von dokumentorientierten Datenbanksystemen ist ideal für dieses Projekt, da sie eine schnelle und unkomplizierte Erweiterung bzw. Anpassung ermöglicht. Zusätzlich sollten 
+auch die verschiedenen Ausprägungen der einzelnen Problemen gut unterstützt werden.
+
+\newpage
 
 \section{Datendiagramm des Datenspeichers}\label{datendiagramm_datenspeicher}
-Da sich bei der Nutzerwertanalyse ergeben hat, dass eine dokumentorientierte Datenbank verwendet wird, entfällt ein Datendiagramm der Tabellen, wie es von relationalen Datenbanken 
-bekannt ist. Die Collections benutzen kein vordefiniertes Schema, jedoch legen die verwendeten Klassen, welche in die Collections gespeichert werden, das Schema fest. Aus diesem Grund 
-reicht ein Klassendiagramm, um zu wissen, wie die Daten abgespeichert werden.
+Da sich bei der Nutzerwertanalyse ergeben hat, dass eine dokumentorientierte Datenbank am besten geeignet ist, entfällt ein Datendiagramm der Tabellen, wie es von relationalen Datenbanken 
+bekannt ist. Die Collections benutzen kein vordefiniertes Schema, sondern die verwendeten Klassen legen das Schema fest. Aus diesem Grund reicht ein Klassendiagramm, um zu wissen, wie 
+die Daten abgespeichert werden.
 
 In \autoref{fig:problems_diagramm} ist die Klassen-Hierarchie der Berechnungstypen dargestellt und in \autoref{fig:solutions_diagramm} werden die verschiedenen 
 Resultatklassen gezeigt.
