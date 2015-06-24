@@ -14,11 +14,12 @@
 \newpage
 \thispagestyle{empty}
 \chapter*{Abstract}\label{abstract}
-Bei einigen Problemen der Informatik werden Approximierungsalgorithmen verwenden, um eine Lösung in nützlicher Frist zu erhalten. Ziel dieser Arbeit ist eine Machbarkeitanalyse für eine 
-generische Schnittstelle zur Lösung solcher Probleme. Die Schnittstelle sollte keinerlei Kenntnisse der theoretischen Informatik oder der jeweiligen Probleme voraussetzen. Dazu wurden fünf 
-Probleme mit hoher Laufzeitkomplexität ausgewählt, welche nicht nur von wissenschaftlich Interesse sind. Die Problemfelder wurden auf ihre Ein- und Ausgabeparameter analysiert und die 
-dazugehörigen Algorithmen betrachtet. Im späteren Verlauf der Arbeit wurde ein sechstes Problem dazugenommen, welches eine leichte Abwandlung eines bereits ausgewählten Problems ist. 
-Damit konnte geprüft werden, ob sich die Implementierung der beiden Probleme generischer umsetzen lässt als bei den anderen Problemen.\\
+Bei vielen Problemen in der Informatik kann eine exakte Lösung nicht innerhalb nützlicher Frist berechnet werden. Stattdessen werden Approximierungsalgorithmen verwenden, die sich von Problem 
+zu Problem unterscheiden. Ziel dieser Arbeit ist eine Machbarkeitanalyse für eine generische Schnittstelle zur Lösung solcher Probleme. Die Schnittstelle sollte keinerlei Kenntnisse der theoretischen 
+Informatik oder der jeweiligen Lösungsansätze der theoretischen Probleme voraussetzen. Dazu wurden fünf Probleme mit hoher Laufzeitkomplexität ausgewählt, welche nicht nur von rein 
+wissenschaftlichem Interesse sind. Die Problemfelder wurden auf ihre Ein- und Ausgabeparameter analysiert und die dazugehörigen Algorithmen betrachtet. Im späteren Verlauf der Arbeit wurde 
+ein sechstes Problem dazugenommen, welches eine leichte Abwandlung eines bereits ausgewählten Problems ist. Damit konnte geprüft werden, ob sich die Implementierung der beiden Probleme 
+generischer umsetzen lässt als bei den anderen Problemen.\\
 
 Beim Erstellen des Konzepts wurden die Gemeinsamkeiten des Berechnungsablaufs betrachtet. Um mehr Freiheiten bei der Implementierung zu haben und eine grosse Benutzerfreundlichkeit zu 
 garantieren, wurde die Nutzer- und Algorithmus-Domäne voneinander entkoppelt. Dies bot die Möglichkeit, jeweils eine andere Domänensprache zu verwenden. Zwischen den beiden Domänen 
@@ -26,12 +27,12 @@ kamen pre- und post-Aktionen zum Einsatz, welche die Datenaufbereitung für den 
 
 Vor der Umsetzung wurde eine Nutzwertanalyse zur Auswahl eines geeigneten Datenbanksystems durchgeführt. Nach einer Vorselektierung standen eine relationale, eine objektorientierte und 
 eine dokumentorientierte Datenbank zur Auswahl. Beim Vergleich wies das dokumentorientierte Datenbanksystem mit seiner Flexibilität einen grossen Vorteil auf. Diese Flexibilität ermöglichte eine 
-schnelle und unkomplizierte Implementierung und bietet dies auch für kommende Erweiterung.\\
+schnelle und unkomplizierte Implementierung und bietet dies auch für kommende Erweiterungen.\\
 
 Als Prototyp wurde ein REST API implementiert, welches die Funktionalität zur Berechnung der sechs vorher definierten Probleme bereitstellt. Hinter einem dieser Probleme wurde ein 
 Algorithmus implementiert, womit der ganze Prozess getestet werden konnte. Bei den anderen Problemen wurde anhand der Recherche Ein- und Ausgabeschemata der Algorithmen definiert.\\
 
 Das Konzept für die Schnittstelle konnte für alle sechs Probleme angewandt und der Ablauf konnte generisch gehalten werden. Das Auswahlverfahren der Probleme hat sich bewährt, die Probleme 
-zeigen unterschiedliche Ausprägungen in ihrer Parametern und Lösungsweise. Einige Probleme können mit dem gleichen generischen Algorithmus gelöst werden. Zwei der Probleme, welche 
+zeigen unterschiedliche Ausprägungen in ihren Parametern und ihrer Lösungsweise. Einige Probleme können mit dem gleichen generischen Algorithmus gelöst werden. Zwei der Probleme, welche 
 beide aus dem Bereich "`Netzwerk Design"' stammen, benötigen sehr unterschiedliche Herangehensweisen. Die Schnittstelle bietet genug Flexibilität, um ganz unterschiedliche Probleme zu behandeln und 
 verschiedene Algorithmen anzusteuern. Die Machbarkeitsstudie ist als erfolgreich zu betrachten.

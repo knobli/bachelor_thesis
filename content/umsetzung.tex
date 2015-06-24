@@ -311,6 +311,8 @@ verschiedene Planungsprobleme besitzen muss.
 \label{fig:matchschedule_input}
 \end{figure}
 
+\FloatBarrier
+
 Es wird davon ausgegangen, dass der Algorithmus eine Liste von Planungskombinationen zurückgibt. Eine Kombination besteht aus einer Zeitfensternummer, einem Schiedsrichter, 
 einer Kombination von zwei Teams und einem Spielfeld. Beim Übersetzen werden die IDs auf die ursprünglichen Elemente abgebildet und die Zeitfensternummern werden wieder in Uhrzeiten 
 umgewandelt. Zusätzlich wird eine Statistik über die Einsätze der Schiedsrichter und der Teams geführt. Bei der Validierung wird beachtet, ob ein Element zu einer 
@@ -332,6 +334,8 @@ Ausschnitt der Schiedsrichterstatistik dargestellt.
   ...
 }
 \end{lstlisting}
+
+\newpage
 
 \subsection{Übersicht der Schnittstellen}
 Für den Nutzer wurde ein problem-agnostischer Name für die Schnittstelle gewählt. Die Namen unterscheiden sich somit zum Teil zwischen Nutzer- und Algorithmus-Sicht. Damit die 

@@ -26,13 +26,12 @@ In diesem Projekt wurden die sieben Grundsätze aus \cite{test_soft_book} als Le
 \end{enumerate}
 
 \section{Testing}
-Komponententests und Integrationstests, bekannt aus \cite{test_soft_book}, wurden bei der Schnittstelle mit JUnit und Mockito durchgeführt. Bei den Integrationstests wurde eine 
-Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die Ausgangslage ist somit für jeden Durchlauf identisch. Für die Analyse der Testabdeckung wurde IntelliJ 
-verwendet und die statische Code Analyse wurde mit \gls{sonar} ausgeführt. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis 
-zu testen.
+Die Komponenten- und Integrationstests, bekannt aus \cite{test_soft_book}, wurden bei der Schnittstelle mit JUnit und Mockito durchgeführt. Für die Analyse der Testabdeckung wurde 
+IntelliJ verwendet und die statische Code Analyse wurde mit \gls{sonar} ausgeführt. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das 
+Nutzererlebnis zu testen.
 
 \subsection{Testabdeckung}
-Es konnte nahezu eine 90\% Testabdeckung über das ganze Projekt erreicht werden (siehe \autoref{fig:test_coverage}). Unter den nicht getesteten Klassen und Methoden sind 
+Es konnte eine Testabdeckung von 90\% über das ganze Projekt erreicht werden (siehe \autoref{fig:test_coverage}). Unter den nicht getesteten Klassen und Methoden sind 
 Konfigurationsdateien und private Konstruktoren, welche nicht bzw. nur schwierig zu testen sind. Bei den Tests konnte ebenfalls von dem generischen Aufbau profitiert werden, sodass die 
 Controller und Services mit sehr wenig spezifischem Code getestet werden konnten.
 
