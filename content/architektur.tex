@@ -77,21 +77,22 @@ Algorithmus angesetzt, demnach gibt es keine gleichzeitigen Zugriffe auf die Res
 werden. Die Vorgänge benötigen somit nicht zwingend eine transaktionale Unterstützung seitens der Datenbank. Die Daten werden immer in der Nutzer-Sicht gespeichert, damit jederzeit 
 Algorithmus unabhängig auf die Daten zugreifen werden kann.
 
+\begin{landscape}
 \newpage
 \subsection{Ablauf}
+\thispagestyle{empty}
 In \autoref{fig:workflow} wird der Ablauf des ganzen Vorganges und die Interaktion mit dem Nutzer und dem Verarbeitungssystem verdeutlicht. Die Translators, welche in dem 
 Prototyp verwendet werden, sind nur eine Möglichkeit, welche dieses Konzept bietet. Generell baut dieses Konzept auf eine pre- und post-Aktion vor bzw. nach dem Starten des Algorithmus 
 auf.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.605]{images/visio/workflow.png}
+\includegraphics[scale=0.78]{images/visio/workflow_landscape.png}
 \caption[Flussdiagramm des Arbeitsablaufs]{Flussdiagramm des Arbeitsablaufs \selfmade{}}
 \label{fig:workflow}
 \end{figure}
 
-\FloatBarrier
-\newpage
+\end{landscape}
 
 Die \autoref{fig:sequenz_diagramm_start} zeigt das Sequenzdiagramm für den Start einer Berechnung. Alle Komponenten mit '\{Problem\}' sind spezifische Problem-Komponenten, 
 die anderen sind generische. Bei Speichern einer Berechnung wird der Status 'CREATED' gesetzt. Nach dem Speichern wird über die `Solver'-Komponente asynchron das Verarbeitungssystem 
@@ -457,17 +458,21 @@ die Daten abgespeichert werden.
 In \autoref{fig:problems_diagramm} ist die Klassen-Hierarchie der Berechnungstypen dargestellt und in \autoref{fig:solutions_diagramm} werden die verschiedenen 
 Resultatklassen gezeigt.
 
+\begin{landscape}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.62]{images/computations_diagramm.png}
+\includegraphics[scale=0.65]{images/computations_diagramm.png}
 \caption[Klassendiagramm der verschiedenen Problemklassen]{Klassendiagramm der verschiedenen Problemklassen \selfmade{}}
 \label{fig:problems_diagramm}
 \end{figure}
 
 \begin{figure}[h]
+
 \centering
-\includegraphics[scale=0.6]{images/solutions_diagramm.png}
+\includegraphics[scale=0.63]{images/solutions_diagramm.png}
 \caption[Klassendiagramm der verschiedenen Resultatklassen]{Klassendiagramm der verschiedenen Resultatklassen \selfmade{}}
 \label{fig:solutions_diagramm}
 \end{figure}
+
+\end{landscape}
