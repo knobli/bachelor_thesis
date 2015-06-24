@@ -26,8 +26,8 @@ Implementation wurde bereits überlegt, wie die Logik möglichst generisch gehal
 \subsection{Erkenntnisse nach dem ersten Durchstich}\label{learning_prototyp}
 Die Kontaktschnittstelle zum Nutzer generisch zu halten, macht aus Gründen der Benutzerfreundlichkeit keinen Sinn. Für den Kunden ist es transparenter, wenn er eine Schnittstelle aufruft, 
 welche zum Beispiel 'timetableComputations' heisst, statt einer generischen Schnittstelle namens 'computations'. Zudem ist es nicht möglich nur mithilfe der Daten herauszufinden, welches 
-Problem gelöst werden möchte. Dazu würde es einen zusätzlichen Parameter benötigen. Weiter stellt es sich als schwierig heraus, mit Spring einen Endpunkt bereitzustellen, welcher 
-verschiedene Ressourcentypen akzeptiert. Die Validierung der Eingabeparameter würde dadurch zusätzlich erschwert werden.
+Problem gelöst werden möchte. Dazu würde es einen zusätzlichen Parameter benötigen. Weiter stellt es sich als schwierig heraus, mit der gewählten Programmiersprache und dem Framework 
+einen Endpunkt bereitzustellen, welcher verschiedene Ressourcentypen akzeptiert. Die Validierung der Eingabeparameter würde dadurch zusätzlich erschwert werden.
 
 Das Konzept mit den beiden Translators bietet sehr viele Möglichkeiten und Flexibilität. Es entkoppelt die Nutzer-Schnittstelle komplett von der Schnittstelle für die Algorithmen. Um diese 
 Flexibilität ausnutzen zu können, müssen jedoch oft verschiedene Entities für die Nutzer- und Algorithmus-Sicht erstellt werden.
@@ -135,7 +135,9 @@ muss sie nicht doppelt angeben. Der Algorithmus hingegen bekommt eine Liste mit 
 Algorithmus nicht benötigt wird. Der Algorithmus liefert als Resultat eine Liste von booleschen Werten zurück, diese müssen zuerst wieder auf die ursprünglichen Elemente abgebildet werden. Bei 
 der Validierung wird überprüft, ob die Gewichtsschranke nicht überschritten wurde und ob ein Element nicht zu oft verwendet wurde. Letzteres ist zwar beim getesteten Algorithmus nicht 
 möglich, könnte jedoch bei einer anderen Implementation der Fall sein. Der Benutzer erhält als Resultat eine Liste mit allen Objekten, welche verwendet wurden. Wenn ein Objekt mehrmals 
-verwendet wurde, wird die entsprechende Anzahl angegeben.
+verwendet wurde, wird die entsprechende Anzahl angegeben. \autoref{fig:knapsack_input} zeigt die Klassen der Eingabeparameter für eine Rucksack-Berechnung, einige Attribute von der 
+Klasse `KnapsackItem' können ebenfalls für die Algorithmus-Sicht verwendet werden, deshalb gibt es eine Hierarchiestufe mehr. Alle Objekte, welche auf der Algorithmus-Seite Verwendung
+finden, beinhalten im Namen ein `Simple', da sie weniger Informationen umfassen.
 
 \begin{figure}[h]
 \centering

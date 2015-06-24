@@ -14,7 +14,7 @@ Aufgabe.
 
 \section{Übersicht}\label{architektur_uebersicht}
 Die Systemumgebung (siehe Abbildung \ref{fig:system_scope}) hat zwei Berührungspunkte mit der Aussenwelt. Der eine ist zum Nutzer, der andere zu einem Verarbeitungssystem. 
-Um die Daten zu speichern, wird eine Datenbank benötigt. Dadurch wird einen asynchronen Ablauf und ein mehrfaches Abfragen der Daten ermöglicht.
+Um die Daten zu speichern, wird eine Datenbank benötigt. Dadurch wird ein asynchroner Ablauf und ein mehrfaches Abfragen der Daten ermöglicht.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{images/visio/Systemscope.png}
@@ -39,7 +39,7 @@ die \gls{domainlanguage} der Algorithmen abgebildet.
  
 \FloatBarrier
 \subsection{REST API}
-Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} functioniert nach dem \gls{rest} De-facto-Standard 
+Für die Schnittstelle wird ein \gls{rest} \gls{api} erstellt, welches die nötigen Funktionen bietet. Das \gls{api} funktioniert nach dem \gls{rest} De-facto-Standard 
 (siehe \cite{masse2011rest}). Falls Fehler auftreten, werden \glspl{http_statuscode} verwendet, um diese an den Aufrufer weiterzugeben.
 
 \subsection{Business Logik}
@@ -58,8 +58,8 @@ sehr generisch gehalten werden und benötigt keine problemspezifische Methoden. 
 sind.
 \paragraph{Entity}
 Die Entitäten repräsentieren die Datenstruktur der Algorithmen, der Nutzereingaben oder der Resultate. Mit den Entitäten wird gerechnet und ihr Zustand wird in der Datenbank persistiert. 
-Es muss analysiert werden, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus gebraucht werden. Weiter muss ein nützliches Format für das Resultat 
-herausgefunden werden.
+Für die Erstellung der Entitäten wurde für jedes Problem analysiert, wie die Parameter am besten eingegeben werden und wie diese dann vom Algorithmus gebraucht werden. Weiter 
+wurde ein nützliches Format für die verschiedenen Resultate ermittelt.
 \paragraph{Validator}
 Der Validator entscheidet, ob eine Lösung gültig ist oder nicht. Die Validatoren wurden erstellt, um bei der Entwicklung der Algorithmen die Resultate überprüfen zu können und um manuell 
 erstellte Lösungen zu testen. Grundsätzlich könnte ein Algorithmus geschrieben werden, welcher sich nur auf die Antwort des Service verlässt und so lange neue Kombinationen versucht, 
@@ -125,7 +125,7 @@ Anwendungszweck ausgewählt. Um die Eigenheiten der Datenbanken hervorzuheben, w
 
 \subsection{CAP-Theorem}\label{cap_theorem}
 Das \gls{cap_theorem} ist im Jahr 2000 aus einer Vermutung von Eric Brewer entstanden \cite{cap_brewer}. Das Theorem behauptet, dass die Werte Konsistenz (C), Verfügbarkeit (A) und 
-Partitionstoleranz (P) ein Dreieck (siehe \autoref{fig:cap}) bilden und dass ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
+Partitionstoleranz (P) ein Dreieck bilden (siehe \autoref{fig:cap}) und dass ein verteiltes System nur jeweils zwei dieser Eigenschaften gleichzeitig erfüllen kann.
 
 \begin{figure}[h]
 \centering
@@ -263,7 +263,8 @@ Die meisten NoSQL Datenbanksystem setzen auf das \gls{base}-Prinzip von Eric Bre
 \end{myQuote}
 
 Nahezu alle NoSQL Datenbanksysteme sind schemalos, dass heisst, die Tabellen müssen nicht definiert werden. Die Abfragen gestalten sich einfach, JOIN Befehle entfallen 
-komplett. Durch den lockeren Aufbau kann eine höhere Performance erzielt werden, die Unterschiede bei der Geschwindigkeit werden bereits bei kleineren Datenmengen bemerkbar.
+komplett. Durch ihren Aufbau sind sie grundsätzlich performanter als anderen Datenbanken \cite{nosql_vs_sql}, das geht jedoch meist auf die Kosten der Konsistenz. Deshalb ist es wichtig, 
+dass einem die Anforderungen bei der Auswahl einer Datenbank klar sind.
 
 \subsubsection{NoSQL Datenbanktypen}\label{no_sql_db_subgroups}
 NoSQL ist eine Übergruppe von unterschiedlichen Datenbanktypen. In diesem Abschnitt wird auf drei verschiedene NoSQL Datenbanktypen eingegangen, die Eigenschaften der jeweiligen

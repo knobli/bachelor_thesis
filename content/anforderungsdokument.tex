@@ -47,19 +47,12 @@ Dienste des zu erstellenden Systems beziehen werden. Die genaue Ausprägung dies
 \end{figure}
 
 \FloatBarrier
-\subsection{Annahmen}\label{annahmen}
-Zwischen dem Endnutzer und dem zu erstellenden System existiert noch eine Sicherheitsschicht, welcher nicht Teil dieser Arbeit ist. Später wird dieses Projekt allenfalls um diese Sicherheitsschicht 
-erweitert oder eine übergeordnete Schnittstelle erstellt, welche diese anspricht. 
 
-Je nach Implementierung der Algorithmen ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
-heraus. Deshalb wurden die Ein- und Ausgabe-Schemata der Algorithmen aus der Literaturrecherche abgeleitet.
-
-\newpage
 \subsection{Stakeholder}\label{stakeholder}
 Zum Erfassen aller Nutzergruppen, die Einfluss auf das Projekt haben können, dient die \gls{stakeholder}-Analyse. Zudem ermöglicht sie die Erfassung aller Gruppen, die potenziell 
 Anforderungen an das Projekt stellen. In \autoref{table:stakeholder} wurden die \gls{stakeholder} dieses Projekts zusammengetragen und ihre Erwartungen, ihre 
-Einstellung und ihr Einfluss gegenüber dem Projekt festgehalten. Da es sich um eine Machbarkeitsanalyse handelt, befinden sich nur der Auftraggeber und ein einzelner potenzieller Kunde in der 
-Auflistung.
+Einstellung und ihr Einfluss gegenüber dem Projekt festgehalten. Da es sich um eine Machbarkeitsanalyse handelt, befinden sich nur der Auftraggeber, ein einzelner potenzieller Kunde und der 
+Entwickler in der Auflistung.
 
 \begin{table}[ht]
 \centering
@@ -76,10 +69,10 @@ Auflistung.
 	\textbf{Potenzieller Kunde}
 								&	Er wünscht sich eine einfache Abwicklung für seine Probleme, er möchte sich nicht mit Algorithmen und 
 									theoretischer Informatik beschäftigen.
-												& 	Positiv		&	Hoch		\\ \hline
+												& 	Positiv		&	Mittel		\\ \hline
 	\textbf{Entwickler}
-								&	Er hofft, dass sich die Schnittstelle wie gewünscht umsetzen lässt.
-												& 	Positiv		&	Hoch		\\ \hline												
+								&	Er hofft, dass sich die Schnittstelle wie gewünscht umsetzen lässt und aus der Machbarkeitsanalyse ein weiteres Projekt entsteht.
+												& 	Positiv		&	Mittel		\\ \hline												
   \end{tabular}
    \caption{Liste der \gls{stakeholder}}\label{table:stakeholder}
 \end{table}
@@ -643,3 +636,10 @@ dieser Listen zurückgestellt worden.
   \end{tabular}
    \caption{Priorität der Anforderungen}\label{table:req_priorities}
 \end{table}
+
+\subsection{Annahmen}\label{annahmen}
+Zwischen dem Endnutzer und dem zu erstellenden System existiert noch eine Sicherheitsschicht, welcher nicht Teil dieser Arbeit ist. Später wird dieses Projekt allenfalls um diese Sicherheitsschicht 
+erweitert oder eine übergeordnete Schnittstelle erstellt, welche diese anspricht. 
+
+Je nach Implementierung der Algorithmen ist das Ansteuern und die Aufbereitung der Daten unterschiedlich. Eine Referenzimplementierung zu jedem Problem zu finden, stellte sich als schwierig 
+heraus. Deshalb wurden die Ein- und Ausgabe-Schemata der Algorithmen aus der Literaturrecherche abgeleitet.

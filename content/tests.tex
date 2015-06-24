@@ -31,6 +31,18 @@ Testdatenbank verwendet, welche bei jedem Testlauf neu initialisiert wird. Die A
 verwendet und die statische Code Analyse wurde mit \gls{sonar} ausgeführt. Neben den automatischen Tests wurden immer wieder manuelle Tests durchgeführt, um auch das Nutzererlebnis 
 zu testen.
 
+\subsection{Testabdeckung}
+Es konnte nahezu eine 90\% Testabdeckung über das ganze Projekt erreicht werden (siehe \autoref{fig:test_coverage}). Unter den nicht getesteten Klassen und Methoden sind 
+Konfigurationsdateien und private Konstruktoren, welche nicht bzw. nur schwierig zu testen sind. Bei den Tests konnte ebenfalls von dem generischen Aufbau profitiert werden, sodass die 
+Controller und Services mit sehr wenig spezifischem Code getestet werden konnten.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.74]{images/test_coverage.png}
+\caption[Analyse der Testabdeckung des Projekts]{Analyse der Testabdeckung des Projekts \selfmade{}}
+\label{fig:test_coverage}
+\end{figure}
+
 \section{Systemtest}
 Als Abschluss des Projekts wurde ein Systemtest durchgeführt, für welcher ein Testprotokoll erstellt wurde. Das Protokoll zeigt dem Kunden die Testabfolge und das Ergebnis.
 
